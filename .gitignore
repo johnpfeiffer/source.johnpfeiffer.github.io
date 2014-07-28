@@ -1,0 +1,62 @@
+# ignore project files
+.project
+.classpath
+*.pydevproject
+.pydevproject
+.mr.developer.cfg
+.metadata
+.settings
+*.sublime-project
+*.sublime-workspace
+.idea/
+.externalToolBuilders
+xcuserdata
+
+# ignore binaries
+*.pyc
+*.py[cod]
+__pycache__
+
+# ignore mac stuff
+.DS_Store
+Thumbs.db
+
+# ignore installer logs
+pip-log.txt
+
+# ignore Unit test and coverage reports
+.coverage
+.tox
+nosetests.xml
+test.results.xml
+
+# ignore Packages
+*.egg
+*.egg-info
+dist
+distlib
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+__pycache__
+downloads
+
+
+# ignore translations
+*.mo
+
+# ignore misc always-ignore extensions
+*.log
+*.swp
+*.vi
+*~
+*.sass-cache
+*.db
+
+# ignore build directory
+build
