@@ -24,29 +24,26 @@ Using Vagrant to deploy instances on AWS...
             aws.secret_access_key = "YOURSECRETKEY"
             aws.keypair_name = "YOURKEYPAIRNAME"
             aws.ami = "ami-7747d01e"
+            aws.instance_ready_timeout = 300
             aws.instance_type = "m3.large"
             aws.tags = {
-                "Name" => "HipChatCI",
+                "Name" => "MyCloudInstance",
             }
             override.vm.box = "dummy"
             override.vm.box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
             override.ssh.username = "ubuntu"
-            override.ssh.private_key_path = "/usr/local/bamboo/YOURKEYPAIRNAME.pem"
-            override.vm.synced_folder "./chef-repo", "/vagrant", type: "rsync",
-                rsync__exclude: ".git/"
+            override.ssh.private_key_path = "./YOURKEYPAIRNAME.pem"
         end
     end
 
-> ubuntu/images/ubuntu-precise-12.04-amd64-server-20130204 - ami-7747d01e
+> ubuntu/images/ubuntu-precise-12.04-amd64-server-20130204 - ami-7747d01e , no ebs storage - just instance storage
+
+> vagrant will by default upload all folders and files in your "project" folder where the Vagrantfile is located
+
 
 `vagrant plugin install vagrant-aws`
 
-`vagrant up --provider=aws`
-
-> ERROR: The provider 'aws' could not be found, but was requested to back the machine 'default'. Please use a provider that exists.
-
-> RESOLUTION: try re-installing the vagrant-aws plugin again and immediately running the vagrant up command afterwards
-
+`vagrant up --provider=aws --debug`
 
     Bringing machine 'default' up with 'aws' provider...
     ==> default: HandleBoxUrl middleware is deprecated. Use HandleBox instead.
@@ -68,7 +65,7 @@ Using Vagrant to deploy instances on AWS...
     ==> default: Waiting for instance to become "ready"...
     ==> default: Waiting for SSH to become available...
     ==> default: Machine is booted and ready for use!
-    ==> default: Rsyncing folder: /home/bamboo/ => /vagrant
+    ==> default: Rsyncing folder: /home/ubuntu/myproject/ => /vagrant
 
 `vagrant ssh`
 
@@ -91,6 +88,68 @@ Using Vagrant to deploy instances on AWS...
     >
     > ==> default: Terminating the instance...
 
+### Vagrant provisioning
+
+Allows for automated installation of software bundled into the `vagrant up` command
+
+`vagrant up --provider=aws --no-provision` to prevent any provisioning
+
+    config.vm.provision "shell", inline: "echo Hello, World"
+
+    config.vm.provision "shell", path: "script.sh"
+
+    config.vm.provision "shell", path: "https://example.com/script.sh"
+
+[http://docs.vagrantup.com/v2/provisioning](http://docs.vagrantup.com/v2/provisioning)
+
+[http://docs.vagrantup.com/v2/provisioning/shell.html](http://docs.vagrantup.com/v2/provisioning/shell.html)
+
+### Advanced Vagrantfile example
+    # -*- mode: ruby -*-
+    # vi: set ft=ruby :
+
+    if ENV['UPDATEFQDN']
+      updatedfqdn=ENV['UPDATEFQDN']
+    end
+    
+    $fqdnscript = <<FQDNSCRIPT
+    echo "I am updating fqdn to #{updatedfqdn}..."
+    cat /etc/hosts | grep "#{updatedfqdn}" || sudo sed 's/127.0.0.1/127.0.0.1 #{updatedfqdn}/' -i /etc/hosts
+    hostname | grep "#{updatedfqdn}" || sudo hostname #{updatedfqdn}
+    FQDNSCRIPT
+
+    Vagrant.configure("2") do |config|
+        config.vm.box = "dummy"
+        config.vm.provider :aws do |aws, override|
+            aws.access_key_id = "YOURACCESSKEY"
+            aws.secret_access_key = "YOURSECRETKEY"
+            aws.keypair_name = "YOURKEYPAIRNAME"
+            aws.ami = "ami-7747d01e"
+            aws.instance_ready_timeout = 300
+            aws.instance_type = "m3.large"
+            aws.tags = {
+                "Name" => "MyCloudInstance",
+            }
+            override.vm.box = "dummy"
+            override.vm.box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
+            override.ssh.username = "ubuntu"
+            override.ssh.private_key_path = "./YOURKEYPAIRNAME.pem"
+            override.vm.synced_folder "./chef-repo", "/tmp/chef-repo", type: "rsync", create: true, rsync__exclude: ".git/"
+        end
+        config.vm.provision :shell, :inline => "echo `hostname -f` >> /home/ubuntu/currenthostname.txt"
+        config.vm.provision :shell, :inline => $fqdnscript
+    end
+
+    Bringing machine 'default' up with 'aws' provider...
+    ==> default: Running provisioner: shell...
+    ==> default: Running: inline script
+    stdin: is not a ttty
+    I am provisioning and updating hostname...
+    
+
+> synced_folder is to sync other folders in your filesystem besides the folder with the Vagrantfile
+
+> config.vm.hostname does not appear to work on AWS EC2 so the workaround above (|| statements to prevent extra reconfiguration)
 
 
 ### more info
@@ -98,3 +157,14 @@ Using Vagrant to deploy instances on AWS...
 [https://github.com/mitchellh/vagrant-aws](https://github.com/mitchellh/vagrant-aws)
 
 
+### Troubleshooting
+
+`vagrant up --provider=aws --debug`
+
+> ERROR: The provider 'aws' could not be found, but was requested to back the machine 'default'. Please use a provider that exists.
+
+> RESOLUTION: try re-installing the vagrant-aws plugin again and immediately running the vagrant up command afterwards
+
+> ERROR: Timeout when waiting for SSH , SSH not up: ... The private key to connect to the machine via SSH must be owned
+
+> RESOLUTION: chown root:root  and chmod 400

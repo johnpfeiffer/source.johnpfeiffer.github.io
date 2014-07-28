@@ -1,7 +1,7 @@
 Title: A More Complete Education
 Date: 2013-05-09 16:52
 Author: John Pfeiffer
-Slug: a-more-complete-education
+Slug: content/more-complete-education
 
 <div class="field field-name-body field-type-text-with-summary field-label-hidden">
 <div class="field-items">
@@ -84,17 +84,6 @@ Vanderbilt
 [http://leetcode.com/onlinejudge][]  
 [http://codeforces.com/problemset][]
 
-</p>
-<p>
-</div>
-</div>
-</div>
-<div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix">
-### tags:
-
--   [Programming][]
-
-</div>
 </p>
 
   [http://see.stanford.edu/see/lecturelist.aspx?coll=824a47e1-135f-4508-a5a...]:
