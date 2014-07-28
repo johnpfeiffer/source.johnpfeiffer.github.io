@@ -7,7 +7,7 @@ Using Vagrant to deploy instances on AWS...
 
 ### Install Vagrant and the Vagrant AWS plugin
 
-[https://www.vagrantup.com/downloads](https://www.vagrantup.com/downloads)
+Download and install vagrant: **[https://www.vagrantup.com/downloads](https://www.vagrantup.com/downloads)**
 
 `wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.3_x86_64.deb ; dpkg -i vagrant_1.6.3_x86_64.deb`
 
@@ -69,11 +69,13 @@ Using Vagrant to deploy instances on AWS...
 
 `vagrant ssh`
 
-> alternatively: Use the AWS EC2 WebUI or [http://aws.amazon.com/cli](http://aws.amazon.com/cli/) to discover the IP address
+> alternative interactive ssh session: Use the AWS EC2 WebUI or [http://aws.amazon.com/cli](http://aws.amazon.com/cli/) to discover the IP address
 
 > ssh -i YOURKEYPAIRHERE.pem ubuntu@1.2.3.4 ls -ahl /vagrant
 
 `exit`
+
+`vagrant ssh -c "ls -ahl"` for a non interactive listing of the home directory
 
 `vagrant up` , `vagrant reload` , and `vagrant provision` will have the AWS provider use rsync to push data to /vagrant
 [https://docs.vagrantup.com/v2/synced-folders/rsync.html](https://docs.vagrantup.com/v2/synced-folders/rsync.html)
