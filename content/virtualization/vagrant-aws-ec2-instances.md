@@ -77,6 +77,8 @@ Download and install vagrant: **[https://www.vagrantup.com/downloads](https://ww
 
 `vagrant ssh -c "ls -ahl"` for a non interactive listing of the home directory
 
+> **vagrant ssh -c "pidof ntpd | xargs sudo kill -9"**
+
 `vagrant up` , `vagrant reload` , and `vagrant provision` will have the AWS provider use rsync to push data to /vagrant
 [https://docs.vagrantup.com/v2/synced-folders/rsync.html](https://docs.vagrantup.com/v2/synced-folders/rsync.html)
 
