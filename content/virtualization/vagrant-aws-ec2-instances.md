@@ -92,6 +92,10 @@ Download and install vagrant: **[https://www.vagrantup.com/downloads](https://ww
     >
     > ==> default: Terminating the instance...
 
+`vagrant destroy -f`
+
+> non interactively destroy the instance and avoid the misleading error message: Vagrant is attempting to interface with the UI in a way that requires a TTY
+
 ### Vagrant provisioning
 
 Allows for automated installation of software bundled into the `vagrant up` command
