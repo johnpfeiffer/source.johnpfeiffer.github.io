@@ -1,49 +1,37 @@
 Title: Selenium headless browser automated testing with PhantomJS and Python
 Date: 2013-09-17 21:04
 Author: John Pfeiffer
-Slug: selenium-headless-browser-automated-testing-with-phantomjs-and-python
+Slug: content/selenium-headless-browser-automated-testing-with-phantomjs-and-python
 
-<div class="field field-name-body field-type-text-with-summary field-label-hidden">
-<div class="field-items">
-<div class="field-item even">
-selenium: automation of browser actions
-([http://docs.seleniumhq.org/docs/02\_selenium\_ide.jsp\#introduction][])
+[TOC]
 
-</p>
+### Overview
+
+selenium: automation of browser actions (http://docs.seleniumhq.org/docs/02\_selenium\_ide.jsp\#introduction)[http://docs.seleniumhq.org/docs/02\_selenium\_ide.jsp\#introduction]
+
 
 phantomjs: headless browser ([http://phantomjs.org/][])
 
-</p>
+- - -
+### Install
+sudo pip install selenium
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-- - - -  
+wget (https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.7-linux-x86_64.tar.bz2)[https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.7-linux-x86_64.tar.bz2]
 
-pip install selenium
+tar -xjvf phantomjs-1.9.7-linux-x86\_64.tar.bz2
 
-</p>
+- - -
+### Run
+`phantomjs-1.9.7-linux-x86\_64/bin/phantomjs --webdriver=9134`
 
-wget
-[https://code.google.com/p/phantomjs/downloads/detail?name=phantomjs-1.9....][]  
+> ghostdriver including and running on port 9134
 
-tar -xjvf phantomjs-1.9.2-linux-x86\_64.tar.bz2
-
-</p>
-
-phantomjs-1.9.2-linux-x86\_64/bin/phantomjs --webdriver=9134 \# run
-ghostdriver on a port
-
-</p>
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-- - - -  
-
-\# mini script to just show usage
-
-</p>
+- - -
+### Example python script
+**mini script to just show usage**
 
 from selenium import webdriver
 
-</p>
 
 driver = webdriver.PhantomJS(
 executable\_path='/opt/phantomjs-1.9.2-linux-x86\_64/bin/phantomjs',
@@ -57,41 +45,26 @@ driver.quit
 
 print "done"
 
-</p>
+`phantomjs-1.9.2-linux-x86\_64/bin/phantomjs --webdriver=9134 --ignore-ssl-errors=true`
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-- - - -  
+- - -
+### Advanced Python example
 
-phantomjs-1.9.2-linux-x86\_64/bin/phantomjs --webdriver=9134
---ignore-ssl-errors=true
+> more complete example with python unittest framework (used the Firefox Selenium IDE plugin -\> Export)  
 
-</p>
+> logs in, asserts there is an Admin tab which when clicked shows Group Info
 
-\# more complete example with python unittest framework (used the
-Firefox Selenium IDE plugin -\> Export)  
 
-\# logs in, asserts there is an Admin tab which when clicked shows Group
-Info
+    from selenium import webdriver  
+    from selenium.webdriver.common.by import By  
+    from selenium.webdriver.common.keys import Keys  
+    from selenium.webdriver.support.ui import Select  
+    from selenium.common.exceptions import NoSuchElementException  
+    import unittest, time, re
 
-</p>
+    class SeleniumAdminLogin( unittest.TestCase ):  
 
-from selenium import webdriver  
-
-from selenium.webdriver.common.by import By  
-
-from selenium.webdriver.common.keys import Keys  
-
-from selenium.webdriver.support.ui import Select  
-
-from selenium.common.exceptions import NoSuchElementException  
-
-import unittest, time, re
-
-</p>
-
-class SeleniumAdminLogin( unittest.TestCase ):  
-
-def setUp( self ):  
+    def setUp( self ):  
 
 self.driver = webdriver.PhantomJS(
 '/opt/phantomjs-1.9.2-linux-x86\_64/bin/phantomjs', port=9134 )  
@@ -194,26 +167,12 @@ unittest.main()
 
 </p>
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-- - - -  
-
+- - -
 REFERENCES:  
 [http://phantomjs.org/release-1.8.html][]  
 [https://github.com/ariya/phantomjs/wiki/API-Reference][]  
 [http://www.realpython.com/blog/python/headless-selenium-testing-with-pyt...][]
 
-</p>
-<p>
-</div>
-</div>
-</div>
-<div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix">
-### tags:
-
--   [Programming][]
-
-</div>
-</p>
 
   [http://docs.seleniumhq.org/docs/02\_selenium\_ide.jsp\#introduction]:
     http://docs.seleniumhq.org/docs/02_selenium_ide.jsp#introduction
@@ -228,4 +187,3 @@ REFERENCES:
   [https://github.com/ariya/phantomjs/wiki/API-Reference]: https://github.com/ariya/phantomjs/wiki/API-Reference
   [http://www.realpython.com/blog/python/headless-selenium-testing-with-pyt...]:
     http://www.realpython.com/blog/python/headless-selenium-testing-with-python-and-phantomjs/
-  [Programming]: http://john-pfeiffer.com/category/tags/programming
