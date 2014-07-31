@@ -3,7 +3,7 @@ git pull
 GITMESSAGE=$(git log -n 1)
 OUTPUT="../output-johnpfeiffer.bitbucket.org"
 ./clean-output.sh "../output-johnpfeiffer.bitbucket.org"
-
+echo "$GITMESSAGE"
 pelican content
 cp -a ./output/* ../output-johnpfeiffer.bitbucket.org
 
