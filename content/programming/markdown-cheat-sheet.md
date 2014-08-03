@@ -8,6 +8,8 @@ Date: 2014-07-02 20:21
 - unordered list `- item` or alternatives: `+ item` , `* item`
 - html &lt;hr /&gt; is markdown `- - -` or alternatives: `* * *` , `***` , `*****`
 - html &lt;a href= for hyper links is:
+> &lt;http://example.com&gt; is a link that is automatically turned clickable:
+> <http://johnpfeiffer.bitbucket.org>  becomes &lt;a href="http://johnpfeiffer.bitbucket.org"&gt;http://johnpfeiffer.bitbucket.org&lt;/a&gt;
 > `[an example](http://example.com/ "ExampleTitle")` [an example](/about-john-pfeiffer "ExampleTitle") 
 - both absolute and relative links are supported, as well as reference links that are defined elsewhere:
 `This is [an example][someid]`

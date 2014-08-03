@@ -11,14 +11,14 @@ In this sampling from my logs (not representative of anything), 57% of the traff
 
 Drupal (CMS) is remarkably good at making content for bots to read so it's not surprising they're all slurping, and of course if you want to be popular you need all of those indexes to know about you...
 
-    cat john-pfeiffer.access | wc -l \# 1108`
+`cat john-pfeiffer.access | wc -l` 1108
+
     cat john-pfeiffer.access | grep -v "Baiduspider" | grep -v "bingbot" | grep -v "YandexBot" | grep -v "Sogou" | grep -v "Mail.RU\_Bot" | grep -v "Googlebot" | grep -v "SISTRIX Crawler" | grep -v "MJ12bot" | wc -l  
-    > 637
+    637
 
-
-`cat john-pfeiffer.access | grep "Googlebot" | wc -l`
-> 105 
-[https://en.wikipedia.org/wiki/Googlebot](https://en.wikipedia.org/wiki/Googlebot)
+    cat john-pfeiffer.access | grep "Googlebot" | wc -l
+105 from <https://en.wikipedia.org/wiki/Googlebot>
+    
 
 `cat john-pfeiffer.access | grep "bingbot" | wc -l`
 > 96
@@ -57,21 +57,8 @@ cat john-pfeiffer.access | grep "Sogou" | wc -l \# 7 ,
 (Besides the robots.txt you are pretty much left with ban by User-Agent
 or IP Address Range.)
 
-</p>
-<p>
-</div>
-</div>
-</div>
-<div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix">
-### tags:
 
--   [IT][]
--   [Linux][]
 
-</div>
-</p>
-
-  [https://en.wikipedia.org/wiki/Googlebot]: https://en.wikipedia.org/wiki/Googlebot
   [http://en.wikipedia.org/wiki/Bingbot]: http://en.wikipedia.org/wiki/Bingbot
   [http://crawler.sistrix.net/]: http://crawler.sistrix.net/
   [http://www.botopedia.org/user-agent-list/search-bots/yandex-bot.html]:
