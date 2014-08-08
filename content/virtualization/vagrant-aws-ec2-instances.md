@@ -3,11 +3,11 @@ Date: 2014-07-16 21:12
 
 [TOC]
 
-Using Vagrant to deploy instances on AWS...
+Vagrant is an infrastructure tool that simplifies deployment, such as virtual machines or in this case Amazon EC2 instances.
 
 ### Install Vagrant and the Vagrant AWS plugin
 
-Download and install vagrant: **[https://www.vagrantup.com/downloads](https://www.vagrantup.com/downloads)**
+Download and install vagrant: **<https://www.vagrantup.com/downloads>**
 
 `wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.3_x86_64.deb ; dpkg -i vagrant_1.6.3_x86_64.deb`
 
@@ -69,7 +69,7 @@ Download and install vagrant: **[https://www.vagrantup.com/downloads](https://ww
 
 `vagrant ssh`
 
-> alternative interactive ssh session: Use the AWS EC2 WebUI or [http://aws.amazon.com/cli](http://aws.amazon.com/cli/) to discover the IP address
+> alternative interactive ssh session: Use the AWS EC2 WebUI or <http://aws.amazon.com/cli> to discover the IP address
 
 > ssh -i YOURKEYPAIRHERE.pem ubuntu@1.2.3.4 ls -ahl /vagrant
 
@@ -80,7 +80,8 @@ Download and install vagrant: **[https://www.vagrantup.com/downloads](https://ww
 > **vagrant ssh -c "pidof ntpd | xargs sudo kill -9"**
 
 `vagrant up` , `vagrant reload` , and `vagrant provision` will have the AWS provider use rsync to push data to /vagrant
-[https://docs.vagrantup.com/v2/synced-folders/rsync.html](https://docs.vagrantup.com/v2/synced-folders/rsync.html)
+
+<https://docs.vagrantup.com/v2/synced-folders/rsync.html>
 
 `vagrant stop`
 
@@ -108,9 +109,9 @@ Allows for automated installation of software bundled into the `vagrant up` comm
 
     config.vm.provision "shell", path: "https://example.com/script.sh"
 
-[http://docs.vagrantup.com/v2/provisioning](http://docs.vagrantup.com/v2/provisioning)
+<http://docs.vagrantup.com/v2/provisioning>
 
-[http://docs.vagrantup.com/v2/provisioning/shell.html](http://docs.vagrantup.com/v2/provisioning/shell.html)
+<http://docs.vagrantup.com/v2/provisioning/shell.html>
 
 ### Advanced Vagrantfile example
     # -*- mode: ruby -*-
@@ -162,7 +163,7 @@ Allows for automated installation of software bundled into the `vagrant up` comm
 
 ### more info
 
-[https://github.com/mitchellh/vagrant-aws](https://github.com/mitchellh/vagrant-aws)
+<https://github.com/mitchellh/vagrant-aws>
 
 
 ### Troubleshooting

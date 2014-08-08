@@ -168,19 +168,15 @@ docker run -v $HOSTDIR:$DOCKERDIR
 
 - - - 
 ### Advanced Docker pre built images
-`docker run --rm -t -i phusion/baseimage /sbin/my_init -- bash -l`
 
-`docker run --rm -t -i phusion/passenger-full bash -l`
-> root@f4b25455699c:/#
+<https://registry.hub.docker.com>
 
-[Docker for Web app development](https://github.com/phusion/passenger-docker)
-> REPOSITORY               TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
-> phusion/passenger-full   latest              5327fda0d529        2 weeks ago         732 MB
+`docker run --name some-redis -d redis`
+`docker run --name some-app --link some-redis:redis -d application-that-uses-redis`
 
-https://www.phusionpassenger.com/documentation_and_support
 
 - - -
 ### More Info
-- https://gist.github.com/wsargent/7049221
-- https://docs.docker.com/reference/commandline/cli/#run
+<https://github.com/wsargent/docker-cheat-sheet>
+<https://docs.docker.com/reference/commandline/cli/#run>
 
