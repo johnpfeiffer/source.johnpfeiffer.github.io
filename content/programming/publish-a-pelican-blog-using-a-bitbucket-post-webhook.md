@@ -1,4 +1,4 @@
-Title: publish-a-pelican-blog-using-a-bitbucket-post-webhook
+Title: Publish a pelican blog using a Bitbucket POST Webhook
 Date: 2014-08-08 06:00
 
 [TOC]
