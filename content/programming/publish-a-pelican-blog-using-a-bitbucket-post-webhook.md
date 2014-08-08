@@ -5,7 +5,7 @@ Date: 2014-08-08 06:00
 
 Webhooks are an incredibly useful way to tie together disparate network parts, WHEN something happens in one place, it sends a POST HTTP request to another place.
 
-### Steps to 
+### Create the Bitbucket Webhook and Setup a Server to Receive the Webhook
 
 1. Log in to the Bitbucket WebUI
 1. Choose the repository
@@ -20,7 +20,7 @@ Webhooks are an incredibly useful way to tie together disparate network parts, W
 > You may notice any existing POST webhooks, i.e. a HipChat notification add-on, listed: https://hipchat-bitbucket.herokuapp.com/commit?client_id=f955ddb5
 
 
-### Flask and Bash source code to publish pelican
+### Flask and Bash source code to publish a pelican static web site
 
 > This custom solution requires running that flask app manually, i.e. python mypublish.py
 > It also requires having two repositories, one for the pelican source content, 
