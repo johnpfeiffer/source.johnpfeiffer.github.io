@@ -54,11 +54,11 @@ Webhooks are an incredibly useful way to tie together disparate network parts, W
     #!/bin/bash
 	git pull
 	GITMESSAGE=$(git log -n 1)
-	OUTPUT="../reponame.bitbucket.org"
-	./clean-output.sh "../reponame.bitbucket.org"  # removes all of the old content
+	OUTPUT="../outputreponame.bitbucket.org"
+	./clean-output.sh "../sourcereponame.bitbucket.org"  # removes all of the old content
 	echo "$GITMESSAGE"
 	pelican content
-	cp -a ./output/* ../output-johnpfeiffer.bitbucket.org
+	cp -a ./output/* $OUTPUT
 	
 	rm -rf ./output
 	rm -rf ./cache
