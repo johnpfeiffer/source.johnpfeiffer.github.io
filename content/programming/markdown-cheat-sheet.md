@@ -37,8 +37,8 @@ Date: 2014-07-02 20:21
 > -    ensure the code block is surrounded by empty lines
     
 
-`# H1` # H1  
-###### H6  `###### H6`
+`# H1` # H1
+`###### H6` ###### H6
 
 - - -
 ### more info

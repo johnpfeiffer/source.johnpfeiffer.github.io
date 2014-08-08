@@ -4,8 +4,6 @@ Tags: programming
 Author: John Pfeiffer
 Summary: How to host a static web site on Bitbucket for free
 
-While you can use a CNAME for HTTP, (usually a subdomain like blog.example.com), it will not work with HTTPS (no option to upload your own cert).
-
 1. create a bitbucket account with username
 1. create a repo named username.bitbucket.org
 1. mkdir username.bitbucket.org
@@ -19,3 +17,8 @@ While you can use a CNAME for HTTP, (usually a subdomain like blog.example.com),
 1. git branch --set-upstream master origin/master
 1. git pull
 1. https://username.bitbucket.org
+
+<https://confluence.atlassian.com/display/BITBUCKET/Publishing+a+Website+on+Bitbucket>
+
+Scroll down to the comments:
+*You can setup a CNAME for your account .  You cannot set up a CNAME for a static website hosted on Bitbucket.  The account you setup a CNAME for may have a repository that represents a static website.*
