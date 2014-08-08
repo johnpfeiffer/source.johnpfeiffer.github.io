@@ -115,5 +115,4 @@ Here's the binaries:
 
   [http://kittyandbear.net/c-programming-guides/gcc-2-9-5-windows.zip]: http://kittyandbear.net/c-programming-guides/gcc-2-9-5-windows.zip
   [http://kittyandbear.net/c-programming-guides/windows-messagebox.zip]:
-    http://kittyandbear.net/c-programming-guides/windows-messagebox.zip
-  [Programming]: http://john-pfeiffer.com/category/tags/programming
+    http://kittyandbear.net/c-programming-guides/windows-messagebox.zi
