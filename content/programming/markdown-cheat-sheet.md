@@ -5,18 +5,18 @@ Date: 2014-07-02 20:21
 
 ### Markdown Syntax
 
-- html &lt;em&gt; is markdown `*emphasis* or _italics_` = *emphasis* or _italics_ 
-- html &lt;strong&gt; is markdown `**strong* or __bold__` = **strong** or __bold__
+- html <em> is markdown `*emphasis* or _italics_` = *emphasis* or _italics_ 
+- html <strong> is markdown `**strong* or __bold__` = **strong** or __bold__
 - html strikethrough is not supported but can just be `<del>strikethrough</del>` = <del>strikethrough</del>
-- html &lt;blockquote&gt; is markdown `>` at the start of each line
+- html <blockquote> is markdown `>` at the start of each line
 - unordered list `- item` or alternatives: `+ item` , `* item`
-- html &lt;hr /&gt; is markdown `- - -` or alternatives: `* * *` , `***` , `*****`
-- html &lt;a href= for hyper links is:
+- html <hr /> is markdown `- - -` or alternatives: `* * *` , `***` , `*****`
+- html <a href= for hyper links is:
 
-> &lt;http://example.com&gt; is a link that is automatically turned clickable:
+> <http://example.com> is a link that is automatically turned clickable:
 > <http://johnpfeiffer.bitbucket.org>  becomes 
 
-> &lt;a href="http://johnpfeiffer.bitbucket.org"&gt;http://johnpfeiffer.bitbucket.org&lt;/a&gt;
+> <a href="http://johnpfeiffer.bitbucket.org">http://johnpfeiffer.bitbucket.org</a>
 
 > `[an example](http://example.com/ "ExampleTitle")` [an example](/about-john-pfeiffer "ExampleTitle") 
 
@@ -35,6 +35,10 @@ Date: 2014-07-02 20:21
 **A code block** is markdown `indent 4 spaces or 1 tab`
 > -    a blank line in the code block still needs to be indented
 > -    ensure the code block is surrounded by empty lines
+
+:::text or :::bash at the top of a code block will control the syntax highlighting
+
+<http://pygments.org/docs/lexers>
     
 
 `# H1` # H1

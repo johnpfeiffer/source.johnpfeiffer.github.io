@@ -4,7 +4,7 @@ from subprocess import Popen, PIPE
 
 app = Flask(__name__)
 
-@app.route('/jpblog')
+@app.route('/jpblog', methods=['GET', 'POST'])
 def john():
   try:
       # output = Popen(["pwd"], stdout=PIPE).communicate()[0]
