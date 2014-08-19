@@ -1,54 +1,38 @@
 Title: Tomcat deployment on Openshift for free
 Date: 2012-09-11 13:48
-Author: John Pfeiffer
 Slug: tomcat-deployment-on-openshift-for-free
 
-<div class="field field-name-body field-type-text-with-summary field-label-hidden">
-<div class="field-items">
-<div class="field-item even">
-sudo apt-get update  
+[TOC]
+openshift is the cloud PaaS offering from RedHat
 
-sudo apt-get install ruby1.9.3 //yay for ubuntu 12.04
 
-</p>
+### Prerequisites
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-- - - - - - - - - - - - - - - - - - - - - - - -  
+    sudo apt-get update
+    sudo apt-get install ruby1.9.3 git-core
+    //yay for ubuntu 12.04
 
-(PREREQUISITE IS INSTALLING GIT - apt-get install git-core)
+    sudo gem install rhc
+   //red hat client
 
-</p>
-
-sudo gem install rhc //red hat client
-
-</p>
+- - -
 
 rhc setup  
 
-Created local config file: /home/ubuntu/.openshift/express.conf  
+    Created local config file: /home/ubuntu/.openshift/express.conf
+    The express.conf file contains user configuration, and can be transferred to different computers.
+    No SSH keys were found. We will generate a pair of keys for you.
+    
+    2: No such file or directory
+    Created: /home/ubuntu/.ssh/id_rsa.pub  
+    
+    Your public ssh key must be uploaded to the OpenShift server. Would you like us to upload it for you? (yes/no) yes
 
-The express.conf file contains user configuration, and can be
-transferred to different computers.  
+### rhc commands
 
-No SSH keys were found. We will generate a pair of keys for you.  
-
-2: No such file or directory  
-
-Created: /home/ubuntu/.ssh/id\_rsa.pub  
-
-Your public ssh key must be uploaded to the OpenShift server. Would you
-like us to upload it for you? (yes/no) yes
-
-</p>
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-- - - - - - - - - - - - - - - - - - - - - - - -  
-
-rhc -h  
+rhc -h
 
 rhc domain show //prompts for password
-
-</p>
 
 rhc app create -h  
 
@@ -56,37 +40,21 @@ Valid application types are (nodejs-0.6, ruby-1.9, jbossas-7,
 python-2.6, jenkins-1.4, ruby-1.8, jbosseap-6.0, diy-0.1, php-5.3,
 perl-5.10)
 
-</p>
-
 rhc app create -a john -t diy-0.1
-
-</p>
 
 rhc app show -a john
 
-</p>
-
 rhc app cartridge list
 
-</p>
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-- - - - - - - - - - - - - - - - - - - - - - - -  
 
 ON YOUR LOCAL MACHINE BROWSE TO WHERE YOU WANT TO STORE YOUR GIT REPO
 
-</p>
 
 git clone git clone
-[ssh://a261d0fc2932413694456e3473fdc972@APPNAME-DOMAIN.rhcloud.com/\~/git/...][]
+ssh://a261d0fc2932413694456e3473fdc972@APPNAME-DOMAIN.rhcloud.com/\~/git/...
 
-</p>
-
-git status  
-
+git status
 git pull
-
-</p>
 
 REPO LAYOUT of \~/john/repo
 
@@ -312,18 +280,12 @@ ln -s \~/john/repo/diy/webapps webapps
 
 </p>
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-- - - - - - - - - - - - - - - - - - - - - - - -  
 
-Strongly advised to remove the manager and example apps (just deploy
-your .war's)
+Strongly advised to remove the manager and example apps (just deploy your .war's)
 
-</p>
 
-//rhc app stop â€“a APPNAME -p YOURPASSWORD //yes, it uses your RHCloud
+//rhc app stop -a APPNAME -p YOURPASSWORD //yes, it uses your RHCloud
 account username and password for app management
-
-</p>
 
 ssh [521233d90ea45fd91e42096651d937e@john-pfeiffer.rhcloud.com][]  
 
@@ -331,19 +293,10 @@ mv \~/app-root/data/apache-tomcat-7.0.29/webapps/\* app-root/repo/misc
 
 mv app-root/repo/misc/ROOT \~/app-root/data/apache-tomcat-7.0.29/webapps
 
-</p>
 
-//rhc app startâ€“a APPNAME -p YOURPASSWORD
+//rhc app start -a APPNAME -p YOURPASSWORD
 
-</p>
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-- - - - - - - - - - - - - - - - - - - - - - - -  
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-- - - - - - - - - - - - - - - - - - - - - - - -  
-
-ONCE YOU'VE SSH'D IN...  
+### ONCE YOU'VE SSH'D IN...  
 
 help  
 
@@ -353,47 +306,21 @@ ctl\_app start [stop|restart|status]
 
 mysql | mongo | quota
 
-</p>
 
 NOTE: sometimes it's easier to use a UI
 [https://openshift.redhat.com/app/console/applications][]  
 
 My Account -\> Public Keys
 
-</p>
-
 My Applications -\> APPLICATION\_NAME -\>
-
-</p>
 
 rhc app add-alias -a myapp --alias myapp.net
 
-</p>
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-- - - - - - - - - - - - - - - - - - - - - - - -  
+### FUTURE THOUGHTS
 
-FUTURE THOUGHTS
+Eclipse + m2e (maven plugin) + jetty plugin for fast and easy dependency management -\> mvn install + added custom script can put your .war into your local openshift repo for continuous deployment.
 
-</p>
-
-Eclipse + m2e (maven plugin) + jetty plugin for fast and easy dependency
-management -\> mvn install + added custom script can put your .war into
-your local openshift repo for continuous deployment.
-
-</p>
-<p>
-</div>
-</div>
-</div>
-<div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix">
-### tags:
-
--   [Linux][]
--   [Programming][]
-
-</div>
-</p>
 
   [ssh://a261d0fc2932413694456e3473fdc972@APPNAME-DOMAIN.rhcloud.com/\~/git/...]:
     ssh://a261d0fc2932413694456e3473fdc972@APPNAME-DOMAIN.rhcloud.com/~/git/APPNAME.git/
@@ -403,5 +330,3 @@ your local openshift repo for continuous deployment.
   [521233d90ea45fd91e42096651d937e@john-pfeiffer.rhcloud.com]: mailto:521233d90ea45fd91e42096651d937e@john-pfeiffer.rhcloud.com
   [http://APPNAME-DOMAINNAME.rhcloud.com]: http://APPNAME-DOMAINNAME.rhcloud.com
   [https://openshift.redhat.com/app/console/applications]: https://openshift.redhat.com/app/console/applications
-  [Linux]: http://john-pfeiffer.com/category/tags/linux
-  [Programming]: http://john-pfeiffer.com/category/tags/programming
