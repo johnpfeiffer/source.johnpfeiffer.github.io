@@ -1,8 +1,6 @@
 Title: 365-3 PHP is mad cool with CSS
 Date: 2010-01-17 22:02
-Slug: 365-3-php-is-mad-cool-with-css
-
-[TOC]
+Slug: content/365-3-php-mad-cool-css
 
 PHP is similar to C which makes it easy for me to do interesting things.
 
@@ -12,7 +10,7 @@ CSS is so much better than HTML tables - it really revolutionizes the simplicity
 
 Put them together and you have miracles like Drupal.
 
-The following project took a little more time than usual and it might even be useful one day, but I what I really like about it is that it's FUN...
+The following project took a little more time than usual and it might even be useful one day, but what I really like about it is that it's FUN...
 
 I apologize about the poor formatting of the source code, I'll see if I can find a nicer way to enter into the Blog or break it up into "this is how you do" sections...
 
