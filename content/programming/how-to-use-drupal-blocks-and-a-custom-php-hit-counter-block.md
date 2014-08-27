@@ -1,4 +1,4 @@
-Title: How-to-use-Drupal-Blocks-and-a-custom-php-hit-counter-block
+Title: How to use Drupal Blocks and a custom php hit counter block
 Date: 2010-01-06 14:15
 Tags: drupal
 
@@ -13,29 +13,31 @@ Using the WebUI you can modify the look of the site's layout pretty quickly:
 Drag and drop the "Powered by Drupal" option from **FOOTER** into **DISABLED**.
 
 
-ADVANCED: a custom php blog (maybe dangerous)
+**ADVANCED**
 
-drupal-6-custom-php-block
+a custom php block (maybe dangerous)
 
-admin/build/block
+`admin/build/block`
 
-create a new block
+`create a new block`
 
 in the body (plain text!) insert (copy paste?) your code
 
-Input Format = PHP code 
- (Core Module -> Optional -> PHP Filter must be enabled)
+    Input Format = PHP code 
+    (Core Module -> Optional -> PHP Filter must be enabled)
  
 
 `Home -> Administer -> Site Configuration -> Input Format`
-admin/settings/filters
+
+`admin/settings/filters`
 
 `PHP code -> configure `
-(the super user System Administrator ALREADY has this filter,
-the above only allows you to add other users which is dangerous!)
+
+(the super user System Administrator ALREADY has this filter, the above only allows you to add other users which is dangerous!)
 
 
 IF HITFILE EXISTS:     read current count
+
 IF NOT, return error
 
     <?php
@@ -74,4 +76,3 @@ IF NOT, return error
     
     
     ?>
-    
