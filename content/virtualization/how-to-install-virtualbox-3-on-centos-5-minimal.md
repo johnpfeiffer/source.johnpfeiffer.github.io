@@ -1,5 +1,6 @@
 Title: How To Install Virtualbox 3 on CentOS 5 Minimal
 Date: 2009-11-15 20:59
+Tags: virtualbox,centos
 
 From the install DVD:
 
