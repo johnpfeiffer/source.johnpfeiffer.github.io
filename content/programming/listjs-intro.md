@@ -1,5 +1,6 @@
 Title: ListJS: Sort, Filters, Search and more for HTML lists and tables in Javascript 
 Date: 2014-08-08 21:37
+Tags: programming, javascript
 
 [TOC]
 
