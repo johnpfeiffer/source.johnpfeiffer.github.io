@@ -1,10 +1,9 @@
-Title: 365-3 PHP is mad cool with CSS
+Title: PHP is mad cool with CSS: 365 programming project day three
 Date: 2010-01-17 22:02
-Slug: content/365-3-php-mad-cool-css
 
 PHP is similar to C which makes it easy for me to do interesting things.
 
-The php manual webpage is brilliant! Don't you wish everybody had a full public API, easy menus, working examples, searchable and with the best user comments that really flesh out the bugs?
+The php manual webpage (<http://php.net/manual/en>) is brilliant! Don't you wish everybody had a full public API, easy menus, working examples, searchable and with the best user comments that really flesh out the bugs?
 
 CSS is so much better than HTML tables - it really revolutionizes the simplicity, maintainability, and power of displaying things on the web.
 
