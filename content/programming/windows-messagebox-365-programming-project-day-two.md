@@ -1,5 +1,6 @@
 Title: Windows MessageBox: 365 programming project day two
 Date: 2010-01-16 13:07
+Tags: Win32, gcc
 
 [TOC]
 

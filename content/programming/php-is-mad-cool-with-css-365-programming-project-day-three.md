@@ -1,5 +1,6 @@
 Title: PHP is mad cool with CSS: 365 programming project day three
 Date: 2010-01-17 22:02
+Tags: php,css
 
 PHP is similar to C which makes it easy for me to do interesting things.
 
