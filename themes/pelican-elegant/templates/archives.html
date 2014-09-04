@@ -102,7 +102,7 @@ All articles of the {{ SITENAME|striptags }} blog.
             </span>
             <a href="{{ SITEURL }}/{{ article.url }}"><span class="title">{{ article.title }} {%if article.subtitle %}
                 <small> {{ article.subtitle }} </small> {% endif %}</span> </a>
-            <span class="category">{{ article.category }}</span>
+            <em><span class="category">{{ article.category }}</span></em>
         </li>
         {% endfor %}
     {% endfor %}
@@ -131,7 +131,7 @@ All articles of the {{ SITENAME|striptags }} blog.
         page: 1000
     };
     var hackerList = new List('article-list', options);
-    hackerList.sort('date')
+    hackerList.sort('date', { order: "desc" })
 
 </script>
 

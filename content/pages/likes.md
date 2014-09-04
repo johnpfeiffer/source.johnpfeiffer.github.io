@@ -1,7 +1,10 @@
 Title: John Likes
 
-- Clean Code by Robert C. "Uncle Bob" Martin
-- Foundations of Programming - Building Better Software by Karl Seguin
++ <https://github.com/getpelican/pelican>
++ <http://oncrashreboot.com/elegant-best-pelican-theme-features>
++ <http://listjs.com>
++ Clean Code by Robert C. "Uncle Bob" Martin
++ Foundations of Programming - Building Better Software by Karl Seguin
 - The C Programming Language (2nd Edition) by Brian Kernighan and Dennis Ritchie
 - Effective Java Programming Language Guide by Joshua Bloch
 - Racing the Beam by Nick Montfort and Ian Bogost
@@ -18,3 +21,5 @@ Title: John Likes
 - <http://www.se-radio.net/2010/11/episode-169-memory-grid-architecture-with-nati-shalom>
 - <http://thisweekinstartups.com/thisweekin-startups/advice-biggest-mistakes-founders-startups-jerry-colonna>
 - <http://thisweekinstartups.com/thisweekin-startups/steve-jurvetson-dfj-tesla-spacex>
+
+<http://johnpfeiffer.bitbucket.org/feeds/john-pfeiffer.atom.xml>
