@@ -7,8 +7,8 @@ git checkout source
 git pull
 GITMSG=$(git log -n 1)
 ./output-clean.sh
-pelican content
-
+# pelican content
+make publish
 ls -ahl ../
 
 cp -a ./output/* "$OUTPUT"
