@@ -1,8 +1,6 @@
 Title: Mobile edit cloud execution of python code
-
-Date: 2014-09-07 11:19:00
-
-Tags: python,flask,openshift
+Date: 2014-09-07 21:37
+Tags: python, flask, openshift
 
 Haven't you just wanted to work through a coding kata <http://codekata.com> or puzzle on your phone?
 
