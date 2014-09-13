@@ -76,7 +76,7 @@ On the right of your application the WebUI has a note on how to clone the defaul
         return "Hello World!"
     
     
-    @app.route('/jpexec')
+    @app.route('/mysecreturl')
     def update_and_run():
       output=''
       try:
