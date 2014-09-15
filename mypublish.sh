@@ -1,11 +1,11 @@
 #!/bin/bash
 git pull
-GITMESSAGE=$(git log -n 1)
+GITMESSAGE=$(git log -n 1 | tr -d '\n')
 OUTPUT="../output-johnpfeiffer.bitbucket.org"
-./clean-output.sh "../output-johnpfeiffer.bitbucket.org"
+./clean-output.sh "$OUTPUT"
 echo "$GITMESSAGE"
 pelican content
-cp -a ./output/* ../output-johnpfeiffer.bitbucket.org
+cp -a ./output/* "$OUTPUT"
 
 rm -rf ./output
 rm -rf ./cache

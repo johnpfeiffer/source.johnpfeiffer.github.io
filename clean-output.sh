@@ -20,7 +20,11 @@ do
   if [ -d "$ITEM" ]; then
     rm -rf "$ITEM"
   else
-    rm -f "$ITEM"
+    # echo "$ITEM"
+    # heroku static site trick
+    if [ "$ITEM" != "$SOURCE/index.php" ]; then
+      rm -f "$ITEM"
+    fi
   fi
 done
 
