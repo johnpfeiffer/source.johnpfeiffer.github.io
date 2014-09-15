@@ -4,7 +4,8 @@ GITMESSAGE=$(git log -n 1 | tr -d '\n')
 OUTPUT="../output-johnpfeiffer.bitbucket.org"
 ./clean-output.sh "$OUTPUT"
 echo "$GITMESSAGE"
-pelican content
+# pelican content
+make publish
 cp -a ./output/* "$OUTPUT"
 
 rm -rf ./output
