@@ -4,6 +4,12 @@ python:
 before_install:
  - sudo apt-get update -qq
 install:
-    - pip install -r requirements.txt
+    - pip install pelican Markdown
 script:
-    - pelican --help
+    - rm -rf ./output
+    - rm -rf ./cache
+    - pelican ./content -o ./output -s ./publishconf.py
+env:
+   global:
+     secure: jTxfxZCa6xOnLRCabGeZrxMUne9W0l5LTbN/hR5Wnq0P3nwrL4slWJ3rFAoi/wqivbINwZGOkU7e/OPVvjDCRivAIxeti61xtnKgyFL6rTvc7u5vAjCF6m4qx6+bXOx9YbXCEUdJmBd25qGBy3PIg4rt/524DOBZhZ9t4glt8Qo=
+
