@@ -1,29 +1,18 @@
 Title: Customize your linux console: bashrc
 Date: 2010-02-10 16:00
-Author: John Pfeiffer
-Slug: customize-your-linux-console-bashrc
 
-<div class="field field-name-body field-type-text-with-summary field-label-hidden">
-<div class="field-items">
-<div class="field-item even">
+[TOC]
+
 The hidden file **.bashrc** in each user's home directory (\~ or or
 /home/username or /root) controls the configuration of how the console
 (and certain commands) behave.
 
-</p>
-
-NOTE CENTOS/REDHAT also uses .bash\_profile
-
-</p>
+NOTE CENTOS/REDHAT also uses **.bash\_profile**
 
 Color is also enabled (to be added in a future edit of this post)...
 
-</p>
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-- - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-</p>
+### Favorite Aliases
 
 Here are my favorite aliases:
 
