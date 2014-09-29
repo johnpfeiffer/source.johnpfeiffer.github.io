@@ -4,12 +4,18 @@ python:
 before_install:
  - sudo apt-get update -qq
 install:
-    - pip install pelican Markdown
+    - pip install pelican Markdown beautifulsoup4
 script:
     - rm -rf ./output
     - rm -rf ./cache
     - pelican ./content -o ./output -s ./publishconf.py
+    - git clone --quiet https://${GH_TOKEN}@github.com/johnpfeiffer.github.io > /dev/null
+    - cd johnpfeiffer.github.io
+    - rsync -rv --exclude=.git ../output/* .
+    - git add -f .
+    - git commit -m "Travis build $TRAVIS_BUILD_NUMBER"
+    - git push -fq origin master > /dev/null
+    - echo -e "Done\n"
 env:
    global:
      secure: jTxfxZCa6xOnLRCabGeZrxMUne9W0l5LTbN/hR5Wnq0P3nwrL4slWJ3rFAoi/wqivbINwZGOkU7e/OPVvjDCRivAIxeti61xtnKgyFL6rTvc7u5vAjCF6m4qx6+bXOx9YbXCEUdJmBd25qGBy3PIg4rt/524DOBZhZ9t4glt8Qo=
-
