@@ -1,0 +1,13 @@
+
+language: python
+branches:
+  only:
+    - master
+install:
+ - pip install pelican Markdown
+script:
+ - echo "hi" >> index.html
+
+env:
+  global:
+    secure: jTxfxZCa6xOnLRCabGeZrxMUne9W0l5LTbN/hR5Wnq0P3nwrL4slWJ3rFAoi/wqivbINwZGOkU7e/OPVvjDCRivAIxeti61xtnKgyFL6rTvc7u5vAjCF6m4qx6+bXOx9YbXCEUdJmBd25qGBy3PIg4rt/524DOBZhZ9t4glt8Qo=
