@@ -9,8 +9,10 @@ script:
     - rm -rf ./output
     - rm -rf ./cache
     - pelican ./content -o ./output -s ./publishconf.py
-    - git clone --quiet https://${GH_TOKEN}@github.com/johnpfeiffer.github.io > /dev/null
+    - git clone --quiet https://${GH_TOKEN}@github.com/johnpfeiffer/johnpfeiffer.github.io.git > /dev/null
     - cd johnpfeiffer.github.io
+    - git config user.email "me@john-pfeiffer.com"
+    - git config user.name "John Pfeiffer"
     - rsync -rv --exclude=.git ../output/* .
     - git add -f .
     - git commit -m "Travis build $TRAVIS_BUILD_NUMBER"
