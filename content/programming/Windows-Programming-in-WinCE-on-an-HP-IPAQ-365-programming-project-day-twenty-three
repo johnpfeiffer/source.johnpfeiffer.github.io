@@ -1,10 +1,7 @@
-Title: 365-23 Windows Programming in WinCE on an HP IPAQ
-Date: 2010-01-23 13:26
-Author: John Pfeiffer
+Title: Windows Programming in WinCE on-an HP IPAQ: 365 programming project day twenty three
 
-<div class="field field-name-body field-type-text-with-summary field-label-hidden">
-<div class="field-items">
-<div class="field-item even">
+Date: 2010-01-23 13:26
+
 As the number of portable computers (we might call them mobile phones or smart phones or pda's etc.) explodes they need software. 
 
 One thing Microsoft got right is that Windows CE, the stripped down version of Windows for Mobile Devices, uses most of the same basic programming platform/language as "normal" desktop windows programming. 
