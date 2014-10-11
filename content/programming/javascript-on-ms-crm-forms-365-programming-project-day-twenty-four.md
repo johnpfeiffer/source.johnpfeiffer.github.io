@@ -1,11 +1,6 @@
-Title: 365-24 Javascript on MS CRM Forms
+Title: Javascript on MS CRM Forms: 365 programming project day twenty-four
 Date: 2010-01-24 19:19
-Author: John Pfeiffer
-Slug: 365-24-javascript-on-ms-crm-forms
 
-<div class="field field-name-body field-type-text-with-summary field-label-hidden">
-<div class="field-items">
-<div class="field-item even">
 Programming isn't always fun and games. Here's an example from me
 putting in extra time on a weekend...
 

@@ -40,6 +40,8 @@ Download and install vagrant: **<https://www.vagrantup.com/downloads>**
 
 > vagrant will by default upload all folders and files in your "project" folder where the Vagrantfile is located
 
+> vagrant will start with the current working directory and look for a Vagrantfile, then go up one directory until it finds one: <https://docs.vagrantup.com/v2/vagrantfile/>
+
 
 `vagrant plugin install vagrant-aws`
 
@@ -139,6 +141,12 @@ Allows for automated installation of software bundled into the `vagrant up` comm
             aws.tags = {
                 "Name" => "MyCloudInstance",
             }
+            if ENV['bamboo_aws_use_iops']
+              aws.block_device_mapping = [{ 'DeviceName' => '/dev/sda1', 'Ebs.VolumeSize' => 100, 'Ebs.VolumeType' => 'io1', 'Ebs.Iops' => 3000 }]
+            else
+              aws.block_device_mapping = [{ 'DeviceName' => '/dev/sda1', 'Ebs.VolumeSize' => 16, 'Ebs.VolumeType' => 'gp2' }]
+            end
+                        
             override.vm.box = "dummy"
             override.vm.box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
             override.ssh.username = "ubuntu"
@@ -160,6 +168,10 @@ Allows for automated installation of software bundled into the `vagrant up` comm
 
 > config.vm.hostname does not appear to work on AWS EC2 so the workaround above (|| statements to prevent extra reconfiguration)
 
+- <https://github.com/mitchellh/vagrant-aws>
+- <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html>
+
+
 ### Vagrant and EC2 VPC (AMI that does not have/allow sudo)
 
     # -*- mode: ruby -*-
@@ -167,6 +179,7 @@ Allows for automated installation of software bundled into the `vagrant up` comm
 
     Vagrant.configure("2") do |config|
         config.vm.box = "dummy"
+        
         config.ssh.pty = true
         config.vm.synced_folder ".", "/vagrant", disabled: true
 
@@ -185,36 +198,66 @@ Allows for automated installation of software bundled into the `vagrant up` comm
             aws.subnet_id = "my_aws_subnet_id"
             aws.associate_public_ip = true
             
+            aws.user_data = "#cloud-boothook\n#!/bin/bash\ntouch /opt/.license/.eula\n"
+            
             override.vm.box = "dummy"
             override.vm.box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
+
             override.ssh.username = "ubuntu"
             override.ssh.private_key_path = "/home/ubuntu/my_aws.pem"
         end
     end
 
 
-`vagrant up --provider=aws --no-provision --debug`
+- - -
+**`vagrant up --provider=aws --no-provision --debug`**
+- - -
 
     INFO vagrant: `vagrant` invoked: ["up", "--provider=aws", "--no-provision", "--debug"]
 
     Bringing machine 'default' up with 'aws' provider...
     ==> default: Launching an instance with the following settings...
     INFO interface: info:  -- Type: m3.large
-    
+    INFO interface: info: ==> default:  -- User Data: #cloud-boothook
+    INFO interface: info: ==> default:  -- Assigning a public IP address in a VPC: true
     ==> default: Waiting for instance to become "ready"...
     ==> default: Waiting for SSH to become available...
 
     DEBUG ssh: == Net-SSH connection debug-level log END ==
-     INFO ssh: SSH is ready!
+    INFO ssh: SSH is ready!
     DEBUG ssh: Re-using SSH connection.
-     INFO ssh: Execute:  (sudo=false)
+    INFO ssh: Execute:  (sudo=false)
     DEBUG ssh: pty obtained for connection
     DEBUG ssh: stdout: export TERM=vt100
+
+    **JOHN: cloud-boothook script should have run by now in here**
+    
+    DEBUG ssh: stdout: logout
+    DEBUG ssh: Exit status: 0
+    INFO run_instance: Time for SSH ready: 48.444087982177734
+    INFO interface: info: Machine is booted and ready for use!
+
+    which rsync    
+    DEBUG ssh: stdout: /usr/bin/rsync
+    
+    INFO interface: info: Machine not provisioning because `--no-provision` is specified.
+    
+    
+>After all of that it is safe to either have `vagrant provision` or `vagrant ssh -c "ls -ahl"`
     
 
+- **Using a pseudo tty** is a required workaround if using an AMI that does not support tty / sudo (i.e. Amazon's default Linux AMI)
+- - <https://docs.vagrantup.com/v2/vagrantfile/ssh_settings.html>
+- - <https://github.com/mitchellh/vagrant/issues/1482>
+- **Disabling the /vagrant synced project folder** is nice if you don't automatically want the Vagrantfile and everything in there rsynced to your EC2 instance (and avoids the ugly `mkdir -p /vagrant` which requires sudo)
+- **AWS User Data** can be pushed in via Vagrant which allows for custom scripts / commands / package installation during the EC2 instance boot
+- - <https://help.ubuntu.com/community/CloudInit>
+- - <https://cloudinit.readthedocs.org/en/latest/topics/format.html#cloud-boothook>
+- - <http://stackoverflow.com/questions/17413598/vagrant-rsync-error-before-provisioning>
+> One of the use cases for an aws.user_data #cloud-boothook script has been to add to /etc/sudoers.d/ (thus avoiding later sudo issues with rsync)
 
-- <https://docs.vagrantup.com/v2/vagrantfile/ssh_settings.html>
-- <https://github.com/mitchellh/vagrant/issues/1482>
+
+
 
 ### more info
 
