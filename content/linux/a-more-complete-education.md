@@ -3,27 +3,31 @@ Date: 2013-05-09 16:52
 Author: John Pfeiffer
 Slug: content/more-complete-education
 
-<div class="field field-name-body field-type-text-with-summary field-label-hidden">
-<div class="field-items">
-<div class="field-item even">
+[TOC]
+
+### Introduction
+
 **Stanford "Programming Methodology"** by Mehran Sahami (very fun and
 Java is a good starting point)  
-[http://see.stanford.edu/see/lecturelist.aspx?coll=824a47e1-135f-4508-a5a...][]  
 
-(also at
-[https://itunes.apple.com/us/itunes-u/programming-methodology/id384232896][])
+- <http://see.stanford.edu/see/lecturelist.aspx?coll=824a47e1-135f-4508-a5aa-866adcae1111>
 
-</p>
+- (also at <https://itunes.apple.com/us/itunes-u/programming-methodology/id384232896>)
+
+**An Introduction to Interactive Programming in Python** <https://www.coursera.org/course/interactivepython>
+
+### Algorithms
 
 **Algorithms of course!**  
 
-MIT  
-[http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6...][]  
+#### MIT
 
-(also at
-[https://itunes.apple.com/us/itunes-u/introduction-to-algorithms/id341597...][])
+- <http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011>
 
-</p>
+- (also at <https://itunes.apple.com/us/itunes-u/introduction-to-algorithms/id341597754>)
+
+- <http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-046j-introduction-to-algorithms-sma-5503-fall-2005/video-lectures>
+
 
 [http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6...][1]
 
@@ -84,20 +88,14 @@ Vanderbilt
 [http://leetcode.com/onlinejudge][]  
 [http://codeforces.com/problemset][]
 
-</p>
 
-  [http://see.stanford.edu/see/lecturelist.aspx?coll=824a47e1-135f-4508-a5a...]:
-    http://see.stanford.edu/see/lecturelist.aspx?coll=824a47e1-135f-4508-a5aa-866adcae1111
-  [https://itunes.apple.com/us/itunes-u/programming-methodology/id384232896]:
-    https://itunes.apple.com/us/itunes-u/programming-methodology/id384232896
-  [http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6...]:
-    http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/
-  [https://itunes.apple.com/us/itunes-u/introduction-to-algorithms/id341597...]:
-    https://itunes.apple.com/us/itunes-u/introduction-to-algorithms/id341597754?mt=10
-  [1]: http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-046j-introduction-to-algorithms-sma-5503-fall-2005/video-lectures/
-  [http://see.stanford.edu/see/lecturelist.aspx?coll=11f4f422-5670-4b4c-889...]:
+
+
+
+
+  
     http://see.stanford.edu/see/lecturelist.aspx?coll=11f4f422-5670-4b4c-889c-008262e09e4e
-  [https://itunes.apple.com/us/itunes-u/programming-abstractions/id384232917]:
+
     https://itunes.apple.com/us/itunes-u/programming-abstractions/id384232917
   [https://www.coursera.org/course/algo]: https://www.coursera.org/course/algo
   [https://www.coursera.org/course/algo2]: https://www.coursera.org/course/algo2
