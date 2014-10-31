@@ -19,8 +19,9 @@ Why use a static site generator (pelican) instead of a hosted blog platform or a
 
 ### Install Pelican
 
-`sudo pip install pelican Markdown `
+`sudo pip install pelican Markdown beautifulsoup4`
 > - installing both the pelican and the Markdown packages
+> - beautifulsoup4 is a dependency for the later step of the elegant theme TOC and search plugins
 > - optionally use virtualenv venv; source venv/bin/activate
 
 **`pelican-quickstart`**
