@@ -1,5 +1,6 @@
 Title: Publish a pelican blog using a Bitbucket POST Webhook
 Date: 2014-08-08 06:00
+Tags: pelican, webhook, bitbucket, flash
 
 [TOC]
 
