@@ -100,4 +100,6 @@ JUnit XML is almost a de facto standard for test results given almost all major 
 
 - <http://www.tech-foo.net/making-the-most-of-subunit.html>
 - <https://pypi.python.org/pypi/python-subunit>
+- <https://pypi.python.org/pypi/junitxml>
+
 - <https://launchpad.net/subunit>
