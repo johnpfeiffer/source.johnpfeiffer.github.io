@@ -1,7 +1,7 @@
 Title: Docker Intro install run and port forward
 Date: 2014-07-10 17:00
 
-Docker is a union file system based layer system leveraging linux lxc containers for ultra lightweight virtualization/compartmentalization
+Docker is a union file system based layer system leveraging linux lxc containers for ultra lightweight virtualization/compartmentalization.
 
 [TOC]
 
@@ -19,16 +19,17 @@ Docker is a union file system based layer system leveraging linux lxc containers
 
 - - -
 ### Start a docker image
-`sudo docker pull ubuntu:14.04`
+`sudo docker pull ubuntu:14.04` or... `sudo docker pull ubuntu:trusty` (**grabs the latest, i.e. 14.04.1**)
 
 
 **From now on it is assumed you use sudo before any docker command!**
 
+`docker --version`
 `docker run --help`
 
 `docker run --rm -i -t ubuntu:14.04 /bin/bash`
 
-    create a container
+    creates a container
     --rm: automatically remove the container when it exits
     -i: keep stdin open even if not attached
     -t: allocate a tty, attach stdin and stdout
@@ -120,30 +121,27 @@ vi mydockerfile
     RUN mkdir /var/run/sshd
     CMD /usr/sbin/sshd -D
     
-    > Each RUN command creates an intermediate container, so make sure you use the -rm option
+> Each RUN command creates an intermediate container, so make sure you use the -rm option
 
-docker build -t=newimagetag -rm=true .
-
+`docker build -t=newimagetag -rm=true .`
 
 - - - 
 
-docker run -v $HOSTDIR:$DOCKERDIR
+`docker run -v $HOSTDIR:$DOCKERDIR`
 
 ### Useful Commands
-`sudo docker info`
-
-`docker images`
-
-`docker images --help`
-
-`docker ps -a`
+    sudo docker info
+    docker images
+    docker images --help
+    docker ps -a
 
 ### Download all ubuntu docker images
 `sudo docker pull ubuntu`
-> Pulling repository ubuntu
-> 58faa899733f: Download complete 
-> 195eb90b5349: Download complete 
-*hundreds of megabytes downloaded*
+
+    Pulling repository ubuntu
+    58faa899733f: Download complete 
+    195eb90b5349: Download complete 
+    hundreds of megabytes downloaded (donotwant)!
 
 `docker images`
 
@@ -151,8 +149,7 @@ docker run -v $HOSTDIR:$DOCKERDIR
 `docker rmi 3db9c44f4520`
 
 `docker search stackbrew/ubuntu`
-> FYI stackbrew/ubuntu is the same as ubuntu , 
-> [stackbrew is the curated Docker registry](https://registry.hub.docker.com/u/stackbrew/ubuntu)
+> FYI stackbrew/ubuntu is the same as ubuntu , [stackbrew is the curated Docker registry](https://registry.hub.docker.com/u/stackbrew/ubuntu)
 
 
 `docker start -i -a IDORNAME`
@@ -179,4 +176,3 @@ docker run -v $HOSTDIR:$DOCKERDIR
 ### More Info
 <https://github.com/wsargent/docker-cheat-sheet>
 <https://docs.docker.com/reference/commandline/cli/#run>
-
