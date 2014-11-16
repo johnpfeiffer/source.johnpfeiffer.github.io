@@ -165,9 +165,11 @@ Another efficiency is that a docker container will only **run as long as it take
 
 
 - - -
-## Dockerfile to automate building a container
+## Dockerfile to automate building an image
 
-While the use of SSH for a docker image and container makes it more like a messy Virtual Machine than an automated reproducible component
+Dockerfiles allow automating the creation docker images.
+
+Containers as fast, reliable, and deterministic prod/qa/dev environments can also be extended to be just an improved experimentation sandbox (for those used to SSH and using Linux as a common base OS).
 
 
 `mkdir -p dockerfiles/trustyssh`
