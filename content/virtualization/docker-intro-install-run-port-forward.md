@@ -122,7 +122,7 @@ Control-p then Control-q to detach the tty without exiting the shell
 
 `docker ps`
 
-`docker run -d -p 127.0.0.1:5000:5000 training/webapp python app.py`
+`docker run --detach -p 127.0.0.1:5000:5000 training/webapp python app.py`
 > detached with port 5000 available and executing
 
 #### Start a container
@@ -135,7 +135,7 @@ After a container has already been created (which starts it so ironically this i
 
 Part of the efficiency in docker is that containers can **run in the background automatically**
 
-    docker run --name myredis -d redis
+    docker run --detach --name myredis redis
     docker ps
     docker stop myredis
 
@@ -168,6 +168,10 @@ Another efficiency is that a docker container will only **run as long as it take
 ## Dockerfile to automate building an image
 
 Dockerfiles allow automating the creation docker images.
+
+One advantage to Dockerfile is that each command creates a separate layer so if a specific layer fails all of the previous intermediate images can be re-used.
+
+Also the version style of imagename:tag allows for chaining of upgrades of child images
 
 Containers as fast, reliable, and deterministic prod/qa/dev environments can also be extended to be just an improved experimentation sandbox (for those used to SSH and using Linux as a common base OS).
 
@@ -284,12 +288,69 @@ Volumes are where Docker Containers can access storage (either from the Host or 
 `docker search stackbrew/ubuntu`
 > FYI stackbrew/ubuntu is the same as ubuntu , [stackbrew is the curated Docker registry](https://registry.hub.docker.com/u/stackbrew/ubuntu)
 
-<https://registry.hub.docker.com>
+**<https://registry.hub.docker.com>**
 
-- <https://registry.hub.docker.com/_/redis/>
-- - `docker run --name some-redis -d redis`
-- - > the image already includes by default the expose port command: EXPOSE 6379
-- - `docker run --name some-app --link some-redis:redis -d application-that-uses-redis`
+
+### Redis
+**<https://registry.hub.docker.com/_/redis/>**
+
+`docker run --detach --publish 127.0.0.1:6379:6379 --name redis redis`
+> detached container based on the redis latest bound to the host on port 6379
+> the image already includes by default the expose port command: EXPOSE 6379...
+`apt-get install redis-tools; redis-cli`
+> connect from the host to the redis container to the redis interactive cli
+
+
+`docker run -i -t --link redis:db  johnssh /bin/bash`
+
+    root@d95a758eaa6b:/#
+    apt-get install redis-tools
+    env
+    redis-cli -h $DB_PORT_6379_TCP_ADDR
+    ping
+
+> PONG
+
+`get mykey`
+> "somevalue"
+
+`docker stop johnssh`
+
+`docker start --interactive --attach johnssh`
+
+    root@d95a758eaa6b:/#
+
+**Environment variables are tricky**
+
+`sudo docker run --detach --publish 127.0.0.1:2222:22 --name johnssh trustyssh`
+> if you SSH into your container or use byobu "env" will not show you the info
+
+**From the host: **  `sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}' redis`
+> 172.17.0.72
+
+    ssh -p 2222 root@localhost
+    apt-get install redis-tools
+    redis-cli -h 172.17.0.72 keys *
+    1) mykey
+
+
+- - -
+## Troubleshooting
+
+### Building images with Dockerfile
+
+**Building images often depends on the network and DNS**
+
+If you are using Wifi be careful as intermittent network connectivity may cause frustrating issues.
+
+For DNS with docker installed onto ubuntu via apt-get, try changing to Google DNS by uncommenting in:
+
+`vi /etc/default/docker`
+
+`sudo service docker restart`
+
+**Building images often depends on dependencies**
+look closely at error messages, i.e. make: not found and ensure that an early RUN statement has apt-get update && apt-get install -y build-essential
 
 
 - - -
