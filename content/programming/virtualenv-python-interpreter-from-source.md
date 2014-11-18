@@ -1,6 +1,6 @@
 Title: Virtualenv Python Interpreter from source
 Date: 2014-10-31 00:00
-Tags: python,virtualenv, dependency management
+Tags: python, python3, pip, virtualenv, dependency management
 
 [TOC]
 
@@ -25,6 +25,16 @@ To really isolate your application from the environment not only do you need a s
 
 Optionally: `echo 'alias py="/home/ubuntu/python/bin/python2.7"' >> ~/.bashrc`
 
+### python3 from source
+
+    wget https://www.python.org/ftp/python/3.4.2/Python-3.4.2.tgz
+    tar -xf Python-3.4.2.tar.gz
+    cd Python-3.4.2
+    ./configure && make -j$(nproc) && make altinstall
+    ls -ahl /usr/local/bin | grep 3.4
+    
+    /usr/local/bin/pip3.4 install --upgrade virtualenv
+    
 ## Installing virtualenv
 
 **`sudo pip install --upgrade virtualenv`**
