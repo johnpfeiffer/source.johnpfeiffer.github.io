@@ -30,10 +30,30 @@ Optionally: `echo 'alias py="/home/ubuntu/python/bin/python2.7"' >> ~/.bashrc`
     wget https://www.python.org/ftp/python/3.4.2/Python-3.4.2.tgz
     tar -xf Python-3.4.2.tar.gz
     cd Python-3.4.2
-    ./configure && make -j$(nproc) && make altinstall
+    ./configure --prefix=/opt/python3.4.2 && make -j$(nproc) && make altinstall
     ls -ahl /usr/local/bin | grep 3.4
     
     /usr/local/bin/pip3.4 install --upgrade virtualenv
+
+### If you mess up your OS level python
+
+`apt-get install python3`
+
+    python3 depends on dh-python; however:
+    Package dh-python is not configured yet.
+
+Look at the stack trace, reinstalling may not have put all of the helper directory and .py files in place
+
+    File "/usr/lib/python3.4/site.py", line 586, in <module>
+    ImportError: No module named '_sysconfigdata_m'
+	
+    mv /usr/lib/python3.4 /usr/lib/python3.4-OLD
+    wget http://mirrors.kernel.org/ubuntu/pool/main/d/dh-python/dh-python_1.20140128-1ubuntu8_all.deb
+    dpkg -i --force-depends dh-python_1.20140128-1ubuntu8_all.deb
+    apt-get install python3
+
+
+And in my case I needed to reinstall loads of python3 stuff: `apt-get install xubuntu-destkop`
     
 ## Installing virtualenv
 
