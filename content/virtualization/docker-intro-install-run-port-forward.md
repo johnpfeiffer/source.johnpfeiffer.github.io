@@ -40,7 +40,7 @@ Docker encourages design of modular, deterministic and defined, single purpose c
 `docker rmi -f $(docker images --all --quiet | grep -v 5506de2b643b)`
 > remove ALL images except one by taking the output (quiet means only image ids), excluding a specific one, and then force removing the images (by id)
 
-docker images --quiet --filter "dangling=true" | xargs docker rmi
+`docker images --quiet --filter "dangling=true" | xargs docker rmi`
 > remove all images that do not have a tag and are not a parent of a tagged image
 
 `docker rmi -f $(docker images --all --quiet)`
@@ -361,3 +361,9 @@ look closely at error messages, i.e. make: not found and ensure that an early RU
 
 - <http://blog.oddbit.com/2014/08/11/four-ways-to-connect-a-docker>
 - <http://jpetazzo.github.io/2014/06/23/docker-ssh-considered-evil>
+
+
+### Private Docker Registry
+
+- <http://docs.docker.com/reference/api/registry_api>
+- <https://www.digitalocean.com/community/tutorials/how-to-set-up-a-private-docker-registry-on-ubuntu-14-04>
