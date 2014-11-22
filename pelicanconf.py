@@ -8,13 +8,14 @@ SITENAME = u'john pfeiffer'
 # SITEURL = u'http://blog.john-pfeiffer.com'
 OUTPUT_PATH = 'output/'
 DEFAULT_DATE_FORMAT = '%Y-%m-%d'
+TIMEZONE="America/Los_Angeles"
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 
-DEFAULT_PAGINATION = 10
+DEFAULT_PAGINATION = 12
 
 # clean urls for pages
 PAGE_URL = '{slug}'
