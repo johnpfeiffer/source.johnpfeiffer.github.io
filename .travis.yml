@@ -8,6 +8,9 @@ install:
 script:
     - rm -rf ./output
     - rm -rf ./cache
+    - rm -rf ./plugins/*
+    - git clone https://github.com/getpelican/pelican-plugins.git
+    - mv ./pelican-plugins/* ./plugins
     - pelican ./content -o ./output -s ./publishconf.py
     - git clone --quiet https://${GH_TOKEN}@github.com/johnpfeiffer/johnpfeiffer.github.io.git > /dev/null
     - cd johnpfeiffer.github.io
