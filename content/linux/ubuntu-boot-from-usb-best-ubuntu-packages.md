@@ -1,5 +1,6 @@
-Title: Ubuntu Boot from USB
+Title: Ubuntu Bootable USB and Best Packages to Install
 Date: 2014-08-20 00:00
+Tags: Linux, Ubuntu, USB Boot, Ubuntu Recovery
 
 [TOC]
 
@@ -41,7 +42,7 @@ Now you can fix grub or /etc/passwd or free up some hard drive space
 
 	wget -qO- https://bootstrap.pypa.io/get-pip.py | sudo python
 
-	sudo apt-get install openjdk-7-jre openjdk-7-jdk icedtea-7-plugin
+	NOT SURE IN UTOPIC: sudo apt-get install openjdk-7-jre openjdk-7-jdk icedtea-7-plugin
 
 	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
 	echo "deb https://get.docker.io/ubuntu docker main" > /etc/apt/sources.list.d/docker.list
@@ -62,7 +63,6 @@ Now you can fix grub or /etc/passwd or free up some hard drive space
 
 - python-setuptools = Sometimes required to install pip (the "drug dealer" for python based software) <http://pythonhosted.org//setuptools>
 - icedtea = open java (plugin = browser java)
-- filezilla = file transfer protocol client (that supports sftp = secure ssh ftp)
 
 
 jdk = java development kit
@@ -77,44 +77,38 @@ jdk = java development kit
 - geany = tabbed text notepad
 - vlc = movies/music
 - arandr = multi display gui config
-- rdesktop = rdp client, 
+- rdesktop = RDP client
+- grdesktop = gnome UI for rdesktop
 - ubuntu-restricted-extras
 - dropbox = cloud file storage
+- filezilla = file transfer protocol client (that supports sftp = secure ssh ftp)
 
 
+	deb http://linux.dropbox.com/ubuntu utopic main
+	sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
+	
+        deb http://repository.spotify.com stable non-free
+	sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59
 
-deb http://linux.dropbox.com/ubuntu utopic main
-sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
+	sudo add-apt-repository ppa:pithos/ppa
 
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59
-Spotify
+        deb http://downloads.hipchat.com/linux/apt stable main
+        wget -O - https://www.hipchat.com/keys/hipchat-linux.key | apt-key add -
 
-
-sudo add-apt-repository ppa:pithos/ppa
-deb http://repository.spotify.com stable non-free
-
-apt-get install hipchat pithos spotify-client  dropbox
-
-
-sudo add-apt-repository ppa:pithos/ppa
-
-sudo apt-get install pithos
-
-deb http://repository.spotify.com stable non-free
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59
-sudo apt-get install spotify-client
-
-deb http://linux.dropbox.com/ubuntu/ trusty main
-apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
-sudo apt-get install dropbox
+	apt-get update; apt-get install dropbox spotify-client pithos hipchat
 
 
-deb http://toolbelt.heroku.com/ubuntu ./
-wget -O- https://toolbelt.heroku.com/apt/release.key | apt-key add -
-apt-get install -y heroku-toolbelt
+## Other Useful Packages
 
 
+### Heroku CLI
 
+- deb http://toolbelt.heroku.com/ubuntu ./
+- wget -O- https://toolbelt.heroku.com/apt/release.key | apt-key add -
+- apt-get install -y heroku-toolbelt
+
+
+### Ruby and OpenShift CLI
 
 https://gorails.com/setup/ubuntu/14.04
 
@@ -130,7 +124,6 @@ echo "gem: --no-ri --no-rdoc" > ~/.gemrc
 
 gem install rhc
 red hat client for openshift
-
 
 sudo echo "autologin-user=ubuntu" >>  /etc/lightdm/lightdm.conf.d/10-xubuntu.conf 
 
