@@ -261,6 +261,17 @@ Allows for automated installation of software bundled into the `vagrant up` comm
 
 ### more info
 
+`ps aux | grep vagrant`
+> nothing to see here but there is still state for machines started...
+
+    vagrant global-status
+    vagrant global-status --prune
+    rm -rf .vagrant
+    rm -rf /home/ubuntu/.vagrant.d
+
+*If you use vagrant 1.7 don not be surprised if you see errors related to SSL, 1.6.3 FTW*
+
+
 <https://github.com/mitchellh/vagrant-aws>
 
 
