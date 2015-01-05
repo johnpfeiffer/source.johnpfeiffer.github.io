@@ -1,6 +1,7 @@
 Title: Fix Byobu infinite scroll bug on Ubuntu 12.04 Precise Pangolin
 Date: 2013-02-15 17:36
 Slug: fix-byobu-infinite-scroll-bug-on-ubuntu-1204-precise-pangolin
+Tags: byobu, linux, ubuntu
 
 [TOC]
 

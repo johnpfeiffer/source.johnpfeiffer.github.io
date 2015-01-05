@@ -2,6 +2,8 @@ Title: Jinja2, a web html template layout for everyone
 Date: 2013-04-30 04:35
 Tags: programming, jinja2, python, webapp2, tablesorter.js
 
+[TOC]
+
 Web development used to be so hard (and static). (read &\#60;bold&\#62;)
 
 Now everyone realizes (along with version control and automated testing) that decoupling views and displays from dynamic code makes everyone's life easier! 
@@ -150,8 +152,9 @@ A webapp2 project layout and source code example (please excuse the code formatt
     
 
 
-## IF NOT USING APPENGINE, /etc/init.d/uwsgi.sh might look like...
+## Non Google App Engine /etc/init.d/uwsgi.sh might look like:
 
+    :::bash
     #!/bin/bash
     # 2013-02-22 johnpfeiffer
     

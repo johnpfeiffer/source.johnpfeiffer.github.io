@@ -1,5 +1,6 @@
 Title: Google App Engine Python
 Date: 2013-01-26 15:01
+Tags: programming, google app engine, python, webapp2
 
 Sign up for Google App Engine (gmail + SMS verification)
 
