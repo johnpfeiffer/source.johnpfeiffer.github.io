@@ -1,6 +1,6 @@
 Title: Server Operations: Cloud versus Build Your Own
 Date: 2012-11-08 17:06
-Author: John Pfeiffer
+Tags: cloud, startup planning, ops
 
 Here's my response to Jeff Atwood's calculations and incorrect conclusion about Building Your Own Server: I'm not sure I know when an organization's Production deployment doesn't need reduced
 complexity/costs (people!), flexibility for load, and redundancy...
