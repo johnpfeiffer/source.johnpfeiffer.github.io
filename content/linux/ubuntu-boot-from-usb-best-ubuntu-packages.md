@@ -98,6 +98,11 @@ jdk = java development kit
 	apt-get update; apt-get install dropbox spotify-client pithos hipchat
 
 
+## Packages you will probably want to remove
+
+apt-get remove brltty
+> unless you are using braille on your computerrcc
+
 ## Other Useful Packages
 
 
