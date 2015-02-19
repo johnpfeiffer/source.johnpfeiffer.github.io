@@ -94,14 +94,16 @@ JUnit XML is almost a de facto standard for test results given almost all major 
 
 - - This occured becaused TestSomeClass(unittest.TestCase) definition had an errors property/attribute which resulted in a namespace collision =(
 
--  Empty results like this: <testsuite errors="0" failures="0" name="" tests="0" time="0.003">
+-  Empty results like this: &lt;testsuite errors="0" failures="0" name="" tests="0" time="0.003"&gt;
 
 - - if you view/cat your results.subunit you will notice:
+
 > test: directory.path.foobar.FooBar.test_constructor
+
 > successful: directory.path.foobar.FooBar.test_constructor
 
 - - That is old subunit output (i.e. an old version of Twisted: trial --reporter=subunit), the new version 2 uses non printable characters instead of newlines (which sometimes ruins output to console)
-- - **Resolution**:
+- - **Resolution for old subunit version converted to new subunit version**:
 >  trial --reporter=subunit foo | subunit-1to2 >> /tmp/results.subunit ; subunit2junitxml --no-passthrough --output-to test-results.xml < /tmp/test-results.subunit
 
 
