@@ -24,6 +24,13 @@ Docker encourages design of modular, deterministic and defined, single purpose c
 1. `sudo apt-get update`
 1. `sudo apt-get install lxc-docker`
 
+
+- - -
+## Quick Start Summary
+
+`docker run --rm -i -t -e MYVAR=123 busybox env`
+> "run" will pull the image from Docker Hub by default, e injects an environment variable
+
 - - -
 ## Download a docker image
 `sudo docker pull ubuntu:trusty` (**grabs the latest, i.e. 14.04.1**) or `sudo docker pull ubuntu:12.04.3`
@@ -55,6 +62,7 @@ Sometimes a docker image is **still connected to a container** (already exited o
 
     docker ps -a
     docker rm name_or_id
+    docker rm a1b2  **it will smart match the first characters of the container ID**
     docker rmi image_id
 
 
@@ -355,6 +363,7 @@ look closely at error messages, i.e. make: not found and ensure that an early RU
 
 - - -
 ## More Info
+- Real World example of using Docker for behind the firewall delivery: <https://bitbucket.org/atlassianlabs/ac-koa-hipchat-sassy/pull-request/6/readmemd-contains-instructions-on-how-to/diff>
 - <https://docs.docker.com/articles/basics>
 - <https://github.com/wsargent/docker-cheat-sheet>
 - <https://docs.docker.com/reference/commandline/cli/#run>
