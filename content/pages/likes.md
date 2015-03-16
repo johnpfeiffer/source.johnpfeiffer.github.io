@@ -4,6 +4,8 @@ Title: John Likes
 + <http://oncrashreboot.com/elegant-best-pelican-theme-features>
 + <http://listjs.com>
 + Clean Code by Robert C. "Uncle Bob" Martin
++ The Pragmatic Programmer: From Journeyman to Master by Andy Hunt and Dave Thomas
++ Release It!: Design and Deploy Production-Ready Software by Michael Nygard
 + Foundations of Programming - Building Better Software by Karl Seguin
 - The C Programming Language (2nd Edition) by Brian Kernighan and Dennis Ritchie
 - Effective Java Programming Language Guide by Joshua Bloch
