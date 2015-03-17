@@ -1,5 +1,6 @@
 Title: PHP and CSS on a radio button board: 365 programming project day five
 Date: 2010-01-19 22:28
+Tags: php, css, code structure
 
 [TOC]
 
@@ -97,7 +98,7 @@ The magic "redefined css anchor" is buried in there if the user has chosen a squ
 
 ### user input
 
-stripslashes is best practice when dealing with user data though I'm not sure how a $\_POST of a radio button value could end up as a root command; better safe than sorry.
+stripslashes is best practice when dealing with user data though I'm not sure how a $_POST of a radio button value could end up as a root command; better safe than sorry.
 
 The ever present "if the $_POST variable is set AND the $chosen_square variable is NOT EMPTY" allows to only print something that exists (instead of foolishly printing non-existent stuff).
 
