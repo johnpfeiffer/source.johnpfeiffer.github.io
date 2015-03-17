@@ -395,3 +395,7 @@ dt:hover > a.headerlink {
     visibility: visible;
     text-decoration:none;
 }
+
+.dropdown-backdrop {
+    position: static;
+}
