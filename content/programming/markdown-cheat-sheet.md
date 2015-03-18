@@ -1,22 +1,23 @@
 Title: Markdown syntax cheatsheet
 Date: 2014-07-02 20:21
+Tags: markdown, html
 
 [TOC]
 
 ### Markdown Syntax
 
-- html <em> is markdown `*emphasis* or _italics_` = *emphasis* or _italics_ 
-- html <strong> is markdown `**strong* or __bold__` = **strong** or __bold__
+- html <em\> is markdown `*emphasis* or _italics_` = *emphasis* or _italics_ 
+- html <strong\> is markdown `**strong* or __bold__` = **strong** or __bold__
 - html strikethrough is not supported but can just be `<del>strikethrough</del>` = <del>strikethrough</del>
-- html <blockquote> is markdown `>` at the start of each line
-- unordered list `- item` or alternatives: `+ item` , `* item`
-- html <hr /> is markdown `- - -` or alternatives: `* * *` , `***` , `*****`
+- html <blockquote\> is markdown `>`
+> at the start of each line
+- html unordered list `<ul>` = `- item` or alternatives: `+ item` , `* item`
+- html <hr /\> is markdown `- - -` or alternatives: `* * *` , `***` , `*****`
 - html <a href= for hyper links is:
 
-> <http://example.com> is a link that is automatically turned clickable:
-> <http://johnpfeiffer.bitbucket.org>  becomes 
+> `<http://blog.john-pfeiffer.com>` converts into a link that is automatically turned clickable:
 
-> <a href="http://johnpfeiffer.bitbucket.org">http://johnpfeiffer.bitbucket.org</a>
+> `<a href="http://johnpfeiffer.bitbucket.org">http://johnpfeiffer.bitbucket.org</a>`
 
 > `[an example](http://example.com/ "ExampleTitle")` [an example](/about-john-pfeiffer "ExampleTitle") 
 
@@ -36,13 +37,33 @@ Date: 2014-07-02 20:21
 > -    a blank line in the code block still needs to be indented
 > -    ensure the code block is surrounded by empty lines
 
-:::text or :::bash at the top of a code block will control the syntax highlighting
-
-<http://pygments.org/docs/lexers>
+:::text or :::bash at the top of a code block will control the syntax highlighting, see <http://pygments.org/docs/lexers>
     
+# H1
+`# H1`
 
-`# H1` # H1
-`###### H6` ###### H6
+###### H6
+`###### H6`
+
+- - -
+Tables are not supported so either:
+
+`<table><th>header</th><tr><td>first column in row 1</td><td>2nd column</td></tr></table>`
+
+Or use GitHub Flavored Markdown
+
+    |in|out|other|
+    |---|---|---|
+    |yes|no|maybe|
+
+
+|in|out|other|
+|---|---|---|
+|yes|no|maybe|
+|`<em>`|`*emphasis*`|*emphasis*
+
+
+
 
 - - -
 ### more info
