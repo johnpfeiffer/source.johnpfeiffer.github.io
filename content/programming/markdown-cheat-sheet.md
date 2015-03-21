@@ -50,7 +50,7 @@ Tables are not supported so either:
 
 `<table><th>header</th><tr><td>first column in row 1</td><td>2nd column</td></tr></table>`
 
-Or use GitHub Flavored Markdown
+- Or use GitHub Flavored Markdown (left justified)
 
     |in|out|other|
     |---|---|---|
@@ -62,6 +62,17 @@ Or use GitHub Flavored Markdown
 |yes|no|maybe|
 |`<em>`|`*emphasis*`|*emphasis*
 
+
+- Centered
+
+    |short|long centered|
+    |:-:|:-:|
+    |y|n|
+
+
+|short|long centered|
+|:-:|:-:|
+|y|n|
 
 
 
