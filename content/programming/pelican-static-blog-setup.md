@@ -209,8 +209,16 @@ I just use the pelicanconf output rather than publishconf, and I use git with a 
 
 `cp -a pelican-plugins/sitemap plugins/`
 
-### more info
-- [http://pelican.readthedocs.org/en/latest/settings.html](http://pelican.readthedocs.org/en/latest/settings.html)
-- Tweaking default syntax highlighting: http://pygments.org/docs/lexers/
+### Advanced: skipping the Makefile
 
+`pelican --help`
+
+`pelican ./content -o ./output -s ./publishconf.py`
+
+`cd output ; python -m SimpleHTTPServer`
+
+### more info
+- <http://pelican.readthedocs.org/en/latest/settings.html>
+- Tweaking default syntax highlighting: <http://pygments.org/docs/lexers>
+- <https://bitbucket.org/johnpfeiffer/docker/src>
 

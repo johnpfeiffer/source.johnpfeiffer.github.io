@@ -232,6 +232,15 @@ Containers as fast, reliable, and deterministic prod/qa/dev environments can als
 `ssh -o StrictHostKeychecking=no -p 2222 root@127.0.0.1`
 > root@19ad0614b237:~#
 
+## Logs from the containers
+
+`docker logs container_name`
+> view the latest logs of a specific container in stdout
+
+`docker logs -f container_name`
+> tail the logs for
+
+
 - - -
 ## Host data with a Docker Container
 Volumes are where Docker Containers can access storage (either from the Host or other Containers)
@@ -363,10 +372,10 @@ look closely at error messages, i.e. make: not found and ensure that an early RU
 
 - - -
 ## More Info
+- <https://docs.docker.com/reference/commandline/cli/#run>
 - Real World example of using Docker for behind the firewall delivery: <https://bitbucket.org/atlassianlabs/ac-koa-hipchat-sassy/pull-request/6/readmemd-contains-instructions-on-how-to/diff>
 - <https://docs.docker.com/articles/basics>
 - <https://github.com/wsargent/docker-cheat-sheet>
-- <https://docs.docker.com/reference/commandline/cli/#run>
 
 - <http://blog.oddbit.com/2014/08/11/four-ways-to-connect-a-docker>
 - <http://jpetazzo.github.io/2014/06/23/docker-ssh-considered-evil>

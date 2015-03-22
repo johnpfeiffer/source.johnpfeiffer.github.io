@@ -45,36 +45,48 @@ Tags: markdown, html
 ###### H6
 `###### H6`
 
-- - -
-Tables are not supported so either:
 
-`<table><th>header</th><tr><td>first column in row 1</td><td>2nd column</td></tr></table>`
+### Tables are (sometimes) not supported but...
 
-- Or use GitHub Flavored Markdown (left justified)
+#### Table with left justified (GitHub Flavored Markdown)
 
+    :::text
     |in|out|other|
     |---|---|---|
     |yes|no|maybe|
 
+- - -
 
 |in|out|other|
 |---|---|---|
 |yes|no|maybe|
 |`<em>`|`*emphasis*`|*emphasis*
 
+- - -
 
-- Centered
+#### Table with text center aligned
 
+    :::text
     |short|long centered|
     |:-:|:-:|
     |y|n|
 
+- - -
 
 |short|long centered|
 |:-:|:-:|
 |y|n|
 
+- - -
 
+#### HTML Table
+
+    :::html
+    <table><th>header</th>
+      <tr>
+        <td>first column in row 1</td><td>2nd column</td>
+      </tr>
+    </table>
 
 - - -
 ### more info
