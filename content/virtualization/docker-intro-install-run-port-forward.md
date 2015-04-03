@@ -232,6 +232,18 @@ Containers as fast, reliable, and deterministic prod/qa/dev environments can als
 `ssh -o StrictHostKeychecking=no -p 2222 root@127.0.0.1`
 > root@19ad0614b237:~#
 
+
+|command|output|
+|:-:|:-:|
+|`docker run --detach --publish 0.0.0.0:6379:6379 --name redis redis`|feeb79581810a8c182202c73d4e1c6b905960bcfc860e04285f1ae03c6a47f18|
+|`docker port redis`|6379/tcp -> 0.0.0.0:6379|
+|`docker port redis 6379`|0.0.0.0:6379|
+|`redis-cli -h docker.example.com ping`|PONG|
+|`docker run --detach --publish-all --name redis redis`|ff2f6d2e04d565f11d71664bf6cf23638656d9b633e4d3c94444c81b18b807bb|
+|`docker port redis`|6379/tcp -> 0.0.0.0:49153|
+|`docker port redis 6379`|0.0.0.0:49153|
+
+
 ## Logs from the containers
 
 `docker logs container_name`
