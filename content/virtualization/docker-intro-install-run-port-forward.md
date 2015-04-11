@@ -217,6 +217,38 @@ Containers as fast, reliable, and deterministic prod/qa/dev environments can als
     ...
 
 
+Since each run command creates a new layer it is best practice to consolidate commands for a single logical action when possible:
+
+    RUN echo "#!/bin/bash" > /root/build-and-run.sh && \
+      echo "cd /opt/mydata/pelican-project" >> /root/build-and-run.sh && \
+      echo "pelican content -r &" >> /root/build-and-run.sh && \
+      echo "cd /opt/mydata/pelican-project/output" >> /root/build-and-run.sh && \
+      echo "python -m SimpleHTTPServer" >> /root/build-and-run.sh && \
+      chmod +x /root/build-and-run.sh
+
+
+`docker history ubuntu-utopic-pelican:latest`
+> view the history of hashes (which can be run by themselves) and timestamps and sizes
+
+    IMAGE               CREATED             CREATED BY                                      SIZE
+    39ac388d3c0d        37 seconds ago      /bin/sh -c #(nop) CMD [/bin/bash /root/build-   0 B
+    218edf407f18        37 seconds ago      /bin/sh -c echo "#!/bin/bash" > /root/build-a   129 B
+    d9d774d344bd        2 weeks ago         /bin/sh -c #(nop) EXPOSE 8000/tcp               0 B
+    ae1733e0e1b9        2 weeks ago         /bin/sh -c pip install pelican Markdown beaut   20.64 MB
+    24561ed8052f        2 weeks ago         /bin/sh -c curl https://bootstrap.pypa.io/get   9.826 MB
+    1878a9a052eb        2 weeks ago         /bin/sh -c apt-get update && apt-get install    60.85 MB
+    5e5e0e9171da        2 weeks ago         /bin/sh -c #(nop) MAINTAINER John Pfeiffer "h   0 B
+    78949b1e1cfd        7 weeks ago         /bin/sh -c #(nop) CMD [/bin/bash]               0 B
+    21abcc4ef877        7 weeks ago         /bin/sh -c sed -i 's/^#\s*\(deb.*universe\)$/   1.895 kB
+    f552c527d701        7 weeks ago         /bin/sh -c echo '#!/bin/sh' > /usr/sbin/polic   215 kB
+    c4c77a6165f9        7 weeks ago         /bin/sh -c #(nop) ADD file:24ed1895f2e500dcec   194.2 MB
+    511136ea3c5a        22 months ago                                                       0 B
+    
+
+> experimental:
+> docker save 49b5a7a88d5 | sudo docker-squash -t ubuntu-utopic-pelican:squash | docker load
+
+
 - - -
 ## Add a port to a container
 
