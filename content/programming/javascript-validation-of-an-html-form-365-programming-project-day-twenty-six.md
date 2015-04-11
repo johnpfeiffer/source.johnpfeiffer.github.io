@@ -10,7 +10,7 @@ I'm not a fan of Javascript if only because it runs on the client and can be a b
 
 But here's the source code on how to do the most basic user input validation:
 
-    :::javascript
+    :::html
     <html><head><title>javascript form validation</title></head>
     <body>
     

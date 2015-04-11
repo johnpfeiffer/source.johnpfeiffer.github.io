@@ -1,6 +1,6 @@
 Title: How to set up a Pelican static blog site
 Date: 2014-06-21 20:21
-Tags: python
+Tags: python, pelican, blog, static site
 
 [TOC]
 
@@ -219,6 +219,8 @@ I just use the pelicanconf output rather than publishconf, and I use git with a 
 
 ### more info
 - <http://pelican.readthedocs.org/en/latest/settings.html>
-- Tweaking default syntax highlighting: <http://pygments.org/docs/lexers>
+- Tweaking default syntax highlighting:
+- - <http://pygments.org/docs/lexers>
+- - <http://pygments.org/demo>
 - <https://bitbucket.org/johnpfeiffer/docker/src>
 
