@@ -1,4 +1,4 @@
-Title: c programming windows clock v3: 365 programming project day thirty five
+Title: C programming windows clock v3: 365 programming project day thirty five
 Date: 2010-02-11 13:42
 Tags: c, time, clock, windows, gcc
 
