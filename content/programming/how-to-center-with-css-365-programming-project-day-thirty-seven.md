@@ -1,5 +1,6 @@
 Title: How to center with CSS: 365 programming project day thirty seven
 Date: 2010-02-17 15:05
+Tags: css, html
 
 This is a tiny post, but it covers a very important part of how a CSS layout might look: how do you center something?
 
@@ -22,7 +23,7 @@ The "Centering CSS Blocks Trick" forces the text (or image too, hopefully, depen
 #### HTML
 
     :::html
-    <div id="footer">footer text goes here<div>
+    <div id="footer">footer text goes here</div>
 
 Note that the text-align instruction is perhaps redundant but it's better to be safe (and more universally compatible).
 

@@ -1,5 +1,6 @@
 Title: C programming windows clock v4 (failure is only feedback): 365 programming project day thirty six
 Date: 2010-02-12 14:47
+Tags: c, windows, time,  clock
 
 It seems I've bitten off more than I thought with regularly updating a Window every second...
 
