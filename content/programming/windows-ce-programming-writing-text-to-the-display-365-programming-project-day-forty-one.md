@@ -1,6 +1,6 @@
 Title: Windows CE Programming - writing text to the display: 365 programming project day forty one
 Date: 2010-03-21 09:44
-Tags: windows, win ce
+Tags: windows, win ce, c
 
 [TOC]
 
@@ -208,7 +208,7 @@ All of the explicit conversions to "Long" that are necessary for Win CE (16 bit)
 
 which just means getting rid of those pesky 'L' s 
 
-wc.lpszClassName = (LPTSTR) L"App"; 
+`wc.lpszClassName = (LPTSTR) L"App";`
 
 For this to really work in Windows Desktop you'd have to replace my custom char to wchar string conversion with Microsoft's MultiByteToWideChar OR...
 
