@@ -1,4 +1,4 @@
-Title: VBScript Windows Shell Script (Programming) For Loop: 365 programming project day twenty two
+Title: VBScript Windows Shell Script (Programming) For Loop: 365 programming project day twenty three 
 Date: 2010-01-22 21:56
 
 Programming obviously requires logic and discipline. 
