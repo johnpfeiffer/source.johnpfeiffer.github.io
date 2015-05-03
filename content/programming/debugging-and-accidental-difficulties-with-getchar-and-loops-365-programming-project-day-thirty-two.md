@@ -1,4 +1,4 @@
-Title: Debugging and "Accidental Difficulties" with getchar and loops: 365 programming project day thirty one
+Title: Debugging and "Accidental Difficulties" with getchar and loops: 365 programming project day thirty two 
 Date: 2010-02-01 21:46
 Tags: c, getchar, gcc
 
