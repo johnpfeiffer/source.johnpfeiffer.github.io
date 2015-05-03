@@ -53,7 +53,7 @@ So today's entry is an offshoot program I wrote to investigate why my previous v
         do
         {    buffer = getchar();        
         }
-        while(buffer != '\n' );
+        while(buffer != '\n');
     
         printf("Ha ha, to quit press 'y' again");
         printf"((this corrected version will only display the first char entered).\n");
@@ -64,10 +64,10 @@ So today's entry is an offshoot program I wrote to investigate why my previous v
             
             do
             {    buffer = getchar();        
-            } while(buffer != '\n' );
+            } while(buffer != '\n');
     
             printf("%c\n",c);
-        } while( c != 'y');
+        } while(c != 'y');
     
         return 0;
     }/* end of main */
