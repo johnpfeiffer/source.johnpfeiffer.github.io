@@ -13,12 +13,12 @@ phantomjs: headless browser <http://phantomjs.org>
 ### Install
 `sudo pip install selenium`
 
-wget <https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.7-linux-x86_64.tar.bz2>
+wget <https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.8-linux-x86_64.tar.bz2>
 
-`tar -xjvf phantomjs-1.9.7-linux-x86_64.tar.bz2`
+`tar -xjvf phantomjs-1.9.8-linux-x86_64.tar.bz2`
 
 ### Run
-`phantomjs-1.9.7-linux-x86_64/bin/phantomjs --webdriver=9134`
+`phantomjs-1.9.8-linux-x86_64/bin/phantomjs --webdriver=9134`
 
 > ghostdriver included and running on port 9134
 
@@ -27,18 +27,18 @@ wget <https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.7-linux-x86_
 
     from selenium import webdriver
     
-    driver = webdriver.PhantomJS(executable_path='/opt/phantomjs-1.9.2-linux-x86_64/bin/phantomjs', port=9134)
+    driver = webdriver.PhantomJS(executable_path='/opt/phantomjs-1.9.8-linux-x86_64/bin/phantomjs', port=9134)
     driver.get("http://127.0.0.1")
     print driver.current_url
     driver.quit
     print "done"
     
 
-`phantomjs-1.9.2-linux-x86\_64/bin/phantomjs --webdriver=9134 --ignore-ssl-errors=true`
+`phantomjs-1.9.8-linux-x86_64/bin/phantomjs --webdriver=9134 --ignore-ssl-errors=true`
 
 ### Advanced Python example
 
-> more complete example with python unittest framework (used the Firefox Selenium IDE plugin -\> Export)  
+> more complete example with python unittest framework (used the Firefox Selenium IDE plugin -> Export)
 
 > logs in, asserts there is an Admin tab which when clicked shows Group Info
 
