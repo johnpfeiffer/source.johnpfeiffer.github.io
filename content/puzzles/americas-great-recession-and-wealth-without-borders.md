@@ -1,15 +1,18 @@
 Title: America's Great Recession and Wealth Without Borders
 Date: 2010-07-05 14:09
-
+Tags: 
 
 Why do countries like Germany and Japan have such a high quality of life AND high productivity? 
-Remember that their unemployed have free medical care, education, and unemployment benefits.
+
+Remember that their unemployed have free medical care, education, and unemployment benefits...
 
 - <http://www.oecdbetterlifeindex.org/countries/germany>
 - <http://www.oecdbetterlifeindex.org/countries/japan>
 - <http://www.oecdbetterlifeindex.org/countries/united-states>
 
 Are they just smarter than Americans?
+
+(*While the US has the "highest average income" it comes at the price of the lower tiers not having the same opportunities for medical care and education, so maybe it's an active choice of American inequality?*)
 
 "The economists Emmanuel Saez and Thomas Piketty examined tax returns from 1913 to 2008. They discovered an interesting pattern. In the late 1970s, the richest 1 percent of American families took in about 9 percent of the nation’s total income; by 2007, the top 1 percent took in 23.5 percent of total income."
 
