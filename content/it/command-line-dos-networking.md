@@ -1,7 +1,6 @@
 Title: Command Line DOS Networking
 Date: 2010-11-29 16:37
-Slug: content/command-line-dos-networking
-Tags: windows,dos
+Tags: DOS
 
 [TOC]
 
