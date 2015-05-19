@@ -1,262 +1,126 @@
 Title: Eclipse IDE C Wascana on Windows 7
 Date: 2010-11-05 02:21
-Author: John Pfeiffer
-Slug: eclipse-ide-c-wascana-on-windows-7
+Tags: eclipse, IDE, c, win7
 
-<div class="field field-name-body field-type-text-with-summary field-label-hidden">
-<div class="field-items">
-<div class="field-item even">
-Unfortunately I was trying to install the 64 bit version of everything
-below but could not find a reliable method of getting mingw 64 bit to
-work with Eclipse... See the very end for the workaround.
+[TOC]
 
-</p>
+> The Wascana IDE project was discontinued: <http://speedydeletion.wikia.com/wiki/Wascana_Desktop_Developer> which is probably why links no longer work
 
-(Note: having a 64 bit compiler should theoretically compile faster but
-with gcc 32 bit you can compile / target both 32 and 64 applications.)
+Unfortunately I was trying to install the 64 bit version of everything below but could not find a reliable method of getting mingw 64 bit to work with Eclipse... 
 
-</p>
+See the very end for the workaround. 
 
-\1. install JRE (64 bit)  
+(Note: having a 64 bit compiler should theoretically compile faster but with gcc 32 bit you can compile / target both 32 and 64 applications.)
 
-\2. install Eclipse CDT (64 bit)  
+1. install JRE (64 bit)
+2. install Eclipse CDT (64 bit)
+3. install Wascana (mingw for eclipse)
+4. configure the path variable
 
-\3. install Wascana (mingw for eclipse)  
+### Install the Java Runtime Environment (JRE)
 
-\4. configure the path variable
-
-</p>
-
-A pre-requisite is to download the JRE (Java Runtime Environment, 5.0 or
-higher, newer is often better).
-
-</p>
+A pre-requisite is to download the JRE (Java Runtime Environment, 5.0 or higher, newer is often better).
 
 FIRST, check if you have a 64 bit or older 32 bit system.
 
-</p>
+If you have a 64 bit system, use a "64 bit browser" to go to the java page because otherwise it will keep giving you the 32 bit version to download...
 
-If you have a 64 bit system, use a "64 bit browser" to go to the java
-page because otherwise it will keep giving you the 32 bit version to
-download...
+<http://www.java.com/en/download/faq/java_win64bit.xml>
 
-</p>
+The link and filename should be something like: "jre-6u22-windows-x64.exe"
 
-[http://www.java.com/en/download/faq/java\_win64bit.xml][]
+Otherwise in Eclipse you may get the Error exit code=13 or "failed to load the JNI shared library"...
 
-</p>
+This will most likely install in C:\Program Files\Java (or some variant). (with the \bin\javaw.exe)
 
-The link and filename should be something like:
-"jre-6u22-windows-x64.exe"
+> on Windows 7 the C:\Program Files (x86)\ directory contains 32 bit installations/applications
 
-</p>
+### Install Eclipse CDT (64 bit)
 
-Otherwise in Eclipse you may get the Error exit code=13 or "failed to
-load the JNI shared library"...
+The base Eclipse CDT supports integration with the GNU toolchain but may not come with a compiler...
 
-</p>
+All Linux distributions include the GNU toolchain (but might not be installed by default...)  
 
-This will most likely install in C:\\Program Files\\Java (or some
-variant). (with the \\bin\\javaw.exe)  
+MinGW provides the best integration support with the CDT due to it's direct support for the Windows environment.
 
-(Note on Windows 7 the C:\\Program Files (x86)\\ directory contains 32
-bit installations / applications.)
+If you download the Eclipse IDE for C/C++ you'll get the "CDT" plugins along with the default Eclipse platform:
 
-</p>
+<http://www.eclipse.org/cdt/downloads.php>
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-- - - - - - - - - - - -  
+The eclipse.ini file allows you to configure your program (e.g. specify the JRE location)  
 
-The base Eclipse CDT supports integration with the GNU toolchain but may
-not come with a compiler...
+(Notedpad2 or notepad++ handle the linux versus windows line breaks transparently...)  
 
-</p>
+e.g. insert the line to specify where your java run time environment is, maybe you have two...
 
-All Linux distributions include the GNU toolchain (but might not be
-installed by default...)  
+#### eclipse.ini
 
-MinGW provides the best integration support with the CDT due to it's
-direct support for the Windows environment.
+    -vm
+    C:\Java\jre6\bin\javaw.exe
 
-</p>
 
-If you download the Eclipse IDE for C/C++ you'll get the "CDT" plugins
-along with the default Eclipse platform:
+Double clicking the eclipse.exe icon will start it with an empty Workbench (and use the default JRE)  
 
-</p>
+The first time you will be given the opportunity to choose your "Workspace" (aka directory where all of your files will be stored).
 
-[http://www.eclipse.org/cdt/downloads.php][]
+I prefer to have it in the Eclipse folder but obviously in a multi user setup the "My Docs" or Network Folder would also make sense... or Dropbox?   (DropBox -> Public might make Open Source Distribution even easier?)
 
-</p>
+1. File -> New -> C Project
+1. Fill in the basics (you can choose the pre-made hello world app)
+1. Then click on the "Go To Workbench" so you can see the Project File Explorer, Code Editor, Console   
+> Window -> Preferences allows you to customize Eclipse e.g. disable usage statistics)
+1. Click on the hammer symbol (Build) to ensure that you create an object file (.o) before trying to test run an executable...
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-- - - - - - - - - - - -
-
-</p>
-
-The eclipse.ini file allows you to configure your program (e.g. specify
-the JRE location)  
-
-(Notedpad2 or notepad++ handle the linux versus windows line breaks
-transparently...)  
-
-e.g. insert the line to specify where your java run time environment is,
-maybe you have two...
-
-</p>
-
--vm  
-
-C:\\Java\\jre6\\bin\\javaw.exe
-
-</p>
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-- - - - - - - - - - - -
-
-</p>
-
-Double clicking the eclipse.exe icon will start it with an empty
-Workbench (and use the default JRE)  
-
-(The first time you will be given the opportunity to choose your
-"Workspace" (aka directory where  
-
-all of your files will be stored, I prefer to have it in the Eclipse
-folder but obviously in a multi  
-
-user setup the "My Docs" or Network Folder would also make sense... or
-Oxygen Cloud / Dropbox?  
-
-DropBox -\> Public might make Open Source Distribution even easier? )
-
-</p>
-
-File -\> New -\> C Project
-
-</p>
-
-Fill in the basics (you can choose the pre-made hello world app)  
-
-Then click on the "Go To Workbench" so you can see the Project File
-Explorer, Code Editor, Console  
-
-(NOTE Window -\> Preferences allows you to customize Eclipse e.g.
-disable usage statistics)
-
-</p>
-
-Click on the hammer symbol (Build) to ensure that you create an object
-file (.o) before trying to test run  
-
-an executable...
-
-</p>
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-- - - - - - - - - - - -
-
-</p>
+### gcc error
 
 Of course when you try to build you get an error...
+    
+    Internal Builder: Cannot run program "gcc" (in directory "C:\My Dropbox\workspace\hello\Debug"): CreateProcess error=2, The system cannot find the file specified
+    Build error occurred, build is stopped
 
-</p>
 
-Internal Builder: Cannot run program "gcc" (in directory "C:\\My
-Dropbox\\workspace\\hello\\Debug"): CreateProcess error=2, The system
-cannot find the file specified  
+**Help -> Install New Software** (previously Software Installer)
 
-Build error occurred, build is stopped
+Work With gets pasted the URL of the Wascana C/C++ compiler for Eclipse, then click ADD  
+<http://svn.codespot.com/a/eclipselabs.org/wascana/repo>
 
-</p>
+> seems to have moved to Google Code but does not allow access, maybe <http://sourceforge.net/projects/wascana/>
 
-Help -\> Install New Software (previously Software Installer)
+Click on the Checkbox for "Wascana C/C++ Developer for Windows, then NEXT  
 
-</p>
+(review items to be installed, e.g. wascana.core) NEXT, then Agree to the License Terms...
 
-Work With gets pasted the URL of the Wascana C/C++ compiler for Eclipse,
-then click ADD  
-[http://svn.codespot.com/a/eclipselabs.org/wascana/repo][]
+After it downloads, installs, and restarts Eclipse you'll find the new mingw and msys directories in your Eclipse folder.
 
-</p>
+Now you have to update the Path, in Windows it's usually under System Properties -> Advanced System Settings  
 
-Click on the Checkbox for "Wascana C/C++ Developer for Windows, then
-NEXT  
+Environment Variables -> System Variables scroll area, highlight "Path" (click on the edit button)
 
-(review items to be installed, e.g. wascana.core) NEXT, then Agree to
-the License Terms...
+It should already have something like:
+    
+    %SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;
 
-</p>
+Append a semi colon to continue the long list and add:
+    
+    c:\eclipse\mingw\bin
 
-After it downloads, installs, and restarts Eclipse you'll find the new
-mingw and msys directories in  
+> Apparently some people feel eclipse does not autodetect unless it's c:\\mingw
 
-your Eclipse folder.
 
-</p>
+(Theoretically you could also try installing MingW directly from their website, which I've done, but it again is not 64 bit).
 
-Now you have to update the Path, in Windows it's usually under System
-Properties \> Advanced System Settings  
-
-Environment Variables -\> System Variables scroll area, highlight "Path"
-(click on the edit button)
-
-</p>
-
-It should already have something like:  
-
-%SystemRoot%\\system32;%SystemRoot%;%SystemRoot%\\System32\\Wbem;
-
-</p>
-
-Append a semi colon to continue the long list and add:  
-
-c:\\eclipse\\mingw\\bin
-
-</p>
-
-(Apparently some people feel eclipse does not autodetect unless it's
-c:\\mingw)
-
-</p>
-
-(Theoretically you could also try installing MingW directly from their
-website, which I've done, but it again is not 64 bit).  
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-- - - - - - - - - - - -
-
-</p>
+### Always 32 mingw gcc (oops)
 
 Unfortunately fundamental flaw - even when using Eclipse 64 bit the
 Install New Software gets the Wascana 32 bit mingw gcc.
 
-</p>
+The Workaround is to use the Wascana Desktop as a single download/install (which includes 32 bit versions of: JRE 1.6.0 , Mingw 3.4.5 , Eclipse IDE)
 
-The Workaround is to use the Wascana Desktop as a single download /
-install (which includes  
+### More info
 
-32 bit versions of: JRE 1.6.0 , Mingw 3.4.5 , Eclipse IDE)
+<http://code.google.com/a/eclipselabs.org/p/wascana/>
 
-</p>
+> Apparently inaccessible due to strange Google Code permissions issues
 
-[http://code.google.com/a/eclipselabs.org/p/wascana/][]
 
-</p>
-<p>
-</div>
-</div>
-</div>
-<div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix">
-### tags:
-
--   [Programming][]
-
-</div>
-</p>
-
-  [http://www.java.com/en/download/faq/java\_win64bit.xml]: http://www.java.com/en/download/faq/java_win64bit.xml
-  [http://www.eclipse.org/cdt/downloads.php]: http://www.eclipse.org/cdt/downloads.php
-  [http://svn.codespot.com/a/eclipselabs.org/wascana/repo]: http://svn.codespot.com/a/eclipselabs.org/wascana/repo
-  [http://code.google.com/a/eclipselabs.org/p/wascana/]: http://code.google.com/a/eclipselabs.org/p/wascana/
-  [Programming]: http://john-pfeiffer.com/category/tags/programming
+Also try: <http://mclserver.eecs.ucf.edu/trac/courses/wiki/COP3402Spring2011/InstallEclipseCpp>
