@@ -6,16 +6,18 @@ Tags: cloud, paas, openshift, tomcat
 
 openshift is the cloud PaaS offering from RedHat
 
-### Prerequisites
+### Prerequisites and dependencies
 
+    
     sudo apt-get update
     sudo apt-get install ruby1.9.3 git-core
     //yay for ubuntu 12.04
 
     sudo gem install rhc
-   //red hat client
+    //red hat openshift client
 
-- - -
+
+### OpenShift Client tools setup
 
 `rhc setup`
 
@@ -46,7 +48,7 @@ Valid application types are (nodejs-0.6, ruby-1.9, jbossas-7, python-2.6, jenkin
 `rhc app cartridge list`
 
 
-## Your local git repo
+### Your local git repo
 
 ON YOUR LOCAL MACHINE BROWSE TO WHERE YOU WANT TO STORE YOUR GIT REPO
 
@@ -56,8 +58,9 @@ ON YOUR LOCAL MACHINE BROWSE TO WHERE YOU WANT TO STORE YOUR GIT REPO
 
 `git pull`
 
-## REPO LAYOUT of ~/john/repo
+### REPO LAYOUT of ~/john/repo
 
+    :::bash
     .openshift/action_hooks/start - Script that gets run to start your application  
     .openshift/action_hooks/stop - Script that gets run to stop your application  
     .openshift/action_hooks/pre_build - Script that gets run every git push before the build  
@@ -114,7 +117,7 @@ tar -xzvf apache-tomcat-7.0.29.tar.gz
 `rm apache-tomcat-7.0.29.tar.gz`
 
 
-## Openshift ports and proxy
+### Openshift ports and proxy
 
 Since OpenShift has a proxy setup that passes port 80 to your local server on port 8080, BUT  
 
@@ -155,8 +158,9 @@ In your local git repo there is a hidden directory ".openshift"
 `cd APPNAME/.openshift/action_hooks`
 
 
-## .openshift/action_hooks/start
+### vi .openshift/action_hooks/start
 
+    :::bash
     #nohup $OPENSHIFT_REPO_DIR/diy/testrubyserver.rb
     $OPENSHIFT_INTERNAL_IP $OPENSHIFT_REPO_DIR/diy > $OPENSHIFT_LOG_DIR/server.log 2>&1 &
 
@@ -165,8 +169,9 @@ In your local git repo there is a hidden directory ".openshift"
     echo "completed tomcat7 startup"
 
 
-## .openshift/action_hooks/stop
+### vi .openshift/action_hooks/stop
 
+    :::bash
     cd $OPENSHIFT_DATA_DIR/apache-tomcat-7.0.29/bin  
     nohup sh shutdown.sh  
     echo "completed tomcat7 shutdown"  
@@ -181,21 +186,21 @@ In your local git repo there is a hidden directory ".openshift"
 `git push`
 
 
-<http://APPNAME-DOMAINNAME.rhcloud.com>
+**<http://APPNAME-DOMAINNAME.rhcloud.com>**
 
 
-## Autodeploy the latest
+### Autodeploy the latest
 
 MOVE YOUR WEBAPPS DIRECTORY TO THE GIT REPO SO THAT A GIT PUSH WILL AUTO DEPLOY THE NEWEST
 
-mv $OPENSHIFT_DATA_DIR/apache-tomcat-7.0.29/webapps ~/john/repo/diy/webapps
+`mv $OPENSHIFT_DATA_DIR/apache-tomcat-7.0.29/webapps ~/john/repo/diy/webapps`
 
-ln -s ~/john/repo/diy/webapps webapps
+`ln -s ~/john/repo/diy/webapps webapps`
 
 
 Strongly advised to remove the manager and example apps (just deploy your .war's)
 
-//rhc app stop -a APPNAME -p YOURPASSWORD 
+`rhc app stop -a APPNAME -p YOURPASSWORD`
 > yes, it uses your RHCloud account username and password for app management
 
 `ssh 33d90ea45fd91e42096651d937e@john-pfeiffer.rhcloud.com`
@@ -209,14 +214,11 @@ Strongly advised to remove the manager and example apps (just deploy your .war's
 
 ### ONCE YOU'VE SSH'D IN...  
 
-help  
+`help`
 
-ps|ls|  
-
-ctl_app start [stop|restart|status]  
-
-mysql | mongo | quota
-
+    ps|ls|
+    ctl_app start [stop|restart|status]
+    mysql | mongo | quota
 
 NOTE: sometimes it's easier to use a UI <https://openshift.redhat.com/app/console/applications>
 
@@ -231,3 +233,5 @@ My Applications -> APPLICATION_NAME ->
 
 Eclipse + m2e (maven plugin) + jetty plugin for fast and easy dependency management -> mvn install + added custom script can put your .war into your local openshift repo for continuous deployment.
 
+
+<https://www.openshift.com/>
