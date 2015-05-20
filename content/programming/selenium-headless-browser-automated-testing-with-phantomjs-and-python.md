@@ -1,6 +1,5 @@
 Title: Selenium headless browser automated testing with PhantomJS and Python
 Date: 2013-09-17 21:04
-Slug: content/selenium-headless-browser-automated-testing-with-phantomjs-and-python
 
 [TOC]
 

@@ -1,6 +1,5 @@
 Title: Cumulus compatible S3, nginx, and HMAC signed requests
 Date: 2013-11-26 17:10
-Slug: content/cumulus-compatible-s3-nginx-and-hmac-signed-requests
 Tags: c,nginx
 
 With the exceptionally fast, reliable and popular web server **[nginx](http://nginx.org/)** as a front end customers can use a browser to access their uploaded files via a simple URL, the same as the SaaS Amazon S3 implementation, without knowing about the **[Cumulus backend](http://www.nimbusproject.org/doc/nimbus/faq/#what-is-cumulus)**.

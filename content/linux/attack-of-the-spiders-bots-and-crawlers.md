@@ -1,7 +1,5 @@
 Title: Attack of the Spiders, Bots, and Crawlers
 Date: 2013-07-20 23:00
-Author: John Pfeiffer
-Slug: content/attack-of-the-spiders-bots-and-crawlers
 
 It is well known that search engines need to index what the contents of webpages are in order to return accurate results to Users. It may not be well known how much traffic that generates.
 

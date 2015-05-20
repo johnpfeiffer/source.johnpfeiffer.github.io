@@ -1,6 +1,5 @@
 Title: Logic Puzzles
 Date: 2013-05-13 05:31
-Slug: content/logic-puzzles
 
 [TOC]
 

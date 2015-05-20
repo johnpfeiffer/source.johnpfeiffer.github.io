@@ -1,7 +1,5 @@
 Title: A More Complete Education
 Date: 2013-05-09 16:52
-Author: John Pfeiffer
-Slug: content/more-complete-education
 Tags: mooc, free education, distance learning, cs on iphone, programming videos, programming
 
 [TOC]
