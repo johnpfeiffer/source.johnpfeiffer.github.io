@@ -198,6 +198,10 @@ I just use the pelicanconf output rather than publishconf, and I use git with a 
 
 `cp -a pelican-themes/elegant themes/
 
+> For the elegant with tipuesearch you need to install the tipuesearch plugin
+
+- <http://moparx.com/2014/04/adding-search-capabilities-within-your-pelican-powered-site-using-tipue-search/>
+
 - - - 
 ### Pelican Plugins
 [https://github.com/getpelican/pelican-plugins][pelicanplugins]

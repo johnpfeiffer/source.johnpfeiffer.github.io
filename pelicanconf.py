@@ -4,8 +4,8 @@ from __future__ import unicode_literals
 
 AUTHOR = u'john pfeiffer'
 SITENAME = u'john pfeiffer'
-# uncomment before publishing
-# SITEURL = u'http://blog.john-pfeiffer.com'
+# commented out for development
+# SITEURL = 'http://blog.john-pfeiffer.com'
 OUTPUT_PATH = 'output/'
 DEFAULT_DATE_FORMAT = '%Y-%m-%d'
 TIMEZONE="America/Los_Angeles"
