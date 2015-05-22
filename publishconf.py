@@ -59,4 +59,5 @@ PROJECTS = [{
     'url': 'https://bitbucket.org/johnpfeiffer',
     'description': ''}
 ]
+RECENT_ARTICLES_COUNT=15
 GOOGLE_ANALYTICS='UA-3758734-9'

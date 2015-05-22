@@ -6,7 +6,7 @@ With the exceptionally fast, reliable and popular web server **[nginx](http://ng
 
 Unfortunately there were edge cases around the encodings of spaces, pluses, slashes, etc. where nginx + Cumulus was returning "Access Denied" when trying to GET a file.
 
-Examining the relevant RFC's (<http://tools.ietf.org/html/rfc3986\#section-2.1>), PHP﻿
+Examining the relevant RFC's (<http://tools.ietf.org/html/rfc3986\#section-2.1>), PHP
 (<http://php.net/manual/en/function.rawurlencode.php>) and Python  ﻿(<http://docs.python.org/2/library/urllib.html>) references, and examining the logs, I could see the files were PUT correctly, [s3cmd](http://s3tools.org/s3cmd) could retrieve the  binary objects (files) from Cumulus fine... but the logs were showing a change in the URL's.
 
 Increasing the [debugging in nginx](http://nginx.org/en/docs/debugging_log.html), digging into the [Cumulus source
@@ -22,13 +22,13 @@ A lot of digging into nginx configs and source, along with learning a bit about 
 
     :::c    
     /* uses the source and length to copy the uri, does not escape characters
-    (the argument signature is compatible wit ngx_escape_uri)
+    (the argument signature is compatible with ngx_escape_uri)
     */
     uintptr_t ngx_uri_extractor(u_char *dst, u_char *src, size_t size, ngx_uint_t type)
     {
         while (size) {
-        *dst++ = *src++;
-        size--;
+            *dst++ = *src++;
+            size--;
         }
         return (uintptr_t) dst;
     }

@@ -8,9 +8,18 @@ Not only are Containers fast, one of the biggest advantages of Containers is the
 
 Docker can turn an application/service, it's dependencies, and even the OS level requirements into a single blackbox package (that you can still inspect inside if you really want to).
 
+One thing I really like is less code.  Seriously.  Configuration over coding (whenever I don't need customization) means far less maintenance and bugs.
+
 Here's a trivial example of how I can leverage the HAProxy Docker image/container to load balance two web servers. (aka "reverse proxy" <http://en.wikipedia.org/wiki/Reverse_proxy>)
 
-> There are new problems that go along with the benefits of any new technology, see
+        client -> all other sites
+          |
+    reverse proxy (haproxy)
+      /         \
+    BackendA  BackendB
+
+
+> There are new problems that go along with the benefits of any new technology, see the complicated networking/port coordination
 
 ### Prerequisites
 
@@ -31,7 +40,7 @@ sudo docker pull haproxy:1.5
 > Clearly a trivial example (more likely two remote hosts in logical/geographic disparate areas if aiming for High Availability, or at least on different hosts to scale with more resources)
 
 
-### vim /opt/mydata/haproxy.cfg
+### /opt/mydata/haproxy.cfg
     global
             debug
     
@@ -58,6 +67,16 @@ sudo docker pull haproxy:1.5
     sudo docker run -p 8443:8443 --add-host=docker:${HOSTIP} --rm -it -v /opt/mydata/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro --name myhaproxy haproxy:1.5 
 
 > Now that the docker container's /etc/hosts file has the Host IP Address injected (with the name "docker") the haproxy config file probably makes more sense
+
+- running the container
+- the host port 8443 mapped to the container port 8443
+- injecting into the container /etc/hosts the Host IP Address as "docker"
+- ephemeral container (automatic cleanup on termination)
+- interactive
+- tty
+- readonly mapping of the /opt/mydata/haproxy.cfg file on the host to /usr/local/etc/haproxy/haproxy.cfg
+- name the container myhaproxy (each container name must be unique)
+- the container is using the haproxy version 1.5 Docker Image
 
 `./start-haproxy.sh`
 
@@ -97,6 +116,7 @@ sudo docker pull haproxy:1.5
 
 `sudo docker rm -f myhaproxy`
 
+#### ### /opt/mydata/haproxy.cfg
     global
         debug
     
@@ -124,6 +144,8 @@ sudo docker pull haproxy:1.5
 `./start-haproxy.sh`
 
 ### nginx forward proxy
+
+client -> forward proxy (nginx) -> all other sites
 
 #### nginx.conf
 
