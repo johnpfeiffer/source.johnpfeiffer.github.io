@@ -1,5 +1,6 @@
 Title: Docker Intro install run and port forward
 Date: 2014-07-10 17:00
+Tags: docker, containers
 
 Docker is a union file system based layer system leveraging linux lxc containers for ultra lightweight virtualization/compartmentalization.
 
@@ -394,6 +395,35 @@ Volumes are where Docker Containers can access storage (either from the Host or 
     redis-cli -h 172.17.0.72 keys *
     1) mykey
 
+
+** Add a route to the Host From inside a Container/Guest **
+
+<http://docs.docker.com/reference/commandline/cli/#adding-entries-to-a-container-hosts-file>
+
+HOST: 
+1. ip addr show
+1. ip addr show | grep docker0
+1. ip addr show | grep docker0 | grep global | awk '{print $2}' | cut -d / -f1
+1. HOSTIP=`ip addr show | grep docker0 | grep global | awk '{print $2}' | cut -d / -f1`
+
+`sudo docker run -i -t --rm --add-host=docker:${HOSTIP} python:2 /bin/bash`
+
+    root@1bbe25092f19:/# cat /etc/hosts
+
+    172.17.0.7      1bbe25092f19
+    127.0.0.1       localhost
+     ::1     localhost ip6-localhost ip6-loopback
+    fe00::0 ip6-localnet
+    ff00::0 ip6-mcastprefix
+    ff02::1 ip6-allnodes
+    ff02::2 ip6-allrouters
+    
+    172.17.42.1     docker
+
+    root@1bbe25092f19:/# ping docker
+
+    PING docker (172.17.42.1): 56 data bytes
+    64 bytes from 172.17.42.1: icmp_seq=0 ttl=64 time=0.158 ms
 
 - - -
 ## Troubleshooting
