@@ -85,6 +85,14 @@ Sure enough I the tests passed when leveraging the previous Docker spike to run 
 
 Refactoring the bamboo plan (since it was leveraging Plan Templates and the Groovy DSL macros) didn't take too long and with other stakeholders PR/approval we're moving full speed ahead towards the "ideal" solution. (It only took about 2 years).
 
+### Dogfooding the whole way
+
+Something I should mention that has been an invaluable companion throughout the course of building the product: a dogfooding server.
+
+"Eating our own dog food" is a wonderful way to experience the exact pain you are inflicting on your users.  From the very begininng Will setup and we maintained a dogfood server which received every beta upgrade (and a few upgrades that never reached the customers), amazingly it's still alive and full of data!
+
+Not only did I learn about bugs that would affect our oldest and most loyal users (who kept with us and kept upgrading), I also felt the User Experience pain of how long upgrades took, mysterious incomprehensible errors messages, and "partial upgrades".  All of these learnings, along with being Developer on Support and assisting on support tickets, kept me honest and humble and allowed me to improve the product just as much as any fancy testing automation framework.
+
 ### What does this all mean?
 
 It's easy to draw up how things should work according to best practice.  It's even easier if it's work that someone else has to do and there aren't any deadlines.
