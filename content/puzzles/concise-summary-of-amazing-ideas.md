@@ -81,15 +81,48 @@ brainstorm goals & feelings: "say what you're going to do and then do what you s
 - Software version: core tech strengths & problem, quick releases, automate, test!, style? + recognize the contributions
 - Military version: core strength and enemy weaknesses, rapid short executions, make excellence a reflex, check for brittleness, engender loyalty
 
+#### 7 habits of highly effective people
+1. be proactive
+2. "begin with the end in mind" (envision the goal)
+3. "put first things first" (order and prioritize)
+4. "think win-win" (good outcomes for everyone)
+5. "Seek First to Understand, Then to be Understood" (listen, then persuade)
+6. "synergize" (teamwork)
+7. "sharpen the saw" (sustainable balance)
+
+<http://en.wikipedia.org/wiki/The_7_Habits_of_Highly_Effective_People>
+
 ### Important Software Concepts
+
 - Do Not Repeat Yourself (DRY)
 - Model View Controller (MVC)
 - Atomic Consistent Isolation Durability (ACID)
-- Abstraction Polymorphism (overloading, inheritance, overriding interface) Inheritance Encapsulation
+- Abstraction Polymorphism (overloading, inheritance, overriding interface) ,  Inheritance , Encapsulation
 - Consistency Availability Partition tolerance vs Basically Available Soft-State with Eventual consistency
-- Nondeterministic Polynomial ... NP-hard
-- - NP-complete (subset sum problem can be verified)
+- Nondeterministic Polynomial ... NP-hard <http://en.wikipedia.org/wiki/NP-hard>
+- - NP-complete (subset sum problem can be verified) <http://en.wikipedia.org/wiki/NP-complete>
 - - co-NP (verifier of "no" answer")
+
+<http://en.wikipedia.org/wiki/Timeline_of_algorithms>
+
+#### Amdahl's Law
+- A system cannot be sped up by parallelization more than the inherently serial steps <http://en.wikipedia.org/wiki/Amdahl%27s_law>
+- - So benchmark your system, then determine what parts can be parallelized and how much that will improve the result and how much will it cost to do so
+
+#### Conway's Law
+- The system design produced by an organization will reflect the organization's communication structure. <http://www.melconway.com/Home/Conways_Law.html>
+- - <http://www.thoughtworks.com/insights/blog/demystifying-conways-law>
+- - Possibly disastrous results when combined with Groupthink <http://en.wikipedia.org/wiki/Groupthink>
+- - Commonly referred to when considering how adding a new person or new team to organization will affect productivity
+
+####  Brooks' Law
+- Adding resources (people) later in a project will make it even later <http://en.wikipedia.org/wiki/Brooks%27s_law> 
+- - A decent observation given the above "laws": if a task has serial parts adding people (parallelization) will not speed it up AND every person will have to interface 
+
+#### Moore's Law
+- Computing power will double (or become cheaper by half) every two years <http://en.wikipedia.org/wiki/Moore%27s_law>
+- - Sustained in part by improvements in complimentary technologies like Memory, Storage, Cooling, etc.
+- - At a certain point in the future potentially only possible using parallel computing but with an increased coordination cost (including software that leverages parellization)
 
 #### Laws of Unix
 
@@ -126,5 +159,20 @@ brainstorm goals & feelings: "say what you're going to do and then do what you s
 - Objects allow modularity, Boundaries keep you sane
 - Separate Constructing a System from Using it (and Initialization from Runtime)
 
+### A quick history of software (in ascii)
 
+hardcoded hardware (ENIAC) -> von neumann architecture (stored programs) -> mainframes with custom punch cards (assembly) -> procedural code (fortran, c) -> object oriented (simula, java) -> parallel programming -> Artificial Intelligence that writes self adapting Domain Specific Langauges for everything?
+
+Start by reading all of the following to nitpick how the above is fast and loose with history and the truth...
+
+- <http://en.wikipedia.org/wiki/Computer>
+- <http://en.wikipedia.org/wiki/ENIAC>
+- <http://en.wikipedia.org/wiki/Von_Neumann_architecture>
+- <http://en.wikipedia.org/wiki/Programming_paradigm>
+- <http://en.wikipedia.org/wiki/Object-oriented_programming#History>
+- <http://en.wikipedia.org/wiki/Parallel_computing#Software>
+- <http://en.wikipedia.org/wiki/Concurrent_computing>
+
+### Hacker's Jargon
+- <http://www.catb.org/jargon/oldversions/>
 
