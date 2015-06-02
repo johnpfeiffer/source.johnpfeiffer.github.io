@@ -163,6 +163,11 @@ Another efficiency is that a docker container will only **run as long as it take
     CONTAINER ID IMAGE        COMMAND      CREATED      STATUS    PORTS         NAMES
     e4b436320442 ubuntu:14.04 -uname -a  3 minutes ago              elegant_engelbart
 
+### Copying a file out of a container
+
+`docker cp <containerId>:/file/path/within/container /host/path/target`
+
+<https://docs.docker.com/reference/commandline/cli/#cp>
 
 ### Deleting aka removing a container
 
