@@ -159,9 +159,47 @@ brainstorm goals & feelings: "say what you're going to do and then do what you s
 - Objects allow modularity, Boundaries keep you sane
 - Separate Constructing a System from Using it (and Initialization from Runtime)
 
+### Fallacies of Distributed Computing
+<https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing>
+
+1. The network is reliable.
+2. Latency is zero.
+3. Bandwidth is infinite.
+4. The network is secure.
+5. Topology doesn't change.
+6. There is one administrator.
+7. Transport cost is zero.
+8. The network is homogeneous.
+
+### Designers/Creators of Programming Languages
+
+|Language|Creator/Designer|Year|more info|
+|:-:|:-:|:-:|:-:|
+| Fortran | John Backus | &nbsp; 1957 | &nbsp; <https://en.wikipedia.org/wiki/Fortran> |
+| Lisp | John McCarthy | &nbsp; 1958 | &nbsp; <https://en.wikipedia.org/wiki/Lisp_(programming_language)> |
+| C | Dennis Ritchie | &nbsp; 1972 | &nbsp; <https://en.wikipedia.org/wiki/C_(programming_language)> |
+| C++ | Bjarne Stroustrup | &nbsp; 1983 | &nbsp; <https://en.wikipedia.org/wiki/C%2B%2B> |
+| Perl | Larry Wall | &nbsp; 1987 | &nbsp; <https://en.wikipedia.org/wiki/Perl> |
+| Python | Guido van Roosum | &nbsp; 1991 | &nbsp; <https://en.wikipedia.org/wiki/Python_(programming_language)> |
+| Java | James Gosling | &nbsp; 1995 | &nbsp; <https://en.wikipedia.org/wiki/Java_(programming_language)> |
+| PHP | Rasmus Lerdorf | &nbsp; 1995 | &nbsp; <https://en.wikipedia.org/wiki/PHP> |
+| Javascript | Brendan Eich | &nbsp; 1995 | &nbsp; <https://en.wikipedia.org/wiki/JavaScript> |
+| Ruby | Yukihiro Matsumoto | &nbsp; 1995 | &nbsp; <https://en.wikipedia.org/wiki/Ruby_(programming_language)> |
+| Go | Robert Griesemer, Rob Pike, Ken Thompson| &nbsp; 2009 | &nbsp; <https://en.wikipedia.org/wiki/Go_(programming_language)> |
+
+
+
+
+
 ### A quick history of software (in ascii)
 
-hardcoded hardware (ENIAC) -> von neumann architecture (stored programs) -> mainframes with custom punch cards (assembly) -> procedural code (fortran, c) -> object oriented (simula, java) -> parallel programming -> Artificial Intelligence that writes self adapting Domain Specific Langauges for everything?
+    hardcoded hardware (ENIAC) ->
+      von neumann architecture (stored programs) ->
+        mainframes with custom punch cards (assembly) ->
+          procedural code (fortran, c) ->
+            object oriented (simula, java) ->
+              parallel programming ->
+                Artificial Intelligence that writes self adapting Domain Specific Langauges for everything?
 
 Start by reading all of the following to nitpick how the above is fast and loose with history and the truth...
 
