@@ -21,6 +21,8 @@ grep is an amazing tool for getting efficiently finding text
 
 |command|notes|
 |---|---|
+| `grep -c 'hidden' ./myfile `| *only display the number of matches in the file* |
+| `grep -r -l 'hidden' /tmp ` | *recursively search /tmp and only display the file names which contain "hidden"|
 |`grep "hidden treasure" /home/ubuntu/*.txt` | *search only txt files* |
 | `grep ab.d file` | *find a single character wildcard*|
 | `grep "ab.*e" file`| *find a infinite repitions of a single character, word ends in e*|
@@ -29,8 +31,10 @@ grep is an amazing tool for getting efficiently finding text
 
 
 Useful parameters:
+
 - `-v` = invert the match so do NOT show lines that match (typically | grep -v 'myexclude')
 - `-x` = whole line match only
+- `-C 2` = print two lines before and two lines after a match
 
 `grep ubuntu /etc/passwd | cut -d: -f3`
 >  only print the user id by piping the match to cut which delimits by colon and outputs the 3rd column
