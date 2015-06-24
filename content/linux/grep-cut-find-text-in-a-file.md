@@ -6,26 +6,39 @@ Tags: grep, linux, bash
 
 grep is an amazing tool for getting efficiently finding text
 
+### grep parameters and examples explained
+
+`grep -r -i -w -n -A2 -B1 'hidden' /tmp`
+
+- search the /tmp directory and subdirectories recursively
+- case insensitive
+- only match the whole word, so "thidden" would not be returned as a match
+- print the line number in the file where it was found
+- print the two lines after the grep match
+- print the one line before the grep match
+- start the search in the /tmp directory
+
+
 |command|notes|
 |---|---|
 |`grep "hidden treasure" /home/ubuntu/*.txt` | *search only txt files* |
-|`grep -r "hidden treasure" /home/ubuntu` | *recursive search* |
-|`grep -H -r "hidden treasure" /home/ubuntu`| *only print the filenames + search text of matches*|
-|`grep -H treasure /etc/* -R <code>&#124;</code> cut -d: -f1`| *only print the filename of matches by piping to cut*|
-|`grep -Hir "hidden treasure" .` | *case insensitive search the current directory*|
 | `grep ab.d file` | *find a single character wildcard*|
 | `grep "ab.*e" file`| *find a infinite repitions of a single character, word ends in e*|
 | `grep "ab.*e." file` | find a infinite repitions of a single character, word ends with a single character* |
 | `grep "ab[c-e]f" file `| *find with a wildcard of a subset of range of characters* |
-| `grep -i "IpAddress=" app.properties &#124; cut -f 2 -d "=" `| * after grep use cut to further parse the text* |
 
 
 Useful parameters:
-- `-n` = line number
-- `-v` = invert the match so do NOT show lines that match (typically grep
+- `-v` = invert the match so do NOT show lines that match (typically | grep -v 'myexclude')
+- `-x` = whole line match only
+
+`grep ubuntu /etc/passwd | cut -d: -f3`
+>  only print the user id by piping the match to cut which delimits by colon and outputs the 3rd column
+
 
 ### cut to only display a part of a path
 
+    :::bash
     #!/bin/bash
     # iterate through the list of subdirectories
     # cut out each subdirectory name (using forward slash delimiter)
@@ -38,13 +51,13 @@ Useful parameters:
       if [ -d $dir ];
       then
         echo $dir
-        NAME=`echo $dir | cut -f 6 -d "/"`
+        NAME=`echo $dir | cut -d "/" -f 6 `
         diff $dir/WEB-INF/app.properties /var/lib/tomcat6/TEMP/$NAME/WEB-INF/app.properties
       fi
-    
     done
     
 ### more info
 - <https://en.wikipedia.org/wiki/Grep>
-- <http://www.gnu.org/savannah-checkouts/gnu/grep/manual/grep.html>
+- <http://www.gnu.org/software/grep/manual/grep.html>
 - <http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html>
+- <http://linux.die.net/man/1/cut>
