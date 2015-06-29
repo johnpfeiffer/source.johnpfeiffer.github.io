@@ -124,6 +124,11 @@ brainstorm goals & feelings: "say what you're going to do and then do what you s
 - - Sustained in part by improvements in complimentary technologies like Memory, Storage, Cooling, etc.
 - - At a certain point in the future potentially only possible using parallel computing but with an increased coordination cost (including software that leverages parellization)
 
+#### Postel's Law
+Be conservative in what you do, be liberal in what you accept from others
+
+<https://en.m.wikipedia.org/wiki/Robustness_principle>
+
 #### Laws of Unix
 
 <http://en.wikipedia.org/wiki/Unix_philosophy#Eric_Raymond.E2.80.99s_17_Unix_Rules>
