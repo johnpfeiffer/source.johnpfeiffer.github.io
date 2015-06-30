@@ -462,18 +462,54 @@ look closely at error messages, i.e. make: not found and ensure that an early RU
 
 ### Private Docker Registry
 
+#### Docker API
+
+The Docker API (when using a browser) often uses Basic Authentication
+
+- <https://docs.docker.com/reference/api/docker_remote_api/>
+- <https://github.com/docker/distribution>
+- <http://docs.docker.com/reference/api/registry_api>
+
+`https://docker.example.com/_ping`
+> {}
+
+`https://docker.example.com/info`
+`https://docker.example.com/version`
+> note these commands may not be enabled or available in your private registry version 
+
+`https://docker.example.com/v1/repositories/library/ubuntu/tags`
+> {"13.04": "5e47ac691989afcd10285ea4e67b46bc0fdc98d90844e57a6d4221c1e3ab4388"}
+
+`https://docker.example.com/v1/repositories/micros/baseimage-ubuntu/tags`
+> {"latest": "5a14c1498ff4983793f6e5eddd16868dbad257195f0e85c66ece94d881ecb28f"}
+
+`https://docker.example.com/v1/repositories/micros/baseimage-ubuntu/images`
+> list of the images available: [{"id":"8254ff58b098b72425854555204171352a69f5427ba83dee4642ba45d301d0b1"}]
+
+`https://docker.example.com/v1/repositories/micros/baseimage-ubuntu/json`
+> inspect an image (what OS, kernel, etc.) {"arch": "amd64", "docker_go_version": "go1.3.3", "docker_version": "1.3.3", "kernel": "3.16.7-tinycore64", "last_update": 1426041024, "os": "linux"}
+
+`https://docker.example.com/v1/repositories/myuser/nginx/0348bf1e7cc54327b8c9ce8407c5b3eadade1ef1771d642d08ae16a6aad5bed5/json`
+> inspect a very specific image (by id)
+
+
 #### Searching a private docker registry
 
+`https://registry.hub.docker.com/v1/search?q=pfeiffer`
+> the public docker registry search query
+
 `docker search docker.example.com/myuser`
-> the cli command returns a listing
+> the cli command returns a listing of all of the images for a user
 
 If there is a proxy in front: `docker search user:password@docker.example.com/myuser`
 
-`curl -X GET https://user:password@docker.example.com/v1/search?q=ubuntu`
-> or use a browser https://docker.example.com/v1/search?q=ubuntu
-
 `curl -s -X GET https://user:password@docker.example.com/v1/search`
-> https://docker.example.com/v1/search?q=ubuntu
+> LIST ALL IMAGES: or use a browser https://docker.example.com/v1/search
 
-- <http://docs.docker.com/reference/api/registry_api>
+`curl -X GET https://user:password@docker.example.com/v1/search?q=ubuntu`
+> https://docker.example.com/v1/search?q=ubuntu
+> {"num_results": 4, "query": "ubuntu", "results": [{"description": null, "name": "example/ubuntu"}, {"description": null, "name": "library/ubuntu"}, {"description": null, "name": "micros/baseimage-ubuntu-ansible"}, {"description": null, "name": "micros/baseimage-ubuntu"}]}
+
+
+
 - <https://www.digitalocean.com/community/tutorials/how-to-set-up-a-private-docker-registry-on-ubuntu-14-04>
