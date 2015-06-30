@@ -462,5 +462,18 @@ look closely at error messages, i.e. make: not found and ensure that an early RU
 
 ### Private Docker Registry
 
+#### Searching a private docker registry
+
+`docker search docker.example.com/myuser`
+> the cli command returns a listing
+
+If there is a proxy in front: `docker search user:password@docker.example.com/myuser`
+
+`curl -X GET https://user:password@docker.example.com/v1/search?q=ubuntu`
+> or use a browser https://docker.example.com/v1/search?q=ubuntu
+
+`curl -s -X GET https://user:password@docker.example.com/v1/search`
+> https://docker.example.com/v1/search?q=ubuntu
+
 - <http://docs.docker.com/reference/api/registry_api>
 - <https://www.digitalocean.com/community/tutorials/how-to-set-up-a-private-docker-registry-on-ubuntu-14-04>
