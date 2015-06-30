@@ -431,6 +431,87 @@ HOST:
     64 bytes from 172.17.42.1: icmp_seq=0 ttl=64 time=0.158 ms
 
 - - -
+## Docker Compose
+Complex real systems have multiple dependencies and following the recommended Docker pattern of "do one thing per container" means needing a way to start/orchestrate a bunch of things at once.
+
+While there are some amazing open source projects (<http://kubernetes.io/> , <http://mesos.apache.org/documentation/latest/docker-containerizer/>) it is instructive to start with the simplest model provided directly from Docker, <https://docs.docker.com/compose/>
+
+`sudo pip install --upgrade docker-compose`
+`docker-compose --version`
+
+### app.py
+
+    :::python
+    from flask import Flask
+    from redis import Redis
+    import os
+    app = Flask(__name__)
+    redis = Redis(host='redis', port=6379)
+    
+    @app.route('/')
+    def hello():
+        redis.incr('hits')
+        return 'Hello World! I have been seen %s times.' % redis.get('hits')
+    
+    if __name__ == "__main__":
+        app.run(host="0.0.0.0", debug=True)
+    
+### requirements.txt
+    flask
+    redis
+    
+### Dockerfile
+    FROM python:2.7
+    ADD . /code
+    WORKDIR /code
+    RUN pip install -r requirements.txt
+    CMD python app.py
+
+### docker-compose.yml
+
+    web:
+      build: .
+      ports:
+       - "5000:5000"
+      volumes:
+       - .:/code
+      links:
+       - redis
+    redis:
+      image: redis
+   
+- dependencies like redis are "linked" for network access (ordering in the file is important)
+- "web" app (which comes from the current directory Dockerfile)
+- ports: exposes ports to the host (all of these are just like the docker run CLI parameters)
+- volumes: allows live editing of app.py
+- redis comes from the public docker registry image (not a Dockerfile nor a private registry) and is using the default tag of "latest"
+
+### docker-compose up    
+    
+`docker-compose up`
+> this will docker pull redis and build from the Dockerfile and then start them all in the correct order
+
+`docker-compose ps`
+> run this command in the directory with the docker-compose.yml to see the state of the system
+
+    :::text
+             Name                      Command             State           Ports          
+    -------------------------------------------------------------------------------------
+    composeexample_redis_1   /entrypoint.sh redis-server   Up      6379/tcp               
+    composeexample_web_1     /bin/sh -c python app.py      Up      0.0.0.0:5000->5000/tcp 
+
+
+`docker ps -a`
+
+`docker-compose stop`
+
+<http://localhost:5000/>
+> Hello World! I have been seen 2 times.
+
+
+<https://bitbucket.org/johnpfeiffer/docker/src>
+
+- - -
 ## Troubleshooting
 
 ### Building images with Dockerfile
