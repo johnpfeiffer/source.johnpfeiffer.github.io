@@ -132,9 +132,13 @@ Control-p then Control-q to detach the tty without exiting the shell
 `docker ps`
 
 `docker run --detach -p 127.0.0.1:5000:5000 training/webapp python app.py`
-> detached with port 5000 available and executing
+> detached with port 5000 available only to the host and executing the command python with parameter app.py
 
-#### Start a container
+- `docker run --rm -i -t --link myhipchat_mariadb_1 mariadb:5 /bin/bash -c "exec mysql --version"`
+- `docker run --rm -i -t --link myhipchat_mariadb_1:mysql mariadb:5 /bin/bash -c 'exec mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p'`
+> an Image can contain both the server and client code so run a "client container" to connect to a running server Container 
+
+#### Start a container (attaching to a container)
 
 After a container has already been created (which starts it so ironically this is actually a "restart")
 
