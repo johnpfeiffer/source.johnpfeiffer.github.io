@@ -44,6 +44,8 @@ Packer is from the same people who brought you Vagrant <https://www.vagrantup.co
 
 It is very straightforward to read and actually you can still leverage chef (unless you realize that a series of shell commands is all you wanted anyways...)
 
+This leads to the better path of "immutable servers" <http://martinfowler.com/bliki/ImmutableServer.html>
+
 `packer --version`
 
 
@@ -110,13 +112,15 @@ Once it's done it will terminate the EC2 instance for you (it only runs as long 
           "/sbin/ip a",
           "curl -s http://checkip.amazonaws.com",
           "ls -ahl /tmp",
-          "sudo dpkg -i --force-confnew /tmp/*.deb"
+          "sudo dpkg -i --force-confnew /tmp/*.deb",
+          "machine_state_validation.sh"
         ]
       }]
     }
     
 > The access credentials are instead be environment variables: AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
 
+> Post instantiation validation is a really handy safeguard as statistically something always goes wrong somewhere and it's far cheaper to find out with a quick test versus a system that loses data.
 
 ### Why not docker containers?
 
