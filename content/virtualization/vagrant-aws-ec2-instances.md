@@ -257,7 +257,46 @@ Allows for automated installation of software bundled into the `vagrant up` comm
 > One of the use cases for an aws.user_data #cloud-boothook script has been to add to /etc/sudoers.d/ (thus avoiding later sudo issues with rsync)
 
 
+### VirtualBox
 
+A really easy A way to start an Ubuntu 14.04 box locally with VirtualBox, the shell provisioner is less elegant than chef/puppet/ansible but gets the job done (installs Docker and Docker Compose)
+
+<https://www.virtualbox.org/wiki/Linux_Downloads>
+
+#### Vagrantfile
+
+    VERSIONS = {
+      'trusty' => {
+        'box' => "canonical-ubuntu-14.04",
+        'box_url' => "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box",
+        'ami' => "ami-018c9568",
+      },
+    }
+    
+    
+    Vagrant.configure("2") do |config|
+        config.ssh.forward_agent = true
+    
+        version = VERSIONS[("trusty")]
+    
+        config.vm.provider "virtualbox" do |v, override|
+          v.customize ["modifyvm", :id, "--memory", ENV['hipchat_memory'] || 4096]
+          v.customize ["modifyvm", :id, "--cpus", ENV['hipchat_cpus'] || 2]
+    
+          override.vm.network :private_network, ip: "192.168.33.10"
+          override.vm.box = version['box']
+          override.vm.box_url = version['box_url']
+        end
+        
+        config.vm.provision :shell, :inline => "sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9"
+        config.vm.provision :shell, :inline => "sudo sh -c 'echo deb https://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list'"
+        config.vm.provision :shell, :inline => "sudo apt-get update"
+        config.vm.provision :shell, :inline => "sudo apt-get install -y lxc-docker python-pip"
+        config.vm.provision :shell, :inline => "sudo pip install --upgrade pip"
+        config.vm.provision :shell, :inline => "sudo pip install --upgrade docker-compose"
+        
+    end
+    
 
 ### more info
 
