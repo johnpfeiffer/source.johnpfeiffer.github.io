@@ -280,8 +280,8 @@ A really easy A way to start an Ubuntu 14.04 box locally with VirtualBox, the sh
         version = VERSIONS[("trusty")]
     
         config.vm.provider "virtualbox" do |v, override|
-          v.customize ["modifyvm", :id, "--memory", ENV['hipchat_memory'] || 4096]
-          v.customize ["modifyvm", :id, "--cpus", ENV['hipchat_cpus'] || 2]
+          v.customize ["modifyvm", :id, "--memory", ENV['VM_MEMORY'] || 4096]
+          v.customize ["modifyvm", :id, "--cpus", ENV['VM_CPUS'] || 2]
     
           override.vm.network :private_network, ip: "192.168.33.10"
           override.vm.box = version['box']
