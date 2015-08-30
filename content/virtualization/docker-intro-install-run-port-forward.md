@@ -285,6 +285,9 @@ Since each run command creates a new layer it is best practice to consolidate co
 |`docker port redis`|6379/tcp -> 0.0.0.0:49153|
 |`docker port redis 6379`|0.0.0.0:49153|
 
+`docker run --detach -P --name johnssh trustyssh`
+> publish all EXPOSE'd ports to random ports on the host
+
 
 ## Logs from the containers
 
@@ -410,10 +413,10 @@ Volumes are where Docker Containers can access storage (either from the Host or 
 <http://docs.docker.com/reference/commandline/cli/#adding-entries-to-a-container-hosts-file>
 
 HOST: 
-1. ip addr show
-1. ip addr show | grep docker0
-1. ip addr show | grep docker0 | grep global | awk '{print $2}' | cut -d / -f1
-1. HOSTIP=`ip addr show | grep docker0 | grep global | awk '{print $2}' | cut -d / -f1`
+	ip addr show
+	ip addr show | grep docker0
+	ip addr show | grep docker0 | grep global | awk '{print $2}' | cut -d / -f1
+	HOSTIP=$(ip addr show | grep docker0 | grep global | awk '{print $2}' | cut -d / -f1)
 
 `sudo docker run -i -t --rm --add-host=docker:${HOSTIP} python:2 /bin/bash`
 
