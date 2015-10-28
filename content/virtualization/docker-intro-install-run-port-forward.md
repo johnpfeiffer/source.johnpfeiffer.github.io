@@ -17,9 +17,20 @@ Docker encourages design of modular, deterministic and defined, single purpose c
 
 - - -
 ## Install Docker
-**[Docker on Ubuntu 14.04][dockerlink]**
-[dockerlink]: http://docs.docker.com/installation/ubuntulinux/#ubuntu-trusty-1404-lts-64-bit
 
+<https://docs.docker.com/installation/ubuntulinux/>
+
+1. `apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D`
+1. `sudo sh -c "echo 'deb https://apt.dockerproject.org/repo ubuntu-trusty main' > /etc/apt/sources.list.d/docker.list"`
+1. `sudo apt-get update`
+1. `apt-get install docker-engine`
+
+
+> OPTIONAL STEP IF YOU HAD AN OLD DOCKER INSTALLATION
+`apt-get purge lxc-docker*`
+
+*Old Docker Repo*
+[dockerlink]: http://docs.docker.com/installation/ubuntulinux/#ubuntu-trusty-1404-lts-64-bit
 1. `sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9`
 1. `sudo sh -c "echo deb https://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list"`
 1. `sudo apt-get update`
@@ -131,8 +142,11 @@ Control-p then Control-q to detach the tty without exiting the shell
 
 `docker ps`
 
-`docker run --detach -p 127.0.0.1:5000:5000 training/webapp python app.py`
+`docker run --detach --name myapp -p 127.0.0.1:5000:5000 training/webapp python app.py`
 > detached with port 5000 available only to the host and executing the command python with parameter app.py
+
+`docker exec myapp ls -ahl`
+> runs the ls command inside the container named "myapp"
 
 - `docker run --rm -i -t --link myhipchat_mariadb_1 mariadb:5 /bin/bash -c "exec mysql --version"`
 - `docker run --rm -i -t --link myhipchat_mariadb_1:mysql mariadb:5 /bin/bash -c 'exec mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p'`
