@@ -51,6 +51,14 @@ Docker encourages design of modular, deterministic and defined, single purpose c
 `sudo docker pull redis:latest`
 > choose the latest or a specific version to avoid downloading a lot of old crap
 
+Finding what versions of images (tags) you can pull requires using either the UI or the API:
+<https://hub.docker.com/r/library/redis/tags/>
+
+- `docker pull redis:3`
+- `docker pull redis:2.8`
+- `docker pull redis:2.6`
+
+> Many of the tags are synonyms/symlinks, so latest is the same as 3 is the same as 3.0
 
 ### Remove a docker image
 
