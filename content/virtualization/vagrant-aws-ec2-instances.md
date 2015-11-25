@@ -9,9 +9,30 @@ Vagrant is an infrastructure tool that simplifies deployment, such as virtual ma
 
 Download and install vagrant: **<https://www.vagrantup.com/downloads>**
 
-`wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.3_x86_64.deb ; dpkg -i vagrant_1.6.3_x86_64.deb`
+    wget https://releases.hashicorp.com/vagrant/1.7.4/vagrant_1.7.4_x86_64.deb
+    dpkg -i vagrant_1.7.4_x86_64.deb
+    vagrant --version
+    vagrant plugin install vagrant-aws
+
+### Vagrant and VirtualBox with Ubuntu Trusty 14.04
+
+The simple local VirtualBox method was:
+
+    virtualbox --help
+    vagrant init ubuntu/trusty64; vagrant up --provider virtualbox`
+        ==> default: Box 'ubuntu/trusty64' could not be found. Attempting to find and install...
+        default: Box Provider: virtualbox
+        default: Box Version: >= 0
+        ==> default: Loading metadata for box 'ubuntu/trusty64'
+        default: URL: https://atlas.hashicorp.com/ubuntu/trusty64
+
+
+> this will do all the extra work for you of finding and downloading the "box" and starting it in VirtualBox
+
+### Vagrant and AWS EC2 with Ubuntu Precise 12.04
 
 `vagrant box add dummy https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box`
+> <https://atlas.hashicorp.com/boxes/search>
 
 `vagrant box list`
 
@@ -36,14 +57,12 @@ Download and install vagrant: **<https://www.vagrantup.com/downloads>**
         end
     end
 
-> ubuntu/images/ubuntu-precise-12.04-amd64-server-20130204 - ami-7747d01e , no ebs storage - just instance storage
+> ubuntu/images/ubuntu-precise-12.04-amd64-server-20130204 - ami-7747d01e , no ebs storage - just instance storage , <https://cloud-images.ubuntu.com/releases/> and <https://atlas.hashicorp.com/boxes/search>
 
 > vagrant will by default upload all folders and files in your "project" folder where the Vagrantfile is located
 
 > vagrant will start with the current working directory and look for a Vagrantfile, then go up one directory until it finds one: <https://docs.vagrantup.com/v2/vagrantfile/>
 
-
-`vagrant plugin install vagrant-aws`
 
 `vagrant up --provider=aws --debug`
 
@@ -71,7 +90,8 @@ Download and install vagrant: **<https://www.vagrantup.com/downloads>**
 
 `vagrant ssh`
 
-> alternative interactive ssh session: Use the AWS EC2 WebUI or <http://aws.amazon.com/cli> to discover the IP address
+`vagrant ssh-config`
+> alternative interactive ssh session: Use the HostName or AWS EC2 WebUI or <http://aws.amazon.com/cli> to discover the remote machine IP address
 
 > ssh -i YOURKEYPAIRHERE.pem ubuntu@1.2.3.4 ls -ahl /vagrant
 
