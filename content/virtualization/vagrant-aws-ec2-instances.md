@@ -19,7 +19,8 @@ Download and install vagrant: **<https://www.vagrantup.com/downloads>**
 The simple local VirtualBox method was:
 
     virtualbox --help
-    vagrant init ubuntu/trusty64; vagrant up --provider virtualbox`
+    vagrant init ubuntu/trusty64; vagrant up --provider virtualbox
+    
         ==> default: Box 'ubuntu/trusty64' could not be found. Attempting to find and install...
         default: Box Provider: virtualbox
         default: Box Version: >= 0
@@ -46,7 +47,7 @@ The simple local VirtualBox method was:
             aws.keypair_name = "YOURKEYPAIRNAME"
             aws.ami = "ami-7747d01e"
             aws.instance_ready_timeout = 300
-            aws.instance_type = "m3.large"
+            aws.instance_type = "m4.large"
             aws.tags = {
                 "Name" => "MyCloudInstance",
             }
@@ -65,6 +66,7 @@ The simple local VirtualBox method was:
 
 
 `vagrant up --provider=aws --debug`
+> --debug is interactive mode and requires pressing enter between every step
 
     Bringing machine 'default' up with 'aws' provider...
     ==> default: HandleBoxUrl middleware is deprecated. Use HandleBox instead.
@@ -74,7 +76,7 @@ The simple local VirtualBox method was:
     ==> default: high-level network configurations (`config.vm.network`). They
     ==> default: will be silently ignored.
     ==> default: Launching an instance with the following settings...
-    ==> default:  -- Type: m3.large
+    ==> default:  -- Type: m4.large
     ==> default:  -- AMI: ami-7747d01e
     ==> default:  -- Region: us-east-1
     ==> default:  -- Keypair: YOURKEYPAIRHERE
@@ -89,6 +91,7 @@ The simple local VirtualBox method was:
     ==> default: Rsyncing folder: /home/ubuntu/myproject/ => /vagrant
 
 `vagrant ssh`
+> the default-easiest-interface way of getting SSH access into the machine
 
 `vagrant ssh-config`
 > alternative interactive ssh session: Use the HostName or AWS EC2 WebUI or <http://aws.amazon.com/cli> to discover the remote machine IP address
@@ -157,7 +160,7 @@ Allows for automated installation of software bundled into the `vagrant up` comm
             aws.keypair_name = "YOURKEYPAIRNAME"
             aws.ami = "ami-7747d01e"
             aws.instance_ready_timeout = 300
-            aws.instance_type = "m3.large"
+            aws.instance_type = "m4.large"
             aws.tags = {
                 "Name" => "MyCloudInstance",
             }
@@ -210,7 +213,7 @@ Allows for automated installation of software bundled into the `vagrant up` comm
             aws.keypair_name = "YOURKEYPAIRNAME"
             aws.ami = "ami-7747d01e"
             aws.instance_ready_timeout = 300
-            aws.instance_type = "m3.large"
+            aws.instance_type = "m4.large"
             aws.tags = {
                 "Name" => "MyCloudInstance",
             }
@@ -237,7 +240,7 @@ Allows for automated installation of software bundled into the `vagrant up` comm
 
     Bringing machine 'default' up with 'aws' provider...
     ==> default: Launching an instance with the following settings...
-    INFO interface: info:  -- Type: m3.large
+    INFO interface: info:  -- Type: m4.large
     INFO interface: info: ==> default:  -- User Data: #cloud-boothook
     INFO interface: info: ==> default:  -- Assigning a public IP address in a VPC: true
     ==> default: Waiting for instance to become "ready"...
