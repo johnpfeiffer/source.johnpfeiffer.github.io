@@ -14,7 +14,7 @@ Download and install vagrant: **<https://www.vagrantup.com/downloads>**
     vagrant --version
     vagrant plugin install vagrant-aws
 
-### Vagrant and VirtualBox with Ubuntu Trusty 14.04
+### Quickstart Vagrant and VirtualBox with Ubuntu Trusty 14.04
 
 The simple local VirtualBox method was:
 
@@ -26,7 +26,6 @@ The simple local VirtualBox method was:
         default: Box Version: >= 0
         ==> default: Loading metadata for box 'ubuntu/trusty64'
         default: URL: https://atlas.hashicorp.com/ubuntu/trusty64
-
 
 > this will do all the extra work for you of finding and downloading the "box" and starting it in VirtualBox
 
@@ -93,9 +92,11 @@ The simple local VirtualBox method was:
 `vagrant ssh`
 > the default-easiest-interface way of getting SSH access into the machine
 
-`vagrant ssh-config`
+    vagrant ssh-config
+    vagrant ssh-config > vagrant-ssh
+    ssh -F vagrant-ssh default
 > alternative interactive ssh session: Use the HostName or AWS EC2 WebUI or <http://aws.amazon.com/cli> to discover the remote machine IP address
-
+> using ssh with the vagrant-ssh file output seems the simplest
 > ssh -i YOURKEYPAIRHERE.pem ubuntu@1.2.3.4 ls -ahl /vagrant
 
 `exit`
