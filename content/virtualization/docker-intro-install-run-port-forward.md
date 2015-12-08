@@ -25,23 +25,21 @@ Docker encourages design of modular, deterministic and defined, single purpose c
 1. `sudo apt-get update`
 1. `apt-get install docker-engine`
 
-
 > OPTIONAL STEP IF YOU HAD AN OLD DOCKER INSTALLATION
 `apt-get purge lxc-docker*`
 
-*Old Docker Repo*
-[dockerlink]: http://docs.docker.com/installation/ubuntulinux/#ubuntu-trusty-1404-lts-64-bit
-1. `sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9`
-1. `sudo sh -c "echo deb https://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list"`
-1. `sudo apt-get update`
-1. `sudo apt-get install lxc-docker`
-
+### Mac or Windows
+<https://www.docker.com/docker-toolbox>
 
 - - -
 ## Quick Start Summary
 
-`docker run --rm -i -t -e MYVAR=123 busybox env`
-> "run" will pull the image from Docker Hub by default, e injects an environment variable
+`docker run -it --rm -e MYVAR=123 busybox env`
+> "run" will pull the image from Docker Hub by default, e injects an environment variable, overrides the Docker Image CMD with "env"
+
+`docker run -it --rm --entrypoint=/bin/bash python`
+> the entrypoint parameter overrides the Docker Image (in case they do not provide a helpfully overridable CMD)
+<http://docs.docker.com/engine/reference/builder/#entrypoint>
 
 - - -
 ## Download a docker image
