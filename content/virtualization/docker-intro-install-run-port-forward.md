@@ -570,6 +570,17 @@ look closely at error messages, i.e. make: not found and ensure that an early RU
 
 ### Private Docker Registry
 
+`curl -i https://username:password@docker.example.com/v2/`
+> attempt to login to a private registry
+
+** Using the docker client to login to a private registry**
+`docker login docker.example.com:443`
+> Username: user@example.com
+> WARNING: login credentials saved in /home/USER/.docker/config.json
+> Login Succeeded
+
+<https://docs.docker.com/registry/deploying/>
+
 #### Docker API
 
 The Docker API (when using a browser) often uses Basic Authentication
