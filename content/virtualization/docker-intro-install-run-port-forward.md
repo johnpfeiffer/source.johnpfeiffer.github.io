@@ -158,11 +158,28 @@ Control-p then Control-q to detach the tty without exiting the shell
 - `docker run --rm -i -t --link myhipchat_mariadb_1:mysql mariadb:5 /bin/bash -c 'exec mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p'`
 > an Image can contain both the server and client code so run a "client container" to connect to a running server Container 
 
-#### Start a container (attaching to a container)
+#### Start (resume) a container
 
 After a container has already been created (which starts it so ironically this is actually a "restart")
 
 `docker start --interactive --attach container_id_or_name`
+
+#### Attaching to a running container
+
+    docker ps -a 
+    CONTAINER ID ... STATUS        NAMES
+    9e0ebf4421dd ... Up 6 seconds  myexample
+    
+    docker attach 9e0ebf4421dd
+    docker attach myexample
+
+> since the above will expect the container to have /bin/bash it will reuse the instance of shell
+
+    sudo docker exec -i -t 9e0ebf4421dd /bin/bash
+    # ps aux
+    # exit
+
+> instead a new /bin/bash is executed inside creating a second shell - use the exit command to not leave it around
 
 ### Stopping a container
 
