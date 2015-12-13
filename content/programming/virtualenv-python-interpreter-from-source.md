@@ -100,13 +100,22 @@ And in my case I needed to reinstall loads of python3 stuff: `apt-get install xu
 
 
 
-### Using virtualenv with a specific python binary
+### Using virtualenv with a specific python version or binary
 
-To ensure your application does not suffer when the OS has a python upgrade (or your libraries need a newer version of python than provided), you can use the python binary you created from source in your virtualenv.
+    virtualenv -p python3.5 venv
+    source venv/bin/activate
+    python --version
+    which pip
+> Python 3.5.0+
+> the shortest example to use the OS python3.5 binary when creating the venv directory with the virtual environment
 
-    virtualenv --python=/home/ubuntu/python/bin/python2.7 myenv
+    virtualenv --python=/home/ubuntu/python/bin/python2.7 myvenv
     myenv/bin/python
-    > Python 2.7.8
+> Python 2.7.8
+> the advanced example uses a python binary that was created from source to ensure the application does not suffer when the OS has a python upgrade (or your libraries need a newer version of python than provided)
+
+`virtualenv --version`
+> just in case your version of virtualenv has a bug and needs to be upgraded first
 
 
 ### activate and deactivate to update your environment temporarily
