@@ -152,23 +152,21 @@ docker = virtual machine/container platform based on a unionfs
 `sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys D2C19886`
 > trust the spotify repository
 
-
-# spotify is behind the times =(
-# libnss3-1d : Depends: libnss3 (= 2:3.17.4-0ubuntu1) but 2:3.19.2-0ubuntu15.04.1 is to be installed
+> libnss3-1d : Depends: libnss3 (= 2:3.17.4-0ubuntu1) but 2:3.19.2-0ubuntu15.04.1 is to be installed
+> spotify is behind the times or only wants to support 14.04 and LTS releases =(
 
 <https://launchpad.net/ubuntu/vivid/amd64/libnss3/2:3.17.4-0ubuntu1>
+<https://launchpad.net/ubuntu/wily/amd64/libnss3/2:3.19.2.1-0ubuntu0.15.10.1>
 
-`dpkg -i libnss3_3.17.4-0ubuntu1_amd64.deb`
+    dpkg -i libnss3_3.17.4-0ubuntu1_amd64.deb
+    apt-get install spotify-client
+    apt-get -f install
 
-`apt-get install spotify-client`
+`spotify: error while loading shared libraries: libgcrypt.so.11: cannot open shared object file: No such file or directory`
+> what fun, the internet explains 15.04 and 15.10 use the new libgcrypt20 so...
 
-`apt-get -f install`
-
-
-        deb http://repository.spotify.com stable non-free
-	sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59
-
-> these were the old ones ^^
+`wget https://launchpad.net/ubuntu/+archive/primary/+files/libgcrypt11_1.5.3-2ubuntu4.2_amd64.deb`
+`apt-get install --reinstall spotify-client`
 
 #### pithos is an open source pandora client
 
