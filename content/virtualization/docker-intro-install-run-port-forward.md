@@ -344,6 +344,37 @@ Volumes are where Docker Containers can access storage (either from the Host or 
 `docker run --interactive --tty --name mydata --volume /tmp/mydata:/opt/mydata trustyssh /bin/bash`
 > create an interactive container named "mydata" that maps /tmp/mydata from the host onto /opt/mydata (warning: overriding any existing!)
 
+
+- - -
+## Managing or limiting the resources available to a Container
+<https://docs.docker.com/engine/reference/run/#runtime-constraints-on-resources>
+
+docker run -i -t --rm --cpuset-cpu 0 --memory 512m ubuntu:14.04 /bin/bash
+> the usual ubuntu trusty bash prompt but anything we run will be
+> pinned to cpu 0 (i.e. 25% of a 4 core system) and have
+> at most 512 MB of RAM and 512 MB of swap available
+
+- - -
+## Using Docker for a GUI application
+
+Mostly outside of the vision of containerization (neither isolation nor performance exactly) is using Docker to run GUI applications without installing them on the Host.
+
+Jessie Frazelle has done some excellent work pointing out how sharing the X11 socket from the host means lots of apps can run "without being installed" <https://github.com/jfrazelle/dockerfiles>
+
+One tip she did not include was the part about XManager security, run the following if you run into an error
+
+`xhost local:root`
+- <https://www.netsarang.com/knowledgebase/xmanager/3898/xhost_and_how_to_use_it>
+- <http://www.x.org/archive/X11R6.8.0/doc/xhost.1.html>
+
+`xhost local:root; docker run --rm -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY --device /dev/snd jess/chromium`
+- modify the xhost security to allow access to x windows
+- ephemeral so do not save anything
+- share the X11 unix socket
+- bind to the current display (i.e. :0.0)
+- allow sound from the Docker container
+
+
 - - - 
 ## Saving a docker container as a new image
 
