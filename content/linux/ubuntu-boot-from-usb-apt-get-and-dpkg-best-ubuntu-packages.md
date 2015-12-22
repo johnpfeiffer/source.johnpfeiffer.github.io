@@ -270,7 +270,6 @@ tmpfs ram (memory) virtual disk will just use memory (which I guess is overly ab
     tmpfs    /var/log/dist-upgrade tmpfs    defaults,noatime    0  0
     tmpfs    /var/log/installer tmpfs    defaults,noatime    0  0
     tmpfs    /var/log/lightdm  tmpfs    defaults,noatime    0  0
-    tmpfs    /var/log/udev tmpfs    defaults,noatime    0  0
     tmpfs    /var/log/unattended-upgrades tmpfs    defaults,noatime    0  0
     
 > the tmpfs disks created in my fstab were discovered through trial and error and will differ based on what applications are actually running (Xubuntu!)
