@@ -15,7 +15,7 @@ What is one cost effective (free!) and efficient solution to running a static si
 - Bitbucket also has a free static site capability (as long as the DNS is USERNAME.bitbucket.org), so no server/hosting required
 - Bitbucket have free private repositories
 - The Bitbucket static site repository can be private (only the html exposed will be visible to anonymous users)
-- Shippable have a free plan with 1 container that will do your builds (fine by my, Docker is fast!)
+- Shippable have a free plan with 1 container that will do your builds (fine by me, Docker is fast!)
 - Pelican converts markdown into .html and you can still use javascript for fancy things <http://docs.getpelican.com/>
 
 The basic process is to be triggered by a git push to the private repository of new/updated source markdown, use pelican to process it into .html, and then publish (git push) the new/updated .html to the static site repository.
@@ -35,7 +35,7 @@ Another alternative is to include an IF statement in your shippable code to not 
 
 Create a new private repository (for your markdown), consider prefixing the name with source or something (good names makes for good maintenance)
 
-Make sure you have cloned the pelican project and setup a basic static site: </how-to-set-up-a-pelican-static-blog-site/>
+Make sure you have cloned the pelican project and setup a basic static site: <http://blog.john-pfeiffer.com/how-to-set-up-a-pelican-static-blog-site/>
 
 Inside your .gitignore you will probably want to exclude .pyc and ./output and any other pelican created artifacts.
 
@@ -67,11 +67,11 @@ Create another private repository for your public html.  It MUST be named USERNA
 
 ### Get OAuth Access
 
-Generate a Consumer OAuth2 Token with https://confluence.atlassian.com/bitbucket/oauth-on-bitbucket-cloud-238027431.html#OAuthonBitbucketCloud-Createaconsumer
+Generate a Consumer OAuth2 Token with <https://confluence.atlassian.com/bitbucket/oauth-on-bitbucket-cloud-238027431.html#OAuthonBitbucketCloud-Createaconsumer>
 
-Use curl to verify your token (this is how Shippable will get a 1 hour expiring access token to work on the target output repository.
+Use curl to verify your token (this is how Shippable will get a 1 hour expiring access token to work on the target output repository)
 
-curl https://bitbucket.org/site/oauth2/access_token -d grant_type=client_credentials -u yourkeyhere:yoursecrethere
+    curl https://bitbucket.org/site/oauth2/access_token -d grant_type=client_credentials -u yourkeyhere:yoursecrethere
 
 <http://stackoverflow.com/questions/24965307/how-to-manipulate-bitbucket-repository-with-token>
 
@@ -79,7 +79,7 @@ curl https://bitbucket.org/site/oauth2/access_token -d grant_type=client_credent
 
 Enable the integration with Bitbucket: <http://docs.shippable.com/#step-0-prerequisite>
 
-> Right from the beginning Shippable tries to ask which source repository provider (either GitHub or Bitbucket) you will be using.
+*Right from the beginning Shippable tries to ask which source repository provider (either GitHub or Bitbucket) you will be using.*
 
 Use Shippable's OAuth implementation (Account Integration) to pick which Bitbucket repository
 
@@ -134,10 +134,10 @@ Update the source repository top level shippable.yaml file:
     after_script:
         - ls -ahl
     
-> Adding the bitbucket oauth2 consumer key and secret (separated by a colon) as an encrypted environment variable
-> using curl to generate a temporary access_token and extracting it into a local environment variable
-> cloning with the access)token and removing the previous contents and replacing them with the newly generated output
-> leveraging the CI variables to indicate on the output html repository what markdown source commits triggered this build
+> - Adding the bitbucket oauth2 consumer key and secret (separated by a colon) as an encrypted environment variable
+> - using curl to generate a temporary access_token and extracting it into a local environment variable
+> - cloning with the access)token and removing the previous contents and replacing them with the newly generated output
+> - leveraging the CI variables to indicate on the output html repository what markdown source commits triggered this build
 
 ## Reviewing the output
 
@@ -155,4 +155,5 @@ Possible improvements:
 ## Misc
 
 One thing that is interesting about this is that using OAuth tokens through a service is merely wrapping all of the manual steps I have in a previous blog post into a nice SaaS wrapper =)
-</publish-a-pelican-blog-using-a-bitbucket-post-webhook/>
+<http://blog.john-pfeiffer.com/publish-a-pelican-blog-using-a-bitbucket-post-webhook/>
+
