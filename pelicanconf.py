@@ -59,4 +59,4 @@ PROJECTS = [{
     'url': 'https://bitbucket.org/johnpfeiffer',
     'description': ''}
 ]
-RECENT_ARTICLES_COUNT=15
+RECENT_ARTICLES_COUNT=20
