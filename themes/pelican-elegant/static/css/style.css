@@ -203,7 +203,7 @@ article p a:hover, article ol a:hover, article div.article-content ul:not(.artic
 }
 
 .page_header h1 {
-    color:darkred;
+    color:navy;
     padding: 5px 5px 15px 5px;
     margin: 20px 0px 20px 0px;
     border-bottom: 1px solid rgb(143, 134, 134);
@@ -216,7 +216,7 @@ article p a:hover, article ol a:hover, article div.article-content ul:not(.artic
 }
 
 .page_header h1 a {
-    color:darkred;
+    color:navy;
 }
 
 .page_header h1 a:hover {
