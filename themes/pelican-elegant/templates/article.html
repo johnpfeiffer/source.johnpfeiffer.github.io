@@ -4,6 +4,7 @@
 {{ article.title }} {%if article.subtitle %} - {{ article.subtitle }} {% endif %} · {{ super() }}
 {% endblock title %}
 
+
 {% block head_description %}
 {% if article.summary %}
 {{ article.summary|striptags }}
@@ -91,6 +92,7 @@
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#{{ category|replace(' ', '-')|e }}-ref">{{ article.category }}</a> 
             {% endif %}
+            <h4>~{{ article.stats['wc'] }} words</h4>
             {% if article.tags %}
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article"> 

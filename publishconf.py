@@ -43,7 +43,7 @@ SITEMAP = {
 
 THEME = 'themes/pelican-elegant'
 PLUGIN_PATHS = ['plugins']
-PLUGINS = ['sitemap', 'extract_toc', 'tipue_search']
+PLUGINS = ['sitemap', 'extract_toc', 'tipue_search', 'post_stats']
 MD_EXTENSIONS = ['codehilite(css_class=highlight)', 'extra', 'headerid', 'toc']
 DIRECT_TEMPLATES = (('index', 'tags', 'categories','archives', 'search', '404'))
 STATIC_PATHS = ['theme/images', 'themes/images', 'images']

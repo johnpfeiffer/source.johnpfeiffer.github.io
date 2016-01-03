@@ -89,6 +89,7 @@ All articles of the {{ SITENAME|striptags }} blog.
 <div id="article-list">
     <button class="sort" data-sort="date">date</button>
     <button class="sort" data-sort="title">title</button>
+    <button class="sort" data-sort="wordcount">word count</button>
     <button class="sort" data-sort="category">category</button>
     <input class="search" placeholder="Find by filter" style="margin-top: 10px; height: 16px;"/>
     &nbsp; from {{ dates| length }} articles
@@ -102,6 +103,7 @@ All articles of the {{ SITENAME|striptags }} blog.
             </span>
             <a href="{{ SITEURL }}/{{ article.url }}"><span class="title">{{ article.title }} {%if article.subtitle %}
                 <small> {{ article.subtitle }} </small> {% endif %}</span> </a>
+            <em><span class="wordcount">({{ article.stats['wc'] }} words)</span></em>
             <em><span class="category">{{ article.category }}</span></em>
         </li>
         {% endfor %}
@@ -127,7 +129,7 @@ All articles of the {{ SITENAME|striptags }} blog.
 
 <script type="text/javascript">
     var options = {
-        valueNames: [ 'date', 'title', 'category' ],
+        valueNames: [ 'date', 'title', 'wordcount', 'category'],
         page: 1000
     };
     var hackerList = new List('article-list', options);
