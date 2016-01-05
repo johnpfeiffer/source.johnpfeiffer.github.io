@@ -128,6 +128,8 @@ Since apt is a wonderful wrapper/manager of dpkg when you're in doubt most likel
 - python-setuptools = Sometimes required to install pip  <http://pythonhosted.org/setuptools>
 - icedtea = open java (plugin = browser java)
 
+sudo apt-get install openconnect network-manager-openconnect network-manager-openconnect-gnome
+
 - openvpn = opensource vpn client <https://openvpn.net>
 - openconnect = opensource compatible with cisco anyconnect vpn <https://en.wikipedia.org/wiki/OpenConnect>
 
@@ -195,10 +197,13 @@ Since apt is a wonderful wrapper/manager of dpkg when you're in doubt most likel
     apt-get -f install
 
 `spotify: error while loading shared libraries: libgcrypt.so.11: cannot open shared object file: No such file or directory`
-> what fun, the internet explains 15.04 and 15.10 use the new libgcrypt20 so...
+> what fun, the internet explains 15.04 (vivid) and 15.10 (wily) use the new libgcrypt20 so...
 
-`wget https://launchpad.net/ubuntu/+archive/primary/+files/libgcrypt11_1.5.3-2ubuntu4.2_amd64.deb`
-`apt-get install --reinstall spotify-client`
+
+    wget https://launchpad.net/ubuntu/+archive/primary/+files/libgcrypt11_1.5.3-2ubuntu4.2_amd64.deb
+    dpkg -i libgcrypt*.deb
+    apt-get install --reinstall spotify-client
+
 
 #### pithos is an open source pandora client
 
