@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 AUTHOR = u'john pfeiffer'
 SITENAME = u'john pfeiffer'
 # commented out for development
-# SITEURL = 'http://blog.john-pfeiffer.com'
+# SITEURL = 'https://blog.john-pfeiffer.com'
 OUTPUT_PATH = 'output/'
 DEFAULT_DATE_FORMAT = '%Y-%m-%d'
 TIMEZONE="America/Los_Angeles"
