@@ -34,4 +34,4 @@ Title: John Likes
 - <http://thisweekinstartups.com/thisweekin-startups/advice-biggest-mistakes-founders-startups-jerry-colonna>
 - <http://thisweekinstartups.com/thisweekin-startups/steve-jurvetson-dfj-tesla-spacex>
 
-Follow with an atom feed link: <http://blog.john-pfeiffer.com/feeds/john-pfeiffer.atom.xml>
+Follow with an atom feed link: <https://blog.john-pfeiffer.com/feeds/john-pfeiffer.atom.xml>

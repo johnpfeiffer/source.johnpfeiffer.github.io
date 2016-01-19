@@ -35,7 +35,7 @@ Another alternative is to include an IF statement in your shippable code to not 
 
 Create a new private repository (for your markdown), consider prefixing the name with source or something (good names makes for good maintenance)
 
-Make sure you have cloned the pelican project and setup a basic static site: <http://blog.john-pfeiffer.com/how-to-set-up-a-pelican-static-blog-site/>
+Make sure you have cloned the pelican project and setup a basic static site: <https://blog.john-pfeiffer.com/how-to-set-up-a-pelican-static-blog-site/>
 
 Inside your .gitignore you will probably want to exclude .pyc and ./output and any other pelican created artifacts.
 
@@ -155,5 +155,5 @@ Possible improvements:
 ## Misc
 
 One thing that is interesting about this is that using OAuth tokens through a service is merely wrapping all of the manual steps I have in a previous blog post into a nice SaaS wrapper =)
-<http://blog.john-pfeiffer.com/publish-a-pelican-blog-using-a-bitbucket-post-webhook/>
+<https://blog.john-pfeiffer.com/publish-a-pelican-blog-using-a-bitbucket-post-webhook/>
 

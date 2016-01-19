@@ -182,7 +182,7 @@ client -> forward proxy (nginx) -> all other sites
 
 `docker run -it -p 8080:8080 --name mynginx -v /opt/mydata/nginx.conf:/etc/nginx/nginx.conf:ro nginx`
 
-> configure your browser to use 127.0.0.1:8080 as it's proxy and watch the log statements fly by when you test http://blog.john-pfeiffer.com
+> configure your browser to use 127.0.0.1:8080 as it's proxy and watch the log statements fly by when you test http://example.com
 
 > NOTE: this does not support HTTPS <http://forum.nginx.org/read.php?2,15124,15256#msg-15256>
 

@@ -40,7 +40,7 @@ So is there a simpler way to just reliably, reproducibly, build a box?
 
 ### Packer to the rescue
 
-Packer is from the same people who brought you Vagrant <https://www.vagrantup.com/> , that really easy way to set up a virtual machine... http://blog.john-pfeiffer.com/using-vagrant-to-deploy-instances-on-aws
+Packer is from the same people who brought you Vagrant <https://www.vagrantup.com/> , that really easy way to set up a virtual machine... <https://blog.john-pfeiffer.com/using-vagrant-to-deploy-instances-on-aws>
 
 It is very straightforward to read and actually you can still leverage chef (unless you realize that a series of shell commands is all you wanted anyways...)
 
