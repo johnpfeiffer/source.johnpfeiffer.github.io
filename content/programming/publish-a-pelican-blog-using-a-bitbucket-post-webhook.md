@@ -92,5 +92,5 @@ Webhooks are an incredibly useful way to tie together disparate network parts, W
 
 
 ### More info
-- <http://read-the-docs.readthedocs.org/en/latest/webhooks.html>
-- <https://confluence.atlassian.com/display/BITBUCKET/POST+hook+management>
+- <https://read-the-docs.readthedocs.org/en/latest/webhooks.html>
+- <https://confluence.atlassian.com/bitbucket/manage-webhooks-735643732.html>
