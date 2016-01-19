@@ -12,9 +12,10 @@ Why use a static site generator (pelican) instead of a hosted blog platform or a
 
 - A static site made of html pages is very easy to maintain
 - It is also more secure and performance is good too =)
-- Can use version control (git)
+- Allows for straightforward use of version control (git)
 - Developers prefer to be able to customize and add functionality (python and javascript)
-- Using widely adopted open source software reduces risk (python, pelican, javascript, elagant theme and tipue search)
+- Using widely adopted open source software reduces risk (more contributors, more testers, more bugfixes)
+- Using a widely adopted platform increases leverage (themes, plugins, tutorials, etc.)
 
 
 ### Install Pelican
@@ -101,7 +102,16 @@ Why use a static site generator (pelican) instead of a hosted blog platform or a
 
 **http://localhost:8000**
 
-`mkdir -p content/pages`
+- <http://docs.getpelican.com/en/latest/publish.html>
+
+#### Setup a static Pages directory
+
+Besides lots of articles in categories it can be useful to have a few pages like About or Contact
+    mkdir -p content/pages
+    echo "Title: About Us" > content/pages/about.md
+
+<http://docs.getpelican.com/en/latest/content.html#pages>
+
 - - -
 ### Publish
 I just use the pelicanconf output rather than publishconf, and I use git with a bitbucket static html site.
@@ -120,26 +130,28 @@ I just use the pelicanconf output rather than publishconf, and I use git with a 
 
     AUTHOR = u'john pfeiffer'
     SITENAME = u'johnpfeiffer'
-    SITEURL = ''
+    SITEURL = u'https://blog-john-pfeiffer.com'
     OUTPUT_PATH = 'output/'
     DEFAULT_DATE_FORMAT = '%Y-%m-%d'
+    TIMEZONE="America/Los_Angeles"
+    
     # Feed generation is usually not desired when developing
     FEED_ALL_ATOM = None
     CATEGORY_FEED_ATOM = None
     TRANSLATION_FEED_ATOM = None
 
-    # clean urls for pages
-    PAGE_URL = '{slug}'
+    # clean urls for pages , trailing slash to support HTTPS
+    PAGE_URL = '{slug}/'
     PAGE_SAVE_AS = '{slug}/index.html'
     # clean urls for articles
     ARTICLE_SAVE_AS = '{slug}/index.html'
-    ARTICLE_URL = '{slug}'
+    ARTICLE_URL = '{slug}/'
 
     DEFAULT_PAGINATION = 10
 
     THEME = 'themes/pelican-elegant'
     PLUGIN_PATHS = ['plugins']
-    PLUGINS = ['sitemap', 'extract_toc', 'tipue_search']
+    PLUGINS = ['sitemap', 'extract_toc', 'tipue_search', 'post_stats']
     MD_EXTENSIONS = ['codehilite(css_class=highlight)', 'extra', 'headerid', 'toc']
     DIRECT_TEMPLATES = (('index', 'tags', 'categories','archives', 'search', '404'))
     STATIC_PATHS = ['theme/images', 'images']
@@ -158,30 +170,11 @@ I just use the pelicanconf output rather than publishconf, and I use git with a 
         }
     }
 
-- - -
+> Hint: if you use SSL (e.g. cloudflare) then make sure your SITEURL is https and there are trailing slashes on your clean url helpers PAGE_URL and ARTICLE_URL otherwise you may get mixed content warnings or mixed http and https links in your output html
 
-### Importing from drupal
 
-**Hack the Drupal files to allow a lot more than 10 items per feed**
-`grep -r 'items per feed' . `
-> learned from drupal-7.28/modules/system/system.module
-
-`vi modules/system/system.admin.inc`
-
->    $form['feed_default_items']
->    
->    Add to the dropdown choices of 10, 15, 30 etc. the option of 999
-
-- - - 
-
-`sudo apt-get install pandoc`
-
-`sudo pip install feedparser`
-
-`pelican-import -h`
-
-`pelican-import --feed http://blog.example.com/rss.xml -o output/ -m markdown`
-
+    cp -a pelicanconf.py publishconf.py
+> Update publishconf.py with any final tweaks that should occur only in Production
 
 - - -
 ### Pelican Themes
@@ -194,37 +187,118 @@ I just use the pelicanconf output rather than publishconf, and I use git with a 
 [http://pelican.readthedocs.org/en/latest/pelican-themes.html][pelicanthemesdocs]
 [pelicanthemesdocs]: http://pelican.readthedocs.org/en/latest/pelican-themes.html
 
-`mkdir themes`
+    mkdir themes
+    cp -a pelican-themes/elegant themes/
+> This is the lazy way, the correct way is to only copy in the theme you are using ;)
 
-`cp -a pelican-themes/elegant themes/
-
-> For the elegant with tipuesearch you need to install the tipuesearch plugin
+> FYI For the elegant with tipuesearch you need to also install the tipuesearch plugin
 
 - <http://moparx.com/2014/04/adding-search-capabilities-within-your-pelican-powered-site-using-tipue-search/>
+
+
+### Depedency Management by Vendoring in Version Control
+
+Dependencies are always hard and leveraging the work of others (themes and plugins) means you have to consider how to manage changes to those moving parts too.
+
+Using your Build/CI/CD server to grab the latest themes/plugins is a mistake because while you would benefit from any new features and bug fixes you will also get burned (yes it has happened to me!) when you are publishing a blog post and suddenly your site doesn't work.  
+
+(Oh are you using Continuous Post Deploy Smoke Tests and Realtime Everything Monitoring to detect this on your blog?)
+
+I highly recommend "vendoring" by copying pelican-elegant into the themes subdirectory in your version control.
+
+This sort of pinning makes an explicit choice that will ensure your site will continue to work until you choose to next upgrade.  Pinning in the Build/CI/CD server by git sha will also work but makes it harder to keep everything in one place for development.
+
+> The drawback of "vendoring" is the technical debt by the inevitable customization that occurs in this "directory separated" fork of the original
 
 - - - 
 ### Pelican Plugins
 [https://github.com/getpelican/pelican-plugins][pelicanplugins]
 [pelicanplugins]: https://github.com/getpelican/pelican-plugins
 
-`git clone https://github.com/getpelican/pelican-plugins`
+    git clone https://github.com/getpelican/pelican-plugins
+    mkdir plugins
+    cp -a pelican-plugins/sitemap plugins/
+    
+> note this is the lazy way, a more precise way would be to only copy in the plugins used
 
-`mkdir plugins`
+### Hacking ListJS and per Article word count into a theme
 
-`cp -a pelican-plugins/sitemap plugins/`
+Basically once you get the hang of the config file format (just python really) and the templating engine (HTML with some jinja2) you can add all sorts of interesting pieces.
+
+In this example I leverage some javascript and another pelican plugin (python) to allow sorting and filtering on more data than the usual "archives.html" provides.
+
+
+    <div id="article-list">
+        <button class="sort" data-sort="date">date</button>
+        <button class="sort" data-sort="title">title</button>
+        <button class="sort" data-sort="wordcount">word count</button>
+        <button class="sort" data-sort="category">category</button>
+        <input class="search" placeholder="Find by filter" style="margin-top: 10px; height: 16px;"/>
+        &nbsp; from {{ dates| length }} articles
+    
+        <ul class="list">
+        {% for category, articles in categories %}
+            {% for article in articles %}
+            <li>
+                <span class="date" style="padding-right: 10px;">
+                    <time pubdate="pubdate" datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
+                </span>
+                <a href="{{ SITEURL }}/{{ article.url }}"><span class="title">{{ article.title }} {%if article.subtitle %}
+                    <small> {{ article.subtitle }} </small> {% endif %}</span> </a>
+                <em><span class="wordcount">({{ article.stats['wc'] }} words)</span></em>
+                <em><span class="category">{{ article.category }}</span></em>
+            </li>
+            {% endfor %}
+        {% endfor %}
+        </ul>
+    </div>
+    ...
+    ...
+    <script type="text/javascript">
+        var options = {
+            valueNames: [ 'date', 'title', 'wordcount', 'category'],
+            page: 1000
+        };
+        var hackerList = new List('article-list', options);
+        hackerList.sort('date', { order: "desc" })
+    </script>
+
+
+- <https://blog.john-pfeiffer.com/listjs-sort-filters-search-and-more-for-html-lists-and-tables-in-javascript/>
+- <https://github.com/getpelican/pelican-plugins/tree/master/post_stats>
 
 ### Advanced: skipping the Makefile
 
-`pelican --help`
+    pelican --help
+    pelican ./content -o ./output -s ./publishconf.py
+    cd output ; python -m SimpleHTTPServer
 
-`pelican ./content -o ./output -s ./publishconf.py`
+- - -
+### Importing from Drupal with pelican-import
 
-`cd output ; python -m SimpleHTTPServer`
+**Hack the Drupal files to allow a lot more than 10 items per feed**
+`grep -r 'items per feed' . `
+> learned from drupal-7.28/modules/system/system.module
+
+`vi modules/system/system.admin.inc`
+
+>    $form['feed_default_items']
+>    
+>    Add to the dropdown choices of 10, 15, 30 etc. the option of 999
+
+- - -
+
+    sudo apt-get install pandoc
+    sudo pip install feedparser
+    pelican-import -h
+    pelican-import --feed http://blog.example.com/rss.xml -o output/ -m markdown
+
 
 ### more info
-- <http://pelican.readthedocs.org/en/latest/settings.html>
+- <https://pelican.readthedocs.org/en/latest/settings.html>
 - Tweaking default syntax highlighting:
 - - <http://pygments.org/docs/lexers>
 - - <http://pygments.org/demo>
 - <https://bitbucket.org/johnpfeiffer/docker/src>
 
+    
