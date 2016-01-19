@@ -18,11 +18,11 @@ TRANSLATION_FEED_ATOM = None
 DEFAULT_PAGINATION = 12
 
 # clean urls for pages
-PAGE_URL = '{slug}'
+PAGE_URL = '{slug}/'
 PAGE_SAVE_AS = '{slug}/index.html'
 # clean urls for articles
 ARTICLE_SAVE_AS = '{slug}/index.html'
-ARTICLE_URL = '{slug}'
+ARTICLE_URL = '{slug}/'
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
