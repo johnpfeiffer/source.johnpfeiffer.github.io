@@ -76,27 +76,87 @@ Since apt is a wonderful wrapper/manager of dpkg when you're in doubt most likel
 
 ### apt-get
 
-`sudo apt-get install --dry-run byobu`
+    apt-get update
+> use /etc/apt/sources.list and /etc/apt/sources.list.d to update the package indices to determine if there are newer packages available
+    deb file:///file_store/archive trusty main universe
+> a snippet for how to configure apt to use a local repository (e.g. use reprepro to make a local mirror)
+
+    sudo apt-get install --dry-run byobu
 > simulate what will happen but do not change the system
 
-`sudo apt-get install --download-only byobu`
+    sudo apt-get install --download-only byobu
 > packages are retrieved but not installed
 
-`sudo apt-get install --yes byobu`
+    sudo apt-get install --yes byobu
 > install and pre-emptively answer yes to the yes/no prompt
 
-`sudo apt-get install --reinstall byobu
+    sudo apt-get install --reinstall byobu
 > reinstall even if the package is installed
 
-`sudo apt-get install --fix-broken byobu
+    sudo apt-get install --fix-broken byobu
 > attempt to fix broken dependencies
 
-<http://manpages.ubuntu.com/manpages/precise/man8/apt-get.8.html>
+    DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install --reinstall byobu
+> the most non interactive way to force install a package where all prompts are auto answered such that old configuration files are maintained
+
+- <http://manpages.ubuntu.com/manpages/precise/man8/apt-get.8.html>
+- <https://help.ubuntu.com/community/AptGet/Howto>
+
+
+    apt-get upgrade
+> upgrades to the latest version of existing packages, no new packages (so if the new version has new dependencies nothing happens)
+    apt-get dist-upgrade
+> upgrades to the latest version of existing packages and will try to grab any new dependencies as required
+
+    apt-get install update-manager-core
+> newer versions of ubuntu require a helper utility, <http://packages.ubuntu.com/trusty/admin/update-manager-core>
+
+Before you do a major upgrade of Ubuntu you should bring all packages to the latest version... (apt-get update && apt-get dist-upgrade)
+
+    do-release-upgrade -f DistUpgradeViewNonInteractive
+> non interactive upgrade to a new version of Ubuntu (hold onto your seat!), often requires a reboot after for kernel upgrades
+
+    lsb_release -a
+    cat /etc/lsb_release
+    uname -a
+> verify that your system has been upgraded (kernel too)
+
 
 ### apt-key
 
 `sudo apt-key update`
 > if apt errors: WARNING: The following packages cannot be authenticated
+
+## dpkg really manages everything
+
+Underneath apt is dpkg (and similar tools) which actually does all of the hard work but are sometimes hard to use =)
+
+    dpkg -l
+> lists all of the packages installed (name, version, architecture, description)
+    dpkg -l | grep foobar
+> lists all of the packages but filters for something specific (i.e. a prefix or partial match)
+    dpkg -l packagename > myoutput.txt
+> lists whether a specific package is installed or not and redirects the output to a file
+    dpkg --get-selections
+> lists the package names and the state (installed, uninstalled, etc.)
+  dpkg-query -f '${binary:Package}\n' -W
+> lists just the package names, slightly more convenient is `apt-cache pkgnames | sort`
+
+<https://wiki.debian.org/ListInstalledPackages>
+> you can also manually inspect /var/lib/apt and /var/lib/dpkg
+
+
+    dpkg -i packagename.deb
+> install the .deb file
+    dpkg -c packagename.deb
+> list the contents of the .deb file
+    dpkg -L packagename
+> list the locations of the installed files
+
+    dpkg -r packagename.deb
+> remove a package but leave the configuration files, also known as `dpkg --remove`
+    dpkg --purge
+> remove a package and delete all configuration files (even if they have been customized by the user)
 
 
 ## Best Ubuntu Packages
