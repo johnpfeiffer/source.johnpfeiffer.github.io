@@ -152,6 +152,9 @@ Underneath apt is dpkg (and similar tools) which actually does all of the hard w
 > list the contents of the .deb file
     dpkg -L packagename
 > list the locations of the installed files
+    dpkg -s packagename
+> shows if the package is installed and information about it, `dpkg -s | grep Version`
+> or `dpkg -l | awk '$2=="packagename" { print $3 }'` to only print the version (if it exists)
 
     dpkg -r packagename.deb
 > remove a package but leave the configuration files, also known as `dpkg --remove`
