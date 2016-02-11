@@ -34,24 +34,31 @@ Docker encourages design of modular, deterministic and defined, single purpose c
 - - -
 ## Quick Start Summary
 
-`docker run -it --rm -e MYVAR=123 busybox env`
+    docker run --rm busybox /bin/sh -c "echo 'hi'"
+    hi
+
+    docker run -it --rm -e MYVAR=123 busybox env
 > "run" will pull the image from Docker Hub by default, e injects an environment variable, overrides the Docker Image CMD with "env"
 
-`docker run -it --rm --entrypoint=/bin/bash python`
+    docker run -it --rm --entrypoint=/bin/bash python
 > the entrypoint parameter overrides the Docker Image (in case they do not provide a helpfully overridable CMD)
 <http://docs.docker.com/engine/reference/builder/#entrypoint>
 
 - - -
 ## Download a docker image
-`sudo docker pull ubuntu:trusty` (**grabs the latest, i.e. 14.04.1**) or `sudo docker pull ubuntu:12.04.3`
-> critical! use the colon and a specific version! downloading all of the ubuntu images by accident sucks
 
-`sudo docker pull redis:latest`
+Official Images are he easiest to experiment with: <https://hub.docker.com/explore/>
+
+    sudo docker pull ubuntu:trusty
+> (**grabs the latest, i.e. 14.04.1**) or `sudo docker pull ubuntu:12.04.3`
+
+**critical!** use the colon and a specific version! downloading all of the ubuntu images by accident sucks =(
+
+    sudo docker pull redis:latest
 > choose the latest or a specific version to avoid downloading a lot of old crap
 
 Finding what versions of images (tags) you can pull requires using either the UI or the API:
-<https://hub.docker.com/r/library/redis/tags/>
-
+- <https://hub.docker.com/r/library/redis/tags/>
 - `docker pull redis:3`
 - `docker pull redis:2.8`
 - `docker pull redis:2.6`
@@ -616,67 +623,98 @@ look closely at error messages, i.e. make: not found and ensure that an early RU
 - <http://jpetazzo.github.io/2014/06/23/docker-ssh-considered-evil>
 
 
+### Docker API and the Docker Hub Public Registry
+
+Docker used to have an API endpoint at registry.hub.docker.com/v1 but in a fairly typical move for them they changed it so a lot of internet "documentation" examples are wrong.
+
+Also the Docker Hub was deprecated as of 1.7 so this is the last docs on how to use it (because the service is still running or compatible)
+
+    curl https://index.docker.io/v1/_ping
+    true
+
+It uses basic authentication and while you can use the API to sign up it may just be easier to use the web site: <https://hub.docker.com/>
+
+    curl https://username:password@index.docker.io/v1/users/
+    "OK"
+> just curl with basic auth in order to check the credentials, the trailing slash is IMPORTANT 
+
+**Using a browser with the Docker REST API is often more convenient as it caches the Basic Authentication**
+
+- <https://docs.docker.com/v1.7/reference/api/docker-io_api/#users>
+- <https://docs.docker.com/v1.6/reference/api/registry_api/> (because the registry api was deprecated earlier?)
+
+To see all of the images for a given repository (it is json formatted and there will be a lot of results!)
+    curl https://username:password@index.docker.io/v1/repositories/python/images
+
+<https://docs.docker.com/v1.6/reference/api/registry_api/>
+
+If you `docker search python` and want to see the tags (i.e. you do not want to pull every python image ever made), then try curl with REST:
+
+    curl https://username:password@index.docker.io/v1/repositories/python/tags
+
+    [{"layer": "a2db1214", "name": "latest"}, {"layer": "edb21ec7", "name": "2"}, {"layer": "82b600dd", "name": "2-alpine"}, {"layer": "6a4e9662", "name": "2-onbuild"}, {"layer": "99b38a11", "name": "2-slim"}, {"layer": "fe724fa0", "name": "2-wheezy"}, {"layer": "edb21ec7", "name": "2.7"}, {"layer": "82b600dd", "name": "2.7-alpine"}, {"layer": "6a4e9662", "name": "2.7-onbuild"}, {"layer": "99b38a11", "name": "2.7-slim"}, {"layer": "fe724fa0", "name": "2.7-wheezy"}, {"layer": "c71c2739", "name": "2.7.10"}, {"layer": "f1f35fa4", "name": "2.7.10-onbuild"}, {"layer": "843123ac", "name": "2.7.10-slim"}, {"layer": "fde41dc3", "name": "2.7.10-wheezy"}, {"layer": "edb21ec7", "name": "2.7.11"}, {"layer": "82b600dd", "name": "2.7.11-alpine"}, {"layer": "6a4e9662", "name": "2.7.11-onbuild"}, {"layer": "99b38a11", "name": "2.7.11-slim"}, {"layer": "fe724fa0", "name": "2.7.11-wheezy"}, {"layer": "a87a2288", "name": "2.7.7"}, {"layer": "481b175a", "name": "2.7.8"}, {"layer": "fbb30ed2", "name": "2.7.8-onbuild"}, {"layer": "3cf7f142", "name": "2.7.8-slim"}, {"layer": "6a873836", "name": "2.7.8-wheezy"}, {"layer": "2d0d0130", "name": "2.7.9"}, {"layer": "10948f7c", "name": "2.7.9-onbuild"}, {"layer": "e86252d0", "name": "2.7.9-slim"}, {"layer": "a11d441b", "name": "2.7.9-wheezy"}, {"layer": "a2db1214", "name": "3"}, {"layer": "bb6cd371", "name": "3-alpine"}, {"layer": "80662aa6", "name": "3-onbuild"}, {"layer": "07bfefb9", "name": "3-slim"}, {"layer": "2edf9614", "name": "3-wheezy"}, {"layer": "7575f4a5", "name": "3.2"}, {"layer": "31b273f6", "name": "3.2-onbuild"}, {"layer": "ca0a0ed6", "name": "3.2-slim"}, {"layer": "f5644650", "name": "3.2-wheezy"}, {"layer": "7575f4a5", "name": "3.2.6"}, {"layer": "31b273f6", "name": "3.2.6-onbuild"}, {"layer": "ca0a0ed6", "name": "3.2.6-slim"}, {"layer": "f5644650", "name": "3.2.6-wheezy"}, {"layer": "84717b99", "name": "3.3"}, {"layer": "4de0c1a0", "name": "3.3-alpine"}, {"layer": "e0985e72", "name": "3.3-onbuild"}, {"layer": "3c0f39af", "name": "3.3-slim"}, {"layer": "a13ad718", "name": "3.3-wheezy"}, {"layer": "e663e96e", "name": "3.3.5"}, {"layer": "79d3367e", "name": "3.3.5-onbuild"}, {"layer": "84717b99", "name": "3.3.6"}, {"layer": "4de0c1a0", "name": "3.3.6-alpine"}, {"layer": "e0985e72", "name": "3.3.6-onbuild"}, {"layer": "3c0f39af", "name": "3.3.6-slim"}, {"layer": "a13ad718", "name": "3.3.6-wheezy"}, {"layer": "c7184f4f", "name": "3.4"}, {"layer": "e6310f15", "name": "3.4-alpine"}, {"layer": "c38d9f7b", "name": "3.4-onbuild"}, {"layer": "ab9f7f65", "name": "3.4-slim"}, {"layer": "c98c4a9d", "name": "3.4-wheezy"}, {"layer": "b504e00c", "name": "3.4.1"}, {"layer": "07e5901a", "name": "3.4.1-onbuild"}, {"layer": "ec50e6a0", "name": "3.4.2"}, {"layer": "ade8543e", "name": "3.4.2-onbuild"}, {"layer": "dd1dee45", "name": "3.4.2-slim"}, {"layer": "de6911d6", "name": "3.4.2-wheezy"}, {"layer": "48bc52cc", "name": "3.4.3"}, {"layer": "bf599bc6", "name": "3.4.3-onbuild"}, {"layer": "0b92f173", "name": "3.4.3-slim"}, {"layer": "b8845e5b", "name": "3.4.3-wheezy"}, {"layer": "c7184f4f", "name": "3.4.4"}, {"layer": "e6310f15", "name": "3.4.4-alpine"}, {"layer": "c38d9f7b", "name": "3.4.4-onbuild"}, {"layer": "ab9f7f65", "name": "3.4.4-slim"}, {"layer": "c98c4a9d", "name": "3.4.4-wheezy"}, {"layer": "a2db1214", "name": "3.5"}, {"layer": "bb6cd371", "name": "3.5-alpine"}, {"layer": "80662aa6", "name": "3.5-onbuild"}, {"layer": "07bfefb9", "name": "3.5-slim"}, {"layer": "c64596cb", "name": "3.5.0"}, {"layer": "c9744d7e", "name": "3.5.0-onbuild"}, {"layer": "ac60c7d8", "name": "3.5.0-slim"}, {"layer": "31ef8f64", "name": "3.5.0b3"}, {"layer": "7c5e081c", "name": "3.5.0b3-onbuild"}, {"layer": "0c47d2de", "name": "3.5.0b3-slim"}, {"layer": "a2db1214", "name": "3.5.1"}, {"layer": "bb6cd371", "name": "3.5.1-alpine"}, {"layer": "80662aa6", "name": "3.5.1-onbuild"}, {"layer": "07bfefb9", "name": "3.5.1-slim"}, {"layer": "bb6cd371", "name": "alpine"}, {"layer": "80662aa6", "name": "onbuild"}, {"layer": "07bfefb9", "name": "slim"}, {"layer": "2edf9614", "name": "wheezy"}]
+
+
+#### Docker Engine internal API
+If instead of the docker client you wish to interact more programatically...
+
+- <https://docs.docker.com/engine/reference/api/docker_remote_api/>
+- <https://github.com/docker/distribution>
+
 ### Private Docker Registry
 
-`curl -i https://username:password@docker.example.com/v2/`
+    curl -i https://username:password@docker.example.com/v2/
 > attempt to login to a private registry
 
 ** Using the docker client to login to a private registry**
-`docker login docker.example.com:443`
-> Username: user@example.com
-> WARNING: login credentials saved in /home/USER/.docker/config.json
-> Login Succeeded
+    docker login docker.example.com:443
+    > Username: user@example.com
+    > WARNING: login credentials saved in /home/USER/.docker/config.json
+    > Login Succeeded
 
 <https://docs.docker.com/registry/deploying/>
 
-#### Docker API
 
-The Docker API (when using a browser) often uses Basic Authentication
-
-- <https://docs.docker.com/reference/api/docker_remote_api/>
-- <https://github.com/docker/distribution>
-- <http://docs.docker.com/reference/api/registry_api>
-
-`https://docker.example.com/_ping`
+    https://docker.example.com/_ping
 > {}
 
-`https://docker.example.com/info`
-`https://docker.example.com/version`
+    https://docker.example.com/info
+    https://docker.example.com/version
 > note these commands may not be enabled or available in your private registry version 
 
-`https://docker.example.com/v1/repositories/library/ubuntu/tags`
+    https://docker.example.com/v1/repositories/library/ubuntu/tags
 > {"13.04": "5e47ac691989afcd10285ea4e67b46bc0fdc98d90844e57a6d4221c1e3ab4388"}
 
-`https://docker.example.com/v1/repositories/micros/baseimage-ubuntu/tags`
+    https://docker.example.com/v1/repositories/micros/baseimage-ubuntu/tags
 > {"latest": "5a14c1498ff4983793f6e5eddd16868dbad257195f0e85c66ece94d881ecb28f"}
 
-`https://docker.example.com/v1/repositories/micros/baseimage-ubuntu/images`
+    https://docker.example.com/v1/repositories/micros/baseimage-ubuntu/images
 > list of the images available: [{"id":"8254ff58b098b72425854555204171352a69f5427ba83dee4642ba45d301d0b1"}]
 
-`https://docker.example.com/v1/repositories/micros/baseimage-ubuntu/json`
+    https://docker.example.com/v1/repositories/micros/baseimage-ubuntu/json
 > inspect an image (what OS, kernel, etc.) {"arch": "amd64", "docker_go_version": "go1.3.3", "docker_version": "1.3.3", "kernel": "3.16.7-tinycore64", "last_update": 1426041024, "os": "linux"}
 
-`https://docker.example.com/v1/repositories/myuser/nginx/0348bf1e7cc54327b8c9ce8407c5b3eadade1ef1771d642d08ae16a6aad5bed5/json`
+    https://docker.example.com/v1/repositories/myuser/nginx/0348bf1e7cc54327b8c9ce8407c5b3eadade1ef1771d642d08ae16a6aad5bed5/json
 > inspect a very specific image (by id)
 
 
 #### Searching a private docker registry
 
-`https://registry.hub.docker.com/v1/search?q=pfeiffer`
-> the public docker registry search query
+    https://registry.hub.docker.com/v1/search?q=pfeiffer
+> the public docker registry search query, deprecated in APIv2 so no longer functional
 
-`docker search docker.example.com/myuser`
-> the cli command returns a listing of all of the images for a user
+    docker search docker.example.com/myuser
+> the cli command returns a listing of all of the images for a user, deprecated in APIv2 so no longer functional
 
 If there is a proxy in front: `docker search user:password@docker.example.com/myuser`
 
-`curl -s -X GET https://user:password@docker.example.com/v1/search`
+    curl -s -X GET https://user:password@docker.example.com/v1/search
 > LIST ALL IMAGES: or use a browser https://docker.example.com/v1/search
 
-`curl -X GET https://user:password@docker.example.com/v1/search?q=ubuntu`
+    curl -X GET https://user:password@docker.example.com/v1/search?q=ubuntu
 > https://docker.example.com/v1/search?q=ubuntu
 > {"num_results": 4, "query": "ubuntu", "results": [{"description": null, "name": "example/ubuntu"}, {"description": null, "name": "library/ubuntu"}, {"description": null, "name": "micros/baseimage-ubuntu-ansible"}, {"description": null, "name": "micros/baseimage-ubuntu"}]}
 
 
-
 - <https://www.digitalocean.com/community/tutorials/how-to-set-up-a-private-docker-registry-on-ubuntu-14-04>
+
