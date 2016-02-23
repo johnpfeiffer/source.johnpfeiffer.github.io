@@ -88,6 +88,10 @@ Once it's done it will terminate the EC2 instance for you (it only runs as long 
 
     :::json
     {
+      "_comment": "This is a comment",
+      "variables": {
+          "my_secret": "{{env `MY_SECRET`}}",
+      },
       "builders": [{
         "type": "amazon-ebs",
         "region": "us-east-1",
@@ -112,13 +116,14 @@ Once it's done it will terminate the EC2 instance for you (it only runs as long 
           "/sbin/ip a",
           "curl -s http://checkip.amazonaws.com",
           "ls -ahl /tmp",
+          "echo {{user `my_secret`}} > /tmp/{{isotime \"2006-01-02-030405\"}}--my-secret.txt",
           "sudo dpkg -i --force-confnew /tmp/*.deb",
           "machine_state_validation.sh"
         ]
       }]
     }
     
-> The access credentials are instead be environment variables: AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
+> The access credentials could instead be environment variables: AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
 
 > Post instantiation validation is a really handy safeguard as statistically something always goes wrong somewhere and it's far cheaper to find out with a quick test versus a system that loses data.
 
@@ -133,3 +138,6 @@ Actually I prefer docker containers as the artifact and deployment vehicle for s
 - https://www.packer.io/docs/installation.html
 - https://www.packer.io/docs/builders/amazon-ebs.html
 - https://www.packer.io/intro/getting-started/build-image.html
+- https://www.packer.io/docs/templates/configuration-templates.html
+- https://www.packer.io/docs/templates/user-variables.html
+
