@@ -47,14 +47,6 @@ Since apt is a wonderful wrapper/manager of dpkg when you're in doubt most likel
 
 *Hint: Ubuntu is based upon Debian*
 
-### Pro Tip: Force ipv4 to avoid lengthy IPV6 timeouts
-
-`sudo apt-get -o Acquire::ForceIPv4=true update`
-
-`sudo apt-get -o Acquire::ForceIPv4=true install vim`
-
-`sudo echo 'Acquire::ForceIPv4 "true";' > /etc/apt/apt.conf.d/99force-ipv4 `
-> persistent config to always use ipv4
 
 
 ### apt-cache
@@ -74,12 +66,48 @@ Since apt is a wonderful wrapper/manager of dpkg when you're in doubt most likel
 `apt-cache depends ssh`
 > to show the package dependencies
 
+### Force Apt to use  IPv4 to avoid lengthy IPv6 timeouts
+
+    sudo apt-get -o Acquire::ForceIPv4=true update
+    sudo apt-get -o Acquire::ForceIPv4=true install vim
+    sudo echo 'Acquire::ForceIPv4 "true";' > /etc/apt/apt.conf.d/99force-ipv4
+> update, then install vim, then save the persistent config to always use ipv4
+
 ### apt-get
+
+#### updating package indices with apt-get update
+
+Apt contains indices that need to be updated from the upstream repositories
+
+**/etc/apt/sources.list** is the main ubuntu repository listing
+
+**/etc/apt/sources.list.d** is the directory where additional apt repositories can be added (usually from ppa or 3rd party vendors)
+
+- <http://www.debian.org/mirror/mirrors_full> for the Debian package mirror sites
+- <http://packages.ubuntu.com/> for a web ui based search of package details
+
+   apt-get clean
+> /var/cache/apt/archive folder keeps a copy of the downloaded .deb files
+> you will need an internet connection to download again any removed .deb files
+
+    rm -rf /var/lib/apt/lists/*
+> remove the indices in case they have gotten orphaned or corrupted, needs to be followed by apt-get update to repopulate
 
     apt-get update
 > use /etc/apt/sources.list and /etc/apt/sources.list.d to update the package indices to determine if there are newer packages available
     deb file:///file_store/archive trusty main universe
 > a snippet for how to configure apt to use a local repository (e.g. use reprepro to make a local mirror)
+
+
+    apt-cache dump
+> shows all installed packages
+
+To install netselect, a debian application that allows you to choose the "best" package mirror:
+    sudo apt-get install netselect netselect-apt
+    netselect-apt
+
+
+#### installing and force installing with apt
 
     sudo apt-get install --dry-run byobu
 > simulate what will happen but do not change the system
@@ -121,6 +149,15 @@ Before you do a major upgrade of Ubuntu you should bring all packages to the lat
     uname -a
 > verify that your system has been upgraded (kernel too)
 
+### removing packages with apt
+    apt-get remove wget
+> uninstall a package
+    apt-get purge wget
+> remove the package and all files from disk
+
+    apt-get autoremove
+> attempt to clean up packages that are no longer needed (i.e. old versions of dependencies or unused kernel images)
+
 
 ### apt-key
 
@@ -130,6 +167,8 @@ Before you do a major upgrade of Ubuntu you should bring all packages to the lat
 ## dpkg really manages everything
 
 Underneath apt is dpkg (and similar tools) which actually does all of the hard work but are sometimes hard to use =)
+
+### listing and finding packages with dpkg
 
     dpkg -l
 > lists all of the packages installed (name, version, architecture, description)
@@ -141,15 +180,25 @@ Underneath apt is dpkg (and similar tools) which actually does all of the hard w
 > lists the package names and the state (installed, uninstalled, etc.)
   dpkg-query -f '${binary:Package}\n' -W
 > lists just the package names, slightly more convenient is `apt-cache pkgnames | sort`
+    dpkg -S stdio.h
+> find a package that contains a specific file
+    dpkg -c packagename.deb
+> list the contents of the .deb file
 
 <https://wiki.debian.org/ListInstalledPackages>
 > you can also manually inspect /var/lib/apt and /var/lib/dpkg
 
+#### dpkg logs
 
+    vi /var/log/dpkg.log
+    tail -f /var/log/dpkg.log
+> in conjunction with `apt-get upgrade -y`
+
+#### Installing and removing packages with dpkg
     dpkg -i packagename.deb
-> install the .deb file
-    dpkg -c packagename.deb
-> list the contents of the .deb file
+> install the .deb file, `dpkg -i *.deb` will install all of the .deb files in the current directory
+    dpkg -i --force depends packagename.deb
+> installs and turns a dependency error into a warning (i.e. libc6 circular dependency)
     dpkg -L packagename
 > list the locations of the installed files
     dpkg -s packagename
@@ -161,15 +210,26 @@ Underneath apt is dpkg (and similar tools) which actually does all of the hard w
     dpkg --purge
 > remove a package and delete all configuration files (even if they have been customized by the user)
 
+    dpkg --force-help
+
+####  to manually install a package (forcefully if synaptic and apt-get are stuck)
+    mv /var/lib/dpkg/info/postgresql.* /tmp/
+    dpkg --remove --force-remove-reinstreq postgresql-9.1
+> do the same for postgresql-common and other packages
+
+apt-get install postgresql-9.1
+apt-get purge postgresql-9.1 postgresql-client-9.1 postgresql-common postgresql-client-common
+> in order to have apt-get remove all of the binaries
+
+
+
 
 ## Best Ubuntu Packages
 
 > as of Utopic 14.10
 
-
 	sudo apt-get update
 	sudo apt-get install -y byobu build-essential elinks unzip unrar nano vim wget curl ntp rcconf dialog git-core 
-
 	sudo apt-get install -y python-pip && sudo pip install --upgrade pip
 
 > pip is the package manager for python packages (different from the debian OS packages) so useful if you do any python development or run python applications
