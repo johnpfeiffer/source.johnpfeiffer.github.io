@@ -48,39 +48,47 @@ Assuming you understand the basics like:
     find . -maxdepth 1 -type d -exec du -sh {} \; 
 > only one level down if it's a directory show the disk usage summary (human sizes)
 
-    ls -t -d -1 path/directory/ | grep -v DONOTLIKE >> newest.m3u ls -t -d -1 -r path/directory/ >> oldest.m3u
-
-    find . -type f -name "api" -exec cat {} \; | grep oid find . -type d -name directoryname* -exec ls -ahl {} \;
-
-    sudo find /var/www/java -type f -iname ".txt" -exec chown root:www-data {} \; sudo find /var/www/java -type f -iname ".txt" -exec chmod 640 {} \; sudo find /var/www/d -type d -iname "web*" -exec chmod 750 {} \;
-
-    find . -type f -iname "*.sh" -exec mv {} . ";" //find files ending in .sh and move them into the current directory
-
+    
+    find . -type f -name "api" -exec cat {} \; | grep oid 
+    find . -type d -name directoryname* -exec ls -ahl {} \;
+    
+    sudo find /var/www/java -type f -iname ".txt" -exec chown root:www-data {} \; 
+    sudo find /var/www/java -type f -iname ".txt" -exec chmod 640 {} \; 
+    sudo find /var/www/d -type d -iname "web*" -exec chmod 750 {} \;
+    
+    find . -type f -iname "*.sh" -exec mv {} . ";" 
+> find files ending in .sh and move them into the current directory
+    
     find /dir/dir -type f -mtime +540 -mtime -720 -printf \%p\,\%s\,\%AD\,|%TD\\n > /dir/dir/output.csv
-
+    
     find ~ -empty //check the home directory for empty files (size 0)
+    
+    find -name "MyCProgram.c"
+> case sensitive, starts in the current directory 
+    
+    find / -iname "MyCProgram.c"
+> case insensitive, starts from root 
+    
+    find -maxdepth 1 -not -iname "MyCProgram.c"
+> case insensitive, starts from current directory, will search subdirectory(ies) and list all items //that do NOT match the query 
+    
+    find / -mindepth 3 -maxdepth 5 -iname passwd
+> case insensitive, starts from root, will search subdirectory levels between 2 and 4 
+    
+    find / 3 -maxdepth 5 -iname passwd &
+> case insensitive, starts from root, will search at most 4 subdir levels, will start in background 
+> note that you'll have to press enter once as the text results will scroll to interrupt your 
+> bash session ... once the job's done pressing enter will return you to the prompt
 
-    //case sensitive, starts in the current directory find -name "MyCProgram.c"
 
-    //case insensitive, starts from root find / -iname "MyCProgram.c"
-
-    //case insensitive, starts from current directory, will search subdirectory(ies) and list all items //that do NOT match the query find -maxdepth 1 -not -iname "MyCProgram.c"
-
-    //case insensitive, starts from root, will search subdirectory levels between 2 and 4 find / -mindepth 3 -maxdepth 5 -iname passwd
-
-    //case insensitive, starts from root, will search at most 4 subdir levels, will start in background find / 3 -maxdepth 5 -iname passwd &
-
-    //note that you'll have to press enter once as the text results will scroll to interrupt your //bash session ... once the job's done pressing enter will return you to the prompt
-
-    //interesting use: creating a md5sum of all of the results
-
-    find -iname "MyCProgram.c" -exec md5sum {} \;
-
-    //interesting - find a file by inode number (ls -i) and then rename/move it
+     find -iname "MyCProgram.c" -exec md5sum {} \;
+> interesting use: creating a md5sum of all of the results
 
     find -inum 16187430 -exec mv {} new-test-file-name \;
+> interesting - find a file by inode number (ls -i) and then rename/move it
 
-    //find all files from root below, with permissions set exactly to 700, only regular files (-type f) find / -perm 700 -type f
+    find / -perm 700 -type f
+> find all files from root below, with permissions set exactly to 700, only regular files (-type f) 
 
     // while the above just lists the files the below runs an ls -l to see everything about them... find / -perm 700 -type f -exec ls -l {} \;
 
@@ -131,14 +139,14 @@ find . -mmin +5 -mmin -10
 
 
 ## grep
-grep is an amazing tool for getting efficiently finding text
+grep is an amazing tool for getting efficiently finding text, <http://www.gnu.org/software/grep/manual/grep.html>
 
 ### grep parameters and examples explained
 
     cat access.log | grep -v "bingbot"
 > exclude from output lines that match bingbot
 
-`grep -r -i -w -n -A2 -B1 'hidden' /tmp`
+    grep -r -i -w -n -A2 -B1 'hidden' /tmp
 
 - search the /tmp directory and subdirectories recursively
 - case insensitive
@@ -166,8 +174,19 @@ grep is an amazing tool for getting efficiently finding text
 - `-x` = whole line match only
 - `-C 2` = print two lines before and two lines after a match
 
-`grep ubuntu /etc/passwd | cut -d: -f3`
+    grep ubuntu /etc/passwd | cut -d: -f3
 >  only print the user id by piping the match to cut which delimits by colon and outputs the 3rd column
+
+    ls -t -d -1 -r path/directory/ >> oldest.m3u
+> list reverse order by timestamp
+    ls -t -d -1 path/directory/ | grep -v DONOTLIKE >> newest.m3u
+> list by timestamp (sort by modification time, newest first), list directories themselves, not their contents, only 1 level deep
+> pipe to grep and ignore matches of DONOTLIKE, then append output to the newest.m3u file
+
+#### grep files without match
+
+    grep -L 'foobar' *
+> --files-without-match , display filenames that do not contain the string foobar
 
 
 ## cut
