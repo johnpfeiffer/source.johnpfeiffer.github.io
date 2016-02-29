@@ -269,9 +269,10 @@ sudo apt-get install openconnect network-manager-openconnect network-manager-ope
 `apt-get install -y chromium-browser pepperflashplugin-nonfree geany keepassx xdiskusage`
 `apt-get install -y arandr rdesktop`
 
-- chromium-browser = opensource branch/clone of google chrome browser
+- chromium-browser = opensource branch/clone of google chrome browser, 
+- - maybe srware.net with privacy badger and adblock plus (fanboy block lists) too?
 - geany = tabbed text notepad (with syntax highlighting)
-- keepassx = secure password inventory (has a mini version for  iphone too)
+- keepassx = secure password inventory (has a mini version for iphone as well)
 - xdiskusage = graphical view of disk space usage by folder and file
 - arandr = multi display gui config
 
@@ -379,7 +380,8 @@ https://gorails.com/setup/ubuntu/14.04
 
 tmpfs ram (memory) virtual disk will just use memory (which I guess is overly abundant now) instead of wearing out the Solid State Drive
 
-`sudo vi /etc/fstab`
+    sudo vi /etc/fstab
+
 
     # /etc/fstab: static file system information.
     #
