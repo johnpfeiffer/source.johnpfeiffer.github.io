@@ -95,6 +95,7 @@ Apt contains indices that need to be updated from the upstream repositories
 
     apt-get update
 > use /etc/apt/sources.list and /etc/apt/sources.list.d to update the package indices to determine if there are newer packages available
+
     deb file:///file_store/archive trusty main universe
 > a snippet for how to configure apt to use a local repository (e.g. use reprepro to make a local mirror)
 
@@ -133,6 +134,7 @@ To install netselect, a debian application that allows you to choose the "best" 
 
     apt-get upgrade
 > upgrades to the latest version of existing packages, no new packages (so if the new version has new dependencies nothing happens)
+
     apt-get dist-upgrade
 > upgrades to the latest version of existing packages and will try to grab any new dependencies as required
 
@@ -152,6 +154,7 @@ Before you do a major upgrade of Ubuntu you should bring all packages to the lat
 ### removing packages with apt
     apt-get remove wget
 > uninstall a package
+
     apt-get purge wget
 > remove the package and all files from disk
 
@@ -172,16 +175,22 @@ Underneath apt is dpkg (and similar tools) which actually does all of the hard w
 
     dpkg -l
 > lists all of the packages installed (name, version, architecture, description)
+
     dpkg -l | grep foobar
 > lists all of the packages but filters for something specific (i.e. a prefix or partial match)
+
     dpkg -l packagename > myoutput.txt
 > lists whether a specific package is installed or not and redirects the output to a file
+
     dpkg --get-selections
 > lists the package names and the state (installed, uninstalled, etc.)
+
   dpkg-query -f '${binary:Package}\n' -W
 > lists just the package names, slightly more convenient is `apt-cache pkgnames | sort`
+
     dpkg -S stdio.h
 > find a package that contains a specific file
+
     dpkg -c packagename.deb
 > list the contents of the .deb file
 
@@ -197,16 +206,20 @@ Underneath apt is dpkg (and similar tools) which actually does all of the hard w
 #### Installing and removing packages with dpkg
     dpkg -i packagename.deb
 > install the .deb file, `dpkg -i *.deb` will install all of the .deb files in the current directory
+
     dpkg -i --force depends packagename.deb
 > installs and turns a dependency error into a warning (i.e. libc6 circular dependency)
+
     dpkg -L packagename
 > list the locations of the installed files
+
     dpkg -s packagename
 > shows if the package is installed and information about it, `dpkg -s | grep Version`
 > or `dpkg -l | awk '$2=="packagename" { print $3 }'` to only print the version (if it exists)
 
     dpkg -r packagename.deb
 > remove a package but leave the configuration files, also known as `dpkg --remove`
+
     dpkg --purge
 > remove a package and delete all configuration files (even if they have been customized by the user)
 
