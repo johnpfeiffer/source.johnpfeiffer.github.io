@@ -99,6 +99,8 @@ Apt contains indices that need to be updated from the upstream repositories
     deb file:///file_store/archive trusty main universe
 > a snippet for how to configure apt to use a local repository (e.g. use reprepro to make a local mirror)
 
+    sudo apt-get update -o Dir::Etc::sourcelist="sources.list.d/example.list" -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"
+> update only a single repository
 
     apt-cache dump
 > shows all installed packages
