@@ -191,6 +191,15 @@ grep is an amazing tool for getting efficiently finding text, <http://www.gnu.or
 
 ## cut
 
+    ps auxwwww | grep someappname | tr -s [:space:] | cut -d\  -f11-
+> filter to only view someappname from all processes (wide) THEN shorten all whitespace to a single space THEN cut delimited by a single space (escaped by the slash) and then only prints all after the 11th field/column
+
+    cat sometext.txt | cut -f1 -d"["
+> delimiter of square bracket , only take after the first "field" token, so essentially print everything after the first occurence of a left square bracket
+
+<http://ss64.com/bash/cut.html>
+
+
 ### cut to only display a part of a path
 
     :::bash
@@ -212,13 +221,16 @@ grep is an amazing tool for getting efficiently finding text, <http://www.gnu.or
 
 ## awk
 
-awk to parse files
+awk to parse columns of data , some overlap with cut
 
     awk -F"," '{ print $2 }' results.txt
 > csv parsing , set the delimiter to a comma and print the second column
 
     awk '{$1=""; print $0}' results.txt
 > assuming space delimited and remove the first column but print all else in results.txt
+
+    ps aux | grep someappname | awk '{$1=$2=$3=$4=$5=$6=$7=$8=$9=$10=""; print $0}'
+> print everything after the nth (10th) column
 
     cat sometext.txt | cut -f1 -d"("
 > using cut can be more effective: deleting everything after the first occurence of a left parenthesis
