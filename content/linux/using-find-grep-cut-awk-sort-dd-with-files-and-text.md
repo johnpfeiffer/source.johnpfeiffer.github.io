@@ -25,34 +25,66 @@ Assuming you understand the basics like:
 
 
 ## find
-    find . -type f -iname '*.pyc' -exec mv {} /tmp/PYC/ \;
-> move all .pyc files (start from this directory and indefinitely recurse down)
 
-    find . -name "api" -exec cat {} \;
-> find everything containing api and cat it
+    find -name "MyCProgram.c"
+> case sensitive, starts in the current directory 
 
-    find DIR1 DIR2 -maxdepth 1 -type f -exec basename {} \; | sort | uniq -d 
-> lists all file names in directories, sorted, show only repeats
+    find startdirectory -name 'partoffileordirname'
+> e.g. find /home/joe -name '.tx'
+> which would return txt's as well as txv?'s
 
-    for f in ; do mv "$f" "$(echo $f | sed 's/-/\ /g')"; done find . -type f -iname ".py" | rename s/.py/.py.txt/ .py {} \; 
+    find / -iname "MyCProgram.c"
+> case insensitive, starts from root 
 
-    # only works on the current directory (no recursion?) find . -type f -iname '.py' | while read filename; do mv -v "${filename}" "echo "${filename}" | sed -e 's/\.py$/\.py.txt/'"; done 
+    find -maxdepth 1 -not -iname "MyCProgram.c"
+> case insensitive, starts from current directory, will search subdirectory(ies) and list all items //that do NOT match the query
 
-> a lot of extra to get recursive rename
+    find . -type f -exec ls -s {} \; | sort -n -r | head -5
+> the largest 5 files
 
-    find . -type f -iname ".java" -exec grep -Hn "fileSizeInMB < 100" {} \; find . -type f -iname ".java" -exec grep -Hni "case-insensitive-text" {} \;
+    find . -not -empty -type f -exec ls -s {} \; | sort -n | head -5
+> the smallest not empty 5 files 
+
+    find . -type d
+> all directories in the current directory
 
     find . -type f | wc
 > count the number of files (can recurse subdirectories)
 
-    find . -maxdepth 1 -type d -exec du -sh {} \; 
+    find . -type f -iname '*.pyc' -exec mv {} /tmp/PYC/ \;
+> move all .pyc files (start from this directory and indefinitely recurse down)
+
+    find . -name "*api*" -exec cat {} \;
+> find everything containing api and cat it
+
+### find and exec to modify a set of files
+
+    find . -type f -name "*api*" -exec cat {} \; | grep objectid
+> find all files that contain an api and output the contents but filter to only display lines that contain "objectid"
+
+    find . -maxdepth 1 -type d -exec du -sh {} \;
 > only one level down if it's a directory show the disk usage summary (human sizes)
 
+    find DIR1 DIR2 -maxdepth 1 -type f -exec basename {} \; | sort | uniq -d
+> lists all file names in directories, sorted, show only repeats (aka duplicates)
+
+    find . -name '*.txt' -exec sh -c 'mv "$0" "${0%.txt}.java"' {} \;
+> find all .txt files and renames them to .java
+
+    for f in ; do mv "$f" "$(echo $f | sed 's/-/\ /g')"; done find . -type f -iname ".py" | rename s/.py/.py.txt/ .py {} \;
+> only works on the current directory (no recursion?)
+
+    find . -type f -iname '.py' | while read filename; do mv -v "${filename}" "echo "${filename}" | sed -e 's/\.py$/\.py.txt/'"; done
+> a lot of extra work to achieve a recursive rename from .py to .py.txt
+
+    find . -type f -iname ".java" -exec grep -Hn "fileSizeInMB < 100" {} \;
+
+    find . -type f -iname ".java" -exec grep -Hni "case-insensitive-text" {} \;
     
-    find . -type f -name "api" -exec cat {} \; | grep oid 
+
     find . -type d -name directoryname* -exec ls -ahl {} \;
     
-    sudo find /var/www/java -type f -iname ".txt" -exec chown root:www-data {} \; 
+    sudo find /var/www/java -type f -iname ".txt" -exec chown root:www-data {} \;
     sudo find /var/www/java -type f -iname ".txt" -exec chmod 640 {} \; 
     sudo find /var/www/d -type d -iname "web*" -exec chmod 750 {} \;
     
@@ -63,17 +95,9 @@ Assuming you understand the basics like:
     
     find ~ -empty //check the home directory for empty files (size 0)
     
-    find -name "MyCProgram.c"
-> case sensitive, starts in the current directory 
-    
-    find / -iname "MyCProgram.c"
-> case insensitive, starts from root 
-    
-    find -maxdepth 1 -not -iname "MyCProgram.c"
-> case insensitive, starts from current directory, will search subdirectory(ies) and list all items //that do NOT match the query 
     
     find / -mindepth 3 -maxdepth 5 -iname passwd
-> case insensitive, starts from root, will search subdirectory levels between 2 and 4 
+> case insensitive, starts from root, will search subdirectory levels between 2 and 4
     
     find / 3 -maxdepth 5 -iname passwd &
 > case insensitive, starts from root, will search at most 4 subdir levels, will start in background 
@@ -88,36 +112,27 @@ Assuming you understand the basics like:
 > interesting - find a file by inode number (ls -i) and then rename/move it
 
     find / -perm 700 -type f
-> find all files from root below, with permissions set exactly to 700, only regular files (-type f) 
+> find all files from root below, with permissions set exactly to 700, only regular files (-type f)
 
-    // while the above just lists the files the below runs an ls -l to see everything about them... find / -perm 700 -type f -exec ls -l {} \;
+    find / -perm 700 -type f -exec ls -l {} \;
+> while the above just lists the files the below runs an ls -l to see everything about them...
 
-    RUN "man find" IF YOU NEED TO FIND SOMETHING SPECIFIC ABOUT FILES AND PERMISSIONS
 
-    // the largest 5 files... find . -type f -exec ls -s {} \; | sort -n -r | head -5
+RUN "man find" IF YOU NEED TO FIND SOMETHING SPECIFIC ABOUT FILES AND PERMISSIONS
 
-    // the smallest not empty 5 files find . -not -empty -type f -exec ls -s {} \; | sort -n | head -5
 
-    // all directories find . -type d
+> any files newer than the one given find -newer file-i-made-yesterday
 
-    // any files newer than the one given find -newer file-i-made-yesterday
-
-    // search the home directory size equal to 100 MB, use +100MB for greater than and -100MB for less than find ~ -size 100M
+search the home directory size equal to 100 MB, use +100MB for greater than and -100MB for less than find ~ -size 100M
 
 <http://www.thegeekstuff.com/2009/03/15-practical-linux-find-command-examples/>
 
+### find files by modified time
+
 There is an implied AND operator with find but for OR or NOT...
-
-    find / -type f -mtime -7 | xargs tar -rf weekly_incremental.tar
-
-    find / -name core -delete
-> same if using Gnu find
 
     find / -mmin -10
 > something modified 10 minutes ago
-
-    find / -user username
-> find all of the files a user owns..
 
     find . -mtime 1 
 > find files modified between 24 and 48 hours ago 
@@ -125,17 +140,26 @@ There is an implied AND operator with find but for OR or NOT...
     find . -mtime +1 
 > find files modified more than 48 hours ago
 
-find . -mmin +5 -mmin -10 
+    find . -mmin +5 -mmin -10
 > find files modifed between # 6 and 9 minutes ago
+
+
+    find / -type f -mtime -7 | xargs tar -rf weekly_incremental.tar
+> find files modified in the last 7 days and create a .tar file from them
+
+    find / -name core -delete
+> same if using Gnu find
+
+
+    find / -user username
+> find all of the files a user owns..
+
 
     -mtime +60 means you are looking for a file modified 60 days ago. -mtime -60 means less than 60 days. -mtime 60 If you skip + or - it means exactly 60 days.
 
     find / -mtime 9 -mtime -10
 > 24 hours
 
-    find startdirectory -name 'partoffileordirname'
-> e.g. find /home/joe -name '.tx'
-> which would return txt's as well as txv?'s
 
 
 ## grep
