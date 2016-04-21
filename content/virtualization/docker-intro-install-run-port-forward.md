@@ -2,16 +2,17 @@ Title: Docker Intro install run and port forward
 Date: 2014-07-10 17:00
 Tags: docker, containers
 
-Docker is a union file system based layer system leveraging linux lxc containers for ultra lightweight virtualization/compartmentalization.
+Docker is a union file system based layer system (previously leveraging linux lxc containers) for ultra lightweight virtualization/compartmentalization.
 
 Much like AWS cloud servers (api based dynamic deployment that should be tolerant of node failure) and automated deployment/configuration infrastructure (chef or puppet such that cloud servers are created idempotent, remotely and automatically managed at scale), Docker requires a change of mindset.
 
 Docker encourages design of modular, deterministic and defined, single purpose components that are easy to compose into larger services.
 
+As any tool, using it for managing complexity and packaging can be very helpful but it does expose other potential issues (composability, orchestration, security).
 
 [TOC]
 
-- **Images** are the initial templates, each image has a unique ID
+- **Images** are the initial templates, each image has a unique ID <https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers/#content-addressable-storage>
 - **Containers** are the running virtual machines, each container has a unique ID  <http://docs.docker.com/terms/container>
 - *From now on it is assumed you use **sudo** before any docker command!*
 
@@ -28,7 +29,7 @@ Docker encourages design of modular, deterministic and defined, single purpose c
 > OPTIONAL STEP IF YOU HAD AN OLD DOCKER INSTALLATION
 `apt-get purge lxc-docker*`
 
-### Mac or Windows
+### Installing on Mac or Windows
 <https://www.docker.com/docker-toolbox>
 
 - - -
@@ -40,9 +41,11 @@ Docker encourages design of modular, deterministic and defined, single purpose c
     docker run -it --rm -e MYVAR=123 busybox env
 > "run" will pull the image from Docker Hub by default, e injects an environment variable, overrides the Docker Image CMD with "env"
 
-    docker run -it --rm --entrypoint=/bin/bash python
-> the entrypoint parameter overrides the Docker Image (in case they do not provide a helpfully overridable CMD)
-<http://docs.docker.com/engine/reference/builder/#entrypoint>
+    docker run -it --rm --entrypoint=/bin/sh python:latest
+
+- run the docker container (from the latest public python image) and start the shell prompt instead of the python interpreter
+- the entrypoint parameter overrides the Docker Image (in case they do not provide a helpfully overridable CMD)
+- <http://docs.docker.com/engine/reference/builder/#entrypoint>
 
 - - -
 ## Download a docker image
@@ -50,14 +53,16 @@ Docker encourages design of modular, deterministic and defined, single purpose c
 Official Images are he easiest to experiment with: <https://hub.docker.com/explore/>
 
     sudo docker pull ubuntu:trusty
-> (**grabs the latest, i.e. 14.04.1**) or `sudo docker pull ubuntu:12.04.3`
+> (**grabs the latest, i.e. 14.04.1**) or use a different tag to download a more specific version `sudo docker pull ubuntu:12.04.3`
 
-**critical!** use the colon and a specific version! downloading all of the ubuntu images by accident sucks =(
+**CRITICAL WARNING!** use the colon and a specific version! downloading all of the ubuntu images by accident sucks =(
 
     sudo docker pull redis:latest
-> choose the latest or a specific version to avoid downloading a lot of old crap
+> choose the latest for just messing around but...
+> ALWAYS use a specific version to avoid having your dependencies change unexpectedly
 
 Finding what versions of images (tags) you can pull requires using either the UI or the API:
+
 - <https://hub.docker.com/r/library/redis/tags/>
 - `docker pull redis:3`
 - `docker pull redis:2.8`
@@ -67,38 +72,40 @@ Finding what versions of images (tags) you can pull requires using either the UI
 
 ### Remove a docker image
 
-`docker rmi trustyssh`
+    docker rmi redis
 
-`docker rmi -f $(docker images --all --quiet | grep -v 5506de2b643b)`
+    docker rmi -f $(docker images --all --quiet | grep -v 5506de2b643b)
 > remove ALL images except one by taking the output (quiet means only image ids), excluding a specific one, and then force removing the images (by id)
 
-`docker images --quiet --filter "dangling=true" | xargs docker rmi`
+    docker images --quiet --filter "dangling=true" | xargs docker rmi
 > remove all images that do not have a tag and are not a parent of a tagged image
 
-`docker rmi -f $(docker images --all --quiet)`
+    docker rmi -f $(docker images --all --quiet)
 > remove ALL images
 
 
-`du -sh /var/lib/docker/aufs`
->  72K    /var/lib/docker/aufs/
+    du -sh /var/lib/docker/aufs
+>  Summarize the amount of disk space taken by images and layers, e.g.: 72K    /var/lib/docker/aufs/
 
 
 Sometimes a docker image is **still connected to a container** (already exited or forgotten)
 
     docker ps -a
     docker rm name_or_id
-    docker rm a1b2  **it will smart match the first characters of the container ID**
+    
+    docker rm a1b2
     docker rmi image_id
+>  **it will "smart match" the first characters of the container ID** the same as git short sha
 
 
 ### Docker info
 
-`docker`
+    docker
 > get a helpful list of all the commands
 
-`docker --version`
+    docker --version
 
-`docker info`
+    docker info
 
     :::text
     Containers: 1
@@ -111,30 +118,30 @@ Sometimes a docker image is **still connected to a container** (already exited o
     Operating System: Ubuntu 14.04.1 LTS
     WARNING: No swap limit support
 
-`du -sh /var/lib/docker/aufs`
+    du -sh /var/lib/docker/aufs
 >    469M    /var/lib/docker/aufs/
 
-`docker ps --all`
+    docker ps --all
 > no containers are running yet
 
-`docker ps --help`
+    docker ps --help
 
-`docker images --tree`
-> view the hashes and sizes of all of the parent images
+
+**docker images --tree** is a deprecated command to view the hashes and sizes of all of the parent images
 
 - - -
 ## Controlling Containers
 
-### Starting a container (from an image)
+### Starting a container from an image
 
 #### Create a container
 
 First you must create a container from an image:
 
-`docker run`
+    docker run
 > get a helpful list of how to run a container
 
-`docker run --rm -i -t ubuntu:14.04 /bin/bash`
+    docker run --rm -i -t ubuntu:14.04 /bin/bash
 
     :::text
     creates a container
@@ -153,12 +160,12 @@ First you must create a container from an image:
 
 Control-p then Control-q to detach the tty without exiting the shell
 
-`docker ps`
+    docker ps
 
-`docker run --detach --name myapp -p 127.0.0.1:5000:5000 training/webapp python app.py`
+    docker run --detach --name myapp -p 127.0.0.1:5000:5000 training/webapp python app.py
 > detached with port 5000 available only to the host and executing the command python with parameter app.py
 
-`docker exec myapp ls -ahl`
+    docker exec myapp ls -ahl
 > runs the ls command inside the container named "myapp"
 
 - `docker run --rm -i -t --link myhipchat_mariadb_1 mariadb:5 /bin/bash -c "exec mysql --version"`
@@ -169,7 +176,7 @@ Control-p then Control-q to detach the tty without exiting the shell
 
 After a container has already been created (which starts it so ironically this is actually a "restart")
 
-`docker start --interactive --attach container_id_or_name`
+    docker start --interactive --attach container_id_or_name
 
 #### Attaching to a running container
 
@@ -198,31 +205,32 @@ Part of the efficiency in docker is that containers can **run in the background 
 
 Another efficiency is that a docker container will only **run as long as it takes to execute** a command (and any **changes are not forgotten**)
 
-`docker run ubuntu:trusty uname -a`
+    docker run ubuntu:trusty uname -a
 > this runs the container only as long as it takes to execute the command
 
-`docker attach f5878ed6016e`
+    docker attach f5878ed6016e
 
 `Control + C`  *(now we have exited the container and it will clean itself up)*
 
-`docker ps -a`
+    docker ps -a
 
-    spun up another container but only long enough to run the command
+> spun up another container but only long enough to run the command
+
     CONTAINER ID IMAGE        COMMAND      CREATED      STATUS    PORTS         NAMES
     e4b436320442 ubuntu:14.04 -uname -a  3 minutes ago              elegant_engelbart
 
 ### Copying a file out of a container
 
-`docker cp <containerId>:/file/path/within/container /host/path/target`
+    docker cp <containerId>:/file/path/within/container /host/path/target
 
 <https://docs.docker.com/reference/commandline/cli/#cp>
 
 ### Deleting aka removing a container
 
-`docker rm e4b436320442`
+    docker rm e4b436320442
 > Alternatively: `docker rm --force elegant_engelbart`
 
-`docker rm -f $(docker ps -a -q)`
+    docker rm -f $(docker ps -a -q)
 > Deletes forcibly all containers (be careful!)
 
 
@@ -238,9 +246,9 @@ Also the version style of imagename:tag allows for chaining of upgrades of child
 Containers as fast, reliable, and deterministic prod/qa/dev environments can also be extended to be just an improved experimentation sandbox (for those used to SSH and using Linux as a common base OS).
 
 
-`mkdir -p dockerfiles/trustyssh`
-
-`vi dockerfiles/trustyssh/Dockerfile`
+    mkdir -p dockerfiles/trustyssh
+    vi dockerfiles/trustyssh/Dockerfile
+> one Dockerfile per directory
 
     FROM ubuntu:trusty
     MAINTAINER John Pfeiffer "https://bitbucket.org/johnpfeiffer"
@@ -255,7 +263,8 @@ Containers as fast, reliable, and deterministic prod/qa/dev environments can als
     EXPOSE 22
     CMD    ["/usr/sbin/sshd", "-D"]
     
-`docker build --tag=newimagename --rm ./dockerfiles/ubuntu-trusty-ssh`
+
+    docker build --tag=newimagename --rm ./dockerfiles/ubuntu-trusty-ssh
 > Each RUN command creates an intermediate container, so make sure you use the -rm option
 
     :::text
@@ -281,7 +290,7 @@ Since each run command creates a new layer it is best practice to consolidate co
       chmod +x /root/build-and-run.sh
 
 
-`docker history ubuntu-utopic-pelican:latest`
+    docker history ubuntu-utopic-pelican:latest
 > view the history of hashes (which can be run by themselves) and timestamps and sizes
 
     IMAGE               CREATED             CREATED BY                                      SIZE
@@ -663,17 +672,22 @@ If instead of the docker client you wish to interact more programatically...
 
 ### Private Docker Registry
 
+#### Login to a private docker registry
+
     curl -i https://username:password@docker.example.com/v2/
 > attempt to login to a private registry
 
-** Using the docker client to login to a private registry**
+** Using the docker client to login to a private registry **
+
     docker login docker.example.com:443
     > Username: user@example.com
     > WARNING: login credentials saved in /home/USER/.docker/config.json
     > Login Succeeded
 
-<https://docs.docker.com/registry/deploying/>
 
+#### private registry basics via the browser
+
+How to deploy your own docker registry: <https://docs.docker.com/registry/deploying/>
 
     https://docker.example.com/_ping
 > {}
