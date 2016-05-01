@@ -12,14 +12,21 @@ And if you have an SSD drive you will want to optimize your OS to not wear it ou
 
 ## Write an ISO to usb
 
+Be very careful with sudo or using the root user as this can permanently remove files or render your operating system inoperable.
+
+
+    sudo su
     fdisk -l
     umount /dev/sdc1
 
-    sudo dd if=/home/ubuntu/Desktop/ubuntu-14.04.1-server-amd64.iso of=/dev/sdc
+    dd if=/home/ubuntu/Desktop/ubuntu-14.04.1-server-amd64.iso of=/dev/sdc
     
     1171456+0 records in
     1171456+0 records out
     599785472 bytes (600 MB) copied, 260.364 s, 2.3 MB/s
+
+> fdisk allows you to see the device (e.g. an 8GB usb stick)
+> dd will overwrite from the "infile" to the "outfile" so make sure you get that target location correct
 
 ## Ubuntu Recovery mode 
 (which is access to a single root user command line)
