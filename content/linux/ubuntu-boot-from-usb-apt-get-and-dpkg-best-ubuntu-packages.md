@@ -1,6 +1,6 @@
 Title: Ubuntu Bootable USB, apt-get and dpkg, and the best packages to install
 Date: 2014-08-20 00:00
-Tags: Linux, Ubuntu, USB Boot, Ubuntu Recovery, dpkg, apt-get
+Tags: linux, ubuntu, xubuntu, usb boot, ubuntu recovery, dpkg, apt-get, dd
 
 [TOC]
 
@@ -12,7 +12,9 @@ And if you have an SSD drive you will want to optimize your OS to not wear it ou
 
 ## Write an ISO to usb
 
-Be very careful with sudo or using the root user as this can permanently remove files or render your operating system inoperable.
+Be very careful with **sudo** or using the **root** user as this can permanently remove files or render your operating system inoperable.
+
+*dd is a low level command that writes bytes directly without any prompts*
 
 
     sudo su
@@ -26,7 +28,8 @@ Be very careful with sudo or using the root user as this can permanently remove 
     599785472 bytes (600 MB) copied, 260.364 s, 2.3 MB/s
 
 > fdisk allows you to see the device (e.g. an 8GB usb stick)
-> dd will overwrite from the "infile" to the "outfile" so make sure you get that target location correct
+
+> dd will overwrite from the "infile" to the "outfile" so make sure you get that target location correct!
 
 ## Ubuntu Recovery mode 
 (which is access to a single root user command line)
