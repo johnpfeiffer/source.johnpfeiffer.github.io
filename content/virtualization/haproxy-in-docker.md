@@ -180,7 +180,8 @@ client -> forward proxy (nginx) -> all other sites
             }
         }
     }
-    
+
+
 
     docker run -it --rm -p 8080:8080 -v /tmp/nginx.conf:/etc/nginx/nginx.conf:ro --name mynginx nginx:alpine
 
