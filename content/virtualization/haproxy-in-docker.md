@@ -23,7 +23,7 @@ Here's a trivial example of how I can leverage the HAProxy Docker image/containe
 
 ### Prerequisites
 
-sudo docker pull haproxy:1.5
+    sudo docker pull haproxy:1.5
 
 #### Some backend web servers
 
@@ -78,9 +78,9 @@ sudo docker pull haproxy:1.5
 - name the container myhaproxy (each container name must be unique)
 - the container is using the haproxy version 1.5 Docker Image
 
-`./start-haproxy.sh`
+    ./start-haproxy.sh
 
-`curl localhost:8443`
+    curl localhost:8443
     
     :::html
     <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><html>
@@ -96,7 +96,7 @@ sudo docker pull haproxy:1.5
     </html>
     
     
-`curl localhost:8443`
+    curl localhost:8443
     
     :::html
     <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><html>
@@ -114,9 +114,9 @@ sudo docker pull haproxy:1.5
 
 ### HAProxy Stats
 
-`sudo docker rm -f myhaproxy`
+    sudo docker rm -f myhaproxy
 
-#### ### /opt/mydata/haproxy.cfg
+#### /opt/mydata/haproxy.cfg
     global
         debug
     
@@ -141,11 +141,13 @@ sudo docker pull haproxy:1.5
         stats auth user:password
 
 
-`./start-haproxy.sh`
+    ./start-haproxy.sh
 
 ### nginx forward proxy
 
 client -> forward proxy (nginx) -> all other sites
+
+    docker pull nginx:alpine
 
 #### nginx.conf
 
@@ -180,15 +182,73 @@ client -> forward proxy (nginx) -> all other sites
     }
     
 
-`docker run -it -p 8080:8080 --name mynginx -v /opt/mydata/nginx.conf:/etc/nginx/nginx.conf:ro nginx`
+    docker run -it --rm -p 8080:8080 -v /tmp/nginx.conf:/etc/nginx/nginx.conf:ro --name mynginx nginx:alpine
 
-> configure your browser to use 127.0.0.1:8080 as it's proxy and watch the log statements fly by when you test http://example.com
+> bind to port 8080 on the host and run an ephemeral container based on the alpine linux with nginx image that uses the /tmp/nginx config
 
-> NOTE: this does not support HTTPS <http://forum.nginx.org/read.php?2,15124,15256#msg-15256>
+    http_proxy=127.0.0.1:8080 curl example.com
+
+> set the linux operating system proxy environment just for this one curl command and see the dockerized nginx forward proxy log show: 172.17.0.1 - - [06/May/2016:22:37:22 +0000] "GET HTTP://example.org/ HTTP/1.1" 200 1270 "-" "curl/7.35.0"
+
+
+Configure your browser (firefox) to use 127.0.0.1:8080 as the proxy for all protocols and watch the log statements fly by when you test http://example.com
+
+> NOTE: this does not support HTTPS <http://forum.nginx.org/read.php?2,15124,15256#msg-15256> 
+
+> Attempting https://example.com will return "CONNECT example.com:443 HTTP/1.1" 400 173 "-" "-"  and the browser will show "Server not found"
+
+** Warning ** do not use *http_proxy=http://127.0.0.1:8080* as that will fail =[
+
+You can permanently set the environment proxy with export http_proxy=127.0.0.1:8080
+
+### HAProxy as a limited outbound proxy
+
+    sudo docker pull haproxy:1.6-alpine
+
+Now that you have the 10MB haproxy image...
+
+> Note there is a limitation to haproxy in that it always assumes a syslog facility (no direct logging to stdout or files)
+
+- <https://github.com/dockerfile/haproxy/issues/3>
+- <http://www.gnu.org/software/libc/manual/html_node/Overview-of-Syslog.html>
+
+
+#### /opt/mydata/haproxy.cfg
+This is the more readable config style which separates the frontend from backend and this is haproxy 1.6
+
+> The logging probably does not work =(
+
+    global
+            debug
+            log /dev/log local0 info
+    
+    defaults
+            mode http
+            timeout connect 5s
+            timeout client 5s
+            timeout server 5s
+    
+    frontend myfrontend
+            bind *:8443
+            default_backend mybackend
+    
+    backend mybackend
+            server s1 example.com:443 ssl verify none
+    
+
+
+#### starting the haproxy docker container
+    docker run -p 8443:8443 --rm -it -v /home/admin/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro -v /dev/log:/dev/log --name myhaproxy haproxy:1.6-alpine
+
+
+> Control + C to quit
+
+
 
 ### more info
 
 - <https://registry.hub.docker.com/_/haproxy/>
 - <https://cbonte.github.io/haproxy-dconv/configuration-1.5.html>
-- <http://docs.docker.com/reference/commandline/cli/#adding-entries-to-a-container-hosts-file>    
-
+- <https://cbonte.github.io/haproxy-dconv/configuration-1.6.html>
+- <http://www.haproxy.org/git?p=haproxy-1.6.git;a=tree;f=examples>
+- <http://docs.docker.com/reference/commandline/cli/#adding-entries-to-a-container-hosts-file>
