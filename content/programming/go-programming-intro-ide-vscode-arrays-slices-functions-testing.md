@@ -1,6 +1,6 @@
-Title: Alpine Linux Introduction Tutorial
+Title: Go Programming Intro with VS Code and Arrays Slices Functions and Testing
 Date: 2015-11-15 21:19
-Tags: go, golang, vscode
+Tags: go, golang, vscode, testing, arrays, slices, binary search
 
 [TOC]
 
@@ -192,6 +192,39 @@ Comments are either single line with double slashes or block comments <https://g
 	fmt.Println("local:", now)
 	fmt.Println(now.UnixNano()/1000000, "ms")
 	fmt.Println("in UTC:", now.UTC().Format(time.UnixDate))
+
+
+### Packages and String Reverse
+
+When you modularize your code into packages then multiple programs can make use of DRY <https://en.wikipedia.org/wiki/Don%27t_repeat_yourself>
+
+#### main
+
+    package main
+    
+    import (
+    	"fmt"
+    	"github.com/johnpfeiffer/mystringutil"
+    )
+    
+    func main() {
+    	fmt.Printf(stringutil.Reverse("!oG ,olleH"))
+    }
+    
+#### package mystringutil with Reverse
+
+    // Package mystringutil contains utility functions for working with strings. "go build"
+    package mystringutil
+    
+    // Reverse returns its argument string reversed rune-wise left to right.
+    func Reverse(s string) string {
+            r := []rune(s)
+            for i, j := 0, len(r)-1; i < len(r)/2; i, j = i+1, j-1 {
+                    r[i], r[j] = r[j], r[i]
+            }
+            return string(r)
+    }
+    
 
 
 ### palindrome and string conversion integer to ascii
