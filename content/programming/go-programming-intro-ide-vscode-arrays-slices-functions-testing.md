@@ -132,8 +132,8 @@ Comments are either single line with double slashes or block comments <https://g
     
     import "fmt"
     
-    // https://golang.org/doc/effective_go.html#mixed-caps
-    // https://golang.org/ref/spec#Constants
+    /* https://golang.org/doc/effective_go.html#mixed-caps
+       https://golang.org/ref/spec#Constants */
     const alphabetMax int = 26
     
     func main() {
@@ -170,9 +170,9 @@ Comments are either single line with double slashes or block comments <https://g
     	}
        	fmt.Println(s)    // []
         s = a[:]
-	fmt.Println(s)    // [a b c d e]
-	s = a[2:]
-	fmt.Println(s)    // [c d e]
+        fmt.Println(s)    // [a b c d e]
+        s = a[2:]
+        fmt.Println(s)    // [c d e]
     }
 
 
@@ -210,12 +210,13 @@ Comments are either single line with double slashes or block comments <https://g
 
 ### time
 
+    :::go
     import "time"
-	// https://golang.org/pkg/time/#Now
-	now := time.Now()
-	fmt.Println("local:", now)
-	fmt.Println(now.UnixNano()/1000000, "ms")
-	fmt.Println("in UTC:", now.UTC().Format(time.UnixDate))
+    // https://golang.org/pkg/time/#Now
+    now := time.Now()
+    fmt.Println("local:", now)
+    fmt.Println(now.UnixNano()/1000000, "ms")
+    fmt.Println("in UTC:", now.UTC().Format(time.UnixDate))
 
 
 ### Packages and String Reverse
@@ -224,6 +225,7 @@ When you modularize your code into packages then multiple programs can make use 
 
 #### main
 
+    :::go
     package main
     
     import (
@@ -237,6 +239,7 @@ When you modularize your code into packages then multiple programs can make use 
     
 #### package mystringutil with Reverse
 
+    :::go
     // Package mystringutil contains utility functions for working with strings. "go build"
     package mystringutil
     
@@ -257,6 +260,7 @@ Besides the main function for executing you will obviously create re-usable pack
 
 Here is the source code for a simple "is this string a palindrome" and "is this integer a palindrome" programs:
 
+    :::go
     package main
     
     import (
@@ -318,8 +322,8 @@ Here is the source code for a simple "is this string a palindrome" and "is this 
     }
     
 ### Random Integers
-<code>
 
+    :::go
 	// https://golang.org/pkg/crypto/rand/
 	// https://golang.org/pkg/math/big/
 	var max big.Int
@@ -336,6 +340,7 @@ Here is the source code for a simple "is this string a palindrome" and "is this 
 
 Using main and print is the poor man's Unit Testing ;)
 
+    :::go
     package main
     
     import (
@@ -420,6 +425,72 @@ Using main and print is the poor man's Unit Testing ;)
 
 Verify with `curl localhost:8080`
 
+
+#### Deploying a Go Web Application to Google AppEngine
+
+
+First create an **app.yaml** file in your package
+
+    application: MyApplicationName
+    version: 1
+    runtime: go
+    api_version: go1
+    
+    handlers:
+    - url: /.*
+      script: _go_app
+
+
+Second adapt your source code to the Google App Engine entrypoint:
+
+    :::go
+    package myapplicationname
+    // package main
+
+    import (
+            "fmt"
+            "net/http"
+    )
+
+    func myHandler(w http.ResponseWriter, r *http.Request) {
+            fmt.Fprintf(w, "hi")
+    }
+
+    // The App Engine PaaS provides its own main() that handles the Listening and Serving ;)
+    //func main() {
+    func init() {
+            http.HandleFunc("/", myHandler)
+    //      http.ListenAndServe(":8080", nil)
+    }
+
+
+Assuming you have created the project with <https://console.cloud.google.com/> and received a unique application id...
+
+A prerequisite is to use the SDK if you want to test it locally: <https://cloud.google.com/appengine/downloads#Google_App_Engine_SDK_for_Go>
+
+    unzip go_appengine_sdk...zip
+    /opt/go_appengine/goapp serve /path-to-project/MyProjectFolder/
+
+      INFO     2016-06-02 06:30:27,493 devappserver2.py:769] Skipping SDK update check.
+      INFO     2016-06-02 06:30:27,527 api_server.py:205] Starting API server at: http://localhost:38837
+      INFO     2016-06-02 06:30:27,530 dispatcher.py:197] Starting module "default" running at: http://localhost:8080
+      INFO     2016-06-02 06:30:27,531 admin_server.py:116] Starting admin server at: http://localhost:8000
+
+
+#### To deploy to Google App Engine
+
+    /opt/go_appengine/appcfg.py -A MyApplicationID update ./MyProjectFolder/
+
+> View the version deployed and stats with <https://console.cloud.google.com/appengine/versions?project=MyApplicationId>
+
+    curl http://MyApplicationId.appspot.com/
+
+> A gotcha is future updates deployed need the app.yaml version to increment AND either use the Web UI to set the new "default" or...
+
+    /opt/go_appengine/appcfg.py -A MyApplicationId set_default_version /MyProjectFolder
+
+
 ### More Info
 
 - <https://tour.golang.org/basics/>
+- <https://blog.joshsoftware.com/2014/03/12/learn-to-build-and-deploy-simple-go-web-apps-part-one/>
