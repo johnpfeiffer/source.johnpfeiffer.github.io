@@ -77,25 +77,43 @@ Unfortunately it is not quite simple to execute the code directly in VSCode <htt
 
 ### Install or Build or Run
 
+Because Go is a static language there is a compilation (and linking) phase where the source code is transformed into a binary.
+
+#### Manual CLI compilation and installation and execution
+
 The traditional command line method is:
 
-    cd $GOPATH/path-to-your-project
+    cd $GOPATH/path-to-your-project/PROJECTNAME
     go install
-    $GOPATH/bin
+    $GOPATH/bin/PROJECTNAME
 
 - <https://golang.org/doc/code.html#Command>
 - <http://dave.cheney.net/2014/01/21/using-go-test-build-and-install>
+
+A concrete example:
+
+1. Compile with: `cd /opt/goprojects/src/github.com/johnpfeiffer/intro/ ; go install`
+2. Execute with: `/opt/goprojects/bin/intro`
 
 ### Debugging with Delve
 
     go get github.com/derekparker/delve/cmd/dlv
     cd /opt/goprojects/src
     go install /derekparker/delve/cmd/dlv
+
+The first time I attempted to do it manually:
+
     ls -ahl /opt/goprojects/bin/
     cd /opt/goprojects/src/github.com/johnpfeiffer/YOURPROJECT
     /opt/goprojects/bin/dlv  debug --headless --listen=:2345 --log
 
 Now in the VSCode IDE open the project folder and create your helloworld.go source file and Control + S to save (and auto gofmt) and then press **F5** and it will connect to the Delve Debugger and display the output
+
+#### Delve Debugging and running your application with F5 is automatic once installed correctly
+
+1. The first time you run "Continue" with F5 on a file it will prompt you to setup your launch.json (and the IDE will open the default template for you)
+2. Use the IDE to go back to your source .go file and press F5 again, this time since the .vscode subdirectory was created and the default delve launch.json file was created, it will just start in debug mode with the Debug Console output at the bottom
+
 
 ## Coding and Compiling
 
@@ -109,6 +127,7 @@ Comments are either single line with double slashes or block comments <https://g
 
 #### intro.go
 
+    :::go
     package main
     
     import "fmt"
@@ -134,10 +153,13 @@ Comments are either single line with double slashes or block comments <https://g
     	}
     
     	// arrays are contiguous memory, fixed size and type
-    	// prefer Slices which are Reference Objects that wrap the underlying arrays
     	// initialized to capacity 5 with values inserted, alternatively just initialized to empty with: var a [5]string
     	a := [5]string{"a", "b", "c", "d", "e"}
-    	
+
+    	// prefer Slices which are Reference Objects that wrap the underlying arrays
+        // https://blog.golang.org/go-slices-usage-and-internals
+        s := []string
+
     	for i := 0; i < len(a); i++ {
     		fmt.Println(i, a[i])
     	}
@@ -146,30 +168,32 @@ Comments are either single line with double slashes or block comments <https://g
     	for k, v := range a {
     		fmt.Println(k, v)
     	}
-    
+       	fmt.Println(s)    // []
+        s = a[:]
+	fmt.Println(s)    // [a b c d e]
+	s = a[2:]
+	fmt.Println(s)    // [c d e]
     }
 
-####
-
-1. Compile with: `cd /opt/goprojects/src/github.com/johnpfeiffer/intro/ ; go install`
-2. Execute with: `/opt/goprojects/bin/intro`
 
 
 ### arrays are contiguous memory and 4 bytes is normal
 
-	// int is usually the 4 byte int32 https://golang.org/ref/spec#Numeric_types
-	b := [2]int{1, 2}
-	// dereference the addresses that are holding the values 1 and 2
-	fmt.Printf("%d %d\n", &b[0], &b[1])
-
-	// rune is also int32
-	c := [2]rune{'a', 'ä'}
-	fmt.Printf("%d %d\n", &c[0], &c[1])
+    :::go
+    // int is usually the 4 byte int32 https://golang.org/ref/spec#Numeric_types
+    b := [2]int{1, 2}
+    // dereference the addresses that are holding the values 1 and 2
+    fmt.Printf("%d %d\n", &b[0], &b[1])
+    
+    // rune is also int32
+    c := [2]rune{'a', 'ä'}
+    fmt.Printf("%d %d\n", &c[0], &c[1])
 
 ### fizzbuzz and switch
 
 <https://golang.org/ref/spec#Switch_statements>
 
+    :::go
 	for i := 1; i < 16; i++ {
 		// usually static case values and "switch i {" , note it will NOT fall through by default
 		switch {
@@ -354,6 +378,7 @@ Using main and print is the poor man's Unit Testing ;)
 
 <http://stackoverflow.com/questions/1760757/how-to-efficiently-concatenate-strings-in-go>
 
+    :::go
     func myReplace(source string) string {
     	var b bytes.Buffer
     	for _, c := range source {
@@ -372,6 +397,28 @@ Using main and print is the poor man's Unit Testing ;)
 - <https://golang.org/pkg/testing/>
 - <http://nathanleclaire.com/blog/2015/10/10/interfaces-and-composition-for-effective-unit-testing-in-golang/>
 - <https://cloud.google.com/appengine/docs/go/tools/localunittesting/#Go_Introducing_the_Go_testing_package>
+
+### A simple web server
+
+    :::go
+    package main
+
+    import (
+        "fmt"
+        "net/http"
+    )
+
+    func myHandler(w http.ResponseWriter, r *http.Request) {
+        fmt.Fprintf(w, "hi")
+    }
+
+    func main() {
+        http.HandleFunc("/", myHandler)
+        http.ListenAndServe(":8080", nil)
+    }
+
+
+Verify with `curl localhost:8080`
 
 ### More Info
 
