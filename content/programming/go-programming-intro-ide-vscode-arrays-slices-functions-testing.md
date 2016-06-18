@@ -176,7 +176,6 @@ Comments are either single line with double slashes or block comments <https://g
     }
 
 
-
 ### arrays are contiguous memory and 4 bytes is normal
 
     :::go
@@ -489,6 +488,41 @@ A prerequisite is to use the SDK if you want to test it locally: <https://cloud.
 
     /opt/go_appengine/appcfg.py -A MyApplicationId set_default_version /MyProjectFolder
 
+
+### HandlerFunc and Anonymous Functions and Closure
+
+The decorator pattern Anonymous functions an
+
+    :::go
+    package main
+    
+    import (
+    	"fmt"
+    	"net/http"
+    )
+    
+    /* using an anonymous function and closure to wrap the HandlerFunc
+    https://golang.org/pkg/net/http/#HandlerFunc
+    https://medium.com/@matryer/the-http-handlerfunc-wrapper-technique-in-golang-c60bf76e6124
+    */
+    func makeHandler(name string) http.HandlerFunc {
+    	return func(w http.ResponseWriter, r *http.Request) {
+    		// https://golang.org/src/net/http/request.go
+    		fmt.Println("serving: ", r.URL.Path)
+    		fmt.Fprintf(w, "<h1>%s</h1>", name)
+    	}
+    }
+    
+    func main() {
+    	fmt.Println("starting...")
+    	indexHandler := makeHandler("Index")
+    	myHandler := makeHandler("John")
+    	// https://golang.org/pkg/net/http/#HandleFunc , string, func(ResponseWriter, *Request)
+    	http.HandleFunc("/", indexHandler)
+    	http.HandleFunc("/john", myHandler)
+    	http.ListenAndServe(":8080", nil)
+    }
+    
 
 ### More Info
 
