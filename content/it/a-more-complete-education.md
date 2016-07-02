@@ -80,6 +80,9 @@ by Mehran Sahami (very fun and Java is a good starting point)
 ### Vanderbilt
 - <https://www.coursera.org/course/posa>
 
+### MIT
+
+- <http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/>
 
 ## PRACTICE, PRACTICE, PRACTICE
 - <http://codingbat.com/python> (beginner)  
