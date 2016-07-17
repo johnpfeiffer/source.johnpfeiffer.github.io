@@ -192,6 +192,7 @@ It is easy to use the MVC pattern while inheriting from the framework <https://w
 Google AppEngine applications can leverage the platforms NoSQL database <https://cloud.google.com/appengine/docs/python/datastore/>
 
 The example application below also shows how to override the default 404 and 500 errors with custom jinja2 templates which would require installing the jinja2 dependency and an extra subdirectory named templates with the HTML
+
 - <https://blog.john-pfeiffer.com/jinja2-a-web-html-template-layout-for-everyone/>
 - <https://cloud.google.com/appengine/docs/python/ndb/> has improved and deprecated the DB Datastore library used below
 
