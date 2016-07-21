@@ -24,7 +24,12 @@ As any tool, using it for managing complexity and packaging can be very helpful 
 1. `apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D`
 1. `sudo sh -c "echo 'deb https://apt.dockerproject.org/repo ubuntu-trusty main' > /etc/apt/sources.list.d/docker.list"`
 1. `sudo apt-get update`
+1. `sudo apt-get install linux-image-extra-$(uname -r)`
 1. `apt-get install docker-engine`
+1. `service docker status`
+1. `docker info`
+
+> Make sure it lists /var/lib/docker/aufs
 
 > OPTIONAL STEP IF YOU HAD AN OLD DOCKER INSTALLATION
 `apt-get purge lxc-docker*`

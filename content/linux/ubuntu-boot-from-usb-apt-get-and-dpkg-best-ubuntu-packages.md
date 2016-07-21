@@ -469,3 +469,26 @@ I prefer seeing my bootup screens so I remove some but add the SSD enhancement
 
 *Note: the above command needs to be run as root, but sudo does not work with it on my system. Run sudo -i if you have a problem to get a root prompt.)*
 
+
+## Good Digital Ocean Droplet Tips
+
+1. `useradd -s /bin/bash -m NEWUSERNAME`
+1. `usermod -a -G admin NEWUSERNAME`
+1. `passwd NEWUSERNAME`
+1. mkdir -p /home/NEWUSERNAME/.ssh
+1. vi /home/NEWUSERNAME/.ssh/authorized_keys
+1. visudo
+
+    #includedir /etc/sudoers.d
+    NEWUSERNAME    ALL = (ALL) NOPASSWD: ALL
+
+> of course set the timezone to UTC and use network time protocol
+1. dpkg-reconfigure tzdata
+1. apt-get update
+1. apt-get install byobu vim ntp
+1. Secure SSH by removing root login with vi /etc/ssh/sshd_config: `PermitRootLogin no` , `PasswordAuthentication no`
+1. Optionally change the SSH port to something different from the default: `Port 22`
+1. /etc/init.d/ssh restart
+
+Use the Digital Ocean Web UI to poweroff and take a snapshot of the fresh system
+
