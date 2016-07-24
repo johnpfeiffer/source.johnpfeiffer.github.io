@@ -175,7 +175,7 @@ Allows for automated installation of software bundled into the `vagrant up` comm
             override.vm.box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
             override.ssh.username = "ubuntu"
             override.ssh.private_key_path = "./YOURKEYPAIRNAME.pem"
-            override.vm.synced_folder "./chef-repo", "/tmp/chef-repo", type: "rsync", create: true, rsync__exclude: ".git/"
+            override.vm.synced_folder "/etc/sslcerts", "/tmp/sourcecode", type: "rsync", create: true, rsync__exclude: ".git/"
         end
         config.vm.provision :shell, :inline => "echo `hostname -f` >> /home/ubuntu/currenthostname.txt"
         config.vm.provision :shell, :inline => $fqdnscript

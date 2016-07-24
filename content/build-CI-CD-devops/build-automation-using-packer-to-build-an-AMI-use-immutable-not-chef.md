@@ -1,6 +1,6 @@
-Title: Build Automation using packer to build an AMI
+Title: Build Automation using packer to build an AMI use immutable not chef
 Date: 2015-07-06 20:40
-Tags: cloud, packer, build, ami
+Tags: cloud, packer, build, ami, chef
 
 [TOC]
 
