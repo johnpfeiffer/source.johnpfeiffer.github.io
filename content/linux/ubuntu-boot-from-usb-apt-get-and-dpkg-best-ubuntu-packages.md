@@ -61,19 +61,19 @@ Since apt is a wonderful wrapper/manager of dpkg when you're in doubt most likel
 
 ### apt-cache
 
-`apt-cache search ssh`
+    apt-cache search ssh
 > to find packages with the name ssh
 
-`apt-cache search ssh | grep server`
+    apt-cache search ssh | grep server
 > if there are too many results pipe to grep to filter down the results
 
-`apt-cache show ssh`
+    apt-cache show ssh
 > to show the details about a specific package
 
-`apt-cache showpkg ssh`
+    apt-cache showpkg ssh
 > to show more general info about a package
 
-`apt-cache depends ssh`
+    apt-cache depends ssh
 > to show the package dependencies
 
 ### Force Apt to use  IPv4 to avoid lengthy IPv6 timeouts
@@ -161,7 +161,7 @@ Before you do a major upgrade of Ubuntu you should bring all packages to the lat
     lsb_release -a
     cat /etc/lsb_release
     uname -a
-> verify that your system has been upgraded (kernel too)
+> verify that your system has been upgraded (kernel upgrades often require a reboot to become loaded in memory))
 
 ### removing packages with apt
     apt-get remove wget
@@ -176,7 +176,7 @@ Before you do a major upgrade of Ubuntu you should bring all packages to the lat
 
 ### apt-key
 
-`sudo apt-key update`
+    sudo apt-key update
 > if apt errors: WARNING: The following packages cannot be authenticated
 
 ## dpkg really manages everything
@@ -262,17 +262,19 @@ apt-get purge postgresql-9.1 postgresql-client-9.1 postgresql-common postgresql-
 > wget -qO- https://bootstrap.pypa.io/get-pip.py | sudo python
 
 
-- byobu = console terminal multi screen (survives network disconnects) <http://byobu.co>
+- openssh-server libssl = the secure remote shell service and encryption dependency <http://packages.ubuntu.com/search?keywords=openssh-server>
 - build-essential = tools for compiling and building debian packages <http://packages.ubuntu.com/lucid/build-essential>
+- byobu = console terminal multi screen (survives network disconnects) <http://byobu.co>
+- wget and curl = utilities to download files
+
 - elinks = cli browser (just in case your GUI dies and you need to research) <http://kmandla.wordpress.com/2011/01/13/a-comparison-of-text-based-browsers>
 - unzip and unrar = utilities to decompress compressed things
 - nano = a simple text editor (much easier than vi/vim for just writing new text)
-- wget and curl = utilities to download files
 - ntp = network time protocol client daemon to keep your clock in sync
 - rcconf = easier way to manage what services start at boot <https://packages.debian.org/jessie/rcconf>
 - dialog = user friendly dialog boxes for shell scripts (dependency for rcconf)
-- git-core = the distributed version control software that is eating the developer world
 
+- git-core = the distributed version control software that is eating the developer world
 - python-setuptools = Sometimes required to install pip  <http://pythonhosted.org/setuptools>
 - icedtea = open java (plugin = browser java)
 
@@ -284,15 +286,19 @@ sudo apt-get install openconnect network-manager-openconnect network-manager-ope
 - jdk = java development kit
 - iced-tea-7-plugin = open source java 7 support for browsers
 
-`sudo apt-get install openjdk-8-jdk`
-> NOT SURE IN UTOPIC: sudo apt-get install openjdk-7-jre openjdk-7-jdk icedtea-7-plugin
+    sudo apt-get install openjdk-8-jre
+> for just the java runtime (thank goodness not Oracle Sun)
+
+openjdk-8-jdk
+> for the full java development kit - needed for some packages to run correctly
+
 
 ### GUI
 
 **Xubuntu Desktop** is my preferred "lightweight" GUI for Ubuntu: <http://xubuntu.org>
 
-`apt-get install -y chromium-browser pepperflashplugin-nonfree geany keepassx xdiskusage`
-`apt-get install -y arandr rdesktop`
+    apt-get install -y chromium-browser pepperflashplugin-nonfree geany keepassx xdiskusage
+    apt-get install -y arandr rdesktop
 
 - chromium-browser = opensource branch/clone of google chrome browser, 
 - - maybe srware.net with privacy badger and adblock plus (fanboy block lists) too?
@@ -305,8 +311,10 @@ sudo apt-get install openconnect network-manager-openconnect network-manager-ope
 - grdesktop = gnome UI for rdesktop
 
 
-`sudo echo "autologin-user=ubuntu" >>  /etc/lightdm/lightdm.conf.d/10-xubuntu.conf`
+    sudo echo "autologin-user=ubuntu" >>  /etc/lightdm/lightdm.conf.d/10-xubuntu.conf
 > Better yet use the UI and just choose auto login ;)
+
+TODO: *Disable guest user*, *Disable crash reports: apport *
 
 
 - dropbox = cloud file storage
@@ -323,7 +331,7 @@ sudo apt-get install openconnect network-manager-openconnect network-manager-ope
 
 ### music and video
 
-`sudo apt-get install ubuntu-restricted-extras vlc`
+    sudo apt-get install ubuntu-restricted-extras vlc
 
 - vlc = movies/music
 - ubuntu-restricted-extras = all of the encumbered with licenses packages to generally just watch or listen to stuff :(
@@ -332,7 +340,7 @@ sudo apt-get install openconnect network-manager-openconnect network-manager-ope
 #### spotify in ubuntu 15.04
 <https://www.spotify.com/us/download/linux/>
 
-`sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys D2C19886`
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys D2C19886
 > trust the spotify repository
 
 > libnss3-1d : Depends: libnss3 (= 2:3.17.4-0ubuntu1) but 2:3.19.2-0ubuntu15.04.1 is to be installed
@@ -345,7 +353,7 @@ sudo apt-get install openconnect network-manager-openconnect network-manager-ope
     apt-get install spotify-client
     apt-get -f install
 
-`spotify: error while loading shared libraries: libgcrypt.so.11: cannot open shared object file: No such file or directory`
+    spotify: error while loading shared libraries: libgcrypt.so.11: cannot open shared object file: No such file or directory
 > what fun, the internet explains 15.04 (vivid) and 15.10 (wily) use the new libgcrypt20 so...
 
 
@@ -361,13 +369,13 @@ sudo apt-get install openconnect network-manager-openconnect network-manager-ope
 
 
 #### more codecs and DVD playback
-`sudo apt-get install ffmpeg gstreamer0.10-plugins-bad lame libavcodec-extra`
-`sudo /usr/share/doc/libdvdread4/install-css.sh`
+    sudo apt-get install ffmpeg gstreamer0.10-plugins-bad lame libavcodec-extra
+    sudo /usr/share/doc/libdvdread4/install-css.sh
 
 
 ## Packages you will probably want to remove
 
-`apt-get remove brltty`
+    apt-get remove brltty
 > unless you are using braille on your computer
 
 
@@ -478,11 +486,11 @@ I prefer seeing my bootup screens so I remove some but add the SSD enhancement
 1. mkdir -p /home/NEWUSERNAME/.ssh
 1. vi /home/NEWUSERNAME/.ssh/authorized_keys
 1. visudo
-
-    #includedir /etc/sudoers.d
-    NEWUSERNAME    ALL = (ALL) NOPASSWD: ALL
+    `#includedir /etc/sudoers.d`
+    `NEWUSERNAME    ALL = (ALL) NOPASSWD: ALL`
 
 > of course set the timezone to UTC and use network time protocol
+
 1. dpkg-reconfigure tzdata
 1. apt-get update
 1. apt-get install byobu vim ntp

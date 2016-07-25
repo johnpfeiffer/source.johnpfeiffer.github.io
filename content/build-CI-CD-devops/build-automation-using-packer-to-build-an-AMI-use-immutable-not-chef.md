@@ -31,10 +31,15 @@ I've used chef successfully quite a few times and the main things that make it a
 1. It's really easy to do chef wrong: nested roles and recipes that keep exploding exponentially with circular dependencies which make you think software development starts looking easy again.
 2. Community cookbooks are written to allow deployment on every architecture ever created (Debian, Ubuntu, RedHat, Windows, SPARC, etc.) which makes them challenging to read and debug, almost impossible to customize to do what you actually want.
 3. The ruby based DSL isn't bad but it's pretty annoying to constantly make syntax errors (which unless you're all TDD rambo and use Kitchen you'll find during the never ending waiting many minutes for a deployment to fail)
-4. It's difficult to debug the non intuitive "compilation phase" and "execution phase" way chef does its dependency tree magic
+4. It's difficult to debug the non intuitive "compilation phase" and "execution phase" way chef does its dependency tree magic, and the "shoot yourself in the foot" is compounded with the apparently edge case necessary compile time run executions
 5. The "best practices" have changed 3 or 4 times (write your own custom cookbooks, leverage the community cookbooks, write a custom wrapper for the community cookbook, don't ever use set_unless even though it still exists, etc.) and the 6 layers of variable overrides makes it hard to keep track of what the actual output of a script will be (don't worry, they have pages of documentation explaining it)
 6. The recommended "chef client server architecture" does not scale to really large numbers well and creates administration overhead and a lot of authorization complexity - and my preferred method with "chef solo" still requires an annoying amount of bootstrap setup on the target machines.
-7. It tends to encourage long lived mutable servers (with their therefore necessary expensive and obnoxious biological caretakers).
+7. Polling not only creates network congestion but worse creates windows of uncertainty about deployment state and the possibility of nodes silently dropping out <https://docs.chef.io/chef_client.html>
+8. Chef tends to encourage the pattern of long lived mutable servers (with their therefore necessary expensive and obnoxious biological caretakers)
+
+- <https://docs.chef.io/resource_common.html#lazy-evaluation>
+- <https://docs.chef.io/resource_common.html#run-in-compile-phase>
+- <http://erik.hollensbe.org/2013/03/16/the-chef-resource-run-queue/>
 
 So is there a simpler way to just reliably, reproducibly, build a box?
 

@@ -20,29 +20,6 @@ iptables is the tool to create a firewall in linux (manipulate the tables provid
     iptables -nvL --line-numbers
 > numeric so no hostname lookups, verbose, List the rules in the chain
 
-## Uncomplicated Firewall UFW
-
-    sudo su
-    ufw status verbose
-    ufw allow 22
-    ufw allow 443
-    ufw default deny incoming
-    ufw default deny outgoing
-    ufw enable
-    ufw status verbose
-
-> This is a much simpler way to configure some basic rules and enable the firewall
-> Allowing 22 (SSH) and 443 (HTTPS) and denying all other incoming and outgoing traffic
-
-    ufw delete allow 443
-    ufw show raw
-    ufw disable
-
-> removing a rule is as simple as prefixing the allow or deny command with delete
-> disabling the firewall allows all traffic
-
-<https://wiki.ubuntu.com/UncomplicatedFirewall>
-
 ## Interactive commands
 
     iptables -D INPUT 5
@@ -329,3 +306,34 @@ iptables is the tool to create a firewall in linux (manipulate the tables provid
     iptables -t nat -A PREROUTING -p tcp -i eth1 -d 202.54.1.1 --dport 443 -j DNAT --to-destination 192.168.2.4
 
 > End DMZ .. Add other rules
+
+## Uncomplicated Firewall UFW
+
+The uncomplicated firewall is a much simpler way to configure some basic rules and enable the firewall
+
+    sudo su
+    ufw status verbose
+    ufw allow 22
+    ufw allow 443
+    ufw default deny incoming
+    ufw default deny outgoing
+    ufw enable
+    ufw status verbose
+
+> Allowing 22 (SSH) and 443 (HTTPS) and denying all other incoming and outgoing traffic
+
+    ufw delete allow 443
+    ufw show raw
+    ufw disable
+
+> removing a rule is as simple as prefixing the allow or deny command with delete
+> disabling the firewall allows all traffic
+
+Most unfortunately there are some basic gaps that make it not very production ready (i.e. if you know what you are doing just keep using iptables)
+1. ping, also known as icmp, packets (even just outbound) have to be handled in a very complex way, really not much better than iptables
+1. established connection traffic is not just easily allowed
+1. attempting to do something more complex very quickly requires very complex commands including just using iptables (lolwut)
+1. iptables -nvL becomes almost unreadable with the extra layer
+
+<https://wiki.ubuntu.com/UncomplicatedFirewall>
+
