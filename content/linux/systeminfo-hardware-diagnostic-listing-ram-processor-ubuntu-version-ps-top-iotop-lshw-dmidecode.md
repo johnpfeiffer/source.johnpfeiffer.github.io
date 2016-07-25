@@ -1,6 +1,6 @@
-Title: Systeminfo hardware diagnostic listing ram processor ubuntu version
+Title: Systeminfo hardware diagnostic listing ram processor ubuntu version ps top iotop lshw dmidecode
 Date: 2009-11-11 21:42:50
-Tags: linux, systeminfo, hardware, diagnostic, listing, ram, processor, ubuntu, version
+Tags: linux, systeminfo, hardware, diagnostic, listing, ram, processor, ubuntu, version, top, iotop, lshw dmidecode
 
 [TOC]
 
