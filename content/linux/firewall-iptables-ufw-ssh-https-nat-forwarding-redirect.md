@@ -56,33 +56,34 @@ iptables is the tool to create a firewall in linux (manipulate the tables provid
 
 ### Allow SSH, ping, and Established but block all by default
 
+    :::bash
     #!/bin/sh
     iptables -I INPUT 1 -i lo -j ACCEPT
     iptables -I OUTPUT 1 -o lo -j ACCEPT
     > Always allow the loopback device
-
+      
     iptables -A INPUT -p tcp --dport 22 -j ACCEPT
     iptables -A OUTPUT -p tcp --sport 22 -j ACCEPT
     > allow SSH server to accept connections
-
+    
     iptables -A INPUT -i eth1 -p tcp --dport 22 -j ACCEPT
     iptables -A OUTPUT -o eth1 -p tcp --sport 22 -j ACCEPT
     > ssh server on eth1 on port 22
-
+    
     iptables -P INPUT DROP
     iptables -P FORWARD DROP
     iptables -P OUTPUT DROP
     > default to block all traffic
-
+    
     iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
     > Accept packets belonging to established and related connections
-
+    
     iptables -A INPUT -i eth1 -p icmp --icmp-type echo-request -j ACCEPT
     > Allow incoming ping requests from eth1 , echo-request = 8 in numeric
-
+    
     iptables -A OUTPUT -o eth1 -p icmp --icmp-type echo-reply -j ACCEPT
     > Allow outgoing ping replies to eth1 , echo reply = 0 in numeric
-
+    
 - - -
 
     cat /proc/sys/net/ipv4/ip_forward
@@ -92,6 +93,7 @@ iptables is the tool to create a firewall in linux (manipulate the tables provid
 
 ### bash script to set iptables during init.d
 
+    :::bash
     #!/bin/bash
     # script to set the initial firewall state as very restrictive
     # chmod +x SCRIPTNAME.sh
@@ -99,7 +101,7 @@ iptables is the tool to create a firewall in linux (manipulate the tables provid
     # sudo update-rc.d SCRIPTNAME.sh defaults
     # sudo update-rc.d -f SCRIPTNAME.sh remove
     # or add it to /etc/rc.d/rc.local (which runs once after all other scripts)
-
+    
     # clear any existing firewall
     iptables -F
     iptables -X
@@ -108,72 +110,73 @@ iptables is the tool to create a firewall in linux (manipulate the tables provid
     iptables -P INPUT DROP
     iptables -P FORWARD DROP
     iptables -P OUTPUT DROP
-
+    
     # Protect against SYN flood attacks (see http://cr.yp.to/syncookies.html).
     echo 1 > /proc/sys/net/ipv4/tcp_syncookies
-
+    
     # Allow loopback
     iptables -A INPUT -i lo -j ACCEPT
     iptables -A OUTPUT -o lo -j ACCEPT
-
+    
     # Allow DNS queries
     iptables -A OUTPUT -p udp --dport 53 -m state --state NEW -j ACCEPT
     iptables -A INPUT -p udp --sport 53 --dport 1024:65535  -m state --state ESTABLISHED -j ACCEPT
-
+    
     # Allow NTP (query time server)
     iptables -A INPUT -p udp --dport 123 -j ACCEPT
     iptables -A OUTPUT -p udp --sport 123 -j ACCEPT
-
+    
     # Allow SSH on port 22
     iptables -A INPUT -p tcp --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
     iptables -A OUTPUT -p tcp --sport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
-
+    
     # Allow incoming HTTPS
     iptables -A INPUT -p tcp -s 0/0 --sport 1024:65535 --dport 443 -m state --state NEW,ESTABLISHED -j ACCEPT
     iptables -A OUTPUT -p tcp -s 0/0 --sport 443 --dport 1024:65535 -m state --state ESTABLISHED -j ACCEPT
-
+    
     # Allow outgoing HTTPS (note state for INPUT is only ESTABLISHED)
     iptables -A OUTPUT -p tcp --dport 443 -m state --state NEW,ESTABLISHED -j ACCEPT
     iptables -A INPUT -p tcp -s 0/0 --sport 443 --dport 1024:65535 -m state --state ESTABLISHED -j ACCEPT
 
 ### Web Server
 
+    :::bash
     #!/bin/sh
     iptables -F
     iptables --delete-chain
     iptables -t nat -F
     iptables -t mangle -F
-
+    
     iptables -P INPUT ACCEPT
     iptables -P FORWARD ACCEPT
     iptables -P OUTPUT ACCEPT
-
+    
     # LOOPBACK 127.0.0.1
     iptables -I INPUT 1 -i lo -j ACCEPT
     iptables -I OUTPUT 1 -o lo -j ACCEPT
-
+    
     # SSH
     iptables -A INPUT -p tcp --dport 22 -j ACCEPT
     iptables -A OUTPUT -p tcp --sport 22 -j ACCEPT
-
+    
     # NTP
     iptables -A INPUT -p udp --dport 123 -j ACCEPT
     iptables -A OUTPUT -p udp --sport 123 -j ACCEPT
-
+    
     # DNS
     iptables -A OUTPUT -p udp --dport 53 -m state --state NEW -j ACCEPT
     iptables -A INPUT -p udp --sport 53 --dport 1024:65535  -m state --state ESTABLISHED -j ACCEPT
-
+    
     # HTTP
     iptables -A INPUT -p tcp --dport 80 -j ACCEPT
     iptables -A OUTPUT -p tcp --sport 80 -j ACCEPT
-
-
+    
+    
     # DROP ALL UNDEFINED PACKETS
     iptables -P INPUT DROP
     iptables -P FORWARD DROP
     iptables -P OUTPUT DROP
-
+    
     # PING
     # iptables -A INPUT -p icmp -m limit --limit 6/second -j ACCEPT
     # iptables -A OUPUT -p icmp -j ACCEPT
@@ -183,6 +186,7 @@ iptables is the tool to create a firewall in linux (manipulate the tables provid
 
 `vi /etc/iptables.rules.xmpp`
 
+    :::bash
 	*filter
 	:INPUT DROP [3:572]
 	:FORWARD DROP [0:0]
