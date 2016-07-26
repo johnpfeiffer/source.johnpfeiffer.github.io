@@ -132,6 +132,66 @@ Once it's done it will terminate the EC2 instance for you (it only runs as long 
 
 > Post instantiation validation is a really handy safeguard as statistically something always goes wrong somewhere and it's far cheaper to find out with a quick test versus a system that loses data.
 
+
+### Packer and DigitalOcean
+
+DigitalOcean is a relatively new player (compared to Linode and even AWS) but they provide a very fast and easy to use way of building boxes (a snapshot can be used like an AMI to spin up multiple instances).
+
+    {
+      "_comment": "https://www.packer.io/docs/builders/digitalocean.html",
+      "variables": {
+        "digitalocean_api_token": "{{env `DIGITALOCEAN_API_TOKEN`}}",
+        "newuser_name": "{{env `NEWUSER_NAME`}}",
+        "newuser_password": "{{env `NEWUSER_PASSWORD`}}"
+      },
+    
+      "builders": [{
+        "type": "digitalocean",
+        "api_token": "{{user `digitalocean_api_token`}}",
+        "size": "512mb",
+        "region": "lon1",
+        "image": "ubuntu-16-04-x64",
+        "droplet_name": "built-from-packer-{{timestamp}}",
+        "snapshot_name": "built-from-packer-{{timestamp}}"
+      }],
+    
+      "provisioners": [
+        {
+          "type": "shell",
+          "inline": [
+            "ip a",
+            "curl -s http://checkip.amazonaws.com",
+            "apt-get update",
+            "sudo apt-get install -y vim curl wget byobu ntp",
+            "timedatectl set-timezone Etc/UTC",
+            "cat /etc/timezone",
+            "date",
+            "useradd -s /bin/bash -m {{user `newuser_name`}}",
+            "usermod -a -G admin {{user `newuser_name`}}",
+            "echo '{{user `newuser_name`}}:{{user `newuser_password`}}'|chpasswd",
+            "cat /etc/passwd",
+            "sed -i 's/Port 22/Port 2222/g' /etc/ssh/sshd_config",
+            "sed -i 's/PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config",
+            "echo 'PasswordAuthentication no' >> /etc/ssh/sshd_config",
+            "cat /etc/ssh/sshd_config",
+            "mkdir -p /home/{{user `newuser_name`}}/.ssh",
+            "mkdir -p /opt/www/html"
+          ]
+        },
+        {
+          "type": "file",
+          "source": "authorized_keys",
+          "destination": "/home/{{user `newuser_name`}}/.ssh/authorized_keys"
+        }
+      ]
+    
+    }
+    
+> This is a simple example that automates some of the security best practices of a non standard username, non standard ssh port, no ssh root login, no ssh password based login, etc.
+
+    NEWUSER_NAME=yourusername NEWUSER_PASSWORD=yourpassword DIGITALOCEAN_API_TOKEN=012345yourtoken /opt/packer build packer.json
+
+
 ### Why not docker containers?
 
 Actually I prefer docker containers as the artifact and deployment vehicle for services but it's not the only hammer in your toolbelt.  And you have to setup the Docker hosts somehow, right? 
