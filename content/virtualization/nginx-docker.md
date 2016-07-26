@@ -125,6 +125,7 @@ Since NGINX 1.9.11 supports dynamic modules and attempts to maintain API compati
 There are entire books about how to configure nginx so I will just jot down some basics for myself.
 
 ### /etc/nginx/nginx.conf
+
     user nginx;
     worker_processes 4;
     pid /run/nginx.pid;
@@ -139,7 +140,7 @@ There are entire books about how to configure nginx so I will just jot down some
                 root /var/www;
             }
         }
-#        include /etc/nginx/conf.d/*.conf;
+        # include /etc/nginx/conf.d/*.conf;
     }
     
 
@@ -291,7 +292,7 @@ The blue lightning symbol on the far far right (next to the "hamburger") indicat
 5. Right click on the Name colum in the result so that you can add results for column heading, "Protocol"
 6. Control + Shift + F5 to reload (or click on the arrow circling up)
 
-Protocol: h2
+    Protocol: h2
 
 - <https://www.nginx.com/blog/nginx-1-9-5/>
 - <https://blog.cloudflare.com/tools-for-debugging-testing-and-using-http-2/>
@@ -324,9 +325,8 @@ This hack is fun but proves unnecessary when using Docker Compose later...
 
 ### Configure nginx
 
-vi /etc/nginx/nginx.conf
+`vi /etc/nginx/nginx.conf`
 
-    :::c
     worker_processes 4;
     pid /run/nginx.pid;
     
@@ -357,7 +357,7 @@ vi /etc/nginx/nginx.conf
         }
     
     }
-    
+> a basic nginx config that forwards .php requests to fpm on port 9000
 
 
     docker run -it --rm --publish 0.0.0.0:80:80 --volume /tmp/nginx.conf:/etc/nginx/nginx.conf:ro --volume /tmp/www/html:/var/www/html:ro  nginx:alpine /bin/sh
@@ -369,6 +369,7 @@ vi /etc/nginx/nginx.conf
 Create the following files to test the various cases...
 
 `vi /tmp/www/html/foo.html`
+
     <html><body>hi</body></html>
 
 `vi /tmp/www/html/index.php`
@@ -379,6 +380,7 @@ Create the following files to test the various cases...
     ?>
 
 `vi /tmp/www/html/bar.php`
+
     :::php
     <?php
         print "bar";
