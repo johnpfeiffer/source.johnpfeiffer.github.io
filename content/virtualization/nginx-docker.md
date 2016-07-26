@@ -139,9 +139,9 @@ There are entire books about how to configure nginx so I will just jot down some
                 root /var/www;
             }
         }
+        include /etc/nginx/conf.d/*.conf;
     }
     
-    include /etc/nginx/conf.d/*.conf;
 
 > Run the service as the www-data user and define 4 worker processes
 > define an HTTP server that listens on port 80 by default
