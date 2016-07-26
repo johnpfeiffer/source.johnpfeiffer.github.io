@@ -139,14 +139,15 @@ There are entire books about how to configure nginx so I will just jot down some
                 root /var/www;
             }
         }
-        include /etc/nginx/conf.d/*.conf;
+#        include /etc/nginx/conf.d/*.conf;
     }
     
 
 > Run the service as the www-data user and define 4 worker processes
 > define an HTTP server that listens on port 80 by default
 > the root location will return the contents of /var/www
-> a best practice of using multiple configuration files in the conf.d directory (as a really long complex configuration in a single is difficult to maintain)
+> a best practice is to use multiple configuration files in the conf.d directory (as a really long complex configuration in a single is difficult to maintain)
+> BUT we must comment it out as in the installation there can be a default.conf that overrides our nginx.conf
 
 
     sudo docker run -it --rm --publish 0.0.0.0:80:80 --volume /tmp/nginx.conf:/etc/nginx/nginx.conf:ro  nginx:alpine /bin/sh
