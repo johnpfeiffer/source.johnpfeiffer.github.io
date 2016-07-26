@@ -296,3 +296,124 @@ Protocol: h2
 - <https://www.nginx.com/blog/nginx-1-9-5/>
 - <https://blog.cloudflare.com/tools-for-debugging-testing-and-using-http-2/>
 - <http://tech.finn.no/2015/09/25/setup-nginx-with-http2-for-local-development/>
+
+
+## nginx with php-fpm
+
+### Investigate php-fpm in Docker
+
+This hack is fun but proves unnecessary when using Docker Compose later...
+
+    docker pull php:5.5-fpm-alpine
+
+- <https://hub.docker.com/_/php/>
+
+    :::bash
+    ifconfig | grep Bc
+    docker run -it --rm --publish 0.0.0.0:9000:9000 php:5.5-fpm-alpine /bin/sh
+    route -n
+    php-fpm --version
+    sed -i 's/listen = 127.0.0.1:9000/listen = 0.0.0.0:9000/g' /usr/local/etc/php-fpm.d/www.conf
+    php-fpm --fpm-config /usr/local/etc/php-fpm.conf
+
+> ifconfig and route -n are to discover the docker host IP Address via the default gateway 172.17.0.1
+> contains include=etc/php-fpm.d/*.conf
+> /usr/local/etc/php-fpm.d/www.conf
+
+- <http://php.net/manual/en/install.fpm.configuration.php>
+
+### Configure nginx
+
+vi /etc/nginx/nginx.conf
+
+    :::c
+    worker_processes 4;
+    pid /run/nginx.pid;
+    
+    events {
+        worker_connections 1024;
+    }
+    
+    http {
+        server {
+            location / {
+                root /var/www/html;
+                try_files $uri $uri/index.php;
+            }
+            location ~ \.php$ {
+                root /var/www/html;
+                try_files $uri $uri/;
+                fastcgi_index index.php;
+
+                # depends on Docker linking or hostfile for fpm to resolve
+                fastcgi_pass fpm:9000;
+    
+                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                # https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-5385
+                fastcgi_param HTTP_PROXY "";
+
+                include fastcgi_params;
+            }
+        }
+    
+    }
+    
+
+
+    docker run -it --rm --publish 0.0.0.0:80:80 --volume /tmp/nginx.conf:/etc/nginx/nginx.conf:ro --volume /tmp/www/html:/var/www/html:ro  nginx:alpine /bin/sh
+    route -n
+> This manual command proves unnecessary with Docker Compose but can be useful to debug (i.e. run the php-fpm container first, then run this one since it depends on fpm)
+
+#### Some Test Content
+
+Create the following files to test the various cases...
+
+`vi /tmp/www/html/foo.html`
+    <html><body>hi</body></html>
+
+`vi /tmp/www/html/index.php`
+
+    :::php
+    <?php
+        print "<html><body>hello</body></html>";
+    ?>
+
+`vi /tmp/www/html/bar.php`
+    :::php
+    <?php
+        print "bar";
+    ?>
+
+### docker-compose.yml
+
+    # https://docs.docker.com/compose/compose-file/
+    
+    nginx:
+      image: nginx:alpine
+      ports:
+        - "80:80"
+      volumes:
+        - /tmp/nginx.conf:/etc/nginx/nginx.conf:ro
+        - /tmp/www/html:/var/www/html
+      links:
+        - fpm
+    
+    fpm:
+      image: php:5.5-fpm-alpine
+      ports:
+        - "9000:9000"
+      volumes:
+        - /tmp/www/html:/var/www/html
+    
+    # http://stackoverflow.com/questions/29905953/how-to-correctly-link-php-fpm-and-nginx-docker-containers-together
+    # http://stackoverflow.com/questions/35388590/issue-with-docker-compose-container-command-not-found
+
+### docker-compose up to start nginx and php-fpm
+
+    docker-compose up
+    docker-compose rm -f
+    curl localhost:80/foo.html
+    curl localhost:80/bar.php
+    curl localhost:80/index.php
+
+Another tiny step forward in tying together a lot of moving pieces =]
