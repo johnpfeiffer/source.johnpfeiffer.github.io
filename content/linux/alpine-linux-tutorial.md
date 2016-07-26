@@ -8,7 +8,7 @@ Alpine Linux is a minimalist secure linux distro.
 
 > In security terms less "footprint" often means less vectors of attack and less complexity to analyze for vulnerabilities
 
-Alpine Linux is becoming a preferred base OS for many foundational official Docker Images (python, php, ruby, nginx, redis, haproxy,) since downloading Docker Images (aka Deploying Docker Containers) can saturate the network at scale.
+Alpine Linux is becoming a preferred base OS for many foundational official Docker Images (python, php, ruby, nginx, redis, haproxy,) since downloading many large Docker Images (aka Deploying Docker Containers) can saturate the network at scale.
 
 - <https://hub.docker.com/_/alpine/>
 - <http://www.pcworld.com/article/3031765/is-docker-ditching-ubuntu-linux-confusion-reigns.html>
@@ -35,7 +35,8 @@ Most of the very basic commands are similar to other linux distros like Debian/U
     apk add iptables
 
 
-<http://wiki.alpinelinux.org/wiki/Alpine_Linux_package_management>
+- <http://wiki.alpinelinux.org/wiki/Alpine_Linux_package_management>
+- <https://pkgs.alpinelinux.org/packages>
 
 
 ### Networking
@@ -90,8 +91,10 @@ Most of the very basic commands are similar to other linux distros like Debian/U
     chmod +x a.out
     ./a.out
 
-> hi
+`hi`
+
 > The default is a.out: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, not stripped
+
 > Note that this was just gcc not musl-gcc :(
 
 
@@ -122,13 +125,16 @@ Just use the golang image based on alpine linux ;)
     func main() {
       fmt.Println("hi")
     }
-    
 
-    go run intro.go
-> hi
+> To just run the source code `go run intro.go`
+
+`hi`
+
+    :::bash
     ls -l
     go build intro.go
     ls -l
     ./intro
-> hi
+
+`hi`
 
