@@ -31,9 +31,16 @@ Most of the very basic commands are similar to other linux distros like Debian/U
 
     apk --help
     apk update
-    apk search iptables
-    apk add iptables
+> list the options of the package manager, update the local index for all remote packages
 
+    apk search iptables
+    apk search iptables | sort
+    apk info iptables
+    apk add iptables
+>  search the remote packages for a keyword (unsorted results), get info for a specific package, install a specific package
+
+    apk info
+> list all of the packages installed locally
 
 - <http://wiki.alpinelinux.org/wiki/Alpine_Linux_package_management>
 - <https://pkgs.alpinelinux.org/packages>
