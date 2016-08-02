@@ -212,6 +212,7 @@ Instead, as I was already using packer on DigitalOcean to automate building the 
 
 #### install-docker.sh
 
+    :::bash
     #!/bin/sh
     # ubuntu 16.04 is xenial , https://blog.john-pfeiffer.com/docker-intro-install-run-and-port-forward/
     sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
@@ -225,6 +226,7 @@ Instead, as I was already using packer on DigitalOcean to automate building the 
 
 #### docker-compose.yml with drupal:7-fpm and mariadb:5.5
 
+    :::docker
     # https://hub.docker.com/_/drupal/
     fpm:
       image: drupal:7-fpm
@@ -252,6 +254,7 @@ Instead, as I was already using packer on DigitalOcean to automate building the 
 
 #### nginx.conf
 
+    :::nginx
     # slightly modified /etc/nginx/nginx.conf from "apt-get install nginx"
     # https://www.nginx.com/resources/wiki/start/topics/examples/full/
     
@@ -290,6 +293,7 @@ Instead, as I was already using packer on DigitalOcean to automate building the 
 
 #### default.conf
 
+    :::nginx
     server {
         listen      80;
         server_name physicstime.com;
@@ -400,7 +404,7 @@ Instead, as I was already using packer on DigitalOcean to automate building the 
 
 ## Post boot manual configuration (ohgodwhy)
 
-Post boot of a "fresh from built-by-packer snapshot" there was still the basic steps of configuring Drupal (which I did manually with a browser and install.pho though I'm pretty sure I could have just overridden the settings.php directly).
+Post boot of a "fresh from built-by-packer snapshot" there were still the basic steps of configuring Drupal (which I did manually with a browser and install.php though I'm pretty sure I could have just overridden the settings.php directly).
 
 And for this migration project a MySQL dump, SCP of the existing extra modules, and of course the already uploaded user images/files.
 
@@ -558,11 +562,20 @@ I can see the trend reverse (shrug)
 
 > meh
 
+
 ### Conclusions
 
 Adding docker simplifies one kind of complexity (stringing together multiple services that are packaged upstream) but can come at some cost to performance. (Though this might also be due to the cheaper node price)
 
 The other major advantage of using docker is that different components/services can be upgraded independently (and even just "test upgraded") which allows for a faster adoption of upstream project improvements.
 
-Obviously if performance were really an issue adding a cache layer like Varnish or Cloudflare or just tweaking the various configurations would help =]
+I personally don't like relying on the OS of the host for all of the global dependencies to play nice (and especially that different packages won't have conflicting dependencies).
+
+Since all of these processes are running in the same host that I own I expect I'm not worse off security wise.
+
+I'm curious to see if given enough time I run into the infamous /var/lib/docker issues of orphan containers, running out of disk space, or other issues.
+
+A next step might be to run this in a PlatormAsAService like OpenShift or better yet break up each container to run via a ContainerAsAService (if it's free ;)
+
+Obviously if performance and scale of a mostly read-only content distribution system was really an issue adding a cache layer like Varnish or Cloudflare or even just tweaking the various configurations would help =]
 
