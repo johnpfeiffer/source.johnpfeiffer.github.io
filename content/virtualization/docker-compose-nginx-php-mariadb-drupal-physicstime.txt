@@ -1,4 +1,4 @@
-Title: Drupal with Docker Compose and nginx php-fpm
+Title: Drupal with Docker Compose and nginx and php-fpm and mariadb
 Date: 2016-07-28 23:59
 Tags: docker, docker-compose, digitalocean, packer, drupal, php, nginx
 
@@ -205,6 +205,10 @@ Instead, as I was already using packer on DigitalOcean to automate building the 
 
 - <https://www.suse.com/documentation/opensuse114/book_tuning/data/cha_tuning_memory_vm.html>
 - <https://www.kernel.org/pub/linux/kernel/people/akpm/patches/2.6/2.6.7/2.6.7-mm1/broken-out/vfs-shrinkage-tuning.patch>
+
+- One thing that is annoying is as a single partition it is potentially vulnerable to a /var/log DenialOfService
+- A very nice tool to add is fail2ban (apt-get install fail2ban) but I want to ensure I tweak the configs correctly
+
 
 #### install-docker.sh
 
