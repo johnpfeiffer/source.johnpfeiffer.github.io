@@ -391,11 +391,25 @@ Instead, as I was already using packer on DigitalOcean to automate building the 
         location ~ ^/system/files/ { # For Drupal >= 7
             try_files $uri /index.php?$query_string;
         }
+
+        # prevent hotlinking
+        location ~ ^/sites/.*/files/ {
+            valid_referers none blocked www.physicstime.com physicstime.com;
+            if ($invalid_referer) {
+              return 403;
+            }
+        }
     
         location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+            # prevent hotlinking
+            valid_referers none blocked www.physicstime.com physicstime.com;
+            if ($invalid_referer) {
+              return 403;
+            }
             expires max;
             log_not_found off;
         }
+    
     }
 
 > slightly modified from the wonderful reference provided by nginx, mostly the first 3 lines and later the fastcgi_pass
