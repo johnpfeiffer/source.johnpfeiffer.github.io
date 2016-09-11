@@ -8,13 +8,13 @@ Tags: service discovery, consul, cluster, clustering, config
 
 Basically consul is an out-of-the-box service discovery system intended for clustered and highly available applications.
 
-- https://www.consul.io/intro/
-- https://www.consul.io/docs/internals/jepsen.html
+- <https://www.consul.io/intro/>
+- <https://www.consul.io/docs/internals/jepsen.html>
 
 This kind of infrastructure simplifies the programming of distributed systems so that it is easier to deliver value quickly on the actual domain problems.
 
-**I have certainly done my fair share of hardcoded config files to "discover" dependency services and even used chef for "config management"...
-But with the evolution of devops, web scale, microservices, containers, etc. it is great to leverage an existing battle tested solution**
+*I have certainly done my fair share of hardcoded config files to "discover" dependency services and even used chef for "config management"...
+But with the evolution of devops, web scale, microservices, containers, etc. it is great to leverage an existing battle tested solution*
 
 ## Consul Cluster using Docker
 
@@ -22,6 +22,7 @@ Following the straightforward work from this Docker Image we can run a cluster o
 
 - https://hub.docker.com/r/progrium/consul/
 
+    :::bash
     sudo su
     docker run -d --name node1 -h node1 progrium/consul -server -bootstrap-expect 3
     JOIN_IP="$(docker inspect -f '{{.NetworkSettings.IPAddress}}' node1)"
@@ -30,7 +31,8 @@ Following the straightforward work from this Docker Image we can run a cluster o
     docker run -d -p 8400:8400 -p 8500:8500 -p 8600:53/udp --name node4 -h node4 progrium/consul -join $JOIN_IP
 > The second 2 nodes join the first one in the cluster by using the inspected IP Address,
 > the last container is a consul agent (not in the quorum) but has public ports for interactivity
-    
+
+    :::bash
     curl localhost:8500/v1/catalog/nodes
         [{"Node":"node1","Address":"172.17.0.2"},{"Node":"node2","Address":"172.17.0.3"},
         {"Node":"node3","Address":"172.17.0.4"},{"Node":"node4","Address":"172.17.0.5"}]
@@ -44,6 +46,7 @@ Following the straightforward work from this Docker Image we can run a cluster o
 
 > REST API call to the list of nodes, then DNS client to get the Record for the first node
 
+    :::bash
     curl http://localhost:8500/v1/status/leader
         "172.17.0.2:8300"
     curl http://localhost:8500/v1/status/peers
@@ -53,11 +56,13 @@ Following the straightforward work from this Docker Image we can run a cluster o
 
 > some more REST calls about the basic nodes, RAFT leadership and peers, and node health
 
-- https://www.consul.io/docs/agent/http.html
-- https://www.consul.io/docs/agent/dns.html
+- <https://www.consul.io/docs/agent/http.html>
+- <https://www.consul.io/docs/agent/dns.html>
 
+    :::bash
     curl http://localhost:8500/v1/catalog/services
         {"consul":[]}
+    
     curl http://localhost:8500/v1/catalog/service/web
         []
 > Listing of the services available, no web service yet =)
@@ -115,14 +120,16 @@ In order to verify the new service is registered (besides the 200 response code)
 
 So many more things can be done with <https://www.consul.io/docs/agent/http/agent.html#agent_service_register>
 
-Stopping the web server (control + C) and checking that Consul has noticed Status is critical \O/
+Stopping the web server (control + C) and checking that Consul has noticed Status is critical |o/
 
+    :::bash
     curl http://localhost:8500/v1/health/checks/web
         [{"Node":"node4","CheckID":"service:web1","Name":"Service 'web' check","Status":"critical","Notes":"","Output":"TTL expired","ServiceID":"web1","ServiceName":"web"}]
 
 
 Starting the web server again and check
 
+    :::bash
     curl http://localhost:8500/v1/health/service/web
         [{"Node":{"Node":"node4","Address":"172.17.0.5"},
         "Service":{"ID":"web1","Service":"web","Tags":["master","v1"],"Address":"127.0.0.1","Port":8080},
