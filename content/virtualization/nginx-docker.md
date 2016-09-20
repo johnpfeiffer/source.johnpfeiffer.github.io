@@ -79,7 +79,7 @@ You will notice the access logs are being output to the console (where the docke
 ### run nginx directly
     /usr/sbin/nginx -c /etc/nginx/nginx.conf
 > -g "pid /var/run/nginx.pid; worker_processes 2;" from <https://www.nginx.com/resources/wiki/start/topics/tutorials/commandline/>
-        
+
 ## nginx.conf
 
 While there are quite a few ways to configure nginx one choice to make with Docker is to either
@@ -94,10 +94,12 @@ e.g. <https://hub.docker.com/r/jwilder/nginx-proxy/~/dockerfile/> which also has
 - <https://www.nginx.com/resources/admin-guide/nginx-web-server/>
 - <https://www.nginx.com/resources/wiki/start/topics/examples/full/>
 
+Quickly testing the nginx configuration file using an ephemeral docker container:
+
+    :::bash
     docker run --rm --publish 127.0.0.1:80:80 nginx /bin/bash -c "nginx -t -c /etc/nginx/nginx.conf"
         nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
         nginx: configuration file /etc/nginx/nginx.conf test is successful
-        
 
 
 ## Build your own nginx Dockerfile
@@ -144,11 +146,11 @@ There are entire books about how to configure nginx so I will just jot down some
     }
     
 
-> Run the service as the www-data user and define 4 worker processes
-> define an HTTP server that listens on port 80 by default
-> the root location will return the contents of /var/www
-> a best practice is to use multiple configuration files in the conf.d directory (as a really long complex configuration in a single is difficult to maintain)
-> BUT we must comment it out as in the installation there can be a default.conf that overrides our nginx.conf
+> - Run the service as the www-data user and define 4 worker processes
+> - define an HTTP server that listens on port 80 by default
+> - the root location will return the contents of /var/www
+> - a best practice is to use multiple configuration files in the conf.d directory (as a really long complex configuration in a single is difficult to maintain)
+> - BUT we must comment it out as in the installation there can be a default.conf that overrides our nginx.conf
 
 
     sudo docker run -it --rm --publish 0.0.0.0:80:80 --volume /tmp/nginx.conf:/etc/nginx/nginx.conf:ro  nginx:alpine /bin/sh
@@ -161,8 +163,7 @@ There are entire books about how to configure nginx so I will just jot down some
 
 > assumes you have a config file and some index file defined
 
-    /var/www/index.html
-    <html><body>hi</body></html>
+    echo "<html><body>hi</body></html>" > /var/www/index.html
 
 That's it, now you have nginx serving static files! (curl localhost OR use a browser and visit localhost or http://hostfqdn)
 > of course /tmp is an insecure location so please store production nginx configuration files and web content from a secure directory in the docker host filesystem
@@ -305,11 +306,8 @@ The blue lightning symbol on the far far right (next to the "hamburger") indicat
 
 This hack is fun but proves unnecessary when using Docker Compose later...
 
+  :::bash
     docker pull php:5.5-fpm-alpine
-
-- <https://hub.docker.com/_/php/>
-
-    :::bash
     ifconfig | grep Bc
     docker run -it --rm --publish 0.0.0.0:9000:9000 php:5.5-fpm-alpine /bin/sh
     route -n
@@ -317,10 +315,11 @@ This hack is fun but proves unnecessary when using Docker Compose later...
     sed -i 's/listen = 127.0.0.1:9000/listen = 0.0.0.0:9000/g' /usr/local/etc/php-fpm.d/www.conf
     php-fpm --fpm-config /usr/local/etc/php-fpm.conf
 
-> ifconfig and route -n are to discover the docker host IP Address via the default gateway 172.17.0.1
-> contains include=etc/php-fpm.d/*.conf
-> /usr/local/etc/php-fpm.d/www.conf
+> - ifconfig and route -n are to discover the docker host IP Address via the default gateway 172.17.0.1
+> - contains include=etc/php-fpm.d/*.conf
+> - /usr/local/etc/php-fpm.d/www.conf
 
+- <https://hub.docker.com/_/php/>
 - <http://php.net/manual/en/install.fpm.configuration.php>
 
 ### Configure nginx
@@ -412,6 +411,7 @@ Create the following files to test the various cases...
 
 ### docker-compose up to start nginx and php-fpm
 
+    :::bash
     docker-compose up
     docker-compose rm -f
     curl localhost:80/foo.html

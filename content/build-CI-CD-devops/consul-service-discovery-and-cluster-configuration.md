@@ -20,7 +20,8 @@ But with the evolution of devops, web scale, microservices, containers, etc. it 
 
 Following the straightforward work from this Docker Image we can run a cluster on a single machine:
 
-- https://hub.docker.com/r/progrium/consul/
+<https://hub.docker.com/r/progrium/consul/>
+
 
     :::bash
     sudo su
@@ -29,6 +30,7 @@ Following the straightforward work from this Docker Image we can run a cluster o
     docker run -d --name node2 -h node2 progrium/consul -server -join $JOIN_IP
     docker run -d --name node3 -h node3 progrium/consul -server -join $JOIN_IP
     docker run -d -p 8400:8400 -p 8500:8500 -p 8600:53/udp --name node4 -h node4 progrium/consul -join $JOIN_IP
+
 > The second 2 nodes join the first one in the cluster by using the inspected IP Address,
 > the last container is a consul agent (not in the quorum) but has public ports for interactivity
 
@@ -135,8 +137,7 @@ Starting the web server again and check
         "Service":{"ID":"web1","Service":"web","Tags":["master","v1"],"Address":"127.0.0.1","Port":8080},
         "Checks":[{"Node":"node4","CheckID":"service:web1","Name":"Service 'web'check","Status":"critical",
             "Notes":"","Output":"TTL expired","ServiceID":"web1","ServiceName":"web"},
-        {"Node":"node4","CheckID":"serfHealth","Name":"Serf Health Status","Status":"passing",
-            "Notes":"","Output":"Agent alive and reachable","ServiceID":"","ServiceName":""}]}]r
+        {"Node":"node4","CheckID":"serfHealth","Name":"Serf Health Status","Status":"passing","Notes":"","Output":"Agent alive and reachable","ServiceID":"","ServiceName":""}]}]
 
 
 ## Distributed Configuration

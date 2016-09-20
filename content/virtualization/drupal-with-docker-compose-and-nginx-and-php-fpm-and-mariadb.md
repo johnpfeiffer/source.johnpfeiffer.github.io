@@ -16,7 +16,7 @@ For a personal project I experimented with and chose Cherokee web server (<http:
 
 Unfortunately as the project Dev and adoption slowed it seemed to make a lot of sense to finally convert my personal project to nginx. <https://github.com/cherokee/webserver/commits/master>
 
-I also wanted to experiment with a Docker based infrastructure (with docker-compose and a single YAML config file, ideally leveraging as much as possible the many official upstream docker images (<https://hub.docker.com/explore/>)
+I also wanted to experiment with a Docker based infrastructure (with docker-compose and a single YAML config file, ideally leveraging as much as possible the many official upstream docker images (<https://hub.docker.com/explore/>))
 
 Benefits:
 
@@ -424,12 +424,20 @@ And for this migration project a MySQL dump, SCP of the existing extra modules, 
 
 I'm sure with more tinkering I can overcome the nginx vs www-data user permissions issue but since I time boxed this project I stuck with this compromise which is still much more improved and automated than my previous setup.
 
-If migrating data there is of course the prerequisite: `mysqldump -uroot -p physicstime > backup.sql`
+For migrating data there is of course the prerequisite: `mysqldump -uroot -p physicstime > backup.sql`
 
 
     vi /var/www/html/themes/bartik/css/style.css
         font-size: 2.929em;
+    
+    cat /var/www/html/themes/bartik/css/style.css | tr '\n' '\r' | sed -e 's/#site-slogan {\r  font-size: 0.929em/#site-slogan {\r  font-size: 2.929em/' | tr '\r' '\n' > /var/www/html/themes/bartik/css/style.css.updated
+
 > customize increased visibility of the #site-slogan { , occasionally needs cache cleared in admin/config/development/performance
+> The oneliner is a complicated way of sed replacing two lines at once (tr replaces newlines with \r temporarily)
+
+
+    sed -i 's/font-size: 87.5/font-size: 120/' /var/www/html/themes/bartik/css/style.css
+> Because the world does not need yet another 10pt font website
 
     hostnamectl set-hostname physicstime.com
     docker-compose up &

@@ -37,14 +37,14 @@ Oh and then there's the times the logs (web or auth due to anonymous attackers s
 
 Unavailability Due To:
 
-- any infrastructure vendor maintenance 
-- any OS maintenance/upgrade 
+- any infrastructure vendor maintenance
+- any OS maintenance/upgrade
 - incorrectly configured/rogue application
 - a security issue in one affects them all
 - they all contend for the same resources
 - they all share the same version/dependency requiring upgrading and testing everything at once
 
-### In Context: Linode, Ubuntu, Cherokee, and Drupal were good choices at the time 
+### In Context: Linode, Ubuntu, Cherokee, and Drupal were good choices at the time
 
 Firstly let me say I picked a great vendor (Linode) who was very solid (they limit bad actor customers which tends to make resources predictable) and that Ubuntu OS and Cherokee webserver are very easy to setup and maintain which is one reason why I've put this off for so long.
 
@@ -52,9 +52,9 @@ Drupal does an ok job of separating the tech stack from the content publishing s
 
 Another factor is that iPhones/Android, Dropbox, Bitbucket/GitHub, PaaS, and a whole generation of technologies were not around when I set this up.
 
-Finally, maybe it's a corollary to Moore's law and the prevalence of the cloud but there's quite a bit of free compute around than there used to be ;)
+Finally, maybe it's a corollary to Moore's law and the prevalence of the cloud but there's quite a bit of free compute around than there used to be =]
 
-## Thinking Microservices 
+## Thinking Microservices
 
 Thinking about microservices is like TDD (Test Driven Design): it exposes assumptions, unmanaged organic evolution, and accidental complexity.
 
@@ -68,15 +68,15 @@ Analyzing what I actually did with the various services I realized there were ac
 
 I did not have a "realtime" or "high volume dynamic data" use case, nor even a large number of content publishers that needed extra tooling.  (The plugins/additions I used weren't even that exotic.)
 
-In contrast the overhead was my irreplaceable time spent for the maintenance of Ubuntu patching/upgrades, including the underlying PHP, Drupal upgrades, backups, and of course the inestimable risk of running something on the Internet. ;)
+In contrast the overhead was my irreplaceable time spent for the maintenance of Ubuntu patching/upgrades, including the underlying PHP, Drupal upgrades, backups, and of course the inestimable risk of running something on the Internet. =p
 
 ## How I Converted to Microservices: Big Bang vs Kanban
 
 A common question is "how", and since "it depends" ;) in this case I had limited free hours to accomplish change and a strong desire to not break existing service.
  
-Rather than "Big Bang" I went Kanban https://en.m.wikipedia.org/wiki/Kanban_(development) (a much better analogy than Martin Fowler's "strangler pattern" analogy http://www.martinfowler.com/bliki/StranglerApplication.html).  This allowed gradual migration with the least disruption and the most flexibility in when changes would occur.  As a not-to-be-underestimated bonus it was also the least stressful.
+Rather than "Big Bang" I went Kanban <https://en.m.wikipedia.org/wiki/Kanban_(development)> (a much better analogy than Martin Fowler's "strangler pattern" analogy <http://www.martinfowler.com/bliki/StranglerApplication.html>).  This allowed gradual migration with the least disruption and the most flexibility in when changes would occur.  As a not-to-be-underestimated bonus it was also the least stressful.
 
-Since I publish a post maybe once a month my blog was the simplest start .
+Since I publish a post maybe once a month my blog was the simplest place to start.
 
 Feature parity requirements:
 
@@ -124,7 +124,7 @@ Oh right, so Go, aka Golang?
 
 I leveraged Google AppEngine and for fun got to use the relatively new programming language Go to write a custom 301 redirector to prevent links on the Internet from breaking and allow search engines link from all of the previous URLs to the new locations.
 
-While Python is very easy to pickup I found Go to be similar enough (especially to C) to be also not so hard to pickup (lots of documentation!) and better able to do what I needed simply within the language (though Python pretty much has a library for everything it also has C dependencies that don't always play nice with a PlatformAsAService).
+While Python is very easy to pickup I found Go to be similar enough (especially to C) to be also not so hard to learn (lots of documentation!) and better able to do what I needed simply within the language (though Python pretty much has a library for everything it also has C dependencies that don't always play nice with a PlatformAsAService).
 
 ### Drupal to Drupal
 
@@ -156,32 +156,33 @@ Besides the basic components (Docker will simplify this): nginx, php, MySQL
 
 The ongoing issues:
 
--Backups of the MySQL and uploaded files
--Upgrades of the OS and components (security)
--Upgrades (security) of Drupal and modules
+- Backups of the MySQL and uploaded files
+- Upgrades of the OS and components (security)
+- Upgrades (security) of Drupal and modules
+
+> Hint: DigitalOcean offer full disk image backups as a paid service so if I ever stop being cheap this resolves pretty quickly
 
 The full details are in a separate post but I'm pretty happy that setting up the box from scratch again, upgrading the various subcomponents, or even migrating to a different vendor will be a lot easier in the future (and won't affect any of the other projects I have going on).
 
-## Why not just automate the monolith 
+## Why not just automate the monolith
 
 The "easy" answer may have been to automate more of my "ball of mud" to address the effort/efficiency of applying security updates.
 
 Yet the "better monolith" would mean I still owned the maintenance and uptime for a large percent of my services.
 
-I appreciate the microservices approach resilience that different providers means it is nearly impossible for them to all go down simultaneously or be affected by one another.
+The microservices approach of diversity means that with different providers (GitHub, Bitbucket, Google AppEngine, DigitalOcean, etc.) it is nearly impossible for them to all go down simultaneously or be affected by one another.
 
 Leveraging other platforms that better fit my use case means I benefit from their expertise and by reducing the moving parts I have a reduced security risk.
 
 My experiments in other frameworks and programming languages were never a good match for my "production" web services.
 
-> "because it's there" or "because I can" are very often the reason things continue to be done in a suboptimal way ;) 
+> "because it's there" or "because I can" are very often the reason things continue to be done in a suboptimal way ;)
 
-Now I will focus more on the "top" of the tech stack and less on the "how to automate and deploy" portion.
+Now I will focus more on the "top" of the tech stack and high value content (like this blog post), less on the "how to automate and deploy" portion.
 
 ## Ongoing and Future Work
 
-I still have to purchase/renew domains, update DNS, and 
-write content.
+I still have to purchase/renew domains, update DNS, and write content.
 
 I still have to eventually find a platform that allows my father-in-law to publish content (and upload files) where I'm not responsible for security patches or backups ;)
 

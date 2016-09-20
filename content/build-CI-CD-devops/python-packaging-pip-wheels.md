@@ -44,15 +44,18 @@ An output directory of the wheels of a project are known by convention as a "whe
 
 As a side effect the wheel directory, “/tmp/wheelhouse” in the example, contains installable copies of the exact versions of your application’s dependencies. By installing from those cached wheels you can recreate that environment quickly and with no surprises.
 
-When you install using pip it looks for a “wheel file” (*.whl which is the newer zip compressed format, goodbye .egg) of the correct name for your (virtual) environment (e.g. py2 or py3 or x86 linux).  This wheel file saves time and bugs from installing a package/.egg  from source (usually that time is spent compiling C code for the python library). 
+When you install using pip it looks for a “wheel file” (*.whl which is the newer zip compressed format, goodbye .egg) of the correct name for your (virtual) environment (e.g. py2 or py3 or x86 linux).  This wheel file saves time and bugs from installing a package/.egg  from source (usually that time is spent compiling C code for the python library).
 
-    sudo pip install wheel; cd projectsource; python setup.py bdist_wheel; ls -l ./dist
-
+    :::bash
+    sudo pip install wheel
+    cd projectsource
+    python setup.py bdist_wheel
+    ls -l ./dist
     pip wheel  --find-links /root/wheelhouse --wheel-dir=/root/wheelhouse -r requirements.txt
 
 
-<https://pip.pypa.io/en/stable/reference/pip_wheel/>
-<http://pip-python3.readthedocs.org/en/latest/reference/pip_wheel.html#build-system-interface>
+- <https://pip.pypa.io/en/stable/reference/pip_wheel/>
+- <http://pip-python3.readthedocs.org/en/latest/reference/pip_wheel.html#build-system-interface>
 
 #### installing using a wheel file
 
@@ -70,6 +73,7 @@ Reading the internet provided no comprehensible answers (lots of "setuptools doe
 
 The following hacking seems to have provided a solution:
 
+   :::bash
     python --version
     pip --version
     cd /tmp
