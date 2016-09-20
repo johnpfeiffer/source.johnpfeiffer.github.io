@@ -1,10 +1,12 @@
-Title: Using find grep cut awk sort dd with files and text 
+Title: Using find grep cut awk sort dd with files and text and listing files with ls
 Date: 2011-11-12 02:37
-Tags: grep, linux, bash, cut, awk, sort, dd, files, text
+Tags: grep, linux, bash, cut, awk, sort, dd, files, text, ls, sort by size, sort by date, exec
 
 [TOC]
 
 There are amazing linux command line utilities that make finding and manpiulating files very easy
+
+## create copy truncate
 
 Assuming you understand the basics like:
 
@@ -15,7 +17,8 @@ Assuming you understand the basics like:
 > append the hi content into example.txt, note that a single > will overwrite the contents
 
     cat example.txt | tee -a example2.txt
-> display the contents of the file to the output console and also pipe the result to the **tee** utility which appends it to another file - tee is better than >> 
+> - display the contents of the file to the output console and also pipe the result to the **tee** utility which appends it to another file - tee is better than >> 
+> - except that tee always returns 0 so if you have set -e then prefer >
 
     :> example.txt
 > truncate the file without disturbing any existing readers of that file (e.g. zero a log without messing up an applications ability to write to the file)
@@ -23,8 +26,105 @@ Assuming you understand the basics like:
     cp -a example.txt example2.txt
 > copy archive which preserves timestamp (but will also overwrite the target - in this example probably zero bytes)
 
+    rm example.txt
+> remove a file, -f forces removal without a prompt, -rf to recursively force remove a file or directory **be careful**
+
+## ls lists files in a directory
+
+    ls /etc
+> list the files and directories in the /etc directory
+
+    ls -1
+> lists just the names (not including hidden .dot files or directories) in the current directory
+
+    ls -1a
+> lists just the names including hidden .dot files
+
+    ls -ahl | grep -v IGNORETHIS
+> exclude lines that match IGNORETHIS
+
+    ls -f
+> unsorted list of files which is the only way to work with directories with a very large number of files
+
+### list directories
+
+    ls -d */
+> list names of directories in the current directory
+
+    ls -1 -d */
+> using a "numeral one" parameter lists one directory name per line
+
+    ls -l -d */
+> using a "lowercase letter L" parameter lists the extended information (permissions, owner, timestamps)
+
+    ls -d ./*/
+> list names of directories in the current directory
+
+    echo */
+> lists the names of directories in the current directory
+
+    find -type d
+> find recursively starting from the current directory and display the relative path all objects of type directory
+
+    find /tmp -maxdepth 1 -type d
+> find all directories in /tmp up to 1 level deep (/tmp/foo)
+
+    find /tmp -maxdepth 2 -type d
+> find all directories in /tmp up to 2 levels deep (/tmp/foo/bar)
+
+### counting the listings
+
+    ls -1 | wc
+> lists just the names of non hidden files piped to word count, number one looks a lot like lowercase L (sadindeed)
+
+    ls -1 | wc -l
+> list just names and count only the lines (number one, then lowercase L)
+
+    ls -ahl | wc -l
+> counting hidden files BUT directories too
+
+    for file in /PATH/foo*; do cp "$file" /mnt/BAR/; done
+> when there are too many files in a directory: "/bin/cp: Argument list too long"
+> a one liner for copying each file as a parameter
+
+### sorting by size or timestamp
+
+    ls -Sla
+> sort by size (largest to smallest with full details displayed, show . hidden files too)
+
+    ls -Slar
+> sort by size (reversed, so smallest to largest with full details displayed, show . hidden files too)
+
+    ls -Slarh
+> sort by size (reversed, so smallest to largest with full details displayed, show . hidden files too, human sizes like MB)
+
+    ls -ahtlr
+> sort by timestamp (reversed so oldest first, show . hidden files too, human sizes like MB)
+
+
+    ls -ahtlr | head -n3
+> only the 3 oldest lines
+
+    ls -la --time-style=full-iso foobar.txt
+> list the full modified timestamp
+<https://www.gnu.org/software/coreutils/manual/html_node/Formatting-file-timestamps.html>
 
 ## find
+
+find is better than locate because locate depends on a cron job to index the file system and so may miss recent results
+
+### find to list files
+
+    find -type f
+> find and display the relative path all objects of type file
+
+    find /tmp -maxdepth 1 -type f -print | wc -l
+> wc = count lines = files in the /tmp directory
+
+    find -type f -print | wc -l
+> to get all subdirs too
+
+### find a specific file or types of files
 
     find -name "MyCProgram.c"
 > case sensitive, starts in the current directory 
@@ -77,16 +177,23 @@ Assuming you understand the basics like:
     find . -type f -iname '.py' | while read filename; do mv -v "${filename}" "echo "${filename}" | sed -e 's/\.py$/\.py.txt/'"; done
 > a lot of extra work to achieve a recursive rename from .py to .py.txt
 
-    find . -type f -iname ".java" -exec grep -Hn "fileSizeInMB < 100" {} \;
+    find . -type f -iname "*.java" -exec grep -Hni "case-insensitive-text" {} \;
+> find java files and return if they contain some text
 
-    find . -type f -iname ".java" -exec grep -Hni "case-insensitive-text" {} \;
+    find . -type f -iname "*.java" -exec grep -Hn "fileSizeInMB < 100" {} \;
+> find java files and return if they contain some case sensitive text
     
-
     find . -type d -name directoryname* -exec ls -ahl {} \;
+> find case insensitive directories beginning with "directoryname" and list their contents
     
     sudo find /var/www/java -type f -iname ".txt" -exec chown root:www-data {} \;
-    sudo find /var/www/java -type f -iname ".txt" -exec chmod 640 {} \; 
+> find case insensitive files ending with ".txt" and change their owner to root and group to  www-data
+
+    sudo find /var/www/java -type f -iname "*.txt" -exec chmod 640 {} \; 
+> find case insensitive files ending with ".txt" and change their permissions to 640
+
     sudo find /var/www/d -type d -iname "web*" -exec chmod 750 {} \;
+> find case insensitive directories beginning with "web" and change their permissions to 750
     
     find . -type f -iname "*.sh" -exec mv {} . ";" 
 > find files ending in .sh and move them into the current directory
@@ -212,6 +319,10 @@ grep is an amazing tool for getting efficiently finding text, <http://www.gnu.or
     grep -L 'foobar' *
 > --files-without-match , display filenames that do not contain the string foobar
 
+- <https://en.wikipedia.org/wiki/Grep>
+- <http://www.gnu.org/software/grep/manual/grep.html>
+- <http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html>
+
 
 ## cut
 
@@ -221,7 +332,8 @@ grep is an amazing tool for getting efficiently finding text, <http://www.gnu.or
     cat sometext.txt | cut -f1 -d"["
 > delimiter of square bracket , only take after the first "field" token, so essentially print everything after the first occurence of a left square bracket
 
-<http://ss64.com/bash/cut.html>
+- <http://ss64.com/bash/cut.html>
+- <http://linux.die.net/man/1/cut>
 
 
 ### cut to only display a part of a path
@@ -287,6 +399,9 @@ If the 5th column of results.txt contains numbers then ...
 > Note that Awk recognizes the field variable $0 as representing the entire line, so this could also be written as:
     awk '/gold/ {print $0}'
 
+- <http://www.grymoire.com/Unix/Awk.html>
+- <https://www.gnu.org/software/gawk/manual/gawk.html>
+
 ## sed
 
 sed does string substitution
@@ -299,6 +414,8 @@ sed does string substitution
     sed -i 's/\x85/.../g' *.md
 > replace a UTF-8 character (in this case the single character horizontal ellipsis) with three dots
 
+    cat /var/www/html/themes/bartik/css/style.css | tr '\n' '\r' | sed -e 's/#site-slogan {\r  font-size: 0.929em/#site-slogan {\r  font-size: 2.929em/' | tr '\r' '\n' > /var/www/html/themes/bartik/css/style.css.updated
+> replace multiline with a newline using tr to translate \n to \r
 
 REMEMBER
 
@@ -312,6 +429,8 @@ REMEMBER
     perl -pe 's/\r\n|\n|\r/\n/g'   inputfile > outputfile  # Convert to UNIX
     perl -pe 's/\r\n|\n|\r/\r/g'   inputfile > outputfile  # Convert to old Mac
 
+- <http://www.grymoire.com/Unix/Sed.html>
+- <https://www.gnu.org/software/sed/manual/sed.txt>
 
 ## dd
 
@@ -340,14 +459,10 @@ Notes about randomness (on linux):
     cpuid | grep -i rand
 > Look for RDRAND <http://en.wikipedia.org/wiki/RdRand>
 
-    cat /dev/urandom | rngtest -c 1000`
+    cat /dev/urandom | rngtest -c 1000
 > how good is your non blocking urandom?
 
+- <https://en.wikipedia.org/wiki//dev/random>
+- <http://linuxcommand.org/man_pages/rngtest1.html>
     
-## more info
-
-- <https://en.wikipedia.org/wiki/Grep>
-- <http://www.gnu.org/software/grep/manual/grep.html>
-- <http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html>
-- <http://linux.die.net/man/1/cut>
 
