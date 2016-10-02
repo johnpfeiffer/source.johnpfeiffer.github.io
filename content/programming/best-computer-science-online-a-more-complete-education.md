@@ -1,13 +1,15 @@
 Title: A More Complete Education
 Date: 2013-05-09 16:52
-Tags: mooc, free education, distance learning, cs on iphone, programming videos, programming
+Tags: computer science, cs, mooc, free education, distance learning, cs on iphone, programming videos, programming
 
 [TOC]
+
+Learning is a life long pleasure.  Programming and Computer Science are challenging and take time but luckily the resources available today make it almost free to get access to top quality materials.
 
 ## Introduction to Programming
 
 ### Stanford "Programming Methodology"
-by Mehran Sahami (very fun and Java is a good starting point)  
+by Mehran Sahami (very fun and Java is a good starting point)
 
 - <http://see.stanford.edu/see/lecturelist.aspx?coll=824a47e1-135f-4508-a5aa-866adcae1111>
 - (also at <https://itunes.apple.com/us/itunes-u/programming-methodology/id384232896>)
@@ -27,7 +29,9 @@ by Mehran Sahami (very fun and Java is a good starting point)
 - <https://www.udacity.com/course/cs212>
 - <https://www.udacity.com/course/cs253>
 
+### Udemy
 
+- <https://www.udemy.com/learn-how-to-code/#about-course> (paid)
 
 ## Networking
 
@@ -35,7 +39,7 @@ by Mehran Sahami (very fun and Java is a good starting point)
 
 ## Algorithms
 
-**Algorithms of course!**  
+**Algorithms of course!**
 
 ### MIT
 
@@ -45,14 +49,15 @@ by Mehran Sahami (very fun and Java is a good starting point)
 
 - <http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-046j-introduction-to-algorithms-sma-5503-fall-2005/video-lectures>
 
-### Stanford  
+### Stanford
 - <http://see.stanford.edu/see/lecturelist.aspx?coll=11f4f422-5670-4b4c-889c-008262e09e4e>
 - (also at <https://itunes.apple.com/us/itunes-u/programming-abstractions/id384232917>)
 - <https://www.coursera.org/course/algo>
 - <https://www.coursera.org/course/algo2>
 
+- <https://www.coursera.org/learn/algorithm-design-analysis> NEW!
 
-### Princeton  
+### Princeton
 - <https://www.coursera.org/course/algs4partI>
 - <https://www.coursera.org/course/algs4partII>
 
@@ -65,7 +70,7 @@ by Mehran Sahami (very fun and Java is a good starting point)
 - <http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-050j-information-and-entropy-spring-2008/>
 - (also at <https://itunes.apple.com/us/itunes-u/information-and-entropy/id424082281>)
 
-### University of Michigan  
+### University of Michigan
 - <https://class.coursera.org/modelthinking-2012-002/class/index>
 
 ### Harvard
@@ -85,10 +90,11 @@ by Mehran Sahami (very fun and Java is a good starting point)
 - <http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/>
 
 ## PRACTICE, PRACTICE, PRACTICE
-- <http://codingbat.com/python> (beginner)  
-- <http://projecteuler.net>
+- <http://codingbat.com/python> (beginner)
+- <https://projecteuler.net>
 - <http://acm.timus.ru>
 - <http://www.spoj.com/problems/classical>
-- <http://leetcode.com/onlinejudge>
+- <https://leetcode.com/onlinejudge>
 - <http://codeforces.com/problemset>
 - <https://www.hackerrank.com>
+- <https://tour.golang.org>
