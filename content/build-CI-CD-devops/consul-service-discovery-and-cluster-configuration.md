@@ -14,7 +14,7 @@ Basically consul is an out-of-the-box service discovery system intended for clus
 This kind of infrastructure simplifies the programming of distributed systems so that it is easier to deliver value quickly on the actual domain problems.
 
 *I have certainly done my fair share of hardcoded config files to "discover" dependency services and even used chef for "config management"...
-But with the evolution of devops, web scale, microservices, containers, etc. it is great to leverage an existing battle tested solution*
+But with the evolution of dev-ops, web scale, microservices, containers, etc. it is great to leverage an existing battle tested solution*
 
 ## Consul Cluster using Docker
 
@@ -61,14 +61,28 @@ Following the straightforward work from this Docker Image we can run a cluster o
 - <https://www.consul.io/docs/agent/http.html>
 - <https://www.consul.io/docs/agent/dns.html>
 
+
     :::bash
+    
     curl http://localhost:8500/v1/catalog/services
         {"consul":[]}
-    
     curl http://localhost:8500/v1/catalog/service/web
         []
 > Listing of the services available, no web service yet =)
 
+### Alternative Install from Zip
+
+    apt-­get install unzip
+    wget https://releases.hashicorp.com/consul/0.7.0/consul_0.7.0_linux_amd64.zip
+    unzip consul_0.7.0_linux_amd64.zip
+    BINDIP=$(ifconfig eth0 | grep "inet addr" | cut ­d ':' ­f 2 | cut ­d ' ' ­f 1)    
+    ./consul agent ­bootstrap ­server ­bind=$BINDIP ­data­dir /tmp/consul
+    
+    netstat ­antp  | grep consul
+    curl http://localhost:8500/v1/status/peers
+    
+
+- <https://www.consul.io/docs/agent/options.html>
 
 ## Registering a Service
 
@@ -140,5 +154,43 @@ Starting the web server again and check
         {"Node":"node4","CheckID":"serfHealth","Name":"Serf Health Status","Status":"passing","Notes":"","Output":"Agent alive and reachable","ServiceID":"","ServiceName":""}]}]
 
 
-## Distributed Configuration
-A simple use case is to use the key value store to distribute other information besides services that need to be discovered, <https://www.consul.io/docs/agent/http/kv.html>
+### Redis in Containers as another Service
+
+    docker run --rm -it -p 0.0.0.0:6379:6379 --name redis redis:alpine
+    
+    docker run --rm -it --link redis:redis redis:alpine redis-cli -h redis -p 6379 help keys
+    docker run --rm -it --entrypoint=/bin/sh --link redis:redis redis:alpine
+> By running a local redis service we can modify our simple Go web service to query consul and dynamically discover how to reach the correct dependency, "look mom, no config files!"
+
+- <https://hub.docker.com/_/redis/>
+
+
+## Distributed Configuration and the Go Client Library
+A simple use case is to use the key value store to distribute other information besides services that need to be discovered.
+
+Obviously interacting directly with Consul as a client from inside the application is beneficial to "keeping it all in the code" and not relying on config files or shell scripts.
+
+- <https://www.consul.io/docs/agent/http/kv.html>
+- <https://github.com/hashicorp/consul/tree/master/api>
+- <https://godoc.org/github.com/hashicorp/consul/api>
+
+> Documentation on the Key Value store and the official Go client library
+
+### Python Client
+
+Using an open source client can help avoid "do not repeat yourself" of writing the REST API wrapper (and benefiting from crowd source at work)
+
+- <http://consulate.readthedocs.io/en/stable/>
+- <https://github.com/gmr/consulate>
+
+    sudo pip3 install consulate
+
+Like all open source projects this has some bugs and outstanding PRs but it is better than another one I tried which was still in alpha (aka not really fully implemented) , <https://www.consul.io/downloads_tools.html>
+
+## Some Gotchas
+
+Consul has a few edge cases that you may need to address specifically:
+
+1. If a node reboots and changes ip address it will not go well: <https://github.com/hashicorp/consul/issues/457> , the simplest case might be to just remove it's data directory and force it to rejoin without any data
+2. If a new node attempts to join a cluster it needs to know the ip address of an existing node, there is no "auto discovery-join" mechanism except to delegate to Atlas, the paid SaaS product from HashiCorp, or of course to write your own workaround <https://www.consul.io/docs/guides/bootstrapping.html>
+3. If all of the server nodes in the cluster go down then there is no auto-recovery (which is not surprising I suppose...) <https://www.consul.io/docs/guides/outage.html> , <https://github.com/hashicorp/consul/issues/454> , <https://github.com/hashicorp/consul/issues/526>, again, if you write your own wrapper to detect this scenario as the nodes reboot (or in an immutable world are re-added assuming you have solved #1 and #2 ;) they "should" be able to recover and reload from raft/peers.json
