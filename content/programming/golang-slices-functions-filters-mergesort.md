@@ -1,5 +1,5 @@
 Title: Golang Slices Functions Filters Mergesort
-Date: 2015-10-02 23:45
+Date: 2016-10-02 23:45
 Tags: go, golang, testing, arrays, slices, functions, filter, algorithms, merge, mergesort, strategy pattern
 
 [TOC]
