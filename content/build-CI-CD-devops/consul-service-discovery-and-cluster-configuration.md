@@ -75,12 +75,12 @@ Following the straightforward work from this Docker Image we can run a cluster o
     apt-­get install unzip
     wget https://releases.hashicorp.com/consul/0.7.0/consul_0.7.0_linux_amd64.zip
     unzip consul_0.7.0_linux_amd64.zip
-    BINDIP=$(ifconfig eth0 | grep "inet addr" | cut ­d ':' ­f 2 | cut ­d ' ' ­f 1)    
+    BINDIP=$(ifconfig eth0 | grep "inet addr" | cut -d ':' ­-f 2 | cut ­-d ' ' ­-f 1)
     ./consul agent ­bootstrap ­server ­bind=$BINDIP ­data­dir /tmp/consul
     
     netstat ­antp  | grep consul
     curl http://localhost:8500/v1/status/peers
-    
+> Note getting the IP Address on ubuntu 16.04 uses enp3s0 or enp25 which can be changed back via grub workaround: GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0"
 
 - <https://www.consul.io/docs/agent/options.html>
 
