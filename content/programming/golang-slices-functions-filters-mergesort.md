@@ -147,6 +147,7 @@ Since go starts from simple blocks we build, as needed, more complex tools like 
         fmt.Println(c, "filtered for evens becomes: ", SliceFilter(isEven(), c))  // [5 3 -1 12] filtered for evens becomes:  [12]
     }
 > With a function that returns a function, and a function that requires a parameter that is of the type "function signature", we can apply the Strategy Pattern
+
 - <https://play.golang.org/p/Uxm7HZzS-V> *(yes you can mess with functions too)*
 - <https://en.wikipedia.org/wiki/Anonymous_function>
 - <https://en.wikipedia.org/wiki/Strategy_pattern>
@@ -157,7 +158,8 @@ And because I like source code in blogs, a highly imperfect mergesort.
     :::go
     package main
 
-    import ( "fmt"
+    import (
+        "fmt"
     )
     
     // SliceSplit is a function to split a slice into roughly even partitions
@@ -259,5 +261,8 @@ And because I like source code in blogs, a highly imperfect mergesort.
     }
 
 > TODO: main_test.go with all of the functional coverage and merge test cases ;)
+
 - <https://en.wikipedia.org/wiki/Merge_sort>
 - <https://play.golang.org/p/nAHF50zk7m> *(modify the merge online)*
+- <https://bitbucket.org/johnpfeiffer/go-slice-mergesort> *(because version control means the fun never stops)*
+
