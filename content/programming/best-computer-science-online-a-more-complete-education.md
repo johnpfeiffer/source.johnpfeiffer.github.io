@@ -14,12 +14,14 @@ Here are some of those topics I wish were covered in the first year.  (Hint: the
 
 ### Version Control
 The fundamental tool of managing change which was strangely ignored for a very long time in the short history of programming
+
 - <https://en.wikipedia.org/wiki/Version_control>
 - <https://www.atlassian.com/git/tutorials/what-is-version-control>
 - <https://betterexplained.com/articles/a-visual-guide-to-version-control>
 
 ### Quality and Testing
 The practical answer to actually attempting to validate correctness in practice (rather than just logical proofs)
+
 - <https://en.wikipedia.org/wiki/Software_testing>
 - <http://martinfowler.com/bliki/TestPyramid.html>
 - <https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html>
@@ -27,6 +29,7 @@ The practical answer to actually attempting to validate correctness in practice 
 
 ### Build and Continuous Integration
 Automation as a solution to the shortage of developer time and the exponential increase in software and complexity
+
 - <https://en.wikipedia.org/wiki/Build_automation>
 - <http://www.drdobbs.com/tools/a-build-system-for-complex-projects-part/218400678>
 - <https://en.wikipedia.org/wiki/Continuous_integration>
