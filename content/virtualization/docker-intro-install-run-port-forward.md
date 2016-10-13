@@ -264,7 +264,7 @@ Another efficiency is that a docker container will only **run as long as it take
 
     docker cp <containerId>:/file/path/within/container /host/path/target
 
-<https://docs.docker.com/reference/commandline/cli/#cp>
+<https://docs.docker.com/engine/reference/commandline/cp/>
 
 ### Deleting aka removing a container
 
@@ -482,25 +482,24 @@ One tip she did not include was the part about XManager security, run the follow
 
 
 - - - 
-## Advanced Docker pre built images
-
-`docker search stackbrew/ubuntu`
-> FYI stackbrew/ubuntu is the same as ubuntu , [stackbrew is the curated Docker registry](https://registry.hub.docker.com/u/stackbrew/ubuntu)
-
-**<https://registry.hub.docker.com>**
-
+## Docker pre built Images from the Registry
 
 ### Redis
+`docker search redis`
+> search from the CLI but NAME, DESCRIPTION, STARS, OFFICIAL will only help you if you sort of already know what you are looking for
+
 **<https://registry.hub.docker.com/_/redis/>**
 
-`docker run --detach --publish 127.0.0.1:6379:6379 --name redis redis`
+    docker run --detach --publish 127.0.0.1:6379:6379 --name redis redis
 > detached container based on the redis latest bound to the host on port 6379
+
 > the image already includes by default the expose port command: EXPOSE 6379...
 `apt-get install redis-tools; redis-cli`
+
 > connect from the host to the redis container to the redis interactive cli
 
 
-`docker run -i -t --link redis:db  johnssh /bin/bash`
+    docker run -i -t --link redis:db  johnssh /bin/bash
 
     root@d95a758eaa6b:/#
     apt-get install redis-tools
@@ -510,7 +509,7 @@ One tip she did not include was the part about XManager security, run the follow
 
 > PONG
 
-`get mykey`
+    get mykey
 > "somevalue"
 
 `docker stop johnssh`
@@ -534,8 +533,6 @@ One tip she did not include was the part about XManager security, run the follow
 
 
 ** Add a route to the Host From inside a Container/Guest **
-
-<http://docs.docker.com/reference/commandline/cli/#adding-entries-to-a-container-hosts-file>
 
 HOST:
 
@@ -563,14 +560,16 @@ HOST:
     PING docker (172.17.42.1): 56 data bytes
     64 bytes from 172.17.42.1: icmp_seq=0 ttl=64 time=0.158 ms
 
+<https://docs.docker.com/engine/reference/commandline/run/>
+
 - - -
 ## Docker Compose
 Complex real systems have multiple dependencies and following the recommended Docker pattern of "do one thing per container" means needing a way to start/orchestrate a bunch of things at once.
 
-While there are some amazing open source projects (<http://kubernetes.io/> , <http://mesos.apache.org/documentation/latest/docker-containerizer/>) it is instructive to start with the simplest model provided directly from Docker, <https://docs.docker.com/compose/>
+While there are some amazing open source projects (<http://kubernetes.io/> , <https://mesos.apache.org/documentation/latest/docker-containerizer/>) it is instructive to start with the simplest model provided directly from Docker, **<https://docs.docker.com/compose/>**
 
-`sudo pip install --upgrade docker-compose`
-`docker-compose --version`
+    sudo pip install --upgrade docker-compose
+    docker-compose --version
 
 ### app.py
 
@@ -665,12 +664,8 @@ look closely at error messages, i.e. make: not found and ensure that an early RU
 
 - - -
 ## More Info
-- <https://docs.docker.com/reference/commandline/cli/#run>
 - Real World example of using Docker for behind the firewall delivery: <https://bitbucket.org/atlassianlabs/ac-koa-hipchat-sassy/pull-request/6/readmemd-contains-instructions-on-how-to/diff>
-- <https://docs.docker.com/articles/basics>
 - <https://github.com/wsargent/docker-cheat-sheet>
-
-- <http://blog.oddbit.com/2014/08/11/four-ways-to-connect-a-docker>
 - <http://jpetazzo.github.io/2014/06/23/docker-ssh-considered-evil>
 
 
