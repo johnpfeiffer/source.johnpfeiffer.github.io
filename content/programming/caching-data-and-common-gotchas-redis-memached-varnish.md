@@ -49,20 +49,20 @@ Taking "why cache" to another level, the relative speeds of different cache leve
 - If your application is a very large amount of data the network may actually be better than disk; optimization would probably not be focused on "loop unrolling"
 - If your application depends on data across the internet then network caching, routing algorithms, and data modeling (eventual consistency!) may be more important than "tail recursion vs iterative"
 
-    A typical cpu instruction                    1   ns
-    L1 cache fetch                               0.5 ns
+    A typical cpu instruction                    1   ns                              1 second basis (approximations)
+    L1 cache fetch                               0.5 ns                              
     Branch mispredict                            4   ns
-    L2 cache fetch                               7   ns
+    L2 cache fetch                               7   ns                              7 seconds
     Mutex lock/unlock                           25   ns
-    RAM "main memory" fetch                    100   ns        0.1 us
-    Read 4K randomly from SSD              100,000   ns      100 us
-    Read 1 MB sequentially from memory     250,000   ns      250 us
-    Send 1000 bytes over 1 Gbps network    500,000   ns      500 us     0.5 ms
-    Read 1 MB sequentially from SSD      1,000,000   ns    1,000 us     1 ms
-    Spinning Hard Disk seek              8,000,000   ns    8,000 us     8 ms
-    Read 1 MB sequentially from disk    20,000,000   ns   20,000 us    20 ms
-    Roundtrip SF to NY                  70,000,000   ns   70,000 us    70 ms
-    Roundtrip SF to Vienna             150,000,000   ns  150,000 us   150 ms
+    RAM "main memory" fetch                    100   ns        0.1 us               2 minutes
+    Read 4K randomly from SSD              100,000   ns      100 us                 28 hours
+    Read 1 MB sequentially from memory     250,000   ns      250 us                 3 days
+    Send 1000 bytes over 1 Gbps network    500,000   ns      500 us     0.5 ms      6 days
+    Read 1 MB sequentially from SSD      1,000,000   ns    1,000 us     1 ms        12 days
+    Spinning Hard Disk seek              8,000,000   ns    8,000 us     8 ms        3 months
+    Read 1 MB sequentially from disk    20,000,000   ns   20,000 us    20 ms        7.6 months
+    Roundtrip SF to NY                  70,000,000   ns   70,000 us    70 ms        2 years
+    Roundtrip SF to Vienna             150,000,000   ns  150,000 us   150 ms        5 years
 
 > The L1 cache is the memory cache integrated into the CPU that is closest
 
@@ -70,11 +70,12 @@ Taking "why cache" to another level, the relative speeds of different cache leve
 
 > ns = nanoseconds, us = microseconds, ms = milliseconds
 
-- <http://norvig.com/21-days.html#answers>
+- <http://norvig.com/21-days.html#answers> Peter Norvig
 - <https://en.wikipedia.org/wiki/CPU_cache>
 - <https://en.wikipedia.org/wiki/Solid-state_drive#Controller>
 - <http://www.codingblocks.net/podcast/episode-45-caching-overview-and-hardware/>
 - <https://wondernetwork.com/pings>
+- <https://twitter.com/rzezeski/status/398306728263315456/photo/1> Brendan Gregg
 
 ### Caches are another Operational component with Overhead
 
