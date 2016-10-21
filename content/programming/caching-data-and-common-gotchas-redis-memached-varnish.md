@@ -31,22 +31,64 @@ A tradeoff of memory for cpu (or latency or some other business cost).
 - to reduce contention (i.e. reads and writes)
 - for a client-server architecture, caching on the client reduces the number of required connections to a server
 - server side caching can protect backend resources and improve throughput and performance
-- comp
-
+- computation is expensive (in terms of cpu, time, or money)
 
 ### Questions to ask when caching
 
-Is the complexity of caching worth the performance gain? (simpler is often better)
+- Is the complexity of caching worth the performance gain? (simpler is often better)
+- Does my cache need to be consistent? (meaning the cache and data source return identical results)
+- Can my cache be "eventually consistent"? (meaning a wrong answer for some specified period of time is ok)
+- Am I caching at a high level? (meaning aggregating a lot of work/responses from lower level systems)
+- Am I caching at a low level? (meaning inside of my Data Access Object pattern I'm protecting a single simple resource, i.e. a MySQL table, from being accessed too often)
+- How unique are my Keys in my cache (i.e. if multiple users can have the same identifier it would be very bad to return the wrong session to the wrong user)
 
-Does my cache need to be consistent? (meaning the cache and data source return identical results)
+### Cache Latency Times in Perspective
 
-Can my cache be "eventually consistent"? (meaning a wrong answer for some specified period of time is ok)
+Taking "why cache" to another level, the relative speeds of different cache levels highlight why some applications or algorithms will fail if they do not leverage cache.
 
-Am I caching at a high level? (meaning aggregating a lot of work/responses from lower level systems)
+- If your application is a very large amount of data the network may actually be better than disk; optimization would probably not be focused on "loop unrolling"
+- If your application depends on data across the internet then network caching, routing algorithms, and data modeling (eventual consistency!) may be more important than "tail recursion vs iterative"
 
-Am I caching at a low level? (meaning inside of my Data Access Object pattern I'm protecting a single simple resource, i.e. a MySQL table, from being accessed too often)
+    A typical cpu instruction                    1   ns
+    L1 cache fetch                               0.5 ns
+    Branch mispredict                            4   ns
+    L2 cache fetch                               7   ns
+    Mutex lock/unlock                           25   ns
+    RAM "main memory" fetch                    100   ns        0.1 us
+    Read 4K randomly from SSD              100,000   ns      100 us
+    Read 1 MB sequentially from memory     250,000   ns      250 us
+    Send 1000 bytes over 1 Gbps network    500,000   ns      500 us     0.5 ms
+    Read 1 MB sequentially from SSD      1,000,000   ns    1,000 us     1 ms
+    Spinning Hard Disk seek              8,000,000   ns    8,000 us     8 ms
+    Read 1 MB sequentially from disk    20,000,000   ns   20,000 us    20 ms
+    Roundtrip SF to NY                  70,000,000   ns   70,000 us    70 ms
+    Roundtrip SF to Vienna             150,000,000   ns  150,000 us   150 ms
 
-How unique are my Keys in my cache (i.e. if multiple users can have the same identifier it would be very bad to return the wrong session to the wrong user)
+> The L1 cache is the memory cache integrated into the CPU that is closest
+
+> Light travels 30 cm or about 1 foot in 1 nanosecond 
+
+> ns = nanoseconds, us = microseconds, ms = milliseconds
+
+- <http://norvig.com/21-days.html#answers>
+- <https://en.wikipedia.org/wiki/CPU_cache>
+- <https://en.wikipedia.org/wiki/Solid-state_drive#Controller>
+- <http://www.codingblocks.net/podcast/episode-45-caching-overview-and-hardware/>
+- <https://wondernetwork.com/pings>
+
+### Caches are another Operational component with Overhead
+
+The best advice is to definitely avoiding caching until the last possible moment ("premature optimization" and "defer architecture decisions")
+
+Not only do you have to write code complexity for using a cache, there's the nitty gritty of running a cache (which can be a completely different expertise than programming)
+
+- Install
+- Upgrades
+- Security
+- Monitoring
+- Metrics
+
+None of this operational cost is free, and there are plenty of issues when just implementing caching in code...
 
 
 ## How to Cache
@@ -115,6 +157,12 @@ If the Time to Live is too short then the cache may have very poor efficiency (i
 Much like encryption it is probably a good idea to use a time tested product over writing your own implementation.
 
 ### Redis Examples
+
+One thing to think about is that local redis might be far more effective than remote over the network redis.
+
+If your application can depend less shared state this is good because sharing is a nightmare for cache semantics and distributed computing.
+
+Regardless of securing your remote cache you will always want to measure cache effectiveness.
 
 - <http://redis.io/commands>
 
