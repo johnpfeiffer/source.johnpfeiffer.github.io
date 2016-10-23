@@ -13,18 +13,18 @@ As any tool, using it for managing complexity and packaging can be very helpful 
 [TOC]
 
 - **Images** are the initial templates, each image has a unique ID <https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers/#content-addressable-storage>
-- **Containers** are the running virtual machines, each container has a unique ID  <http://docs.docker.com/terms/container>
+- **Containers** are the running virtual machines, each container has a unique ID  <https://en.wikipedia.org/wiki/Operating-system-level_virtualization>
 - *From now on it is assumed you use **sudo** before any docker command!*
 
 - - -
 ## Install Docker
 
-<https://docs.docker.com/installation/ubuntulinux/>
+<https://docs.docker.com/engine/installation/linux/ubuntulinux/>
 
 1. `apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D`
 1. `sudo sh -c "echo 'deb https://apt.dockerproject.org/repo ubuntu-trusty main' > /etc/apt/sources.list.d/docker.list"`
 1. `sudo apt-get update`
-1. `sudo apt-get install linux-image-extra-$(uname -r)`
+1. `apt-get install linux-image-extra-$(uname -r)`
 1. `apt-get install docker-engine`
 1. `service docker status`
 1. `docker info`
@@ -36,6 +36,42 @@ As any tool, using it for managing complexity and packaging can be very helpful 
 
 ### Installing on Mac or Windows
 <https://www.docker.com/docker-toolbox>
+
+### Custom docker0 ip range
+> Fixing the Docker Bridge docker0 taking a huge 172.17.0.1/16 address space...
+
+Private IP address space is not normally a thing to worry about, unless someone does something silly and grabs 65,534 addresses (stare) (docker)
+
+Because the default docker0 bridge seems to cater to organizations that want to run thousands of containers simultaneously local developers need to do the following fix:
+
+1. `apt-get install bridge-utils`
+1. `service docker stop`
+1. `ip link set docker0 down`
+1. `brctl delbr docker0`
+1. `docker daemon --bip=192.168.239.1/24`
+1. `ifconfig`
+
+> Docker will be running interactively so you can see all the fun log messages
+
+> You should see docker0 "inet addr:192.168.239.1  Bcast:0.0.0.0  Mask:255.255.255.0"
+
+*Assuming you do not have some other purpose for the 192.168.239 range in which case you can change it to something else*
+
+To permanently have this custom ip range configuration for docker (assuming you have done the steps above):
+
+1. Control + C to quit the previously interactive docker daemon
+1. `vi /etc/default/docker`
+1. `DOCKER_OPTS="--bip=192.168.239.1/24"`
+1. `service docker start`
+1. `ifconfig`
+
+> You should see docker0 "inet addr:192.168.239.1  Bcast:0.0.0.0  Mask:255.255.255.0"
+
+More docs to further troubleshoot the docker0 bridge...
+
+- <https://docs.docker.com/engine/userguide/networking/default_network/custom-docker0/>
+- <https://docs.docker.com/engine/admin/systemd/>
+
 
 - - -
 ## Quick Start Summary
@@ -50,7 +86,7 @@ As any tool, using it for managing complexity and packaging can be very helpful 
 
 - run the docker container (from the latest public python image) and start the shell prompt instead of the python interpreter
 - the entrypoint parameter overrides the Docker Image (in case they do not provide a helpfully overridable CMD)
-- <http://docs.docker.com/engine/reference/builder/#entrypoint>
+- <https://docs.docker.com/engine/reference/builder/#entrypoint>
 
 - - -
 ## Download a docker image
@@ -228,7 +264,7 @@ Another efficiency is that a docker container will only **run as long as it take
 
     docker cp <containerId>:/file/path/within/container /host/path/target
 
-<https://docs.docker.com/reference/commandline/cli/#cp>
+<https://docs.docker.com/engine/reference/commandline/cp/>
 
 ### Deleting aka removing a container
 
@@ -314,7 +350,7 @@ Since each run command creates a new layer it is best practice to consolidate co
     
 
 > experimental:
-> docker save 49b5a7a88d5 | sudo docker-squash -t ubuntu-utopic-pelican:squash | docker load
+> `docker save 49b5a7a88d5 | sudo docker-squash -t ubuntu-utopic-pelican:squash | docker load`
 
 
 - - -
@@ -370,7 +406,7 @@ Volumes are where Docker Containers can access storage (either from the Host or 
 ## Managing or limiting the resources available to a Container
 <https://docs.docker.com/engine/reference/run/#runtime-constraints-on-resources>
 
-docker run -i -t --rm --cpuset-cpu 0 --memory 512m ubuntu:14.04 /bin/bash
+    docker run -i -t --rm --cpuset-cpu 0 --memory 512m ubuntu:14.04 /bin/bash
 > the usual ubuntu trusty bash prompt but anything we run will be
 > pinned to cpu 0 (i.e. 25% of a 4 core system) and have
 > at most 512 MB of RAM and 512 MB of swap available
@@ -446,25 +482,24 @@ One tip she did not include was the part about XManager security, run the follow
 
 
 - - - 
-## Advanced Docker pre built images
-
-`docker search stackbrew/ubuntu`
-> FYI stackbrew/ubuntu is the same as ubuntu , [stackbrew is the curated Docker registry](https://registry.hub.docker.com/u/stackbrew/ubuntu)
-
-**<https://registry.hub.docker.com>**
-
+## Docker pre built Images from the Registry
 
 ### Redis
+`docker search redis`
+> search from the CLI but NAME, DESCRIPTION, STARS, OFFICIAL will only help you if you sort of already know what you are looking for
+
 **<https://registry.hub.docker.com/_/redis/>**
 
-`docker run --detach --publish 127.0.0.1:6379:6379 --name redis redis`
+    docker run --detach --publish 127.0.0.1:6379:6379 --name redis redis
 > detached container based on the redis latest bound to the host on port 6379
+
 > the image already includes by default the expose port command: EXPOSE 6379...
 `apt-get install redis-tools; redis-cli`
+
 > connect from the host to the redis container to the redis interactive cli
 
 
-`docker run -i -t --link redis:db  johnssh /bin/bash`
+    docker run -i -t --link redis:db  johnssh /bin/bash
 
     root@d95a758eaa6b:/#
     apt-get install redis-tools
@@ -474,7 +509,7 @@ One tip she did not include was the part about XManager security, run the follow
 
 > PONG
 
-`get mykey`
+    get mykey
 > "somevalue"
 
 `docker stop johnssh`
@@ -499,13 +534,12 @@ One tip she did not include was the part about XManager security, run the follow
 
 ** Add a route to the Host From inside a Container/Guest **
 
-<http://docs.docker.com/reference/commandline/cli/#adding-entries-to-a-container-hosts-file>
+HOST:
 
-HOST: 
-	ip addr show
-	ip addr show | grep docker0
-	ip addr show | grep docker0 | grep global | awk '{print $2}' | cut -d / -f1
-	HOSTIP=$(ip addr show | grep docker0 | grep global | awk '{print $2}' | cut -d / -f1)
+    ip addr show
+    ip addr show | grep docker0
+    ip addr show | grep docker0 | grep global | awk '{print $2}' | cut -d / -f1
+    HOSTIP=$(ip addr show | grep docker0 | grep global | awk '{print $2}' | cut -d / -f1)
 
 `sudo docker run -i -t --rm --add-host=docker:${HOSTIP} python:2 /bin/bash`
 
@@ -526,14 +560,16 @@ HOST:
     PING docker (172.17.42.1): 56 data bytes
     64 bytes from 172.17.42.1: icmp_seq=0 ttl=64 time=0.158 ms
 
+<https://docs.docker.com/engine/reference/commandline/run/>
+
 - - -
 ## Docker Compose
 Complex real systems have multiple dependencies and following the recommended Docker pattern of "do one thing per container" means needing a way to start/orchestrate a bunch of things at once.
 
-While there are some amazing open source projects (<http://kubernetes.io/> , <http://mesos.apache.org/documentation/latest/docker-containerizer/>) it is instructive to start with the simplest model provided directly from Docker, <https://docs.docker.com/compose/>
+While there are some amazing open source projects (<http://kubernetes.io/> , <https://mesos.apache.org/documentation/latest/docker-containerizer/>) it is instructive to start with the simplest model provided directly from Docker, **<https://docs.docker.com/compose/>**
 
-`sudo pip install --upgrade docker-compose`
-`docker-compose --version`
+    sudo pip install --upgrade docker-compose
+    docker-compose --version
 
 ### app.py
 
@@ -628,12 +664,8 @@ look closely at error messages, i.e. make: not found and ensure that an early RU
 
 - - -
 ## More Info
-- <https://docs.docker.com/reference/commandline/cli/#run>
 - Real World example of using Docker for behind the firewall delivery: <https://bitbucket.org/atlassianlabs/ac-koa-hipchat-sassy/pull-request/6/readmemd-contains-instructions-on-how-to/diff>
-- <https://docs.docker.com/articles/basics>
 - <https://github.com/wsargent/docker-cheat-sheet>
-
-- <http://blog.oddbit.com/2014/08/11/four-ways-to-connect-a-docker>
 - <http://jpetazzo.github.io/2014/06/23/docker-ssh-considered-evil>
 
 
