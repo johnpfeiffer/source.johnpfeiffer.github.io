@@ -1,6 +1,6 @@
 Title: Test Driven Development Introduction and QA Domains
 Date: 2012-01-20 17:44
-Tags: tests, tdd, qa, edge cases
+Tags: tests, tdd, qa, edge cases, testing
 
 [TOC]
 
@@ -25,26 +25,29 @@ Tags: tests, tdd, qa, edge cases
 
 **Everyone agrees on done!**
 
-	Automated Tests create concrete artifacts for all stakeholders (i.e. PM, QA, Engineering, etc.) to understand scope, review progress, and agree on "done".   This vastly improves inefficiencies in communication, scheduling, and manual testing.
-	Design is codified into a common language of Tests:
+> Automated Tests create concrete artifacts for all stakeholders (i.e. PM, QA, Engineering, etc.) to understand scope, review progress, and agree on "done".   This vastly improves inefficiencies in communication, scheduling, and manual testing.
+
+Design is codified into a common language of Tests:
+
 - Specifications require less translation and have faster validation
 - Deliverables are more accurate to the business needs and progress is more accurate
 - Future maintenance and extendibility is built into the process
 
 Acceptance Tests do require more up front discussions (not coding!) and setup time for automation.  
-Good tests must match production environments and requirements in order to be valid.  
+*Good tests must match production environments and requirements in order to be valid.*
 
 Tests must be engineered well in order to give good results as they are a product too.
-TDD does not guarantee good designs, good thinking, or good code.  It’s up to people to make it work.
+TDD does not guarantee good designs, good thinking, or good code.  **It’s up to people to make it work!**
 
-(Unit) Test Driven Development		Simple, easy, lean, fast, readable, and early.
+(Unit) Test Driven Development
+> Simple, easy, lean, fast, readable, and early.
 
 - Testing should be easy so start small, ask questions, and get used to the world being upside down =)
 - Tests must factor out Dependencies (helps design modularization and isolation)
 - Tests must run fast (slow tests can be moved into Acceptance Testing)
 - Consider writing tests in order of expected probability of occurrence (balanced by severity if coverage is missed) i.e. the most common usage is correct inputs generating correct output, next maybe 2% of invalid inputs will generate 85% of data corruption
 
-- -"Happy Path" verifies that the code will fulfill the functionality specifically asked for so these are the "high value" tests.
+- - "Happy Path" verifies that the code will fulfill the functionality specifically asked for so these are the "high value" tests.
 - - Next verify most likely invalid inputs and important exception handling
 - The law of diminishing returns: more tests means more code writing and more tests that require maintenance
 - Tests uncover assumptions, dependencies, tight coupling, and duplication.
@@ -78,10 +81,11 @@ Using stubs or mocks we can focus testing only the code we’ve written, Stubs g
 
 ### Source code examples of TDD
 
+    :::java
     add(int a, int b) {
         dependencyLibrary.adder(a, b)
     }
-
+    
     Class dependencyLibraryStub extends dependencyLibrary {
         	dependencyLibraryStub(expectedResult)
         Override adder(int a, int b)
@@ -100,7 +104,7 @@ Mocks are usually leveraged with a framework and can validate process, multiple 
 - Make it easy to test (invest in GUI / scripting, don't slow testing down by requiring careful command line typing)
 - Automate testing (especially regression testing).
 
-    :::text
+
     functionality
     communication / documentation
     command structure
@@ -109,7 +113,7 @@ Mocks are usually leveraged with a framework and can validate process, multiple 
     compatible softare / hardware
     stack overflow
     garbage collection
-    
+        
     errors - boundary
             -math / time
             -startup
@@ -152,15 +156,12 @@ Mocks are usually leveraged with a framework and can validate process, multiple 
 - special control chars \n  <a href  
     `-1234567890-1234567890--1234567890--1234567890`
 
-
 - Escape sequences
-
-    :::text
-    ‘\’. ‘\’ = %5C = %255C = %%35%63 = %25%35%63 )
+    `‘\’. ‘\’ = %5C = %255C = %%35%63 = %25%35%63 )`
     
-HTML Encoding check where applicable: ‘<’ = < = &#x3C = &60
+HTML Encoding check where applicable: `‘<’ = < = &#x3C = &60`
 
-!  #   $  
+`!  #   $ `
 
 ##### byte boundaries
 
@@ -168,52 +169,48 @@ HTML Encoding check where applicable: ‘<’ = < = &#x3C = &60
     -2,147,483,648 to 2,147,483,647
 
 
-
 #### Standard Test Cases 
 
 #### Viewing
 
- Resolution 1024 x 768 but also try 800x600 and 1280 and strange ones
- Resizing?
- Excessive Requests
- performance (too slow might be unusable)
-  
- Single item too long horizontal
- Single item too long vertical
- Too many items returned horizontal 
- Too many items returned vertical
-
-
+- Resolution 1024 x 768 but also try 800x600 and 1280 and strange ones
+- Resizing? (all the way down and back up)
+- Minimizing and backgrounding
+- Excessive Requests
+- performance (too slow might be unusable)
+- Single item too long horizontal
+- Single item too long vertical
+- Too many items returned horizontal 
+- Too many items returned vertical
 - Dropdown 
- scrollbar = logical / physical batches of results?
-
+- scrollbar = logical / physical batches of results?
 - Web Page
- chrome, firefox(2,3), ie (6,7,8,9), safari (i.e. without SSO), opera?
- able to bookmark 
+- chrome, firefox(2,3), ie (6,7,8,9), safari (i.e. without SSO), opera?
+- able to bookmark?
 
 
 #### User Input
 
-Text Entry
- too few (blank) and too many chars
- funny chars (UTF8? and symbols !@#$%&^*()[]\|;':",./<>?
- Special case = Email Address or Phone Number?
- Excessive Submits
+- Text Entry
+- - too few (blank) and too many chars
+- - funny chars (UTF8? and symbols `!@#$%&^*()[]\|;':",./<>?`
+- - Special case = Email Address or Phone Number?
+- - Excessive Submits
 
-Login 
- wrong username
- wrong password
- already logged in
- username does not exist?
- user does not have permission?
- back button
+- Login 
+- - empty username and or empty password
+- - wrong username
+- - wrong password
+- - already logged in
+- - username does not exist?
+- - user does not have permission?
+- - back button
 
-Search (similar to above but also includes)
-
-  case sensitive? (user notified?)
-  wild card
-  no data set exists to search (e.g. user search but no users?)
-
+- Search (similar to above but also includes)
+- - case sensitive? (user notified?)
+- - wild card
+- - no data set exists to search (e.g. user search but no users?)
+- - permissions - should be able to see these results?
 
 #### Upload a file
 1. UTF8 file names, very long names, very short names, special characters (. / ? < >)
@@ -298,3 +295,4 @@ Search (similar to above but also includes)
 - where's the edge? tiered service layers (clearly defined boundaries for authorization)
 - leaking information (what can anonymous or normal users see they should not)
 - logging password/sensitive info
+
