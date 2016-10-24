@@ -146,6 +146,13 @@ This example function requires two slices of integers.
 
 > Getting verbose output and specifying tests is quite helpful when fixing a piece of code or test.  **Note** the run parameter takes a regular expression
 
+#### Test Coverage
+
+Sometimes people talk about "test coverage" and while it's clear that 100% coverage is rarely possible (nor entirely desirable from the idea of diminishing returns and exponential growth in integration combinations outside of the simplest function) , it's still a useful metric/tool to discover if there's a chunk of code that's whistling in the wind.
+
+`go test -cover`
+> "coverage: 75.0% of statements"
+
 ### Subtests
 
 Using the pattern of table driven tests improves the readability and extensibility of the "merge empty test" by applying "Don't Repeat Yourself" and removing the copy pasting of the driver function call.
@@ -235,11 +242,103 @@ Using the pattern of table driven tests improves the readability and extensibili
 
 ## Benchmarking
 
-TODO:
+Benchmarking is most useful if you're attempting to answer a question of two variations on how to implement something.
+
+I suppose if you recorded every result and ran against exactly the same hardware you might be able to detect performance regressions, though I'd be worried about overly inconsistent/flaky results taking up way too much valuable time.
+
+Inside of a _test.go file you can also write benchmark test functions, here is one of the classic questions of "concatenating strings in Go"
+
+Here we compare the simplest concatenation of two strings and also the continued concatenation of many strings with either + or buffer.WriteString()
+
+Create myconcat_test.go and execute the following with `go test -v -bench=.`
+
+    :::go
+    package main
+    
+    import (
+        "bytes"
+        "testing"
+    )
+    
+    func MyConcatSimple(a string, b string) string {
+        return a + b
+    }
+    
+    func MyConcatSimpleLooped(a string, b string) string {
+        for i := 0; i < 101; i++ {
+            a += b
+        }
+        return a
+    }
+    
+    func MyConcatBytesBuffer(a string, b string) string {
+        var buffer bytes.Buffer
+        buffer.WriteString(a)
+        buffer.WriteString(b)
+        return buffer.String()
+    }
+    
+    func MyConcatBytesBufferLooped(a string, b string) string {
+        var buffer bytes.Buffer
+        buffer.WriteString(a)
+        for i := 0; i < 101; i++ {
+            buffer.WriteString(b)
+        }
+        return buffer.String()
+    }
+    
+    func BenchmarkConcatSimple(b *testing.B) {
+        for n := 0; n < b.N; n++ {
+            MyConcatSimple("foo", "bar")
+        }
+    }
+    
+    func BenchmarkConcatSimpleLooped(b *testing.B) {
+        for n := 0; n < b.N; n++ {
+            MyConcatSimpleLooped("foo", "bar")
+        }
+    }
+    
+    func BenchmarkConcatBytesBuffer(b *testing.B) {
+        for n := 0; n < b.N; n++ {
+            MyConcatBytesBuffer("foo", "bar")
+        }
+    }
+    
+    func BenchmarkConcatBytesBufferLooped(b *testing.B) {
+        for n := 0; n < b.N; n++ {
+            MyConcatBytesBufferLooped("foo", "bar")
+        }
+    }
+
+> The b.N is automatically filled in by Go until the benchmark runner is "satisfied with stability" though you can create a wrapper function for the code under test if you wish to attempt more control over iterations
+
+> Remember that every benchmark is only valid against a specific set of hardware, operating system, libraries, etc. and with any changes (i.e. upgrade from Go 1.6 to 1.7) you may need to retest... unless you're just proving O(N) is better than O(N^2) ;)
+
+Oh right, the results...
+
+    BenchmarkConcatSimple-4                 30000000                40.1 ns/op
+    BenchmarkConcatSimpleLooped-4             100000             20728 ns/op
+    BenchmarkConcatBytesBuffer-4             5000000               373 ns/op
+    BenchmarkConcatBytesBufferLooped-4        300000              7227 ns/op
+
+> the iterations show that the simplest naive concatentation with + is very fast for a couple of small arguments (40 nanoseconds)
+
+> BUT if appending many (100+) items together buffer.Write() is better
+
+This example ignored all sorts of real world questions around how the strings are provided (i.e. a slice of strings might be better served by Join()) (or examine it's source code to see how they implement string concatenation!) , or memory consumption, etc.
 
 - <http://dave.cheney.net/2013/06/30/how-to-write-benchmarks-in-go>
-- <http://www.soroushjp.com/2015/01/27/beautifully-simple-benchmarking-with-go/>
 - <https://medium.com/hackintoshrao/daily-code-optimization-using-benchmarks-and-profiling-in-golang-gophercon-india-2016-talk-874c8b4dc3c5>
+- <https://golang.org/pkg/strings/#Join>
+
+#### Running specific benchmarks
+
+`go test -v -run=NOMATCH -bench=BenchmarkConcatSimple`
+> Since it is using the test runner the -run= regexp not matching allows you to skip any unit tests
+
+> -bench= can take a regexp to match only a subset of benchmark tests
+
 
 ## Profiling
 
