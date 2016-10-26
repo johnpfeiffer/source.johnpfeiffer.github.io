@@ -34,6 +34,86 @@ Instead of the ephemeral `export PATH=$PATH:/usr/local/go/bin` I prefer the pers
 
 **WARNING** be careful how you name your executables as the $GOPATH/bin will contain the names of the projects as binaries (so don't create a project or binary named bash!)
 
+### Manual CLI compilation and installation and execution
+
+The traditional command line method is:
+
+    cd $GOPATH/path-to-your-project/PROJECTNAME
+    go install
+    $GOPATH/bin/PROJECTNAME
+
+- <https://golang.org/doc/code.html#Command>
+- <http://dave.cheney.net/2014/01/21/using-go-test-build-and-install>
+
+A concrete example:
+
+1. Compile with: `cd /opt/goprojects/src/github.com/johnpfeiffer/intro/ ; go install`
+2. Execute with: `/opt/goprojects/bin/intro`
+
+<https://golang.org/doc/code.html> is a very complete tutorial, notes for myself: 
+
+    :::bash
+    cat ~/.profile
+    export GOPATH=$HOME/Desktop/repos/goprojects
+    export PATH=$PATH:$GOPATH/bin
+    
+    source ~/.profile
+> an example of setting up the environment in Mac OSX
+
+If your files are laid out like this...
+
+    /Users/johnpfeiffer/Desktop/repos/goprojects
+      - bin
+      - pkg
+      - src
+
+`mkdir -p $GOPATH/src/bitbucket.org/johnpfeiffer/myproject/mystrings`
+> a wrinkle on the official go tutorial where both packages are in the same remote git repository
+
+**mystrings/mystrings.go**
+
+    :::go
+    package mystrings
+    
+    func StringLength(s string) {
+        return len(s)
+    }
+> A simple "library" package that can be re-used
+
+`cd /tmp; go install bitbucket.org/johnpfeiffer/myproject/mystrings`
+ALTERNATIVELY: `cd $GOPATH/src/bitbucket.org/johnpfeiffer/myproject/mystrings; go install`
+> Installing the package builds the .a binary which can be used by other builds/programs
+
+`mkdir -p $GOPATH/src/bitbucket.org/johnpfeiffer/myproject/hello`
+**hello/hello.go**
+
+    :::go
+    package main
+    
+    import (
+        "fmt"
+        "bitbucket.org/johnpfeiffer/myproject/mystrings"
+     )
+    
+    func main() {
+        fmt.Println("hello", mystrings.StringLength("hello"))
+    }
+> a simple main package that can be called from the CommandLineInterface
+
+`cd $GOPATH/src/bitbucket.org/johnpfeiffer/myproject/hello; go install`
+
+Execute your new program with: `$GOPATH/bin/hello`
+> (or since $GOPATH/bin is in $PATH, just type: `hello`)
+
+**An ASCII diagram of the file system**
+
+    $GOPATH/src/bitbucket.org/johnpfeiffer/myproject
+    |
+     - hello
+         | - hello.go
+     - mystrings
+         | - mystrings.go
+
 
 ### Download and install an IDE
 
@@ -78,22 +158,6 @@ Unfortunately it is not quite simple to execute the code directly in VSCode <htt
 ### Install or Build or Run
 
 Because Go is a static language there is a compilation (and linking) phase where the source code is transformed into a binary.
-
-#### Manual CLI compilation and installation and execution
-
-The traditional command line method is:
-
-    cd $GOPATH/path-to-your-project/PROJECTNAME
-    go install
-    $GOPATH/bin/PROJECTNAME
-
-- <https://golang.org/doc/code.html#Command>
-- <http://dave.cheney.net/2014/01/21/using-go-test-build-and-install>
-
-A concrete example:
-
-1. Compile with: `cd /opt/goprojects/src/github.com/johnpfeiffer/intro/ ; go install`
-2. Execute with: `/opt/goprojects/bin/intro`
 
 ### Debugging with Delve
 
