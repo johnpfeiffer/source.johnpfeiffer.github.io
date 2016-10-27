@@ -88,6 +88,75 @@ Here is a major digression into Go slices which is a pointer structure that hold
 - <https://golang.org/pkg/unsafe/>
 - <https://en.wikipedia.org/wiki/Dereference_operator>
 
+### Examples of Go Slice operations and tricks
+
+    :::go
+    package main
+    
+    import (
+        "fmt"
+    )
+    
+    func main() {
+        // pre-allocating might be premature optimization and lead to bugs
+        premature := make([]string, 10, 10)
+        premature[0] = "foo"
+        premature = append(premature, "bar")
+        fmt.Println(len(premature), premature) // "11 [foo          bar]"
+    
+        var s []string
+        s = append(s, "add", "multiple", "items", "at", "once")
+        fmt.Println(len(s), s) // "5 [add multiple items at once]"
+    
+        // COPY also known as ADD to a slice (in this case add to a nil slice)
+        b := append([]string(nil), s...) // the triple dots (ellipsis in english) indicates a variadic parameter
+        // https://golang.org/ref/spec#Passing_arguments_to_..._parameters , https://golang.org/src/builtin/builtin.go?s=4716:4763#L124
+        fmt.Println(len(b), b) // "5 [add multiple items at once]"
+    
+        c := make([]string, len(s)) // perhaps more readable
+        copy(c, s)
+        fmt.Println(len(c), c) // "5 [add multiple items at once]"
+    
+        // CUT - but warning, this only removes it from the slice, NOT the underlying array so a possible memory leak
+        s = append(s[:1], s[4:]...) // up to but not including index 1, start at index 4 to the end
+        fmt.Println(len(s), s)      // "2 [add once]"
+    
+        // DELETE index 2 (same ordering), no memory leak by correctly setting it to the zero value (usually nil for objects)
+        copy(b[2:], b[2+1:])
+        b[len(b)-1] = ""
+        b = b[:len(b)-1]
+        fmt.Println(len(b), b) // "4 [add multiple at once]"
+    
+        // INSERT into index 2 a new value
+        // b = append(b[:2], append([]string{"foobar"}, b[2:]...)...)
+        // Preferred more readable and avoid the extra slice creation with copy sleight of hand
+        b = append(b, "")
+        copy(b[3:], b[2:])
+        b[2] = "foobar"
+        fmt.Println(len(b), b) // "5 [add multiple foobar at once]"
+    
+        // SWAP two values
+        b[0], b[1] = b[1], b[0]
+        fmt.Println(len(b), b) // "5 [multiple add foobar at once]"
+    
+        // REVERSE by using the mirror image effect and multiple assignments
+        for i := len(b)/2 - 1; i >= 0; i-- {
+            opp := len(b) - 1 - i
+            b[i], b[opp] = b[opp], b[i]
+        }
+        fmt.Println(len(b), b) // "5 [once at foobar add multiple]"
+    }
+> Slices are fairly fundamental and while most things are easy there are definitely some gotchas
+
+> A critical thing to remember when reasoning is that slices are references to underlying arrays, so small subslice from a very large slice will prevent that larger object/array from being garbage collected
+
+- <https://play.golang.org/p/uMtgU3xFic>
+- <https://github.com/golang/go/wiki/SliceTricks>
+- <https://golang.org/ref/spec#Passing_arguments_to_..._parameters>
+- <https://golang.org/src/builtin/builtin.go?s=4716:4763#L124>
+
+> Of course, read the docs and test it for your requirements, situation, and circumstances!
+
 ## Functions, Anonymous Functions, Functions as Parameters, and Filters
 
 Go has functions as first class citizens.  Just assign a function to a variable or define a type that is a function signature.
@@ -260,7 +329,6 @@ And because I like source code in blogs, a highly imperfect mergesort.
         fmt.Println("done")
     }
 
-> TODO: main_test.go with all of the functional coverage and merge test cases ;)
 
 - <https://en.wikipedia.org/wiki/Merge_sort>
 - <https://play.golang.org/p/nAHF50zk7m> *(modify the merge online)*
