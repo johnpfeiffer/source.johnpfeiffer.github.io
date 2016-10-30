@@ -34,13 +34,29 @@ Instead of the ephemeral `export PATH=$PATH:/usr/local/go/bin` I prefer the pers
 
 **WARNING** be careful how you name your executables as the $GOPATH/bin will contain the names of the projects as binaries (so don't create a project or binary named bash!)
 
-### Manual CLI compilation and installation and execution
+### Manual Go CLI execution and compilation
 
 The traditional command line method is:
 
     cd $GOPATH/path-to-your-project/PROJECTNAME
+    go run PROJECTNAME
+> This will run go in a "dev mode" where it pulls in dependencies and executes immediately (no artifacts are created)
+
+To compile and install the binary into the local path:
+
+    cd $GOPATH/path-to-your-project/PROJECTNAME
     go install
     $GOPATH/bin/PROJECTNAME
+
+> This compiles and builds and installs the binary into the $GOPATH
+
+To build a binary in the current directory:
+
+    cd $GOPATH/path-to-your-project/PROJECTNAME
+    go build
+> This will just build the binary locally (i.e. name.go becomes "name") in the current directory, not in the $GOPATH
+
+> Be aware that sometimes you may forget and commit this new binary to version control (badpokerface)
 
 - <https://golang.org/doc/code.html#Command>
 - <http://dave.cheney.net/2014/01/21/using-go-test-build-and-install>
@@ -50,7 +66,7 @@ A concrete example:
 1. Compile with: `cd /opt/goprojects/src/github.com/johnpfeiffer/intro/ ; go install`
 2. Execute with: `/opt/goprojects/bin/intro`
 
-<https://golang.org/doc/code.html> is a very complete tutorial, notes for myself: 
+<https://golang.org/doc/code.html> is a very complete tutorial, notes for myself:
 
     :::bash
     cat ~/.profile
@@ -75,7 +91,7 @@ If your files are laid out like this...
     :::go
     package mystrings
     
-    func StringLength(s string) {
+    func StringLength(s string) int {
         return len(s)
     }
 > A simple "library" package that can be re-used
@@ -115,13 +131,35 @@ Execute your new program with: `$GOPATH/bin/hello`
          | - mystrings.go
 
 
+#### Cross Compiling with Go
+
+If developing on Mac OSX and wanted to compile/build a 64bit linux binary
+
+    cd $GOPATH/src/bitbucket.org/johnpfeiffer/myproject/hello
+    GOOS=linux GOARCH=amd64 go build -v
+        runtime/internal/sys
+        runtime/internal/atomic
+        runtime
+        bitbucket.org/johnpfeiffer/myproject/mystrings
+        bitbucket.org/johnpfeiffer/myrpoject/hello
+> the "go build -v" extra flag outputs verbosely the intermediate steps
+
+    file hello
+         ./hello: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, not stripped
+> using the "file" command we can inspect it really has been built correctly in the current directory
+
+Dave Cheney's suggestion about "build vs install" is a good one since the cached intermediate .a files in the directory pkg/ may complicate things, especially for a cross compilation.
+
+- <https://golang.org/doc/install/source#environment>
+- <http://dave.cheney.net/2015/08/22/cross-compilation-with-go-1-5>
+
 ### Download and install an IDE
 
 If you are used to larger projects then an IDE is quite helpful for colorization, auto completion, (right click or f12) goto definition, rename, build on save, auto formatting, etc.
 
-Suprisingly one of the most popular and effective golang IDE combinations is: <https://code.visualstudio.com/Docs/?dv=linux64_deb>
+Suprisingly one of the most popular and effective Go IDE combinations is: <https://code.visualstudio.com/Docs/?dv=linux64_deb>
 
-    dpkg -i vscode-amd64.deb
+    dpkg -i code_...amd64.deb
 
 To install <https://marketplace.visualstudio.com/items?itemName=lukehoban.Go> aka <https://github.com/Microsoft/vscode-go> you actually:
 
