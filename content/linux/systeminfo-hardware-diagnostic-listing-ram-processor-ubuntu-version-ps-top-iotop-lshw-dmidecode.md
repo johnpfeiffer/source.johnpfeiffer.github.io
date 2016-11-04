@@ -66,7 +66,7 @@ the amount +/- buffers/cache is the "real" amount available to the system
 - <https://www.debian.org/releases/>
 
     cat /etc/lsb-release
-> full ubuntu version    
+> full ubuntu version
 
     lsb_release -a
 > a command to shows all of the ubuntu version information, e.g. cat /etc/lsb-release
@@ -74,9 +74,9 @@ the amount +/- buffers/cache is the "real" amount available to the system
     lsb_release -c
     Codename:	natty
 > a command to just show the codename
-    
+
 ## /proc is realtime info about the system
-    
+
     cat /proc/version
     cat /proc/cpuinfo
 > note: if there's "lm" (aka long mode) in the flags: fpu vme etc. area then you have 64bit capability...
@@ -86,15 +86,15 @@ the amount +/- buffers/cache is the "real" amount available to the system
     
     ls -ld /proc/somepid
 > get some info about a specific process running via its pid number
-  
-## kernel information  
+
+## kernel information
     uname -a
 > kernel version, x64 or 32 bit, machine name , multi-processor SMP, etc.
 
     getconf -a
 > another way to get info about your kernel
 
-## Memory and disk space 
+## Memory and disk space
 
     free -m
 >  free memory in megabytes including swap/buffer usage)
@@ -106,12 +106,17 @@ the amount +/- buffers/cache is the "real" amount available to the system
 > free disk space in human readable numbers
 
     du
-> disk usage for a directory and subdirectories - needs parameters , like du -s (summary)
+> disk usage for a directory and subdirectories - needs parameters , like `du -sh` (summary with human readable sizes)
+
+    du -a . | sort -nr | head -n 10
+> disk usage for all files in the current directory and subdirectories reverse sorted for largest 10 items
+
+- <https://linux.die.net/man/1/du>
 
     stat -f / -c "%a * %s / 1024" | bc
 > get the specific amount of free space available from the root file system, stat --help
 > bc is a handy "built in calculator"
-    
+
 ## hardware listing
 
     fdisk -l
@@ -146,7 +151,7 @@ the amount +/- buffers/cache is the "real" amount available to the system
     ls -l /lib/libc-*.so /lib/libc.so*
     ldd --version
 > version of linux glibc
-    
+
     dmesg
 > kernel messages = all the devices the kernel has found like hard disks,cdroms,etc
 
@@ -154,32 +159,28 @@ the amount +/- buffers/cache is the "real" amount available to the system
     dmesg | grep mem
     dmesg | tail
 > shows the last 10 lines of the hardware boot up
-    	
 
     /etc/modprobe.conf (kernel 2.6)
-
 > fedora/redhat
-
     /etc/modules.conf (kernel 2.4)
     
-
     /etc/conf.modules (or for older systems)
 
 ## disk IO
 
     iotop
 > like top but focused on I/O , <http://linux.die.net/man/1/iotop>
-    
+
 ## network
 
     ifconfig -a
 > shows all of the ethernet devices available
-    
+
     ls -l /sys/class/net/eth0
     
     apt-get install bcm43xx-fwcutter
     mkdir -p /lib/hotplug/firmware; cp /lib/firmware/*.fw /lib/hotplug/firmware
-        
+
 ## software inventory and listing
 
     dpkg --list
@@ -197,7 +198,7 @@ the amount +/- buffers/cache is the "real" amount available to the system
     
     tail -f /var/log/secure         //login logs
     tail -f /var/log/maillog            //mail logs
-
+    
     last
     last -f btmp
 > last logins and then the last bad logins
@@ -270,7 +271,7 @@ Monitor mode currently supported but injection may or may not work with bcm43xx.
     lspci -vnn | grep 14e4
     
     0001:01:01.0 Network controller [0280]: Broadcom Corporation BCM4318 [AirForce One 54g] 802.11g Wireless LAN Controller [14e4:4318] (rev 02)
-- - -    
+- - -
     
     cat /proc/interrupts
 > a file listing of all the interrupt IRQs used by your system
