@@ -247,14 +247,12 @@ apt-get purge postgresql-9.1 postgresql-client-9.1 postgresql-common postgresql-
 > in order to have apt-get remove all of the binaries
 
 
-
-
 ## Best Ubuntu Packages
 
 > as of Utopic 14.10
 
 	sudo apt-get update
-	sudo apt-get install -y byobu build-essential elinks unzip unrar nano vim wget curl ntp rcconf dialog git-core 
+	sudo apt-get install -y byobu build-essential elinks unzip unrar vim wget curl ntp rcconf dialog git-core 
 	sudo apt-get install -y python-pip && sudo pip install --upgrade pip
 
 > pip is the package manager for python packages (different from the debian OS packages) so useful if you do any python development or run python applications
@@ -265,29 +263,31 @@ apt-get purge postgresql-9.1 postgresql-client-9.1 postgresql-common postgresql-
 - openssh-server libssl = the secure remote shell service and encryption dependency <http://packages.ubuntu.com/search?keywords=openssh-server>
 - build-essential = tools for compiling and building debian packages <http://packages.ubuntu.com/lucid/build-essential>
 - byobu = console terminal multi screen (survives network disconnects) <http://byobu.co>
-- wget and curl = utilities to download files
+- wget and curl = utilities to download files over the network
 
 - elinks = cli browser (just in case your GUI dies and you need to research) <http://kmandla.wordpress.com/2011/01/13/a-comparison-of-text-based-browsers>
 - unzip and unrar = utilities to decompress compressed things
-- nano = a simple text editor (much easier than vi/vim for just writing new text)
 - ntp = network time protocol client daemon to keep your clock in sync
 - rcconf = easier way to manage what services start at boot <https://packages.debian.org/jessie/rcconf>
 - dialog = user friendly dialog boxes for shell scripts (dependency for rcconf)
 
 - git-core = the distributed version control software that is eating the developer world
 - python-setuptools = Sometimes required to install pip  <http://pythonhosted.org/setuptools>
-- icedtea = open java (plugin = browser java)
+
+- nano = a simple text editor (much easier than vi/vim for just writing new text)
 
 sudo apt-get install openconnect network-manager-openconnect network-manager-openconnect-gnome
 
-- openvpn = opensource vpn client <https://openvpn.net>
 - openconnect = opensource compatible with cisco anyconnect vpn <https://en.wikipedia.org/wiki/OpenConnect>
 
-- jdk = java development kit
-- iced-tea-7-plugin = open source java 7 support for browsers
+- openvpn = opensource vpn client <https://openvpn.net>
 
     sudo apt-get install openjdk-8-jre
 > for just the java runtime (thank goodness not Oracle Sun)
+
+- jdk = java development kit
+- iced-tea-7-plugin = open source java 7 support for browsers
+- icedtea = open java (plugin = browser java)
 
 openjdk-8-jdk
 > for the full java development kit - needed for some packages to run correctly
@@ -310,12 +310,13 @@ openjdk-8-jdk
 - rdesktop = RDP client
 - grdesktop = gnome UI for rdesktop
 
-
     sudo echo "autologin-user=ubuntu" >>  /etc/lightdm/lightdm.conf.d/10-xubuntu.conf
 > Better yet use the UI and just choose auto login ;)
 
 TODO: *Disable guest user*, *Disable crash reports: apport *
 
+- imagemagick = image transformation utility <https://en.wikipedia.org/wiki/ImageMagick>
+> `convert -resize 50% source.png dest.jpg ; convert -rotate 90 source.jpg dest.jpg`
 
 - dropbox = cloud file storage
 
@@ -385,7 +386,7 @@ TODO: *Disable guest user*, *Disable crash reports: apport *
 
 - deb http://toolbelt.heroku.com/ubuntu ./
 - wget -O- https://toolbelt.heroku.com/apt/release.key | apt-key add -
-- apt-get install -y heroku-toolbelt
+- `apt-get install -y heroku-toolbelt`
 
 
 ### Ruby and OpenShift CLI
