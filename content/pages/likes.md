@@ -17,6 +17,7 @@ Title: John Likes
 - The C Programming Language (2nd Edition) by Brian Kernighan and Dennis Ritchie
 - Effective Java Programming Language Guide by Joshua Bloch
 - Racing the Beam by Nick Montfort and Ian Bogost
+- The Everything Store: Jeff Bezos and the Age of Amazon
 - Steve Jobs by Walter Isaacson
 - Founders at Work: Stories of Startups' Early Days by Jessica Livingston
 - Peopleware: Productive Projects and Teams by Tom DeMarco, Timothy Lister
@@ -42,5 +43,10 @@ Title: John Likes
 - <http://www.se-radio.net/2016/01/se-radio-show-246-john-wilkes-on-borg-and-kubernetes/>
 - <http://thisweekinstartups.com/thisweekin-startups/advice-biggest-mistakes-founders-startups-jerry-colonna>
 - <http://thisweekinstartups.com/thisweekin-startups/steve-jurvetson-dfj-tesla-spacex>
+- <http://thisweekinstartups.com/glennkelman-redfin-pejmannozad-pear/>
+- <http://www.codingblocks.net/category/podcast/>
+- <https://urchin.biz>
+- <https://archive.org/>
 
 Follow with an atom feed link: <https://blog.john-pfeiffer.com/feeds/john-pfeiffer.atom.xml>
+
