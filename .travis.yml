@@ -4,7 +4,7 @@ python:
 before_install:
  - sudo apt-get update -qq
 install:
-    - pip install pelican Markdown beautifulsoup4
+    - pip install pelican==3.6.3 Markdown==2.6.7 beautifulsoup4==4.5.1
 script:
     - rm -rf ./output
     - rm -rf ./cache

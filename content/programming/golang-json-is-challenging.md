@@ -22,8 +22,7 @@ There is some fuzziness about Numbers and other definitions but its beauty is de
 ## Why does Go in JSON seem (unnecessarily) advanced or challenging?
 
 1. Go with JSON requires defining/using structs for objects.  This upfront cost certainly fits the "statically compiled" model ;)  But Javascript or Python magically "just make an object" (or dictionary) which has fields/values that are very accessible.
-
-It is actually pretty common that we might not know or want to define the full (nested?) object structures we've received (as if the JSON format was for portability of data from a service outside of your control), but we're forced to figure something out...
+> It is actually pretty common that we might not know or want to define the full (nested?) object structures we've received (as if the JSON format was for portability of data from a service outside of your control), but we're forced to figure something out...
 
 2. To generically parse an object from JSON (i.e. you do not know the full structure) you must use the "empty interface" (the most generic object), and Interfaces are more advanced than simply defining structs.
 
@@ -49,8 +48,6 @@ And that kind of dynamic behavior isn't inherently easy in Go. =[
 
 
 ## Example code of Marshalling and Unmarshalling JSON with Go
-
-- <https://blog.golang.org/json-and-go>
 
     :::go
     package main
@@ -121,7 +118,7 @@ And that kind of dynamic behavior isn't inherently easy in Go. =[
                     }
             }
     }
-
+    
     // Assuming top level keys are strings, i.e. NOT [] , https://gobyexample.com/json
     func rootStringsOnlyParsing(data []byte) map[string]interface{} {
             // A map of string to any type https://blog.golang.org/laws-of-reflection , http://research.swtch.com/interfaces
@@ -189,6 +186,7 @@ And that kind of dynamic behavior isn't inherently easy in Go. =[
     }
 
 
+- <https://blog.golang.org/json-and-go>
 - <https://gobyexample.com/json>
 - <https://eager.io/blog/go-and-json/>
 - <https://golang.org/doc/effective_go.html#interface_conversions>
@@ -197,27 +195,31 @@ And that kind of dynamic behavior isn't inherently easy in Go. =[
 
 ## Common JSON gotchas with Go
 
-1. The data structures need to be exported, otherwise you'll only end up with an empty JSON object
-
     :::go
+    
     type Oops struct {
         Name string `json:"name"`
         i int    `json:"timestamp"`
     }
 > The i int field will not be Marshaled and will therefore not exist in the JSON object
 
-- <https://play.golang.org/p/ukkjLQnSSq>
-- <https://golang.org/pkg/encoding/json/#example_Unmarshal>
+1. The data structures need to be exported, otherwise you'll only end up with an empty JSON object: <https://play.golang.org/p/ukkjLQnSSq> , <https://golang.org/pkg/encoding/json/#example_Unmarshal>
 
-2. Types are strict in Go.  JSON is unclear about "Number".  Golang will assume float64 without any hints.  Use hints, or reflection and type assertions and a magic wand...
+2. Types are strict in Go.  JSON is unclear about "Number".  Golang will assume float64 without any hints.  Use hints, or reflection and type assertions and a magic wand... <https://golang.org/pkg/encoding/json/#Decoder.UseNumber>
 
-- <https://golang.org/pkg/encoding/json/#Decoder.UseNumber>
-
-3. Marshal() returns a slice of bytes which is not a string.  so string()
-
-- <https://golang.org/pkg/encoding/json/#Marshal>
+3. Marshal() returns a slice of bytes which is not a string.  so string() , <https://golang.org/pkg/encoding/json/#Marshal>
 
 4. "The argument to Unmarshal must be a non-nil pointer", <https://golang.org/pkg/encoding/json/#InvalidUnmarshalError>
+
+## An example Go JSON helper utility
+
+The internet has many "helper" (usually performance focused) utilities/libraries for JSON with Go, here's mine:
+
+- <https://bitbucket.org/johnpfeiffer/go-jsondao/src>
+
+> The idea is to simplify just doing minimal parsing in order to add or update a Key
+
+Hint: RawMessage is the performance trick to not parse all of the fields.
 
 ## A more "real world" code example of parsing JSON with Go
 
