@@ -4,7 +4,7 @@ Tags: cache, caching, redis, memcached, varnish
 
 [TOC]
 
-**Caching is when you use a copy of a data set rather than using the source.**
+**Caching is when you use a copy of a data set rather than using the original source.**
 
 Caching often involves a "Key Value Lookup":
 
@@ -12,7 +12,7 @@ Caching often involves a "Key Value Lookup":
 1. The cache does not contain the Key
 1. The service generates the result from the originating data source (i.e. database)
 1. The service then stores the result in the cache with the Key as the index (and the result as the Value)
-1. A request is received and the service checks the cache using a Key
+1. A subsequent request is received and the service checks (looks up) the cache using a Key
 1. The cache **does** contain the Key
 1. The service retrieves the Value from the cache and returns the result
 
@@ -35,19 +35,22 @@ A tradeoff of memory for cpu (or latency or some other business cost).
 
 ### Questions to ask when caching
 
-- Is the complexity of caching worth the performance gain? (simpler is often better)
+- Is the complexity of caching worth the performance gain? (a simpler implementation is often better, less chance of bugs!)
 - Does my cache need to be consistent? (meaning the cache and data source return identical results)
 - Can my cache be "eventually consistent"? (meaning a wrong answer for some specified period of time is ok)
 - Am I caching at a high level? (meaning aggregating a lot of work/responses from lower level systems)
 - Am I caching at a low level? (meaning inside of my Data Access Object pattern I'm protecting a single simple resource, i.e. a MySQL table, from being accessed too often)
 - How unique are my Keys in my cache (i.e. if multiple users can have the same identifier it would be very bad to return the wrong session to the wrong user)
+- Do I have the ability to operate or pay for a caching service?
+- What will happen if the cache is unavailable?
 
 ### Cache Latency Times in Perspective
 
 Taking "why cache" to another level, the relative speeds of different cache levels highlight why some applications or algorithms will fail if they do not leverage cache.
 
-- If your application is a very large amount of data the network may actually be better than disk; optimization would probably not be focused on "loop unrolling"
+- If your application uses a very large amount of data the network may actually be better than disk; optimization would probably not be focused on "loop unrolling"
 - If your application depends on data across the internet then network caching, routing algorithms, and data modeling (eventual consistency!) may be more important than "tail recursion vs iterative"
+
 
 |Action|nanoseconds|microseconds|milliseconds|human scale comparison|
 |:-:|:-:|:-:|:-:|:-:|
@@ -69,28 +72,31 @@ Taking "why cache" to another level, the relative speeds of different cache leve
 
 > The L1 cache is the memory cache integrated into the CPU that is closest
 
-> Light travels 30 cm or about 1 foot in 1 nanosecond 
+> Light travels 30 cm or about 1 foot in 1 nanosecond
 
 > ns = nanoseconds, us = microseconds, ms = milliseconds
 
-- <http://norvig.com/21-days.html#answers> Peter Norvig
+- <http://norvig.com/21-days.html#answers> (Peter Norvig) 
 - <https://en.wikipedia.org/wiki/CPU_cache>
 - <https://en.wikipedia.org/wiki/Solid-state_drive#Controller>
 - <http://www.codingblocks.net/podcast/episode-45-caching-overview-and-hardware/>
 - <https://wondernetwork.com/pings>
-- <https://twitter.com/rzezeski/status/398306728263315456/photo/1> Brendan Gregg
+- <https://twitter.com/rzezeski/status/398306728263315456/photo/1> (Brendan Gregg)
+
 
 ### Caches are another Operational component with Overhead
 
-The best advice is to definitely avoiding caching until the last possible moment ("premature optimization" and "defer architecture decisions")
+The best advice is to definitely avoiding caching until the last possible moment (*"less is the best" and "premature optimization" and "be future flexible" and "defer architecture decisions"*)
 
 Not only do you have to write code complexity for using a cache, there's the nitty gritty of running a cache (which can be a completely different expertise than programming)
 
 - Install
+- Deployment
 - Upgrades
 - Security
 - Monitoring
 - Metrics
+- Testing (i.e. synthetic smoke tests or load)
 
 None of this operational cost is free, and there are plenty of issues when just implementing caching in code...
 
@@ -108,7 +114,18 @@ Whenever new data is written a cache must also be updated.
 
 Also known as "cache on read through"
 
-Whenever a query is made first the cache is checked.  If there is a "cache miss" then the data source is queried and the cache is updated and the result is returned.  If there is a "cache hit" and the data is in the cache then it is returned (and potentially a cache key expiration updated as this cache hit improved the cache efficiency).
+Whenever a query is made first the cache is checked.
+
+- If there is a "cache miss" then the data source is queried and the cache is updated and the result is returned.  
+- If there is a "cache hit" and the data is in the cache then it is returned (and potentially a cache key expiration updated as this cache hit improved the cache efficiency).
+
+### Cache Warming
+
+Pre-emptively adding data to the cache is "cache warming" in order to improve "cache hit" percentages and reduce the risk of "cold cache" issues.
+
+### Flush the Cache
+
+Removing some or all data from the cache in order to invalidate a chunk of data (i.e. all users need to reset their passwords) or pre-emptively free up memory/space.
 
 
 ## Common Gotchas
@@ -133,21 +150,31 @@ One workaround is "check and set" (or "compare and set") where the cache will au
 <http://neopythonic.blogspot.com/2011/08/compare-and-set-in-memcache.html>
 
 
-### Expiration: cache full of stale junk
+### Expiration: a cache full of stale junk
 
-A naive implementation of caching will store every result in the cache forever.  
+A naive implementation of caching will store every result in the cache forever...
 
-While this seems like a good idea ("The cache application/service will just evict unused items based some algorithm") it is essentially forcing your cache to be full of potentially low value information on the hope that someone else will solve the problem.
+While this seems like a good idea (*"The cache application/service will just evict unused items based some algorithm"*) it is essentially forcing your cache to be full of potentially low value information on the hope that someone else will solve the problem.
 
 Since some caching tools/framework do not set a default **Time To Live** or **Expiration** and in that case all of your data may quickly fill up the cache (not a bad thing per se), but then it will use whatever default or global "eviction policy" that is defined.
+
+Even O(1) can be broken by a pathological data set, and keeping every item seems like a good way to find an edge case (i.e. hash collisions and chaining).
 
 Applying business logic and empirical data to pick sane expiration values might not only improve cache performance but may protect your service from security issues or bugs due to serving really stale data.
 
 > e.g. for security reasons, **caching a session "forever" is a bad idea** as an attacker may get access to an old client cache or token and be able to impersonate a legimate user
 
-Set a TTL or Expiration whenever possible that matches your domain (i.e. for a session 1 day or 1 week).
+Issues with Expiration Set Too Long:
 
-If the Time to Live is too short then the cache may have very poor efficiency (items expire before they can generate even one cache hit)
+- Security concerns
+- Lack of control/non determinism for when and what items might be evicted
+- Poor performance, memory pressure, and possibly increased operational cost
+- Stale data
+- Large cache sizes may end up writing to disk (i.e. redis sync to disk may use copy on write)
+
+**Set a TTL or Expiration, whenever possible, that matches your domain** (i.e. for a session 1 day or 1 week).
+
+> If the Time to Live is too short then the cache may have very poor efficiency (items expire before they can generate even one cache hit), meaning all of the coding and operational cost are for nothing =[
 
 
 ### Cold Cache and the Thundering Herd
@@ -155,6 +182,7 @@ If the Time to Live is too short then the cache may have very poor efficiency (i
 1. If the source is not prepared for the "thundering herd" of requests (that were usually handled by the cache) then the source may become overloaded and bad things will happen
 1. It is therefore best practice to "warm the cache" by seeding data from the source into the cache before significant load events
 
+Cold cache not only can cause problems from the source but as a lot of data is written simultaneously to the cache, if the cache uses underlying disk or some other IO resource, it may temporarily overwhelm the cache (system/framework).
 
 
 ## Tools for caching
