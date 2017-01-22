@@ -5,13 +5,13 @@ Tags: thoughts, tdd, lean, persuasion, great, efficiency, laws, software
 [TOC]
 
 ### Test Driven Development (TDD)
-Test, Code, Refactor <http://en.wikipedia.org/wiki/Test-driven_development>
+Test, Code, Refactor <https://en.wikipedia.org/wiki/Test-driven_development>
 
 ### Lean
 - Lean: Identify Value -> Breakdown Steps -> Continuous Flow -> Reduce Waste
 - Lean Startup: Measure, Learn, Build <http://theleanstartup.com/principles>
 
-### Better than Free 
+### Better than Free
 <http://www.kk.org/thetechnium/archives/2008/01/better_than_fre.php>
 
 1. immediacy
@@ -25,7 +25,7 @@ Test, Code, Refactor <http://en.wikipedia.org/wiki/Test-driven_development>
 
 ### Persuasion 
 
-<http://en.wikipedia.org/wiki/Robert_Cialdini>
+<https://en.wikipedia.org/wiki/Robert_Cialdini>
 
 1. reciprocity 
 2. commitment/consistency
@@ -36,7 +36,7 @@ Test, Code, Refactor <http://en.wikipedia.org/wiki/Test-driven_development>
 
 ### Competition and Profit 
 
-<http://en.wikipedia.org/wiki/Porter_five_forces_analysis>
+<https://en.wikipedia.org/wiki/Porter_five_forces_analysis>
 
 1. Threat of new competition (barriers to entry, customer loyalty, desirability of that industry/biz model)
 2. Threat of substitute products or services (switching costs, quality, compatibility)
@@ -45,11 +45,9 @@ Test, Code, Refactor <http://en.wikipedia.org/wiki/Test-driven_development>
 5. Intensity of competitive rivalry (innovation, branding, economies of scale)
 
 ### Schelling's segregation model
-micromotives and macrobehavior , <http://en.wikipedia.org/wiki/Thomas_Schelling#Models_of_segregation>
+Micromotives and macrobehavior , <https://en.wikipedia.org/wiki/Thomas_Schelling#Models_of_segregation>
 
-Granovetter threshold model for peer effect on collective behavior and Strength of Weak Ties (aka how LinkedIn gets you a new job)
-
-<http://en.wikipedia.org/wiki/Mark_Granovetter>
+Granovetter threshold model for peer effect on collective behavior and Strength of Weak Ties (aka how LinkedIn gets you a new job), <https://en.wikipedia.org/wiki/Mark_Granovetter>
 
 
 ### Cognitive Biases
@@ -75,7 +73,7 @@ Granovetter threshold model for peer effect on collective behavior and Strength 
 - prioritize
 - schedule
 
-brainstorm goals & feelings: "say what you're going to do and then do what you say"
+brainstorm goals and feelings: "say what you're going to do and then do what you say"
 
 #### Concentrate, Iterate, Automate, Validate, Appreciate
 - Software version: core tech strengths & problem, quick releases, automate, test!, style? + recognize the contributions
@@ -91,6 +89,18 @@ brainstorm goals & feelings: "say what you're going to do and then do what you s
 7. "sharpen the saw" (sustainable balance)
 
 <http://en.wikipedia.org/wiki/The_7_Habits_of_Highly_Effective_People>
+
+#### Maslow's Hierarchy of Needs
+
+The lowest levels of the pyramid must be satisfied before people can focus and succeed at higher levels.
+
+     Self-Actualization
+   --------Esteem--------
+  -----Love/Belonging-----
+ ---------Safetey----------
+-------Physiological--------
+
+<https://en.wikipedia.org/wiki/Maslow's_hierarchy_of_needs>
 
 ### Important Software Concepts
 
@@ -198,6 +208,20 @@ Be conservative in what you do, be liberal in what you accept from others
 17. People continuously create safety
 18. Failure free operations require experience with failure
 
+### Why do computers stop and what can be done about it
+Jim Gray: <http://www.hpl.hp.com/techreports/tandem/TR-85.7.pdf>
+
+### Dickerson's Hierarchy of Reliability
+
+Product
+Development
+Capacity Planning
+Testing and Release Procedures
+Postmortem and Root Cause Analysis
+Incident Response
+Monitoring
+
+<https://docs.google.com/drawings/d/1kshrK2RLkW-XV8enmWZxeRFRgADj6d4Ru_w5txz_k9I/edit>
 ### Designers/Creators of Programming Languages
 
 |Language|Creator/Designer|Year|more info|
