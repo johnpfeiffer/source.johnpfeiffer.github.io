@@ -661,6 +661,16 @@ For DNS with docker installed onto ubuntu via apt-get, try changing to Google DN
 **Building images often depends on dependencies**
 look closely at error messages, i.e. make: not found and ensure that an early RUN statement has apt-get update && apt-get install -y build-essential
 
+### Discovering an Image Parent from History
+
+To see all of the images in detail: `docker images --all --digests=true`
+
+    python      2.7-alpine      sha256:834b44717d3928266472066d82208241a2582ce7b3787f32abbfb0def9fb0324   c80455665c57        6 weeks ago         71.49 MB
+    alpine      latest          sha256:dfbd4a3a8ebca874ebd2474f044a0b33600d4523d03b0df76e5c5986cb02d7e8   88e169ea8f46        6 weeks ago         3.984 MB
+
+And then you can brute force query to see if an image has child dependencies:
+
+`for i in $(docker images -q); do docker history $i | grep -q 7fb9bd20d612 && echo $i; done`
 
 - - -
 ## More Info
