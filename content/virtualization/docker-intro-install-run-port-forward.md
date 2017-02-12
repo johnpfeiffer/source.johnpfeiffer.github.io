@@ -236,6 +236,18 @@ After a container has already been created (which starts it so ironically this i
 
 > instead a new /bin/bash is executed inside creating a second shell - use the exit command to not leave it around
 
+#### Running a container with admin privileges
+
+If your container requires elevated privileges from the host then you need to provide the extra parameter:
+
+`docker run --rm -it --cap-add SYS_NET_ADMIN alpine`
+
+Alternatively give it all extended privileges and permissions:
+
+`docker run --rm -it --privileged alpine`
+
+<https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities>
+
 ### Stopping a container
 
 Part of the efficiency in docker is that containers can **run in the background automatically**
