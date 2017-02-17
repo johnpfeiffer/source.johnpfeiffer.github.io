@@ -4,7 +4,7 @@ Tags: security, encryption, aes, https, openssl, certbot, ssh, keygen, openvpn, 
 
 [TOC]
 
-As our lives become increasingly monitored and digital the privacy of being unobserved or having a private conversation that we used to be able to take for granted now requires extra effort.  The more people who choose to use these easy and readily available tools the more privacy and everyone will have.
+As our lives become increasingly monitored and digital the privacy of being unobserved or having a private conversation that we used to be able to take for granted now requires extra effort.  The more people who choose to use these easy and readily available tools the more privacy will become the standard rather than the exception.
 
 # Symmetric and Asymmetric Encryption
 
@@ -54,7 +54,7 @@ While there is a lot of value in leveraging the GPG public and private keys for 
     echo "password" | gpg --yes --no-tty --batch --passphrase-fd 0 --output plain.txt --decrypt encrypted.txt.gpg
 > non interactively decrypt with symmetric encryption
 
-*Do not pick the password of password ;p *
+*Do not pick password as your password ;p*
 
 <https://www.gnupg.org/gph/en/manual/x110.html>
 
@@ -69,20 +69,31 @@ Perhaps one of the most well known projects (open source and free!) to advance t
 Here we encrypt and decrypt a text file:
 
     openssl aes-256-cbc -in plain.txt -out message.encrypted
+> prompted for a password (symmetric key) to encrypt the file with AES 256
+
     openssl aes-256-cbc -d -in message.encrypted -out plain.txt
+> prompted for a password to decrypt the message
+
+    openssl aes-256-cbc -in plain.txt -out message.encrypted -pass pass:YOURPASSWORD
+> non-interactively provide the password to encrypt the file with AES 256
+
+    openssl aes-256-cbc -d -in message.encrypted -out plain.txt -pass pass:YOURPASSWORD
+> non-interactively provide the password to decrypt the file with AES 256
+
+*an incorrect password will create a zero byte file*
 
     openssl aes-256-cbc -a -d -in message.encrypted -out plain.txt
-> if it's base64 encoded do not forget the -a (dumb)
+> if it's base64 encoded do not forget the -a
 
 - <https://en.wikipedia.org/wiki/Advanced_Encryption_Standard>
 - <https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation>
-
+- <https://www.openssl.org/docs/manmaster/man1/openssl.html>
 
 # Generating SSL Certificates and Private and Public Keys
 
 Perhaps the most common use of TLS/SSL are the keys used to encrypt communication with a web server, these examples use a "self signed certificate" which most libraries and browsers will not trust.
 
-> "Root Certificate Authorities" are the ones you send a Certificate Signing Request" to generate a certificate that can be mathemetically trusted by the existing software libraries and browsers
+> "Root Certificate Authorities" are the ones you send a "Certificate Signing Request" to generate a certificate that can be mathemetically trusted by the existing software libraries and browsers
 
 ## openssl New Key and Cert One Liner
 
@@ -208,33 +219,21 @@ To check to which key or certificate a particular CSR belongs you can compute
 
 Popular web browsers will often have lock symbols or other ways for you to see (and download) a certificate)
 
-startup vm with webserver (tomcat) + current certificate
-
-chrome browse to the https://10.10.10.199
-
-Click on the lock (certificate) symbol => Certificate information  "Issued to: example.com"
-
-Click on the Certification Path (tab) ... see the root CA + intermediates + cert.
-
-click on "GeoTrust" (or the top level Certificate listed in the path) -> View Certificate
-
-Details (tab) -> Copy to File -> Save Base-64 encoded x.509 (.cer)
-
-Verify that it is different than your original cert.crt
-Copy paste that file into a place where you have openssl installed (i.e. ubuntu linux)
-
-Hostfile (/etc/hosts) so that your openssl command can use the DNS name
-
-    openssl s_client -showcerts -connect example.com:443
-
-Without the intermediate you should receive "Verify return code: 21 (unable to verify the first certificate)"
-
-    openssl s_client -showcerts -connect example.com:443 -CAfile geotrust-intermediate.crt
-
-With the intermediate in the command above:   "Verify return code: 0 (ok)"
+1. startup vm with webserver (tomcat) + current certificate
+1. chrome browse to the https://10.10.10.199
+1. Click on the lock (certificate) symbol => Certificate information  "Issued to: example.com"
+1. Click on the Certification Path (tab) ... see the root CA + intermediates + cert.
+1. click on "GeoTrust" (or the top level Certificate listed in the path) -> View Certificate
+1. Details (tab) -> Copy to File -> Save Base-64 encoded x.509 (.cer)
+1. Verify that it is different than your original cert.crt
+1. Copy paste that file into a place where you have openssl installed (i.e. ubuntu linux)
+1. Hostfile (/etc/hosts) so that your openssl command can use the DNS name
+1. `openssl s_client -showcerts -connect example.com:443`
+1. Without the intermediate you should receive "Verify return code: 21 (unable to verify the first certificate)"
+1. `openssl s_client -showcerts -connect example.com:443 -CAfile geotrust-intermediate.crt`
+1. With the intermediate in the command above:   "Verify return code: 0 (ok)"
 
 Finally, if the DNS name is publicly available, you can verify: <https://www.sslshopper.com/ssl-checker.html>
-
 
 - - -
 # Other certificate formats
@@ -462,7 +461,7 @@ Using Docker is one of the easiest ways to leverage all of the open source tools
 
     # https://github.com/kylemanna/docker-openvpn
     # https://openvpn.net/index.php/open-source/documentation/howto.html
-    export FQDN="physicstime.com"
+    export FQDN="example.com"
     export OVPN_DATA="ovpn-data"
     docker volume create --name $OVPN_DATA
     # generate the initial configuration in the volume
@@ -501,16 +500,18 @@ Prerequisite: setup a DNS record for yourdomain.com to point to the server
     docker run -it --rm -p 443:443 --name certbot -v /etc/letsencrypt:/etc/letsencrypt -v /var/log/letsencrypt:/var/log/letsencrypt quay.io/letsencrypt/letsencrypt certonly --standalone -d yourdomain.com
 
 1. Starts a container with a web server that binds to port 443 
-1. The same web server/tool sends a certificate signing request (from yourdomain.com) to letsencrypt.org
-1. letsencrypt.org then attempts to contact the provided domain (DNS -> IP -> server -> docker container)
+2. The same web server/tool sends a certificate signing request (from yourdomain.com) to letsencrypt.org
+3. letsencrypt.org then attempts to contact the provided domain (DNS -> IP -> server -> docker container)
+
+You can keep renewing the certificate (which lasts 90 days) for free and there are a number of other open source tools (which leverage the API/process)
 
 - <https://letsencrypt.org/how-it-works/>
 - <https://certbot.eff.org/docs/using.html#certbot-commands>
 - <https://github.com/certbot/certbot/blob/master/Dockerfile>
 
-You can keep renewing the certificate (which lasts 90 days) for free and there are a number of other open source tools (which leverage the API/process)
 
 # Cryptography Exercises
 In order to really understand and enjoy cryptography you can dive deeper via some of these exercise...
+
 - <https://cryptopals.com/>
 
