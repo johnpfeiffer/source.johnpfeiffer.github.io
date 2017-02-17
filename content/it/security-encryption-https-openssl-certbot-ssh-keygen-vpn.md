@@ -502,6 +502,8 @@ Prerequisite: setup a DNS record for yourdomain.com to point to the server
 1. Starts a container with a web server that binds to port 443 
 2. The same web server/tool sends a certificate signing request (from yourdomain.com) to letsencrypt.org
 3. letsencrypt.org then attempts to contact the provided domain (DNS -> IP -> server -> docker container)
+4. the web server/tool then securely downloads the new SSL certificate
+5. all of the files used in the process are stored in /etc/letsencrypt (in this "simple" mode /etc/letsencrypt/live/yourdomain.com/
 
 You can keep renewing the certificate (which lasts 90 days) for free and there are a number of other open source tools (which leverage the API/process)
 
@@ -511,7 +513,7 @@ You can keep renewing the certificate (which lasts 90 days) for free and there a
 
 
 # Cryptography Exercises
-In order to really understand and enjoy cryptography you can dive deeper via some of these exercise...
+In order to really understand and enjoy cryptography you can dive deeper via some of these exercises
 
 - <https://cryptopals.com/>
 
