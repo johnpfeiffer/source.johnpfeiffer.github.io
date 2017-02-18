@@ -197,7 +197,79 @@ Unfortunately it is not quite simple to execute the code directly in VSCode <htt
 
 Because Go is a static language there is a compilation (and linking) phase where the source code is transformed into a binary.
 
-### Debugging with Delve
+#### Using Visual Studio Code Tasks to Build Go
+
+1. With your main.go file open press `Control + Shift + B`
+2. "No task runner configured" -> click on "Configure Task Runner"
+3. From the dropdown choose "Others"
+4. fill in tasks.json
+
+
+    {
+        "version": "0.1.0",
+        "command": "pwd",
+        "isShellCommand": true,
+        "showOutput": "always"
+    }
+> The command will execute in the folder that is opened in "File -> Open Folder"
+
+    {
+        "version": "0.1.0",
+        "command": "go",
+        "isShellCommand": true,
+        "args": ["build", "-v"],
+        "showOutput": "always"
+    }
+> This builds verbosely in the current directory, assuming that the IDE has opened the project folder since Go only uses relative path <https://golang.org/ref/spec#ImportPath> (and the GOPATH is set correctly)
+
+
+If you prefer to File -> Open Folder a top level folder that has many subfolders with go projects then...
+
+The workaround for not having "change working directory" or "command chaining" is to create a shell script, build.sh
+
+    #!/bin/sh
+    cd $1
+    pwd
+    ls -l
+    go build -v
+    ls -l
+> The script could be reduced to "cd $1; go build -v" but having the extra debugging output can help...
+
+The task runner must be defined to take advantage of the new script:
+
+    {
+        "version": "0.1.0",
+        "taskName": "build",
+        "command": "bash",
+        "args": ["${cwd}/build.sh", "${fileDirname}"],
+        "isShellCommand": true
+    }
+
+> The IDE stores the files in PROJECTFOLDER/.vscode/tasks.json
+
+<https://code.visualstudio.com/Docs/editor/tasks#_variable-substitution>
+
+#### Using Visual Studio Code Tasks to Run Go
+
+You can continue to create more key bindings (hotkeys) for running Go or running Tests, I will just override the Build (Control + Shift + B) hotkey for now...
+
+    #!/bin/sh
+    cd $1; go run *.go
+> This does not build and instead just executes directly
+
+    {
+        "version": "0.1.0",
+        "taskName": "build",
+        "command": "bash",
+        "args": ["${cwd}/run.sh", "${fileDirname}"],
+        "isShellCommand": true
+    }
+> this extra indirection of a separate run.sh is only necessary if you prefer having a top level "meta" folder
+
+<https://code.visualstudio.com/Docs/customization/keybindings#_tasks>
+
+
+#### Debugging with Delve
 
     go get github.com/derekparker/delve/cmd/dlv
     cd /opt/goprojects/src
