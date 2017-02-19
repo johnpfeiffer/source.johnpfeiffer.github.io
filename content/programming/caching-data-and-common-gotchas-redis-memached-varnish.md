@@ -309,5 +309,7 @@ If you prefer installing locally to your filesystem or server:
         fmt.Println(s)
     }
 
+A more complete example: <https://bitbucket.org/johnpfeiffer/go-cache>
+
 ### Varnish
 - <https://www.varnish-cache.org/about> REST web caching
