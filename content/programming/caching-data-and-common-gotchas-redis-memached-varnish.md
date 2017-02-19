@@ -25,13 +25,14 @@ A more concrete example would be to cache a User object by Email, so that whenev
 
 A tradeoff of memory for cpu (or latency or some other business cost).
 
+- computation is expensive (in terms of cpu, time, or money)
 - accessing the data from source is too slow
 - the data actually comes from multiple sources (complex and expensive to retrieve)
 - to reduce load on the service originating data
-- to reduce contention (i.e. reads and writes)
-- for a client-server architecture, caching on the client reduces the number of required connections to a server
+- to reduce contention (i.e. reads not served from the same persistence that does writes)
 - server side caching can protect backend resources and improve throughput and performance
-- computation is expensive (in terms of cpu, time, or money)
+- for a client-server architecture, caching on the client reduces the number of required connections to a server
+
 
 ### Questions to ask when caching
 
@@ -132,7 +133,8 @@ Removing some or all data from the cache in order to invalidate a chunk of data 
 
 Caching is challenging because of the need for data consistency, parallel requests, and race conditions.
 
-One good way to think about it is a banking system with money: if two people both try and empty an account at an ATM at the same time how will your caching system handle it?
+One good way to think about it is a banking system with money...
+> If two people both try to empty a bank account at an ATM at the same time how will your caching system handle it?
 
 
 ### Cache on write gotchas
@@ -147,7 +149,7 @@ While "cache on write" is a sometimes band-aid for NoSQL "eventual consistency" 
 
 One workaround is "check and set" (or "compare and set") where the cache will auto-invalidate if two conflicting entries are attempted.
 
-<http://neopythonic.blogspot.com/2011/08/compare-and-set-in-memcache.html>
+<https://neopythonic.blogspot.com/2011/08/compare-and-set-in-memcache.html>
 
 
 ### Expiration: a cache full of stale junk
@@ -179,24 +181,70 @@ Issues with Expiration Set Too Long:
 
 ### Cold Cache and the Thundering Herd
 1. If the cache is "cold", i.e. has not been populated, then all queries will go directly to the source
-1. If the source is not prepared for the "thundering herd" of requests (that were usually handled by the cache) then the source may become overloaded and bad things will happen
-1. It is therefore best practice to "warm the cache" by seeding data from the source into the cache before significant load events
+2. If the source is not prepared for the "thundering herd" of requests (that were usually handled by the cache) then the source may become overloaded and bad things will happen
+3. It is therefore best practice to "warm the cache" by seeding data from the source into the cache before significant load events
 
-Cold cache not only can cause problems from the source but as a lot of data is written simultaneously to the cache, if the cache uses underlying disk or some other IO resource, it may temporarily overwhelm the cache (system/framework).
+Cold cache not only can cause problems from the source but when lot of data is written simultaneously to the cache, if the cache uses underlying disk or some other IO resource, it may temporarily overwhelm the cache (system/framework).
+
+### Upgrading your application
+
+In a sense the cache layer is an external persistence that has to stay in sync with the application code; they are logically and semantically bound together.
+
+Modification to your application code, specifically the way it reads and writes to the cache, may return "bad" data.
+
+1. Cache key "admins" stored a list of usernames of admin users for the application
+2. Cache key "ausers" stored a list of usernames that begin with the letter "a"
+3. An application upgrade occurs
+4. Now the code has a bug that looks up "ausers" in order to give administrator permssions
+5. (oops)
 
 
 ## Tools for caching
-Much like encryption it is probably a good idea to use a time tested product over writing your own implementation.
+Much like encryption it is probably a good idea to use a time tested caching component over writing your own implementation.
+
+A local in memory cache is a tried and true way of speeding up an application but it may not provide the transparency and visibility when there are bugs.
+
+While it seems trivial to setup it will slow down your dev velocity on your high value focus area and every new feature you realize you need (automatic expiration, authentication, etc.) will create a distraction and eventual maintenance requirement.
+
+Instead there are quite a few very popular battle tested options...
+
+### Memcached
+- <http://memcached.org>
+- <https://en.wikipedia.org/wiki/Memcached>
+
 
 ### Redis Examples
+
+Redis has surpassed memcached in terms of speed and functionality and if you need to store more than "just a string" you should experiment with it.
+
+Besides having a cache to speed up lookups for your application or as a globally shared cache (be careful!) between multiple application serveers there can be a nice convenience as a "meta" persistence such that you can deploy a new version of your application and not lose all of the data in the cache.
 
 One thing to think about is that local redis might be far more effective than remote over the network redis.
 
 If your application can depend less shared state this is good because sharing is a nightmare for cache semantics and distributed computing.
 
+> When possible avoid a globally shared cache between multiple processes or servers, or invest in learning about atomic operations
+
 Regardless of securing your remote cache you will always want to measure cache effectiveness.
 
-- <http://redis.io/commands>
+- <https://redis.io/commands>
+
+### Installing Redis
+
+The simplest way is to use Docker, <https://hub.docker.com/r/_/redis/>
+
+`docker run --rm -it --publish 6379:6379 --name myredis redis:alpine`
+`docker run -it --link myredis:redis --rm redis:alpine redis-cli -h redis -p 6379 set message hello`
+`docker run -it --link myredis:redis --rm redis:alpine redis-cli -h redis -p 6379 get message`
+> run an ephemeral docker container and then non-interactively use the same docker image to set and get a string key
+
+If you prefer installing locally to your filesystem or server:
+
+- <https://redis.io/topics/quickstart> (compiling from source)
+- <https://packages.ubuntu.com/trusty/redis-server> (sudo apt-get install redis-server)
+
+    redis-cli -h localhost:6379 ping
+> PONG , aka verify a remote server connectivity
 
 #### Interactive Redis Prompt
 
@@ -206,13 +254,16 @@ Regardless of securing your remote cache you will always want to measure cache e
 #### Non Interactive Redis Commands
 
     redis-cli KEYS *:*
+> non-interactively get all of the keys that have subkeys
+
+    redis-cli KEYS "session:3:*" | xargs redis-cli DEL
+> non-interactively delete/remove all of the subkeys under the sub subkey
+
     redis-cli KEYS session:1:*
     redis-cli hgetall session:1:web
     redis-cli hgetall session:1:web:presence
      
-    redis-cli KEYS "session:3:*" | xargs redis-cli DEL   # then upgrade --restart
-     
-    redis-cli KEYS session:1:*  | grep session:1:web-48    # user_session.py , when the hardcoded max of 10 simultaneous sessions is hit no more can be created
+    redis-cli KEYS session:1:*  | grep session:1:web-48
       session:1:web-48679:rooms
       session:1:web-48679:presence
       session:1:web-48679:message_ids
@@ -222,37 +273,41 @@ Regardless of securing your remote cache you will always want to measure cache e
       1) "1:web"
       2) "1:web-48679"
      
-    # remove a session manually?
     redis-cli zrem sessions:1 1:web-48679
     redis-cli del   session:1:web-48679:rooms
     redis-cli del   session:1:web-48679:presence
     redis-cli del   session:1:web-48679:message_ids
     redis-cli del   session:1:web-48679
-    
-- - - - - - - - - - - - - - - - - - - - - - - - -
-### Installing Redis
 
-- <http://redis.io/topics/quickstart>
-- <http://packages.ubuntu.com/trusty/redis-server> (sudo apt-get install redis-server)
-
-    redis-cli -h example.com ping
-> PONG , aka verify a remote server connectivity
 
 #### Redis Clients
-<http://redis.io/clients#python>
 
     pip install redis
-
-<https://pypi.python.org/pypi/redis>
+> <http://redis.io/clients#python>
 
     import redis
     r = redis.StrictRedis(host='localhost', port=6379)
     r.flushall()
+> <https://pypi.python.org/pypi/redis>
 
+**Go** `go get github.com/garyburd/redigo`
 
-### Memcached
-- <http://memcached.org>
-- <https://en.wikipedia.org/wiki/Memcached>
+    :::golang
+    package main
+    
+    import (
+        "fmt"
+    
+        "github.com/garyburd/redigo/redis"
+    )
+    
+    func main() {
+        c, _ := redis.Dial("tcp", ":6379")
+        defer c.Close()
+        c.Do("SET", "message", "hi")
+        s, _ := redis.String(c.Do("GET", "message"))
+        fmt.Println(s)
+    }
 
 ### Varnish
 - <https://www.varnish-cache.org/about> REST web caching
