@@ -337,6 +337,12 @@ TODO: *Disable guest user*, *Disable crash reports: apport *
 - vlc = movies/music
 - ubuntu-restricted-extras = all of the encumbered with licenses packages to generally just watch or listen to stuff :(
 
+#### Google Music Manager
+
+If you are you using the web based <https://play.google.com/music/listen#/all> then you probably want the uploader/downloader:
+
+    wget https://dl.google.com/linux/direct/google-musicmanager-beta_current_amd64.deb
+    dpkg -i google-musicmanager-beta_current_amd64.deb
 
 #### spotify in ubuntu 15.04
 <https://www.spotify.com/us/download/linux/>
@@ -361,7 +367,6 @@ TODO: *Disable guest user*, *Disable crash reports: apport *
     wget https://launchpad.net/ubuntu/+archive/primary/+files/libgcrypt11_1.5.3-2ubuntu4.2_amd64.deb
     dpkg -i libgcrypt*.deb
     apt-get install --reinstall spotify-client
-
 
 #### pithos is an open source pandora client
 
