@@ -211,6 +211,18 @@ Instead there are quite a few very popular battle tested options...
 ### Memcached
 - <http://memcached.org>
 - <https://en.wikipedia.org/wiki/Memcached>
+- <https://hub.docker.com/r/_/memcached/>
+
+`docker run --rm -it --publish 11211:11211 --name mymemcached memcached:alpine`
+
+    echo -e 'add foo 0 60 11\r\nhello world\r' | nc localhost 11211
+    telnet localhost 11211
+    get foo
+> VALUE foo 0 11
+> hello world
+
+
+<https://github.com/memcached/memcached/wiki/Commands>
 
 
 ### Redis Examples
