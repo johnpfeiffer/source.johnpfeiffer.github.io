@@ -1,4 +1,4 @@
-Title: Solution with Code for Humans and Preferring Determinism
+Title: Code is for Humans
 Date: 2017-02-25 20:34
 Tags: programming, readability, immutable, configuration, dependencies
 
@@ -172,7 +172,7 @@ Some alternatives tend to take advantage of the cheaper cost of computing and in
 
 - Send a reconnect signal to clients to use a new endpoint
 - Start up a second process and have the operating system pass the network connection from the old to the new process
-- Begin with a Load Balancer or other connection holding component that can direct traffic to the new service
+- A Load Balancer or other connection holding component that can direct traffic to the new service
 
 <https://www.martinfowler.com/bliki/BlueGreenDeployment.html>
 
