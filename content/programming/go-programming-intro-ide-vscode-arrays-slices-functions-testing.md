@@ -268,6 +268,52 @@ You can continue to create more key bindings (hotkeys) for running Go or running
 
 <https://code.visualstudio.com/Docs/customization/keybindings#_tasks>
 
+#### Go Test with a Visual Studio Code Test Task
+
+The "test" task is unassigned (at least for my linux installation) so the first step is to inspect and customize the hotkey keybindings.
+
+`Control+K Control+S`
+> Or use File -> Preferences -> Keyboard Shortcuts
+
+In the left pane search the "Default Keybindings" file for "build", i.e. on line 502 you should see:
+
+    { "key": "ctrl+shift+b",          "command": "workbench.action.tasks.build" },
+
+Add to the empty "keybindings.json" on the right a new hotkey
+
+    [
+        { "key": "ctrl+shift+t",          "command": "workbench.action.tasks.test" }
+    ]
+
+Save the file (the IDE will store your customization in ~/.config/Code/User/keybindings.json)
+
+Now when you use `Control+Shift+T` you should see "No task configured" and "Configure Task Runner"
+
+This example defines multiple tasks, both go build and go test (this will save to .vscode/tasks.json)
+
+    {
+        "version": "0.1.0",
+        "tasks": [
+            {
+                "taskName": "build",
+                "command": "go",
+                "args": ["build", "-v"],
+                "isShellCommand": true,
+                "showOutput": "always"
+            },
+            {
+                "taskName": "test",
+                "command": "go",
+                "args": ["test", "-v"],
+                "isShellCommand": true,
+                "showOutput": "always"
+            }
+        ]
+    }
+> Assuming you have opened File -> Open Folder at the top level of your code tree as Go expects relative paths,
+
+`Control+Shift+T` will now open the Tasks output pane and display the results of any tests run
+
 
 #### Debugging with Delve
 
