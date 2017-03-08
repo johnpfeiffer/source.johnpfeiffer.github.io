@@ -20,19 +20,18 @@ A more concrete example would be to cache a User object by Email, so that whenev
 
 <https://en.wikipedia.org/wiki/Associative_array>
 
-
 ## Why Cache?
 
 A tradeoff of memory for cpu (or latency or some other business cost).
 
 - computation is expensive (in terms of cpu, time, or money)
 - accessing the data from source is too slow
+- access to data across a larger geographic distance
 - the data actually comes from multiple sources (complex and expensive to retrieve)
 - to reduce load on the service originating data
 - to reduce contention (i.e. reads not served from the same persistence that does writes)
 - server side caching can protect backend resources and improve throughput and performance
 - for a client-server architecture, caching on the client reduces the number of required connections to a server
-
 
 ### Questions to ask when caching
 
@@ -51,7 +50,6 @@ Taking "why cache" to another level, the relative speeds of different cache leve
 
 - If your application uses a very large amount of data the network may actually be better than disk; optimization would probably not be focused on "loop unrolling"
 - If your application depends on data across the internet then network caching, routing algorithms, and data modeling (eventual consistency!) may be more important than "tail recursion vs iterative"
-
 
 |Action|nanoseconds|microseconds|milliseconds|human scale comparison|
 |:-:|:-:|:-:|:-:|:-:|
@@ -84,7 +82,6 @@ Taking "why cache" to another level, the relative speeds of different cache leve
 - <https://wondernetwork.com/pings>
 - <https://twitter.com/rzezeski/status/398306728263315456/photo/1> (Brendan Gregg)
 
-
 ### Caches are another Operational component with Overhead
 
 The best advice is to definitely avoiding caching until the last possible moment (*"less is the best" and "premature optimization" and "be future flexible" and "defer architecture decisions"*)
@@ -99,23 +96,27 @@ Not only do you have to write code complexity for using a cache, there's the nit
 - Metrics
 - Testing (i.e. synthetic smoke tests or load)
 
-None of this operational cost is free, and there are plenty of issues when just implementing caching in code...
+None of this operational cost is free, and there are plenty of issues when just implementing caching in the code...
 
+## "High Level" caching for the application versus "Low Level" caching for the persistence layer
+
+Caching can be the most effective at the "highest" layer where the application is able to trivially service a request.  (e.g. caching the final full web page that was requested)
+
+This "protects" all of the underlying machinery from having to do work.  It requires a good understanding of how dynamic or personalized the results are, designing the system to have pieces that can be cached, and is brittle to change.
+
+Caching can be an "easy win" when applied at the "lowest" layer right near the persistence (i.e. redis "in front of" a database - that for example contains the new articles that will be served on a web page) as all of the components in layers above can benefit from improved performance without having to change the business logic (or perhaps even unaware of the caching).
+
+Both can be used together but to paraphrase: "mo caching mo problems"
 
 ## How to Cache
 
 ### Cache on Write
 
-Also known as "cache on write through"
-
-Whenever new data is written a cache must also be updated.
-
+Also known as "cache on write through", whenever new data is written a cache must also be updated.
 
 ### Cache on Read
 
-Also known as "cache on read through"
-
-Whenever a query is made first the cache is checked.
+Also known as "cache on read through", whenever a query is made first the cache is checked.
 
 - If there is a "cache miss" then the data source is queried and the cache is updated and the result is returned.  
 - If there is a "cache hit" and the data is in the cache then it is returned (and potentially a cache key expiration updated as this cache hit improved the cache efficiency).
@@ -128,7 +129,6 @@ Pre-emptively adding data to the cache is "cache warming" in order to improve "c
 
 Removing some or all data from the cache in order to invalidate a chunk of data (i.e. all users need to reset their passwords) or pre-emptively free up memory/space.
 
-
 ## Common Gotchas
 
 Caching is challenging because of the need for data consistency, parallel requests, and race conditions.
@@ -136,21 +136,21 @@ Caching is challenging because of the need for data consistency, parallel reques
 One good way to think about it is a banking system with money...
 > If two people both try to empty a bank account at an ATM at the same time how will your caching system handle it?
 
-
 ### Cache on write gotchas
 
-One implementation flaw is to update the cache first; if the update to the data source fails then some requests may have been given incorrect data.
+- There may be a design mismatch as since data is only cached on write, if reads are occurring mostly on data written a long time ago they will be expired/pushed out and you will have poor cache efficiency (paradoxically adding caching will have resulted in more complexity and worse performance).
+- One implementation flaw is updating the cache first; if the update to the data source fails then some requests may have been given incorrect data.
+- The opposite order of updating the canonical source first can have a similar problem if the process fails before the cache can be updated. (Thus leaving the cache with old data).
+- - First invalidating the cache reduces the risk of a failure during a write creating an inconsistent state
+- - Next update the data persistence (which should be provided as an atomic operation by your vendor ;)
+- - Finally update the cache
+- - In the worst case the canonical source will be updated without the benefit of caching
+- - One might also have a "transaction" defined around both the update of the origin and cache with retries for failure
+- While "cache on write" is a sometimes band-aid for NoSQL "eventual consistency" when it fails (i.e. all applications should expect that a cache will not exist or have a cache miss) the result may be data inconsistency.
+- - One workaround is "check and set" (or "compare and set") where the cache will auto-invalidate if two conflicting entries are attempted.
+- - <https://neopythonic.blogspot.com/2011/08/compare-and-set-in-memcache.html>
 
-Another flaw would be to not have a "transaction" defined around both the update of the data and then the update of the cache since if either fails future requests will receive inconsistent results.
-
-There may be a design mismatch as since data is only cached on write, if reads are occurring mostly on data written a long time ago they will be expired/pushed out and you will have poor cache efficiency.
-
-While "cache on write" is a sometimes band-aid for NoSQL "eventual consistency" when it fails (i.e. all applications should expect that a cache will not exist or have a cache miss) the result may be data inconsistency.
-
-One workaround is "check and set" (or "compare and set") where the cache will auto-invalidate if two conflicting entries are attempted.
-
-<https://neopythonic.blogspot.com/2011/08/compare-and-set-in-memcache.html>
-
+>  This "gotcha" could be summarized as not handling rollback
 
 ### Expiration: a cache full of stale junk
 
@@ -178,7 +178,6 @@ Issues with Expiration Set Too Long:
 
 > If the Time to Live is too short then the cache may have very poor efficiency (items expire before they can generate even one cache hit), meaning all of the coding and operational cost are for nothing =[
 
-
 ### Cold Cache and the Thundering Herd
 1. If the cache is "cold", i.e. has not been populated, then all queries will go directly to the source
 2. If the source is not prepared for the "thundering herd" of requests (that were usually handled by the cache) then the source may become overloaded and bad things will happen
@@ -198,6 +197,9 @@ Modification to your application code, specifically the way it reads and writes 
 4. Now the code has a bug that looks up "ausers" in order to give administrator permssions
 5. (oops)
 
+### Spanning Multiple Keys
+
+If you need to retrieve multiple items from a cache in order to fulfill a request you may run the risk of "torn reads" where the first item retrieved from cache is logically inconsistent with the second item.
 
 ## Tools for caching
 Much like encryption it is probably a good idea to use a time tested caching component over writing your own implementation.
@@ -221,9 +223,7 @@ Instead there are quite a few very popular battle tested options...
 > VALUE foo 0 11
 > hello world
 
-
 <https://github.com/memcached/memcached/wiki/Commands>
-
 
 ### Redis Examples
 
@@ -237,9 +237,7 @@ If your application can depend less shared state this is good because sharing is
 
 > When possible avoid a globally shared cache between multiple processes or servers, or invest in learning about atomic operations
 
-Regardless of securing your remote cache you will always want to measure cache effectiveness.
-
-- <https://redis.io/commands>
+Regardless of whether you securing your remote cache (or just depend on network isolation) you will always want to measure cache effectiveness.
 
 ### Installing Redis
 
@@ -291,6 +289,7 @@ If you prefer installing locally to your filesystem or server:
     redis-cli del   session:1:web-48679:message_ids
     redis-cli del   session:1:web-48679
 
+- <https://redis.io/commands>
 
 #### Redis Clients
 
