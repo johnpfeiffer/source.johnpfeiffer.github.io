@@ -43,6 +43,7 @@ Title: John Likes
 - <http://www.se-radio.net/2015/11/se-radio-episode-241-kyle-kingsbury-on-consensus-in-distributed-systems/>
 - <http://www.se-radio.net/2016/01/se-radio-show-246-john-wilkes-on-borg-and-kubernetes/>
 - <http://www.se-radio.net/2017/01/se-radio-episode-280-gerald-weinberg-on-bugs-errors-and-software-quality/>
+- <http://www.se-radio.net/2017/02/se-radio-episode-282-donny-nadolny-on-debugging-distributed-systems/>
 - <https://thisweekinstartups.com/thisweekin-startups/advice-biggest-mistakes-founders-startups-jerry-colonna>
 - <https://thisweekinstartups.com/thisweekin-startups/steve-jurvetson-dfj-tesla-spacex>
 - <https://thisweekinstartups.com/glennkelman-redfin-pejmannozad-pear/>
