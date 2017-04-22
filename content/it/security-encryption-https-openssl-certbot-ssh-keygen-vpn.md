@@ -476,15 +476,26 @@ Using Docker is one of the easiest ways to leverage all of the open source tools
     # export the client config with embedded certificates
     docker run -v $OVPN_DATA:/etc/openvpn --rm kylemanna/openvpn ovpn_getclient $FQDN > $FQDN.ovpn
     
-    # From a client computer SCP to download the $FQDN>ovpn and then connect to the openvpn server
-    # sudo apt-get install -y openvpn
-    # sudo openvpn --config $FQDN.ovpn
+## Connect a client to the OpenVPN server
+
+From a client computer SCP to download the $FQDN>ovpn and then connect to the openvpn server
+
+    FQDN=youropenvpn.example.com
+    sudo apt-get install -y openvpn
+    sudo openvpn --config $FQDN.ovpn
     # verify with the following in the output: "/sbin/ip addr add dev tun0 local 192.168.255.6 peer 192.168.255.5"
     # ifconfig -a  "tun0 ... inet addr:192.168.255.6"  , as you send traffic: RX bytes:4145707 (4.1 MB)  TX bytes:319025 (319.0 KB)
-    # curl checkip.amazonaws.com  , should return the IP address of the VPN server (not your local Wifi/ISP)
-    # curl https://dnsleaktest.com/
+    curl checkip.amazonaws.com  # should return the IP address of the VPN server (not your local Wifi/ISP)
+    curl https://dnsleaktest.com/
     # https://whoer.net/#extended
 
+Moreover your DNS server can "leak" or be hijacked, here are some good alternatives to your snooping ISP or "big brother" evil corp.
+
+1. 84.200.69.80 or 84.200.70.40 (dns.watch free, neutral, privacy)
+1. 216.146.36.36 (Dyn DNS was acquired by Oracle)
+1. 209.244.0.4 (Level3 Communications telco was acquired by CenturyLink)
+1. 208.67.220.220 (OpenDNS was acquired by Cisco)
+1. 8.8.8.8 (Google - so basically giving them even more data - especially when you use Chrome too)
 
 - - -
 # Letsencrypt and certbot for free SSL Certificates
