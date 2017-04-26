@@ -416,41 +416,43 @@ A more permanent configuration change by using ~/.ssh/config
 
 <https://linux.die.net/man/1/ssh-add>
 
-### SSH for SOCKS proxy
+### SSH TCP tunnel
 
-> firefox sends requests to the server over the ssh encrypted connection
+In this example the SSH tunnel could be used for a SOCKS proxy for the browser...
 
     ssh -ND 9999 user@example.org
-> connect via ssh to a remote server, after password prompt will block
+> connect via ssh to a remote server, after the password prompt the process will stay open for connections locally via port 9999
+
+#### Use a docker container to isolate the VPN software and instead only allow an SSH tunnel as a web proxy
+
+An alternative to a remote machine as the SSH target for the tunnel you can instead target a docker container running locally.
+- This allows you to package everything required (i.e. vpn software) into the container
+- Has a security benefit that only the container (and its filesystem) are directly exposed to the VPN
+> Note that for an even more limited security profile the container could run as an HTTP proxy as it will only handle HTTP traffic (rather than all TCP)
+
+    docker run --detach --rm --privileged --publish 2222:2222 ubuntu-xenial-vpn
+> the container is running SSHD
+
+    ssh -p 2222 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@localhost
+    openconnect https://vpn.example.com
+> SSH into the container and start the openconnect vpn connection and authenticate
+
+    ssh -ND 9999 -p 2222 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@localhost
+
+#### Configure Firefox to use the SOCKS Host
 
     Firefox -> Edit -> Preferences -> Advanced -> Network -> Connection -> Settings
+    Manual Proxy configuration: SOCKS Host: localhost, Port 9999
+> firefox sends requests to the server over the ssh encrypted connection
 
-Manual Proxy configuration: SOCKS Host: localhost, Port 9999
-
-##### use  a docker container to isolate the VPN software and instead only allow an SSH tunnel as a web proxy
-
-    docker run -it --rm --privileged --publish 2222:2222 --volume /opt/mydata:/opt/mydata ubuntu-xenial-vpn
-    vi /etc/ssh/sshd_config
-        Port 2222
-        PermitRootLogin
-    # mkdir -p /var/run/sshd
-    /etc/init.d/ssh restart
-    passwd root
-> this is a way to change the docker container to use a password
-
-    ssh -ND 9999 -p 2222 root@127.0.0.1
-> start a socks5 proxy via SSH, after entering the password (or if key based no password) then it will hold open connection
-
-Configure the browser to use Socks Host: localhost and Port 9999
-
-    Firefox -> Edit -> Preferences -> Advanced -> Network -> Connection -> Settings
-
-Next configure the browser to use the socks5 proxy for DNS
+#### Configure Firefox to use the socks5 proxy for DNS
 
     about:config
     network.proxy.socks_remote_dns
+> use the address bar to access the advanced configuration option and set socks_remote_dns true
 
-> Note that for a more limited security profile only use an HTTP proxy as it will only handle HTTP traffic
+This ensures the browser will use the SOCKS proxy domain name server rather than the local machines
+
 
 ### SSH tunnel for Windows RDP
 
