@@ -95,12 +95,43 @@ Perhaps the most common use of TLS/SSL are the keys used to encrypt communicatio
 
 > "Root Certificate Authorities" are the ones you send a "Certificate Signing Request" to generate a certificate that can be mathemetically trusted by the existing software libraries and browsers
 
-## openssl New Key and Cert One Liner
+## More Private and Public Key basics for SSL Certificates
+The private key contains a series of numbers. Two of those numbers form the "public key", the others are part of your "private key".
+
+The "public key" bits are also embedded in your Certificate (we get them from your CSR - certificate signing request).
+
+### Verify the SSL Certificate and Private Key match
+    (openssl x509 -noout -modulus -in server.pem | openssl md5 ; openssl rsa -noout -modulus -in server.key | openssl md5) | uniq
+> outputs a single hash if matching, if two hashes are output then it is not unique and the key and cert do not match
+
+To check that the public key in your cert matches the public portion of your private key:
+
+    openssl x509 -noout -text -in server.crt
+    openssl rsa -noout -text -in server.key
+
+But since the public exponent is usually 65537 and it's challening to compare a long modulus you can use the following approach:
+
+    openssl x509 -noout -modulus -in server.crt | openssl md5
+    openssl rsa -noout -modulus -in server.key | openssl md5
+> the "modulus" and the "public exponent" portions of the cert and key ... aka the two md5sum hashes should match
+
+### Verify the Cert and Intermediate match and then Verify
+    openssl verify -purpose sslserver -CAfile intermediate.pem -verbose server.pem
+> ensure the intermediate certificate matches the SSL certificate (if it does not SSL trust will not work correctly)
+
+### Verify a CSR matches the Key and Certificate
+To check to which key or certificate a particular CSR belongs you can compute
+
+    openssl req -noout -modulus -in server.csr | openssl md5
+
+## Creating keys and certificates and certificate requests
+
+### openssl New Key and Cert One Liner
 
     openssl req -subj '/CN=example.com/O=My Company Name LTD./C=US' -new -newkey rsa:2048 -days 365 -nodes -x509 -keyout server.key -out server.crt
 > one liner to generate a self signed SSL key and certificate, since SSL certs are rotated regularly we can use 2048 instead of 4096 bits
 
-## openssl certificate commands
+### openssl certificate commands
 
     openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key
 > create 2048 bit nopass key + csr (certificate signing request - usually sent to a Certificate Authority that is in the root chain bundled with major browsers and libraries)
@@ -133,7 +164,7 @@ Perhaps the most common use of TLS/SSL are the keys used to encrypt communicatio
 > Generate a certificate signing request based on an existing certificate and private key
 
 
-## Creating an RSA certificate with a password
+### Creating an RSA certificate with a password
 
     openssl genrsa -des3 -out domainname.key 2048
 > Create a 2048 bit private key with passphrase
@@ -146,8 +177,7 @@ Common Name (domain name) = fully qualified domain name
     openssl x509 -req -days 365 -in CSR.csr -signkey privateKey.key -out cert.crt
 > Generate a self signed cert
 
-## Remove a passphrase to install a private key on a server
-
+### Remove a passphrase to install a private key on a server
     openssl rsa -in domainname-passphrase.key -out domainname-server.key
 
 OR
@@ -155,12 +185,7 @@ OR
     openssl rsa -in privateKey.pem -out newPrivateKey.pem
 
 
-## VERIFY THE CERT + INTERMEDIATE, THEN VERIFY THE CERT + KEY
-    openssl verify -purpose sslserver -CAfile intermediate.pem -verbose server.pem
-    (openssl x509 -noout -modulus -in server.pem | openssl md5 ; openssl rsa -noout -modulus -in server.key | openssl md5) | uniq
-
-
-### Use openssl's built in webserver
+## Use openssl's built in webserver
 
     openssl s_server -cert server.pem -key server-nopass.key
 > start a TCP server with the provided certificate and key on the default port of 4433
@@ -184,35 +209,6 @@ OR
 
     echo | openssl s_client -connect ${REMOTEHOST}:${REMOTEPORT} 2>&1 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p'
 
-
-## More Private and Public Key basics for SSL Certificates
-The private key contains a series of numbers. Two of those numbers form the "public key", the others are part of your "private key".
-
-The "public key" bits are also embedded in your Certificate (we get them from your CSR - certificate signing request).
-
-To check that the public key in your cert matches the public portion of your private key:
-
-    openssl x509 -noout -text -in server.crt
-    openssl rsa -noout -text -in server.key
-
-The "modulus" and the "public exponent" portions in the key and the Certificate must match.
-
-But since the public exponent is usually 65537 and it's bothering comparing long modulus you can use the following approach:
-
-    openssl x509 -noout -modulus -in server.crt | openssl md5
-    openssl rsa -noout -modulus -in server.key | openssl md5
-
-And then compare these really shorter numbers. With overwhelming probability they will differ if the keys are different. As a one-liner:
-
-    openssl x509 -noout -modulus -in server.pem | openssl md5 ; openssl rsa -noout -modulus -in server.key | openssl md5
-
-And with auto-magic comparison (If more than one hash is displayed, they don't match):
-
-    (openssl x509 -noout -modulus -in server.pem | openssl md5 ; openssl rsa -noout -modulus -in server.key | openssl md5) | uniq
-
-To check to which key or certificate a particular CSR belongs you can compute
-
-    openssl req -noout -modulus -in server.csr | openssl md5
 
 
 ### Getting and verifying an Intermediate Certificate
@@ -310,6 +306,8 @@ One of the most common tasks is adding a certificate to trust
 - - -
 # SSH Encryption
 
+Secure Shell is for network access over an insecure network <https://en.wikipedia.org/wiki/Secure_Shell>
+
 ## Create a public/private key pair for SSH
 
 Backup any existing ~/.ssh/id_rsa  (cp -a ~./ssh ~./ssh-bak)
@@ -394,6 +392,30 @@ A more permanent configuration change:
             StrictHostKeyChecking no
             UserKnownHostsFile=/dev/null
 
+### SSH Agent Forwarding
+
+It can be insecure to forward your SSH access through a jumpbox to a machine deeper in your network, though it is generally worse to leave SSH keyson a jumpbox.
+
+    ssh-add ~/.ssh/example.pem
+> add a specific key to the ssh agent
+    ssh-add -L
+> an optional step to list the keys that ssh-agent has loaded in memory
+
+    ssh -At user@1.2.3.4
+> SSH and explicitly forward the key so that the second shell session (ssh-agent) has access to it
+
+        ssh user@5.6.7.8
+> the extra indentation is to indicate that from the jumpbox you are able to ssh to the internal machine
+
+
+A more permanent configuration change by using ~/.ssh/config
+
+    Host 1.2.3.4
+        ForwardAgent yes
+        IdentityFile ~/.ssh/example.pem
+
+<https://linux.die.net/man/1/ssh-add>
+
 ### SSH for SOCKS proxy
 
 > firefox sends requests to the server over the ssh encrypted connection
@@ -405,9 +427,34 @@ A more permanent configuration change:
 
 Manual Proxy configuration: SOCKS Host: localhost, Port 9999
 
+##### use  a docker container to isolate the VPN software and instead only allow an SSH tunnel as a web proxy
+
+    docker run -it --rm --privileged --publish 2222:2222 --volume /opt/mydata:/opt/mydata ubuntu-xenial-vpn
+    vi /etc/ssh/sshd_config
+        Port 2222
+        PermitRootLogin
+    # mkdir -p /var/run/sshd
+    /etc/init.d/ssh restart
+    passwd root
+> this is a way to change the docker container to use a password
+
+    ssh -ND 9999 -p 2222 root@127.0.0.1
+> start a socks5 proxy via SSH, after entering the password (or if key based no password) then it will hold open connection
+
+Configure the browser to use Socks Host: localhost and Port 9999
+
+    Firefox -> Edit -> Preferences -> Advanced -> Network -> Connection -> Settings
+
+Next configure the browser to use the socks5 proxy for DNS
+
+    about:config
+    network.proxy.socks_remote_dns
+
+> Note that for a more limited security profile only use an HTTP proxy as it will only handle HTTP traffic
+
 ### SSH tunnel for Windows RDP
 
-`ssh -L 3389:172.24.32.40:3389 172.24.32.100 -l sshusername -N`
+    ssh -L 3389:172.24.32.40:3389 172.24.32.100 -l sshusername -N
 
 - L = local port is forwarded to the remote host and port
 - l = login_name
@@ -491,11 +538,11 @@ From a client computer SCP to download the $FQDN>ovpn and then connect to the op
 
 Moreover your DNS server can "leak" or be hijacked, here are some good alternatives to your snooping ISP or "big brother" evil corp.
 
-1. 84.200.69.80 or 84.200.70.40 (dns.watch free, neutral, privacy)
-1. 216.146.36.36 (Dyn DNS was acquired by Oracle)
-1. 209.244.0.4 (Level3 Communications telco was acquired by CenturyLink)
-1. 208.67.220.220 (OpenDNS was acquired by Cisco)
-1. 8.8.8.8 (Google - so basically giving them even more data - especially when you use Chrome too)
+- 84.200.69.80 or 84.200.70.40 (dns.watch free, neutral, privacy)
+- 216.146.36.36 (Dyn DNS was acquired by Oracle)
+- 209.244.0.4 (Level3 Communications telco was acquired by CenturyLink)
+- 208.67.220.220 (OpenDNS was acquired by Cisco)
+- 8.8.8.8 (Google - so basically giving them even more data - especially when you use Chrome too)
 
 - - -
 # Letsencrypt and certbot for free SSL Certificates
