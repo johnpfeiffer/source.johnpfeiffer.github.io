@@ -23,6 +23,5 @@ script:
     - echo -e "Done\n"
 env:
   global:
-    secure: cex4RgZNUpLwCF40sZTBj7/m+aINEzKi5qMBMIyjLHKfnETmjpzSGPVf+P3qjNgpUvV2TaSHFScVqNMEfeUY6fUjPLw6XIQayOYvBNjPEpmjeqNbnGu/SC31dDYazOPWyIWrQ26IP
-B8v6JkhcbVJBpuiaZqvynEL8F2CoRsTAEA=
+    secure: cex4RgZNUpLwCF40sZTBj7/m+aINEzKi5qMBMIyjLHKfnETmjpzSGPVf+P3qjNgpUvV2TaSHFScVqNMEfeUY6fUjPLw6XIQayOYvBNjPEpmjeqNbnGu/SC31dDYazOPWyIWrQ26IPB8v6JkhcbVJBpuiaZqvynEL8F2CoRsTAEA=
 
