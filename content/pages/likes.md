@@ -55,11 +55,14 @@ Title: John Likes
 - <http://www.se-radio.net/2017/02/se-radio-episode-282-donny-nadolny-on-debugging-distributed-systems/>
 - <http://www.se-radio.net/2017/03/se-radio-episode-285-james-cowling-on-dropboxs-distributed-storage-system/>
 - <https://www.codingblocks.net/podcast/clean-code-programming-around-boundaries/>
+- <http://www.npr.org/sections/money/2017/04/28/526051566/episode-553-the-dollar-at-the-center-of-the-world>
 
 ## Web Articles and Tools
 
 - <http://highscalability.com/blog/2014/2/26/the-whatsapp-architecture-facebook-bought-for-19-billion.html>
 - <http://highscalability.com/blog/2014/3/31/how-whatsapp-grew-to-nearly-500-million-users-11000-cores-an.html>
+- <https://news.ycombinator.com/item?id=13960107> (modules vs microservices)
+- <https://brandur.org/heroku-values>
 - <https://urchin.biz> (pre-history of google analytics)
 - <https://archive.org/> (the backup of the internet)
 - <https://webpagetest.org> (website speed test with slow devices)
