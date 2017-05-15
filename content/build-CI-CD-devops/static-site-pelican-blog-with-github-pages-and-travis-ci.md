@@ -17,6 +17,7 @@ Related articles:
 - <https://blog.john-pfeiffer.com/how-to-set-up-a-pelican-static-blog-site/>
 - <https://blog.john-pfeiffer.com/static-site-with-bitbucket-and-shippable-and-pelican/>
 
+
 ## Github Setup
 
 Sign in to GitHub , <https://github.com/login>
@@ -63,11 +64,13 @@ You do not want the unencrypted oauth token in your yaml file or even in the log
 > There is a special travis requirement of knowing the owner/repo , i.e. **username/source.username.github.io**
 
 > The easy way
+
     docker run -it --rm ruby:alpine /bin/sh
     apk add --no-cache build-base
     gem install travis travis-lint
 
 > The slightly longer way with Ubuntu
+
     docker run -it --rm ubuntu:trusty
     apt-get update
     apt-get install -y ruby1.9.3 build-essential
@@ -79,11 +82,15 @@ The actual travis commands...
     travis pubkey -r username/source.username.github.io
     travis encrypt GH_TOKEN=your_github_personal_oauth_token -r username/source.username.github.io
 
-> Alternatively make a fake yaml file and get the exact output added by the command, `touch .travis.yml && travis encrypt GH_TOKEN=your_github_personal_oauth_token -r username/source.username.github.io --add env.global && less .travis.yml`
+> Alternatively make a fake yaml file and get the exact output added by the commands:
+> - `touch .travis.yml`
+> - `travis encrypt GH_TOKEN=your_github_personal_oauth_token -r username/source.username.github.io --add env.global`
+> - `less .travis.yml`
 
 - <https://docs.travis-ci.com/user/environment-variables/#Defining-encrypted-variables-in-.travis.yml>
 - <https://docs.travis-ci.com/user/encryption-keys#Fetching-the-public-key-for-your-repository>
 - <https://github.com/travis-ci/travis.rb/issues/296>
+
 
 #### .travis.yml
 
@@ -103,7 +110,7 @@ At the root of your source.username.github.io you'll need the Travis configurati
         - git clone https://github.com/getpelican/pelican-plugins.git
         - mv ./pelican-plugins/* ./plugins
         - pelican ./content -o ./output -s ./publishconf.py
-        - git clone --quiet https://${GH_TOKEN}@github.com/johnpfeiffer/johnpfeiffer.github.io.git > /dev/null
+        - git clone --quiet https://${GH_TOKEN}@github.com/username/username.github.io.git > /dev/null
         - cd johnpfeiffer.github.io
         - git config user.email "me@john-pfeiffer.com"
         - git config user.name "John Pfeiffer"
@@ -121,16 +128,16 @@ At the root of your source.username.github.io you'll need the Travis configurati
 
 The "target" repository is manually cloned using the encrypted oauth token, and the pelican output is then pushed to it.  No humans involved!
 
+
 ## Using a CNAME to have your own custom domain point to the GitHub Pages Pelican Blog
 
 To ensure maximum coolness (and SEO points) make sure you have DNS control over the domain you have in mind so you can redirect it to your new static pelican-based blog (hosted for free by github pages).
 
 1. Basically in the GitHub repo settings of source.username.github.io choose "Custom domain"
-2. Then add a CNAME with your DNS provider (i.e. from Namecheap I pointed blog.john-pfeiffer.com to johnpfeiffer.github.io)
+2. Then add a CNAME with your DNS provider (i.e. from Namecheap or Cloudflare I pointed blog.john-pfeiffer.com to johnpfeiffer.github.io)
 
 - <https://help.github.com/articles/using-a-custom-domain-with-github-pages/>
 - <https://help.github.com/articles/adding-or-removing-a-custom-domain-for-your-github-pages-site/>
 - <https://help.github.com/articles/setting-up-a-custom-subdomain/>
-
 
 
