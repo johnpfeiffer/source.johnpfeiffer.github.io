@@ -29,7 +29,6 @@ Download and extract the SDK (e.g. gae-python.zip)
 
 ### A first helloworld/app.yaml
 
-
     application: john-pfeiffer
     version: 1
     runtime: python27
@@ -38,15 +37,35 @@ Download and extract the SDK (e.g. gae-python.zip)
     
     handlers:
     - url: /favicon\.ico
-    static_files: favicon.ico
-    upload: favicon\.ico
+      static_files: favicon.ico
+      upload: favicon\.ico
     
     - url: .*
-    script: main.app
+      script: main.app
     
     libraries:
     - name: webapp2
-    version: "2.5.2"
+      version: "2.5.2"
+> yaml files are indentation based
+
+#### A revised yaml file
+
+    runtime: python27
+    api_version: 1
+    threadsafe: yes
+
+    handlers:
+    - url: .*
+      script: main.app
+
+    libraries:
+    - name: webapp2
+      version: "2.5.2"
+> the newer requirement is to NOT include the application name or version, apparently that is passed as a CLI parameter 
+
+
+- <https://cloud.google.com/appengine/docs/standard/python/getting-started/hosting-a-static-website#creating_the_appyaml_file>
+- <https://cloud.google.com/sdk/gcloud/reference/config/set>
 
 
 ### helloworld/main.py
@@ -125,15 +144,15 @@ It is easy to use the MVC pattern while inheriting from the framework <https://w
     
     handlers:
     - url: /favicon.ico
-    static_files: favicon.ico
-    upload: favicon.ico
+      static_files: favicon.ico
+      upload: favicon.ico
     
     - url: /.*
-    script: main.app
+      script: main.app
     
     libraries:
     - name: webapp2
-    version: "2.5.2"
+      version: "2.5.2"
 
 ### main.py
 
