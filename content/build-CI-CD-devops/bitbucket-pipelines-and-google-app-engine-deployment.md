@@ -75,11 +75,12 @@ Use the Bitbucket WebUI in order to securely add the three variables (project id
 
 i.e. <https://bitbucket.org/johnpfeiffer/continuous-deployment-bitbucket/admin/addon/admin/pipelines/repository-variables>
 
-**Ensure the Pipelines Environment variables are "Secured"** so that they are encrypted in log output
 
 - CLOUDSDK_CORE_PROJECT (the app engine project id)
 - GOOGLE_API_KEY
 - GOOGLE_CLIENT_SECRET (all of the contents of the json file pasted in)
+
+**Ensure the Pipelines Environment variable of GOOGLE_CLIENT_SECRET is "Secured"** so that they are encrypted in log output
 
 
 Full instructions: <https://cloud.google.com/solutions/continuous-delivery-bitbucket-app-engine#setting_up_environment_variables>
