@@ -215,7 +215,7 @@ The example application below also shows how to override the default 404 and 500
 - <https://blog.john-pfeiffer.com/jinja2-a-web-html-template-layout-for-everyone/>
 - <https://cloud.google.com/appengine/docs/python/ndb/> has improved and deprecated the DB Datastore library used below
 
-    :::python
+
     #!/usr/bin/env python
     # 2013-01-20 johnpfeiffer
     
@@ -228,7 +228,7 @@ The example application below also shows how to override the default 404 and 500
     import jinja2
     
     from google.appengine.ext import db
-
+    
     jinja_environment = jinja2.Environment( loader=jinja2.FileSystemLoader( os.path.dirname( os.path.dirname( __file__ ) ) ) )        
     
     class Node( db.Model ):
@@ -365,7 +365,6 @@ The example application below also shows how to override the default 404 and 500
       ( '/createnodeform' , CreateNodeForm ),
       ( '/deletenode' , DeleteNode )
     ], debug = True )
-
     
     
     def handle_404 (request , response , exception) :

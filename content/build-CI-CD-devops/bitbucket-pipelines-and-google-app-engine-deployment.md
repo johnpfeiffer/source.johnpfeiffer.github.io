@@ -75,6 +75,13 @@ Use the Bitbucket WebUI in order to securely add the three variables (project id
 
 i.e. <https://bitbucket.org/johnpfeiffer/continuous-deployment-bitbucket/admin/addon/admin/pipelines/repository-variables>
 
+**Ensure the Pipelines Environment variables are "Secured"** so that they are encrypted in log output
+
+- CLOUDSDK_CORE_PROJECT (the app engine project id)
+- GOOGLE_API_KEY
+- GOOGLE_CLIENT_SECRET (all of the contents of the json file pasted in)
+
+
 Full instructions: <https://cloud.google.com/solutions/continuous-delivery-bitbucket-app-engine#setting_up_environment_variables>
 
 
@@ -235,6 +242,9 @@ This means adding unit tests (test_main.py) and then running them by updating bi
 
 It is also possible to keep extending the work required by installing any requirements.txt dependencies (i.e. only required for testing) or running post deployment end-to-end smoke tests.
 
+## Double checking security
+
+If your repository is public the pipelines log outputs will be public.  Double check that you are not "leaking" your API key, secrets, or hardcoded passwords. =|
 
 ## Troubleshooting
 
@@ -248,12 +258,16 @@ It is also possible to keep extending the work required by installing any requir
 > This is because previously app.yaml included "application" and "version" but those lines are now deprecated, delete them
 
 **"You do not have permission to access app "**
-> Most likely the Role of "App Engine Admin" still needs to be added, this requires creating in GAE a new "New service account" since I haven't found how to modify a service account to add roles
+> Most likely the Role of "App Engine Admin" still needs to be added, use the IAM for the project to update the Permissions
+
+e.g. <https://console.cloud.google.com/iam-admin/iam/project?project=bitbucket-pipelines>
+
+Or ensure you have an API key generated and added to the Bitbucket Pipelines environment
 
 <https://console.cloud.google.com/apis/credentials?project=bitbucket-pipelines>
 
 **"Caller does not have storage.objects.list access to bucket staging.bitbucket-pipelines.appspot.com."**
-> Ensure the Role "Storage Object Admin" was added to the Roles during creation, sadly I have not found a way to see a service account's current roles nor how to add them once it has been created =(
+> Ensure the Role "Storage Object Admin" was added to the Roles during creation, see above
 
 This guy got really close and helped me find the hint about Storage Object Admin: <http://www.deadunicornz.org/blog/2017/01/31/travis-ci-and-deploying-golang-apps-to-gae/>
 
