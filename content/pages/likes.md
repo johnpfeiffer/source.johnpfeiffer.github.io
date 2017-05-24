@@ -54,6 +54,7 @@ Title: John Likes
 - <http://www.se-radio.net/2017/01/se-radio-episode-280-gerald-weinberg-on-bugs-errors-and-software-quality/>
 - <http://www.se-radio.net/2017/02/se-radio-episode-282-donny-nadolny-on-debugging-distributed-systems/>
 - <http://www.se-radio.net/2017/03/se-radio-episode-285-james-cowling-on-dropboxs-distributed-storage-system/>
+- <http://www.se-radio.net/2017/04/se-radio-episode-287-success-skills-for-architects-with-neil-ford/>
 - <https://www.codingblocks.net/podcast/clean-code-programming-around-boundaries/>
 - <http://www.npr.org/sections/money/2017/04/28/526051566/episode-553-the-dollar-at-the-center-of-the-world>
 
