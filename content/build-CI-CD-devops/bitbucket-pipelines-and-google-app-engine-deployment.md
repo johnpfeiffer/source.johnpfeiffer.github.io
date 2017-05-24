@@ -262,9 +262,10 @@ If your repository is public the pipelines log outputs will be public.  Double c
 
 e.g. <https://console.cloud.google.com/iam-admin/iam/project?project=bitbucket-pipelines>
 
-Or ensure you have an API key generated and added to the Bitbucket Pipelines environment
+Or ensure you have an API key generated and added to the Bitbucket Pipelines environment ... or delete all API keys and service accounts and do them again (because it seems to get stuck if you have encrypted API key or something)
 
-<https://console.cloud.google.com/apis/credentials?project=bitbucket-pipelines>
+- <https://console.cloud.google.com/apis/credentials?project=bitbucket-pipelines>
+- <https://console.cloud.google.com/iam-admin/serviceaccounts/project?project=bitbucket-pipelines>
 
 **"Caller does not have storage.objects.list access to bucket staging.bitbucket-pipelines.appspot.com."**
 > Ensure the Role "Storage Object Admin" was added to the Roles during creation, see above
