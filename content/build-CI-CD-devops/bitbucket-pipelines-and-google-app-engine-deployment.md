@@ -278,9 +278,10 @@ This guy got really close and helped me find the hint about Storage Object Admin
 
 ## Using Docker with Bitbucket Pipelines
 
-<https://confluence.atlassian.com/bitbucket/use-docker-images-as-build-environments-in-bitbucket-pipelines-792298897.html>
-
 I could reduce the time required to build (and decouple the build stages) by using a Docker image that already contains the GCloud SDK.
 
 This also extends the flexibility if part of your build flow is to build and tag a Docker image as an artifact that can be used for multiple tests (i.e. parallelization) and especially if you are already using Docker in Production.
+
+- <https://confluence.atlassian.com/bitbucket/use-docker-images-as-build-environments-in-bitbucket-pipelines-792298897.html>
+- <https://confluence.atlassian.com/bitbucket/debug-your-pipelines-locally-with-docker-838273569.html>
 
