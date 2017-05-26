@@ -12,6 +12,8 @@ Like any other chore or drudge work the release process should be automated.
 
 I attempted to follow Google App Engine's documentation on how to setup Bitbucket Pipelines (yeah it's crazy how much free compute there is in the world such that I can tie together a free Continuous Integration service with a free Application Hosting service) but ran into a few snags I thought I'd document.
 
+> Leveraging SaaS source control, CI, and CD means inherently placing trust in those vendors (and their ops and security teams)
+
 ## Google Cloud Setup
 
 <https://cloud.google.com/solutions/continuous-delivery-bitbucket-app-engine>
@@ -272,4 +274,13 @@ Or ensure you have an API key generated and added to the Bitbucket Pipelines env
 > Ensure the Role "Storage Object Admin" was added to the Roles during creation, see above
 
 This guy got really close and helped me find the hint about Storage Object Admin: <http://www.deadunicornz.org/blog/2017/01/31/travis-ci-and-deploying-golang-apps-to-gae/>
+
+
+## Using Docker with Bitbucket Pipelines
+
+<https://confluence.atlassian.com/bitbucket/use-docker-images-as-build-environments-in-bitbucket-pipelines-792298897.html>
+
+I could reduce the time required to build (and decouple the build stages) by using a Docker image that already contains the GCloud SDK.
+
+This also extends the flexibility if part of your build flow is to build and tag a Docker image as an artifact that can be used for multiple tests (i.e. parallelization) and especially if you are already using Docker in Production.
 

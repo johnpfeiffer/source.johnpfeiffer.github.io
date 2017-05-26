@@ -216,9 +216,11 @@ The example application below also shows how to override the default 404 and 500
 - <https://cloud.google.com/appengine/docs/python/ndb/> has improved and deprecated the DB Datastore library used below
 
 
+- - -
+    :::python
     #!/usr/bin/env python
     # 2013-01-20 johnpfeiffer
-    
+     
     import os
     import logging
     import traceback
