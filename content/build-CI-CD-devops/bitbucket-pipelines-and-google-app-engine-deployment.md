@@ -18,20 +18,21 @@ I attempted to follow Google App Engine's documentation on how to setup Bitbucke
 
 <https://cloud.google.com/solutions/continuous-delivery-bitbucket-app-engine>
 
-Besides creating an App Engine Project the credentials to allow the automated deployment must also be generated.
+Besides creating an App Engine Project (python) also create the credentials to allow the automated deployment.
 
-1. Create a new project in Google: <https://console.cloud.google.com/appengine/create?lang=python&project=example-john>
-2. Or use the Web UI <https://console.cloud.google.com/iam-admin/iam/project?project=example-john> (Use the "Select a project dropdown" in the middle and in the Select menu use the + symbol on the right to "Create project")
-2. Note the ID: <https://console.cloud.google.com/home/dashboard?project=example-john>
-3. BILLING on the left, enable that (and link your credit card I guess, Google are moving everything away from free - and the credit card is another way to track and correlate everything you do)
-4. Enable the App Engine Admin API <https://console.cloud.google.com/apis/library?project=example-john>
-5. Navigate to the Google Cloud Platform Console credentials page <https://console.cloud.google.com/apis/credentials?project=example-john>
-6. Click Create credentials -> Service account key
-7. Select "New service account" from the Service account dropdown
-8. Input a name like "Bitbucket authorization" in the Service account name field
-9. ENSURE the ROLES contain at least: App Engine -> **App Engine Admin** and Storage -> **Storage Admin**
-10. Click the Create button. A copy of the JSON file will automatically download to your computer.   (if necessary on the right three dots choose "create key" -> create private key for "..." JSON
-11. Click Create credentials > API key
+1. Create a new Cloud project in Google: <https://console.cloud.google.com/projectcreate>
+2. Also create a new App Engine Project: <https://console.cloud.google.com/projectselector/appengine/create?lang=python&st=true> (you will need to choose your region such as us-central, or use the Web UI <https://console.cloud.google.com/iam-admin/iam/project?project=example-john> (Use the "Select a project dropdown" in the middle and in the Select menu use the + symbol on the right to "Create project")
+3. Note the ID: <https://console.cloud.google.com/home/dashboard?project=example-john>
+4. BILLING on the left, enable that (and link your credit card I guess, Google are moving everything away from free - and the credit card is another way to track and correlate everything you do)
+5. Enable the App Engine Admin API <https://console.cloud.google.com/apis/library?project=example-john>
+6. Navigate to the Google Cloud Platform Console credentials page <https://console.cloud.google.com/apis/credentials?project=example-john>
+7. Click Create credentials -> Service account key
+8. Select "New service account" from the Service account dropdown
+9. Input a name like "Bitbucket authorization" in the Service account name field
+10. ENSURE the ROLES contain at least: App Engine -> **App Engine Admin** and Storage -> **Storage Admin**
+11. Click the Create button. A copy of the JSON file will automatically download to your computer.   (if necessary on the right three dots choose "create key" -> create private key for "..." JSON
+12. Click Create credentials > API key
+
 
 ## Bitbucket Setup
 
@@ -71,6 +72,8 @@ A previous example of writing a Python web app with Google App Engine <https://b
 
 ## Bitbucket Pipelines Configuration
 
+Enable the Pipelines feature: <https://bitbucket.org/johnpfeiffer/continuous-deployment-bitbucket/addon/pipelines/home#!/getting-started>
+
 ### Configuring the secure environment variables in Bitbucket Pipelines
 
 Use the Bitbucket WebUI in order to securely add the three variables (project id, api key, secrets json).
@@ -82,7 +85,7 @@ i.e. <https://bitbucket.org/johnpfeiffer/continuous-deployment-bitbucket/admin/a
 - GOOGLE_API_KEY
 - GOOGLE_CLIENT_SECRET (all of the contents of the json file pasted in)
 
-**Ensure the Pipelines Environment variable of GOOGLE_CLIENT_SECRET is "Secured"** so that they are encrypted in log output
+**Ensure the Pipelines Environment variable of GOOGLE_CLIENT_SECRET is "Secured"** so it is encrypted (i.e. all asterisks in the forms or in the log output)
 
 
 Full instructions: <https://cloud.google.com/solutions/continuous-delivery-bitbucket-app-engine#setting_up_environment_variables>
@@ -116,6 +119,8 @@ A yaml configuration file describes the work that you instruct Bitbucket Pipelin
 
 ### scripts/fetch_gae_sdk.py
 
+- - -
+    :::python
     #!/usr/bin/env python
     # Copyright 2015 Google Inc. All rights reserved.
     #
@@ -212,6 +217,7 @@ A yaml configuration file describes the work that you instruct Bitbucket Pipelin
     
     if __name__ == '__main__':
         sys.exit(main(sys.argv[:]))
+    
 > This is google's script to download and extract their App Engine SDK , included here only for completeness
 
 
@@ -251,6 +257,11 @@ If your repository is public the pipelines log outputs will be public.  Double c
 
 ## Troubleshooting
 
+**The current Google Cloud project [go-lanscan] does not contain an App Engine application. Use `gcloud app create` to initialize an App Engine application within the project.**
+> You need to create the initial app engine project, either with the WebUI <https://console.cloud.google.com/appengine/start?project=bitbucket-pipelines> or using the GCloud CLI
+
+*You will need to be prompted for your region, i.e. us-central*
+
 **"Does not contain a valid app engine project"**
 > Most likely the app.yaml has deprecated fields or invalid characters
 
@@ -282,6 +293,54 @@ I could reduce the time required to build (and decouple the build stages) by usi
 
 This also extends the flexibility if part of your build flow is to build and tag a Docker image as an artifact that can be used for multiple tests (i.e. parallelization) and especially if you are already using Docker in Production.
 
+### Create an automated docker image build in Docker Hub
+
+Link a source code repository to Docker (sadly the bitbucket one requires overly broad permissions whereas the github one only requires public read)
+
+Follow the steps in their tutorial to create a repository with a Dockerfile and then have it auto-build an image and upload it to Docker Hub
+
+- <https://docs.docker.com/docker-hub/builds/>
+- <https://hub.docker.com/r/foupfeiffer/gcloud-sdk/~/dockerfile/>
+
+### Using a public image from Docker Hub
+
+To verify App Engine publishing from the Docker container manually: 
+`docker run --rm -it --volume /opt/mysecrets:/opt/mysecrets --volume /opt/myrepo:/opt/myrepo foupfeiffer/gcloud-sdk /bin/bash`
+
+Run these commands in the Docker container...
+
+    cp -a /opt/mysecrets/api_key.py /opt/myrepo
+    export CLOUDSDK_CORE_DISABLE_PROMPTS=1
+    export CLOUDSDK_CORE_PROJECT=example-gae-id
+    cd /opt/myrepo
+    gcloud auth activate-service-account --key-file /opt/mysecrets/client-secret.json
+    gcloud --verbosity=error app deploy app.yaml --promote
+
+> You are about to deploy the following services: Uploading 7 files to Google Cloud Storage
+
+*This assumes you have already correctly setup your Google Cloud Project, Google App Engine Project, Google Permissions, and that your repository has the correct app.yaml and main.py*
+
+### Updating your bitbucket-pipelines.yml to use a public docker image
+
+With your open sourced Dockerfile and docker image built in docker hub we can simplify some of the steps in our previous bitbucket-pipelines.yml file:
+
+
+    image: foupfeiffer/gcloud-sdk
+    
+    pipelines:
+      default:
+        - step:
+            script:
+              - export CLOUDSDK_CORE_DISABLE_PROMPTS=1
+              - echo "key = '${GOOGLE_API_KEY}'" > api_key.py
+              - echo ${GOOGLE_CLIENT_SECRET} > client-secret.json
+              - gcloud auth activate-service-account --key-file client-secret.json
+              - gcloud --verbosity=error app deploy app.yaml --promote
+
+> One you have pushed this change every future build will have the capabilities of your docker image (i.e. go build)
+
 - <https://confluence.atlassian.com/bitbucket/use-docker-images-as-build-environments-in-bitbucket-pipelines-792298897.html>
 - <https://confluence.atlassian.com/bitbucket/debug-your-pipelines-locally-with-docker-838273569.html>
+
+
 
