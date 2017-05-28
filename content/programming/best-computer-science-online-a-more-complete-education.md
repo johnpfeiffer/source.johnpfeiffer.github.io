@@ -89,6 +89,10 @@ by Mehran Sahami (very fun and Java is a good starting point)
 
 **Algorithms of course!**
 
+### Khan Academy
+
+A really well designed introductory algorithms course: <https://www.khanacademy.org/computing/computer-science/algorithms>
+
 ### MIT
 
 - <http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011>
