@@ -193,6 +193,18 @@ To take advantage of those tools (like gofmt on save), in your workspace (GOPATH
 
 Unfortunately it is not quite simple to execute the code directly in VSCode <https://github.com/Microsoft/vscode-go/issues/21>
 
+#### Custom VS Code icons and disabling annoying file icons
+
+There is a feature to show file icons at the top of every file (i.e. distinguish visually/graphically between Go source and HTML)
+
+Unfortunately the one with the excellent go plugin by lukehoban has little brown gophers that look like turds.  To disable/modify the file icons install another Theme called vscode-icons.
+
+https://marketplace.visualstudio.com/items?itemName=robertohuertasm.vscode-icons
+
+(Control + P) -> `ext install vscode-icons` -> choose the first one by Roberto
+
+Once "Icons for Visual Studio Code" is installed you can use File -> Preferences -> File Icon Theme and choose "None" (apparently Seti is the ugly brown blobs).
+
 ### Install or Build or Run
 
 Because Go is a static language there is a compilation (and linking) phase where the source code is transformed into a binary.

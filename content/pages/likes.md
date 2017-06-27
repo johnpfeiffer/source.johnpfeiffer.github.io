@@ -57,6 +57,7 @@ Title: John Likes
 - <http://www.se-radio.net/2017/04/se-radio-episode-287-success-skills-for-architects-with-neil-ford/>
 - <https://www.codingblocks.net/podcast/clean-code-programming-around-boundaries/>
 - <http://www.npr.org/sections/money/2017/04/28/526051566/episode-553-the-dollar-at-the-center-of-the-world>
+- <https://changelog.com/gotime/6> (Mechanical Sympathy with Bill Kennedy)
 
 ## Web Articles and Tools
 
