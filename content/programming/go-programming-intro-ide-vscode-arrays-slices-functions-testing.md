@@ -197,13 +197,33 @@ Unfortunately it is not quite simple to execute the code directly in VSCode <htt
 
 There is a feature to show file icons at the top of every file (i.e. distinguish visually/graphically between Go source and HTML)
 
-Unfortunately the one with the excellent go plugin by lukehoban has little brown gophers that look like turds.  To disable/modify the file icons install another Theme called vscode-icons.
+<https://code.visualstudio.com/docs/getstarted/themes#_icon-themes>
 
-https://marketplace.visualstudio.com/items?itemName=robertohuertasm.vscode-icons
+To graphically disable/modify the file icons: `File -> Preferences -> File Icon Theme and choose "None"`
 
-(Control + P) -> `ext install vscode-icons` -> choose the first one by Roberto
+To disable the theme using the settings file at the User level (or workspace level if you want to have to modify this for every project):
 
-Once "Icons for Visual Studio Code" is installed you can use File -> Preferences -> File Icon Theme and choose "None" (apparently Seti is the ugly brown blobs).
+File -> Preferences -> Setting
+
+USER SETTINGS (settings.json)
+
+    "workbench.iconTheme": null,
+
+*(previously it was vs-seti , apparently Seti is the poor rendition of gophers as ugly brown blobs)*
+
+<https://code.visualstudio.com/docs/getstarted/settings>
+
+#### Disabling the minimap enhanced scroll bar
+
+It is pretty nifty to see the scroll bar have colors/graphics indicating roughly where in the file you are.
+
+If you want to maximize your available editing width then you just want a "normal" scroll bar (or removed entirely because "clean code" your files are small ;)
+
+`File -> Preferences -> Setting`
+
+In USER SETTINGS add the line to the settings.json that the IDE opened for you (in proper JSON syntax):
+
+    "editor.minimap.enabled": false
 
 ### Install or Build or Run
 
