@@ -33,9 +33,14 @@ With code that is unreadable and therefore unmaintainable:
 > - Will the next developer be unable to fix a bug or maybe just removes the code entirely?
 > - Will you be unable to grow your organization as you cannot find anyone to work on your codebase anymore?
 
+Did these changes dramatically increase the complexity of the architecture or the product?
+> spaghetti-ball-of-mud-rube-goldberg-birth-of-a-blackhole?
 
 Was this "done" at the expense of burnout of an individual or the team?
 > Who will continue development of the feature or product?
+
+How do these changes affect operational complexity or cost?  Does crashing often or going bankrupt faster count as productivity?
+> Is this just squeezing the complexity bubble or shifting the burden?
 
 In "getting things done" did you burn bridges within your organization? What about partners or existing customers?
 > Did you make a small subset happier at the expense of a much larger group?
