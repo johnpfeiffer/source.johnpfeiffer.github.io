@@ -71,6 +71,39 @@ Golang currently does not have a "set" built into the language but given the cod
 - <https://xlinux.nist.gov/dads/HTML/set.html>
 - <https://github.com/golang/go/wiki/MethodSets>
 
+#### Low memory footprint map as a set
+
+When implementing a Set, in some cases you can be very parsimonious with memory by using an empty struct.
+This means you will rely on the very explicit _, ok pattern of checking for presence in the set.
+
+    :::go
+    package main
+    
+    import (
+        "fmt"
+        "unsafe"
+    )
+    
+    func main() {
+        m := make(map[rune]struct{})
+        fmt.Println(m)
+        m['a'] = struct{}{}
+        fmt.Println(m)
+        fmt.Printf("%#v \n", m)
+        fmt.Println(unsafe.Sizeof(m['a']))
+    
+        var b bool
+        fmt.Println(unsafe.Sizeof(b))
+        var n int8
+        fmt.Println(unsafe.Sizeof(n))
+        var i interface{}
+        fmt.Println(unsafe.Sizeof(i))
+    }
+
+> An empty struct is 0, a boolean and an int8 are size 1 (byte), an interface is size 8
+
+- <https://play.golang.org/p/9cUE9-wwDY>
+- <https://golang.org/pkg/unsafe/#Sizeof>
 
 ## Polymorphism with Go Interfaces
 
