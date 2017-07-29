@@ -34,6 +34,7 @@ Title: John Likes
 - <https://research.microsoft.com/en-us/um/people/lamport/pubs/lamport-paxos.pdf> (Leslie Lamport on Paxos)
 - <https://research.microsoft.com/en-us/um/people/lamport/pubs/paxos-simple.pdf> (Leslie Lamport on Paxos Simplified)
 - <https://queue.acm.org/detail.cfm?id=1142065> (Werner Vogels about AWS)
+- <http://queue.acm.org/detail.cfm?id=3104030> (Data Sketching summary)
 
 ## Podcasts
 
