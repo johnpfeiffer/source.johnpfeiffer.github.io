@@ -225,6 +225,34 @@ In USER SETTINGS add the line to the settings.json that the IDE opened for you (
 
     "editor.minimap.enabled": false
 
+
+#### Pro tip to avoid VS Code melting your system down
+
+If you find your machine suddenly slows down terribly with VS Code open and that CPU, then RAM, then finally swap (kswapd0) then you have probably run into an annoying trap:
+
+    /usr/share/code/code /usr/share/code/resources/app/out/bootstrap --type=watcherService
+
+That high cpu utilization is either the project file watcher indexing or one of the language plugins (because "open source") attempting to lint every file in the project.
+
+That's right, if you have a large git repository, a temp directory with some test data, or anything else it can get it reach Visual Studio Code will scan it at the expense of your machine.
+
+(and it may even be scanning all sorts of random locations throughout your file system (stare))
+
+<https://github.com/Microsoft/vscode/issues/3998>
+
+The following may have helped (but more likely is that I moved the large files to another directory outside of the Project):
+
+**settings.json**
+
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/**": true,
+        "**/*.aes": true,
+        "**/TEMP": true
+    }
+
+
 ### Install or Build or Run
 
 Because Go is a static language there is a compilation (and linking) phase where the source code is transformed into a binary.
