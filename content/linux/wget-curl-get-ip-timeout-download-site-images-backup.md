@@ -11,6 +11,16 @@ Tags: linux, wget, curl, get, ip, timeout, download, site, images, http, passwor
 
 ### curl
 
+cURL is often installed with Linux/MacOS but depends on a library installed on the operating system.
+
+- <https://en.wikipedia.org/wiki/CURL>
+- <https://curl.haxx.se/docs/libs.html>
+
+Given its ease of use and many programming language library wrappers it is a ubiquitous tool for HTTP operations.
+
+    sudo apt-get install -y curl
+> install curl on ubuntu
+
     curl -O https://example.com/folder/file
 > download the file using the original file name like wget
 
@@ -51,6 +61,8 @@ Tags: linux, wget, curl, get, ip, timeout, download, site, images, http, passwor
     -d '{"name":"Room of Requirement","owner":{"id":1234}}' https://example.com/room/55
 
 
+### spoofing google bot with curl and wget
+
     curl -A "Googlebot/2.1 (+http://www.google.com/bot.html)" -O https://support.google.com/webmasters/answer/1061943?hl=en
 > spoof googlebot to scrape a page that has nagging javascript
 
@@ -71,6 +83,20 @@ OR
 
 - - -
 ## wget examples to download a blog and images
+
+    wget "http://johnnypfeiffer.blogspot.com" --mirror --convert-links --warc-file="johnnypfeiffer-blogspot" --warc-cdx=on
+> using wget with the new WARC option to m
+
+Backups "outsourced" via <https://archive.org/> but you probably want a local copy (preferably burned to blu-ray) by using <https://en.wikipedia.org/wiki/Web_ARChive>
+
+*(you only need to keep the .warc.gz but the optional .cdx index may help you if later you want to list the contents without browsing the whole warc)*
+
+To view the web archive (even offline) you can try:
+
+- <https://github.com/webrecorder/webrecorderplayer-electron>
+- <https://github.com/sbilly/webarchiveplayer>
+- <https://github.com/ukwa/webarchive-explorer/tree/master>
+
     wget -r -H -D bpfeiffer.blogspot.com,1.bp.blogspot.com,2.bp.blogspot.com,3.bp.blogspot.com,4.bp.blogspot.com,www.blogger.blogspot.com,lh6.googleusercontent.com,lh5.googleusercontent.com,lh4.googleusercontent.com,lh3.googleusercontent.com, lh2.googleusercontent.com,lh1.googleusercontent.com -k -p -E -nH -erobots=off -U Mozilla http://bpfeiffer.blogspot.com
 > annoyingly have to find each google image server until figured out wildcards with the example list
 
