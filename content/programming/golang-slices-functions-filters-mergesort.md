@@ -22,6 +22,17 @@ Here is a major digression into Go slices which is a pointer structure that hold
 *Hint: the whole point of Go is to not need to use low level unsafe pointer arithmetic*
 
     :::go
+    package main
+     
+    import (
+        "fmt"
+        "unsafe"
+    )
+     
+    func main() {
+        capacityDoubles()
+    }
+     
     func capacityDoubles() {
         // slice of zero length and zero capacity, basically just a "slice header"
         // NOTE this is different from a "nil slice" which is a nil pointer
@@ -94,16 +105,16 @@ Here is a major digression into Go slices which is a pointer structure that hold
 
     :::go
     package main
-    
+     
     import (
         "fmt"
     )
-    
+     
     func main() {
 	a := []int{1, 2, 3}
 	fmt.Println(a[1:2])			// 2
 	fmt.Println(append(a, a[1:2]...))	// 1, 2, 3, 2
-    
+     
         // pre-allocating might be premature optimization and lead to bugs
         premature := make([]string, 10, 10)
         premature[0] = "foo"
