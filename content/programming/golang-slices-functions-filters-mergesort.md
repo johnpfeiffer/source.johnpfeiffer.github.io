@@ -90,6 +90,8 @@ Here is a major digression into Go slices which is a pointer structure that hold
 
 ### Examples of Go Slice operations and tricks
 
+- <https://github.com/golang/go/wiki/SliceTricks>
+
     :::go
     package main
     
@@ -98,6 +100,10 @@ Here is a major digression into Go slices which is a pointer structure that hold
     )
     
     func main() {
+	a := []int{1, 2, 3}
+	fmt.Println(a[1:2])			// 2
+	fmt.Println(append(a, a[1:2]...))	// 1, 2, 3, 2
+
         // pre-allocating might be premature optimization and lead to bugs
         premature := make([]string, 10, 10)
         premature[0] = "foo"
@@ -150,8 +156,7 @@ Here is a major digression into Go slices which is a pointer structure that hold
 
 > A critical thing to remember when reasoning is that slices are references to underlying arrays, so small subslice from a very large slice will prevent that larger object/array from being garbage collected
 
-- <https://play.golang.org/p/uMtgU3xFic>
-- <https://github.com/golang/go/wiki/SliceTricks>
+- <https://play.golang.org/p/znwrmQavmn> (work with the slice tricks example yourself)
 - <https://golang.org/ref/spec#Passing_arguments_to_..._parameters>
 - <https://golang.org/src/builtin/builtin.go?s=4716:4763#L124>
 
