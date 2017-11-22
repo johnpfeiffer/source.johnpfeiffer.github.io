@@ -339,6 +339,28 @@ This example ignored all sorts of real world questions around how the strings ar
 
 > -bench= can take a regexp to match only a subset of benchmark tests
 
+#### Go Benchmark with an expensive setup
+
+If you have some setup (e.g. creating a slice with test data) you probably do not want it inside of the benchmark ;)
+
+    go:::
+    // go test -v -run=NOMATCH -bench=BenchmarkKey
+    func BenchmarkKey(b *testing.B) {
+        a := getData(100)
+        b.ResetTimer()	
+        for i := 0; i < b.N; i++ {
+            problemKey(100, a)
+        }
+    }
+    
+    func getData(n int) []int {
+        a := make([]int, n)
+        for i := 0; i < n; i++ {
+            a[i] = i
+        }
+        return a
+     }
+> the timer of the benchmark testing has been reset before the "real" load , note that the compiler is smart and this may not always be necessary
 
 ## Profiling
 
