@@ -28,13 +28,14 @@ Title: John Likes
 - Applied Cryptography by Bruce Schneier
 - The Algorithm Design Manual, 2nd Edition by Steven Skiena
 - Testing Computer Software, 2nd Edition by Cem Kaner, Jack Falk, Hung Q. Nguyen
-- <http://www.essrl.wustl.edu/~jao/itrg/shannon.pdf> (Claude Shannon on Communication)
+- <https://www.essrl.wustl.edu/~jao/itrg/shannon.pdf> (Claude Shannon on Communication)
 - <https://www.cs.cmu.edu/~crary/819-f09/Hoare78.pdf> (Tony Hoare on Communicating Sequential Processes)
 - <https://research.microsoft.com/en-us/um/people/lamport/pubs/time-clocks.pdf> (Leslie Lamport on Time)
 - <https://research.microsoft.com/en-us/um/people/lamport/pubs/lamport-paxos.pdf> (Leslie Lamport on Paxos)
 - <https://research.microsoft.com/en-us/um/people/lamport/pubs/paxos-simple.pdf> (Leslie Lamport on Paxos Simplified)
 - <https://queue.acm.org/detail.cfm?id=1142065> (Werner Vogels about AWS)
-- <http://queue.acm.org/detail.cfm?id=3104030> (Data Sketching summary)
+- <https://queue.acm.org/detail.cfm?id=3104030> (Data Sketching summary)
+- <https://cacm.acm.org/magazines/2009/10/42360-retrospective-an-axiomatic-basis-for-computer-programming/fulltext> (C.A.R. Hoare on formal verification)
 
 ## Podcasts
 
