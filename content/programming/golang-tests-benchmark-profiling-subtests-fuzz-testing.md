@@ -163,6 +163,15 @@ Generate a "coverage profile" of how many times each statement was run, use the 
 `go tool cover -func=count.out`
 > utilize the "coverage profile" to see the coverage breakdown by function
 
+
+    bitbucket.org/johnpfeiffer/stringsmoar/stringsmoar.go:23:       RuneFrequency                   100.0%
+    ...
+    bitbucket.org/johnpfeiffer/stringsmoar/stringsmoar.go:82:       RemoveNthRune                   100.0%
+    bitbucket.org/johnpfeiffer/stringsmoar/stringsmoar.go:96:       RemoveNthItem                   0.0%
+    ...
+    bitbucket.org/johnpfeiffer/stringsmoar/stringsmoar.go:115:      Permutations                    100.0%
+    total:                                                          (statements)                    94.7%
+
 If you have a default browser configured you can use the following: `go tool cover -html=count.out` to generate a "heat map" and see exactly how often each line of code is covered. (red means not at all ;)
 
 - <https://blog.golang.org/cover>
@@ -196,7 +205,14 @@ Using the pattern of table driven tests improves the readability and extensibili
     }
     
     func TestSlicesMergeEmpty(t *testing.T) {
-        testCases := []slicesMergeTest{
+    // alternative "anonymous struct" example 
+    /* var testCases = [] struct {
+           a        []int
+           b        []int
+           expected []int
+       }{ */
+    
+        testCases := []slicesMergeTest {
             {a: empty, b: empty, expected: empty},
             {a: empty, b: nil, expected: empty},
             {a: nil, b: empty, expected: empty},
@@ -251,7 +267,10 @@ Using the pattern of table driven tests improves the readability and extensibili
 
 > Yes! You can pattern match on the string from the subtest table and only run a subset of subtests (mindblown)
 
+More info on the "table driven test" pattern:
+
 - <https://blog.golang.org/subtests>
+- <https://github.com/golang/go/wiki/TableDrivenTests>
 - <http://dave.cheney.net/2013/06/09/writing-table-driven-tests-in-go>
 
 

@@ -114,19 +114,6 @@ Some examples of slices in action <https://github.com/golang/go/wiki/SliceTricks
         a := []int{1, 2, 3}
         fmt.Println(a[1:2]) // 2
         fmt.Println(append(a, a[1:2]...)) // 1, 2, 3, 2
-
-
-    :::go
-    package main
-    
-    import (
-        "fmt"
-    )
-    
-    func main() {
-        a := []int{1, 2, 3}
-        fmt.Println(a[1:2]) // 2
-        fmt.Println(append(a, a[1:2]...)) // 1, 2, 3, 2
     
         // pre-allocating might be premature optimization and lead to bugs
         premature := make([]string, 10, 10)
@@ -139,19 +126,23 @@ Some examples of slices in action <https://github.com/golang/go/wiki/SliceTricks
         fmt.Println(len(s), s) // "5 [add multiple items at once]"
     
         // COPY also known as ADD to a slice (in this case add to a nil slice)
-        b := append([]string(nil), s...) // the triple dots (ellipsis in english) indicates a variadic parameter
-        // https://golang.org/ref/spec#Passing_arguments_to_..._parameters , https://golang.org/src/builtin/builtin.go?s=4716:4763#L124
+        // the triple dots (ellipsis in english) indicates a variadic parameter
+        b := append([]string(nil), s...)
+        // https://golang.org/ref/spec#Passing_arguments_to_..._parameters
+        // https://golang.org/src/builtin/builtin.go?s=4716:4763#L124
         fmt.Println(len(b), b) // "5 [add multiple items at once]"
     
         c := make([]string, len(s)) // perhaps more readable
         copy(c, s)
         fmt.Println(len(c), c) // "5 [add multiple items at once]"
     
-        // CUT - but warning, this only removes it from the slice, NOT the underlying array so a possible memory leak
+        // CUT - but warning, this only removes it from the slice... 
+        // NOT the underlying array so a possible memory leak!
         s = append(s[:1], s[4:]...) // up to but not including index 1, start at index 4 to the end
         fmt.Println(len(s), s)      // "2 [add once]"
     
-        // DELETE index 2 (same ordering), no memory leak by correctly setting it to the zero value (usually nil for objects)
+        // DELETE index 2 (same ordering)...
+        // so no memory leak by correctly setting it to the zero value (usually nil for objects)
         copy(b[2:], b[2+1:])
         b[len(b)-1] = ""
         b = b[:len(b)-1]
