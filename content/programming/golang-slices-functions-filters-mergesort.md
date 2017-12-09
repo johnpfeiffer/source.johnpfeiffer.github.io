@@ -101,8 +101,7 @@ Here is a major digression into Go slices which is a pointer structure that hold
 - <https://en.wikipedia.org/wiki/Dereference_operator>
 
 ### Examples of Go Slice operations and tricks
-
-- <https://github.com/golang/go/wiki/SliceTricks>
+Some examples of slices in action <https://github.com/golang/go/wiki/SliceTricks>
 
     :::go
     package main
@@ -113,8 +112,21 @@ Here is a major digression into Go slices which is a pointer structure that hold
     
     func main() {
         a := []int{1, 2, 3}
-        fmt.Println(a[1:2])			// 2
-        fmt.Println(append(a, a[1:2]...))	// 1, 2, 3, 2
+        fmt.Println(a[1:2]) // 2
+        fmt.Println(append(a, a[1:2]...)) // 1, 2, 3, 2
+
+
+    :::go
+    package main
+    
+    import (
+        "fmt"
+    )
+    
+    func main() {
+        a := []int{1, 2, 3}
+        fmt.Println(a[1:2]) // 2
+        fmt.Println(append(a, a[1:2]...)) // 1, 2, 3, 2
     
         // pre-allocating might be premature optimization and lead to bugs
         premature := make([]string, 10, 10)

@@ -148,10 +148,25 @@ This example function requires two slices of integers.
 
 #### Test Coverage
 
-Sometimes people talk about "test coverage" and while it's clear that 100% coverage is rarely possible (nor entirely desirable from the idea of diminishing returns and exponential growth in integration combinations outside of the simplest function) , it's still a useful metric/tool to discover if there's a chunk of code that's whistling in the wind.
+Sometimes people talk about "test coverage" and while it's clear that 100% coverage is rarely possible (nor entirely desirable from the idea of diminishing returns and exponential growth in integration combinations outside of the simplest function) , it's still a useful metric/tool to discover if there's a chunk of code that's "whistling in the wind".
 
 `go test -cover`
 > "coverage: 75.0% of statements"
+
+Generate a "coverage profile" of how many times each statement was run, use the current directory:
+`go test -covermode=count -coverprofile=count.out . `
+> ok      command-line-arguments  0.004s  coverage: 94.7% of statements
+
+`go test -covermode=count -coverprofile=count.out ./stringsmoar.go ./stringsmoar_test.go`
+> Alternatively, pass the name of the package (and test files)
+
+`go tool cover -func=count.out`
+> utilize the "coverage profile" to see the coverage breakdown by function
+
+If you have a default browser configured you can use the following: `go tool cover -html=count.out` to generate a "heat map" and see exactly how often each line of code is covered. (red means not at all ;)
+
+- <https://blog.golang.org/cover>
+
 
 ### Subtests
 
