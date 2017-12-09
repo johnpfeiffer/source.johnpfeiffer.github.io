@@ -39,19 +39,19 @@ Here is a major digression into Go slices which is a pointer structure that hold
         var nilPointer []int
         fmt.Printf("example nil pointer: %#v \n", nilPointer)
         fmt.Printf("has memory adddress: %p \n", &nilPointer)
-
+    
         s := make([]int, 0, 0)
         fmt.Printf("example empty slice: %#v \n", s)
         fmt.Printf("has memory adddress: %p \n", &s)
         fmt.Println("both have the same length:", len(nilPointer), len(s), "but does each equal nil? ", nilPointer == nil, s == nil)
-
+    
         fmt.Println(s)
         for i := 0; i < 3; i++ {
             // capacity doubles so a new underlying array, if we checked with reflect the memory address would change
             s = append(s, i)
             fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s)
         }
-
+    
         // https://golang.org/pkg/reflect/#SliceHeader
         // since a slice is a struct containing an underlying array of memory addresses...
         // https://golang.org/pkg/builtin/#byte
@@ -64,7 +64,7 @@ Here is a major digression into Go slices which is a pointer structure that hold
         // 0xc420074458 0xc420074459 , the two elements are exactly 1 byte apart in address locations
         // Getting the value from the memory location using a piont
         fmt.Printf("\nThe byte value in the second element is binary five: %b", *(&h[1]))
-
+    
         // https://golang.org/pkg/unsafe/
         fmt.Printf("\nUnsafe pointer of the first memory location: %p", unsafe.Pointer(&h[0]))
         // unsafe pointer arithmetic
@@ -76,7 +76,8 @@ Here is a major digression into Go slices which is a pointer structure that hold
         fmt.Println()
     }
     
-    
+
+
     example nil pointer: []int(nil)
     has memory adddress: 0xc42000e440
     example empty slice: []int{}
@@ -105,16 +106,16 @@ Here is a major digression into Go slices which is a pointer structure that hold
 
     :::go
     package main
-     
+    
     import (
         "fmt"
     )
-     
+    
     func main() {
         a := []int{1, 2, 3}
         fmt.Println(a[1:2])			// 2
         fmt.Println(append(a, a[1:2]...))	// 1, 2, 3, 2
-         
+    
         // pre-allocating might be premature optimization and lead to bugs
         premature := make([]string, 10, 10)
         premature[0] = "foo"
@@ -163,6 +164,7 @@ Here is a major digression into Go slices which is a pointer structure that hold
         }
         fmt.Println(len(b), b) // "5 [once at foobar add multiple]"
     }
+
 > Slices are fairly fundamental and while most things are easy there are definitely some gotchas
 
 > A critical thing to remember when reasoning is that slices are references to underlying arrays, so small subslice from a very large slice will prevent that larger object/array from being garbage collected
@@ -172,6 +174,35 @@ Here is a major digression into Go slices which is a pointer structure that hold
 - <https://golang.org/src/builtin/builtin.go?s=4716:4763#L124>
 
 > Of course, read the docs and test it for your requirements, situation, and circumstances!
+
+### Gotcha with Slices and Pointers
+
+Assigning a new slice variable (pointer) to an existing slice will link the two together.  This may lead to undesired "side-effects".
+
+    :::go
+    package main
+    
+    import (
+        "fmt"
+    )
+    
+    func main() {
+        s := []string{"a", "b", "c"}
+        fmt.Println(s) // [a b c]
+        i := 1
+        temp := s
+        temp = append(temp[:i], temp[i+1:]...)
+        fmt.Println(temp) // [a c]
+        fmt.Println(s) // [a c c]
+    
+        fmt.Printf("%p \n", &s)
+        fmt.Printf("%p \n", &temp)
+    }
+> removing (cut or delete) a specific element in the slice using the new pointer affects the original slice
+
+
+<https://play.golang.org/p/togSAlnj6J>
+
 
 ## Functions, Anonymous Functions, Functions as Parameters, and Filters
 
@@ -187,12 +218,12 @@ Since go starts from simple blocks we build, as needed, more complex tools like 
     // https://golang.org/doc/codewalk/functions/
     // filter is a type that allows us to apply a test to the provided integer parameter
     type filter func(x int) bool
-
+    
     // applyFilter is a trivial examply of using a filter as a parameter
     func applyFilter(fn filter, x int) bool {
         return fn(x)
     }
-
+    
     // SliceFilter returns a new slice filtered using the filter function parameter
     func SliceFilter(fn filter, n []int) []int {
         var result []int
@@ -203,7 +234,7 @@ Since go starts from simple blocks we build, as needed, more complex tools like 
         }
         return result
     }
-
+    
     // isEven returns a filter (the anonymous function inside)
     func isEven() filter {
         return func(x int) bool {
@@ -213,12 +244,12 @@ Since go starts from simple blocks we build, as needed, more complex tools like 
             return false
         }
     }
-
+    
     func main() {
         a := []int{2, 4, 6}
         b := []int{1, 3, 7, 9}
         c := []int{5, 3, -1, 12}
-
+    
         var iseven = func(x int) bool {
             if x%2 == 0 {
                 return true
@@ -242,7 +273,7 @@ And because I like source code in blogs, a highly imperfect mergesort.
 
     :::go
     package main
-
+    
     import (
         "fmt"
     )
@@ -276,7 +307,7 @@ And because I like source code in blogs, a highly imperfect mergesort.
         }
         return result, nil
     }
-
+    
     // SlicesMerge takes two sorted slices of integers and merges them into a single sorted slice of integers
     func SlicesMerge(a []int, b []int) []int {
         s := make([]int, len(a)+len(b))
@@ -297,7 +328,7 @@ And because I like source code in blogs, a highly imperfect mergesort.
         }
         return s
     }
-
+    
     //MergeConsecutiveElements joins two consecutive slice elements together
     func MergeConsecutiveElements(a [][]int) [][]int {
         var result [][]int
@@ -312,7 +343,7 @@ And because I like source code in blogs, a highly imperfect mergesort.
         }
         return result
     }
-
+    
     // MergeSort uses the merge sort algorithm to return a sorted a slice of integers
     func MergeSort(n []int) []int {
         parts, _ := SliceSplit(n, len(n))
@@ -320,28 +351,28 @@ And because I like source code in blogs, a highly imperfect mergesort.
         for len(result) > 1 {
             result = MergeConsecutiveElements(result)
         }
-
+    
         return result[0]
     }
-
+    
     func main() {
-
+    
         n := []int{2, 1, 0, -1}
         fmt.Println("unsorted start:", n)
         fmt.Println("sorted:", MergeSort(n))
-
+    
         n = []int{0, 1, 2}
         fmt.Println("unsorted start:", n)
         fmt.Println("sorted:", MergeSort(n))
-
+    
         n = []int{9, 2, 4, 3}
         fmt.Println("unsorted start:", n)
         fmt.Println("sorted:", MergeSort(n))
-
+    
         n = []int{9, 8, 7, 3, 2, 5}
         fmt.Println("unsorted start:", n)
         fmt.Println("sorted:", MergeSort(n))
-
+    
         fmt.Println("done")
     }
 
