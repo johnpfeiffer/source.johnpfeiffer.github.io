@@ -377,8 +377,9 @@ This example ignored all sorts of real world questions around how the strings ar
 
 If you have some setup (e.g. creating a slice with test data) you probably do not want it inside of the benchmark ;)
 
-    go:::
-    // go test -v -run=NOMATCH -bench=BenchmarkKey
+`go test -v -run=NOMATCH -bench=BenchmarkKey`
+
+    :::go
     func BenchmarkKey(b *testing.B) {
         a := getData(100)
         b.ResetTimer()	
