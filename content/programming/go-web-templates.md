@@ -147,6 +147,24 @@ TODO: more work to port over how to create secure endpoints with a "CheckAuth" m
 
 For instructions on how to have users authenticate and secure resources with identity providers like Github, Facebook, Google, etc.
 
+
+    sudo docker run --rm -it --publish 0.0.0.0:5432:5432 --name pg -e POSTGRES_PASSWORD=postgres postgres:alpine
+    go get -u -v github.com/gobuffalo/buffalo/buffalo
+    go get buffalo-goth
+    buffalo new example
+    buffalo generate goth-auth bitbucket
+
+In order to set up the Bitbucket OAuth credentials:
+*Log into bitbucket -> from your user profile (avatar) dropdown choose "bitbucket settings" -> click on OAuth (on the left) -> Add consumer*
+
+CallbackURL (for development): http://127.0.0.1:3000/auth/bitbucket
+Permissions: account email
+
+Now you have a KEY and SECRET
+
+- <https://confluence.atlassian.com/bitbucket/oauth-on-bitbucket-cloud-238027431.html>
 - <https://blog.gobuffalo.io/buffalo-tutorial-create-a-site-with-github-auth-629582e2763e>
 - <https://github.com/markbates/goth>
+
+`BITBUCKET_KEY=foobar BITBUCKET_SECRET=barfoo buffalo dev`
 

@@ -55,8 +55,8 @@ Webhooks are an incredibly useful way to tie together disparate network parts, W
     #!/bin/bash
 	git pull
 	GITMESSAGE=$(git log -n 1)
-	OUTPUT="../outputreponame.bitbucket.org"
-	./clean-output.sh "../sourcereponame.bitbucket.org"  # removes all of the old content
+	OUTPUT="../outputreponame.bitbucket.io"
+	./clean-output.sh "../sourcereponame.bitbucket.io"  # removes all of the old content
 	echo "$GITMESSAGE"
 	pelican content
 	cp -a ./output/* $OUTPUT
@@ -94,3 +94,4 @@ Webhooks are an incredibly useful way to tie together disparate network parts, W
 ### More info
 - <https://read-the-docs.readthedocs.org/en/latest/webhooks.html>
 - <https://confluence.atlassian.com/bitbucket/manage-webhooks-735643732.html>
+

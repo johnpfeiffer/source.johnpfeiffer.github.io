@@ -33,11 +33,11 @@ Why use a static site generator (pelican) instead of a hosted blog platform or a
     Please answer the following questions so this script can generate the files needed by Pelican.
 
     > Where do you want to create your new web site? [.]
-    > What will be the title of this web site? johnpfeiffer.bitbucket.org
+    > What will be the title of this web site? johnpfeiffer.bitbucket.io
     > Who will be the author of this web site? john pfeiffer
     > What will be the default language of this web site? [en]
     > Do you want to specify a URL prefix? e.g., http://example.com   (Y/n)
-    > What is your URL prefix? (see above example; no trailing slash) https://johnpfeiffer.bitbucket.org
+    > What is your URL prefix? (see above example; no trailing slash) https://johnpfeiffer.bitbucket.io
     > Do you want to enable article pagination? (Y/n)
     > Do you want to generate a Fabfile/Makefile to automate generation and publishing? (Y/n)
     > Do you want an auto-reload & simpleHTTP script to assist with theme and site development? (Y/n)
@@ -300,5 +300,4 @@ In this example I leverage some javascript and another pelican plugin (python) t
 - - <http://pygments.org/docs/lexers>
 - - <http://pygments.org/demo>
 - <https://bitbucket.org/johnpfeiffer/docker/src>
-
-    
+ 
