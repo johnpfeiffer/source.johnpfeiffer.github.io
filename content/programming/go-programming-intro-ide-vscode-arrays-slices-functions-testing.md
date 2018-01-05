@@ -193,6 +193,16 @@ To take advantage of those tools (like gofmt on save), in your workspace (GOPATH
 
 Unfortunately it is not quite simple to execute the code directly in VSCode <https://github.com/Microsoft/vscode-go/issues/21>
 
+#### VS Code preferences to disable telemetry and automatic updates
+
+File -> Preferences -> Settings
+
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    "update.channel": "none"
+
+> disabling sending stats and crash reports to vortex.data.microsoft.com and also prevent checking for software updates
+
 #### Custom VS Code icons and disabling annoying file icons
 
 There is a feature to show file icons at the top of every file (i.e. distinguish visually/graphically between Go source and HTML)
@@ -203,13 +213,16 @@ To graphically disable/modify the file icons: `File -> Preferences -> File Icon 
 
 To disable the theme using the settings file at the User level (or workspace level if you want to have to modify this for every project):
 
-File -> Preferences -> Setting
+File -> Preferences -> Settings
 
 USER SETTINGS (settings.json)
 
     "workbench.iconTheme": null,
 
 *(previously it was vs-seti , apparently Seti is the poor rendition of gophers as ugly brown blobs)*
+
+    "workbench.colorTheme": "Visual Studio Light",
+> because simple text with a light background is actually easier on the eyes
 
 <https://code.visualstudio.com/docs/getstarted/settings>
 
