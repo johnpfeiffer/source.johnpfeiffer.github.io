@@ -66,7 +66,7 @@ Specifically: People and Organization
 - You must give trust to receive trust
 - For hiring a remote team lead: prefer communication and then organization skills and finally technical skills - remember this person must overcome language/cultural barriers
 - Setup a remote hierarchy: they need to be able to resolve questions and become unblocked quickly via a local escalation process (i.e. a single decision maker in their office/timezone)
-- Don't be afraid to "lose a week" for them to learn something, research an approach, or just because of a misunderstanding (this is normal and it only feels more expensive than an "internal employee" because you actually get to see a bill for it
+- Don't be afraid to "lose a week" for them to learn something, research an approach, or just because of a misunderstanding (this is normal and it only feels more expensive than an "internal employee" because you actually get to see a bill for it)
 - Provide open ended goals (don't micromanage and over-prescribe) and people will often exceed expectations
 - Being nice is a universal truth
 
@@ -78,10 +78,11 @@ Clearly not everything leads to success, here are some important considerations:
 - Misunderstandings can turn into personal conflicts if not managed correctly
 - Beware slipping into an "us and them" mentality or "throwing it over the wall" or "finger pointing"
 - Skills may not always match up and it's rare remote contractors will directly interact with your customers - don't create unwinnable situations
-- Be careful when using contractors for critical path projects or key competitive intellectual property:
-- - You are betting your project/company success on a group that has more external risk and less alignment
-- - They may be pressured into taking shortcuts and are less likely to have to "pay" the long term costs (e.g. technical debt by skipping tests or large volumes of support tickets)
-- - Slippage and mistakes happen, by keeping it inside your own organization these can be managed quickly and appropriately
+
+Be careful when using contractors for critical path projects or key competitive intellectual property:
+- You are betting your project/company success on a group that has more external risk and less alignment
+- They may be pressured into taking shortcuts and are less likely to have to "pay" the long term costs (e.g. technical debt by skipping tests or large volumes of support tickets)
+- Slippage and mistakes happen, by keeping it inside your own organization these can be managed quickly and appropriately
 
 
 ## Things that you can takeaway
@@ -89,6 +90,7 @@ A foreign contractor can be just a productive as a domestic contractor or employ
 A good contractor is like finding a needle in a very large haystack so put in the effort to keep them happy.
 
 Contractors are people:
+
 - Personalize the relationship because you should get to know them: their interests, strengths, weaknesses, etc.
 - Find how they complement your team and give them a path to grow as professionals
 - Respect that they have national/religious holidays and personal lives
