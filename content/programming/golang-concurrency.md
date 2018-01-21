@@ -318,3 +318,5 @@ This means that for architecture decisions it is important to consider small sep
 - Use the select statement for a non-blocking way to check for early application termination events
 - Use buffers to even out spikes in work from sources/production
 
+<https://www.ardanlabs.com/blog/2017/10/the-behavior-of-channels.html>
+
