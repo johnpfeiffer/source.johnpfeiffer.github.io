@@ -633,7 +633,8 @@ Consider updating myvpn.conf to use port 443 and proto tcp in order to assist cl
 
 TODO: automate using packer and digital ocean apis to create an image
 
-<https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-ubuntu-16-04>
+- <https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-ubuntu-16-04>
+- <https://wiki.openwrt.org/doc/howto/vpn.openvpn#tab__using_openssl_commands_most_secure> (more secure by directly using openssl commands)
 
 ## Connect a client to the OpenVPN server
 
