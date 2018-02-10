@@ -26,6 +26,7 @@ Title: John Likes
 - The Mythical Man-Month: Essays on Software Engineering by Frederick P. Brooks Jr.
 - Design Patterns: Elements of Reusable Object-Oriented Software by Erich Gamma, Ralph Johnson, John Vlissides, Richard Helm
 - Applied Cryptography by Bruce Schneier
+- The Tangled Web: A Guide to Securing Modern Web Applications by Michal Zalewski
 - The Algorithm Design Manual, 2nd Edition by Steven Skiena
 - Testing Computer Software, 2nd Edition by Cem Kaner, Jack Falk, Hung Q. Nguyen
 - <https://www.essrl.wustl.edu/~jao/itrg/shannon.pdf> (Claude Shannon on Communication)
@@ -36,6 +37,7 @@ Title: John Likes
 - <https://queue.acm.org/detail.cfm?id=1142065> (Werner Vogels about AWS)
 - <https://queue.acm.org/detail.cfm?id=3104030> (Data Sketching summary)
 - <https://cacm.acm.org/magazines/2009/10/42360-retrospective-an-axiomatic-basis-for-computer-programming/fulltext> (C.A.R. Hoare on formal verification)
+- <https://spectrum.ieee.org/tech-history/silicon-revolution/hans-peter-luhn-and-the-birth-of-the-hashing-algorithm>
 
 ## Podcasts
 
@@ -58,10 +60,12 @@ Title: John Likes
 - <http://www.se-radio.net/2017/03/se-radio-episode-285-james-cowling-on-dropboxs-distributed-storage-system/>
 - <http://www.se-radio.net/2017/04/se-radio-episode-287-success-skills-for-architects-with-neil-ford/>
 - <http://www.se-radio.net/2017/06/se-radio-episode-295-michael-feathers-on-legacy-code/>
+- <http://www.se-radio.net/2017/10/se-radio-episode-306-ron-lichty-on-managing-programmers/>
 - <https://www.codingblocks.net/podcast/clean-code-programming-around-boundaries/>
 - <http://www.npr.org/sections/money/2017/04/28/526051566/episode-553-the-dollar-at-the-center-of-the-world>
 - <https://changelog.com/gotime/6> (Mechanical Sympathy with Bill Kennedy)
 - <https://www.manager-tools.com/all-podcasts> (no nonsense advice on the art of people management)
+
 
 ## Web Articles and Tools
 
@@ -70,8 +74,9 @@ Title: John Likes
 - <https://news.ycombinator.com/item?id=13960107> (modules vs microservices)
 - <https://brandur.org/heroku-values>
 - <https://urchin.biz> (pre-history of google analytics)
-- <https://archive.org/> (the backup of the internet)
+- <https://archive.org> (the backup of the internet)
 - <https://webpagetest.org> (website speed test with slow devices)
+- <http://tomtunguz.com/plant-a-tree-youll-never-see> (do the right thing even if you do not directly benefit)
 
 Follow with an atom feed link: <https://blog.john-pfeiffer.com/feeds/john-pfeiffer.atom.xml>
 
