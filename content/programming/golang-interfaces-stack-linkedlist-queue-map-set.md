@@ -229,6 +229,7 @@ This example uses a trivial Stack data structure but implements it 3 different w
 - <https://nathanleclaire.com/blog/2015/10/10/interfaces-and-composition-for-effective-unit-testing-in-golang/>
 - <https://blog.cloudflare.com/go-interfaces-make-test-stubbing-easy/>
 
+
 ## Doubly Linked List and First In First Out Queue
 With some small additions the linked list can be enhanced to provide the functionality of a Queue.
 The "doubly linked list" (<https://en.wikipedia.org/wiki/Doubly_linked_list>) means that one can traverse from either the head (using next) or the tail (using previous).
@@ -255,24 +256,23 @@ It is not too expensive to add the extra previous pointer to each node and a tai
         tail *IntNode
     }
 
-    // Enqueue puts an integer onto the front of the list
+    // Enqueue adds an integer onto the end of the list
     func (q *MyList) Enqueue(n int) {
         new := IntNode{value: n}
         if q.head == nil {
             q.head = &new
             q.tail = &new
         } else {
-            q.head.previous = &new
-            new.next = q.head
-            q.head = &new
+            q.tail.next = &new
+            q.tail = &new
         }
     }
 
-    // Dequeue removes the oldest integer from the list
+    // Dequeue removes the first integer added to the list (from the front)
     func (q *MyList) Dequeue() int {
         // TODO: error handling for dequeuing when the list is empty
-        result := q.tail
-        q.tail = result.previous
+        result := q.head
+        q.head = q.head.next
         return result.value
     }
 
@@ -289,7 +289,7 @@ It is not too expensive to add the extra previous pointer to each node and a tai
 
 > The terminology changed a little bit from Push to Enqueue but now we can have a simple "fair buffer"
 
-- <https://play.golang.org/p/aGMnou1jf7> *your queue in play*
+- <https://play.golang.org/p/tHIiRsk443C> *your queue in play*
 - <https://en.wikipedia.org/wiki/Queue_(abstract_data_type)>
 - <https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)>
 - <https://www.cs.cmu.edu/~adamchik/15-121/lectures/Stacks%20and%20Queues/Stacks%20and%20Queues.html>
@@ -307,36 +307,44 @@ Wonderfully there is an implementation of a Doubly Linked List in the Go standar
     )
     
     func main() {
-	    L := list.New()
-	    e1 := L.PushFront(1)
-	    L.InsertAfter(3, e1)
-	    e3 := L.Back()
-	    L.InsertBefore(2, e3)
-	    displayList(L)
+	L := list.New()
+	e1 := L.PushBack(1)	// enqueue
+	L.InsertAfter(3, e1)	
+	e3 := L.Back()
+	L.InsertBefore(2, e3)	
     
-	    L2 := list.New()
-	    L2.PushBack("D")
-	    displayList(L2)
-	    L.PushBackList(L2)
-	    displayList(L)
+	displayFIFO(L)
+	fmt.Printf("\nTraverse in reverse with Prev(): ")
+	displayLIFO(L)
     
-	    fmt.Printf("\nTraverse in reverse with Prev(): ")
-	    for e := L.Back(); e != nil; e = e.Prev() {
-		    fmt.Printf("%v ", e.Value)
-	    }
+	L2 := list.New()
+	L2.PushBack("D")
+	displayFIFO(L2)
+	L.PushBackList(L2)
+	displayFIFO(L)
     
-	    L.Remove(e1)
-	    fmt.Printf("\nRemoved %v", e1.Value)
-	    displayList(L)
-	    fmt.Printf("\nFront is now: %v", L.Front().Value)
-	    fmt.Printf("\n%#v", L)
+	L.Remove(e1)
+	fmt.Printf("\nRemoved %v", e1.Value)
+	displayFIFO(L)
+	fmt.Printf("\nFront is now: %v", L.Front().Value)
+	fmt.Printf("\n%#v", L)
     }
     
-    func displayList(L *list.List) {
-	    fmt.Printf("\nList length: %v \n", L.Len())
-	    for e := L.Front(); e != nil; e = e.Next() {
-		    fmt.Printf("%v ", e.Value)
-	    }
+    func displayFIFO(L *list.List) {
+        fmt.Printf("\nList length: %v \n", L.Len())
+        for e := L.Front(); e != nil; e = e.Next() {
+            fmt.Printf("%v ", e.Value)
+        }
+        fmt.Println()
     }
-> All of the node and pointer implementation is already handled for you, play with it here: <https://play.golang.org/p/cy0ws48foRT>
+    
+    func displayLIFO(L *list.List) {
+        fmt.Printf("\nList length: %v \n", L.Len())
+        for e := L.Back(); e != nil; e = e.Prev() {
+            fmt.Printf("%d ", e.Value.(int))
+        }
+        fmt.Println()
+    }
+
+> All of the node and pointer implementation is already handled for you, play with it here: <https://play.golang.org/p/FUEtqMNoaP9>
 
