@@ -88,6 +88,8 @@ Title: John Likes
 - <https://www.maxmind.com/en/geoip-demo> geo ip lookup
 - <https://mxtoolbox.com/NetworkTools.aspx>
 - <https://haveibeenpwned.com>
+- <https://bitbucket.org>
+- <https://github.com>
 
 ## Resources on Leadership and Management
 
