@@ -34,6 +34,13 @@ Instead of the ephemeral `export PATH=$PATH:/usr/local/go/bin` I prefer the pers
 
 **WARNING** be careful how you name your executables as the $GOPATH/bin will contain the names of the projects as binaries (so don't create a project or binary named bash!)
 
+#### Go Docs locally
+
+If you need the go standard library docs (and access to any of the code docs from repos in the path) you can run:
+`godoc -http=:6060`
+> A local web server with documentation for the go standard library
+<https://godoc.org/golang.org/x/tools/cmd/godoc>
+
 ### Manual Go CLI execution and compilation
 
 The traditional command line method is:
