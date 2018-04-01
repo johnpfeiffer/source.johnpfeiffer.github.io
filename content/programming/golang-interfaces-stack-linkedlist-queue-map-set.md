@@ -218,6 +218,13 @@ This example uses a trivial Stack data structure but implements it 3 different w
         var k LinkedListStack
         DemoStack(&k, "LinkedListStack")
     }
+> This example contradicts one of the best practices: pointer receivers should be consistent <https://tour.golang.org/methods/4> , so Show() and Push() should have the same receiver type
+
+- A Pointer Receiver allows the method to make a modification (i.e. syntactic sugar where `(s *SliceStack) Push(n int)` could be thought of as `Push(s *SliceStack, n int)`
+- A Pointer Receiver prevents an extra copy (in the instance of a very large object)
+- All of the methods of an interface should be consistent (as a part of the developer user experience)
+
+References:
 
 - <https://play.golang.org/p/U1l2Ni89L4> *play along with the source code snippet*
 - <https://bitbucket.org/johnpfeiffer/go-interfaces-stack-linkedlist> *the more complete source code*
