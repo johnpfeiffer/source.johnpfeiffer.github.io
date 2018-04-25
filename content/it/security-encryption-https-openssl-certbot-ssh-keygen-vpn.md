@@ -702,6 +702,7 @@ Or... From a client computer SCP to download the $FQDN>ovpn and then connect to 
 
 Moreover your DNS server can "leak" or be hijacked, here are some good alternatives to your snooping ISP or "big brother" evil corp.
 
+- 1.1.1.1 (cloudflare <https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/>)
 - 185.121.177.177 or 169.239.202.202 (http://dnsrec.meo.ws/ part of opennic)
 - 84.200.69.80 or 84.200.70.40 (dns.watch free, neutral, privacy)
 - https://www.opennic.org/
@@ -713,6 +714,7 @@ These are DNS providers that have been assimilated into the borg:
 - 216.146.36.36 (Dyn DNS was acquired by Oracle)
 - 209.244.0.4 (Level3 Communications telco was acquired by CenturyLink)
 - 208.67.220.220 (OpenDNS was acquired by Cisco and they basically store your data)
+- 208.69.38.205 (also opendns)
 - 8.8.8.8 (Google - so basically giving them even more data - especially when you use Chrome too)
 
 A non standard protocol to encrypt DNS traffic: <https://en.wikipedia.org/wiki/DNSCrypt>

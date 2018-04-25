@@ -21,13 +21,6 @@ Title: John Likes
 - The C Programming Language (2nd Edition) by Brian Kernighan and Dennis Ritchie
 - Effective Java Programming Language Guide by Joshua Bloch
 - Racing the Beam by Nick Montfort and Ian Bogost
-- The Everything Store: Jeff Bezos and the Age of Amazon
-- Steve Jobs by Walter Isaacson
-- The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses by Eric Ries
-- Founders at Work: Stories of Startups' Early Days by Jessica Livingston
-- Peopleware: Productive Projects and Teams by Tom DeMarco, Timothy Lister
-- The Mythical Man-Month: Essays on Software Engineering by Frederick P. Brooks Jr.
-- Managing Humans: Tales of leadership from the Silicon Valley by Michael Lopp
 - Design Patterns: Elements of Reusable Object-Oriented Software by Erich Gamma, Ralph Johnson, John Vlissides, Richard Helm
 - Applied Cryptography by Bruce Schneier
 - The Tangled Web: A Guide to Securing Modern Web Applications by Michal Zalewski
@@ -90,11 +83,23 @@ Title: John Likes
 - <https://haveibeenpwned.com>
 - <https://bitbucket.org>
 - <https://github.com>
+- <https://travis-ci.org>
+- <https://www.namecheap.com>
+- <https://letsencrypt.org>
 
 ## Resources on Leadership and Management
 
+- Peopleware: Productive Projects and Teams by Tom DeMarco, Timothy Lister
+- The Mythical Man-Month: Essays on Software Engineering by Frederick P. Brooks Jr.
+- Managing Humans: Tales of leadership from the Silicon Valley by Michael Lopp
+- The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses by Eric Ries
+- Founders at Work: Stories of Startups' Early Days by Jessica Livingston
+- Steve Jobs by Walter Isaacson
+- The Everything Store: Jeff Bezos and the Age of Amazon
+
 - <https://www.manager-tools.com/all-podcasts> (no nonsense advice on the art of people management)
 - <http://www.se-radio.net/2017/10/se-radio-episode-306-ron-lichty-on-managing-programmers>
+- <http://alistair.cockburn.us/Characterizing+people+as+non-linear%2c+first-order+components+in+software+development> (1999)
 - <http://randsinrepose.com/archives/category/management>
 - <http://tomtunguz.com/plant-a-tree-youll-never-see> (do the right thing even if you do not directly benefit)
 - <http://larahogan.me/management>
