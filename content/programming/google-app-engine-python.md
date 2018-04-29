@@ -388,3 +388,11 @@ The example application below also shows how to override the default 404 and 500
     app.error_handlers [ 404 ] = handle_404
     app.error_handlers [ 500 ] = handle_500
 
+
+# Pointing DNS and your domain to your appengine app
+
+If you want to have your appengine url be customized with a nice domain name you will need to have your registrar (like Namecheap =) point the DNS towards google:
+
+<https://cloud.google.com/appengine/docs/standard/python/mapping-custom-domains>
+
+
