@@ -346,6 +346,7 @@ Backup any existing ~/.ssh/id_rsa.pub
 ## Adding a Public Key to a remote server
 ON THE REMOTE SERVER IT SHOULD ONLY HAVE THE public key from .ssh/authorized_keys
 
+    :::bash
     mkdir /home/username/.ssh
     sudo vi /home/username/.ssh/authorized_keys
     > or  cat .ssh/id_rsa.pub | ssh username@123.45.56.78 "cat >> ~/.ssh/authorized_keys"
@@ -354,9 +355,10 @@ ON THE REMOTE SERVER IT SHOULD ONLY HAVE THE public key from .ssh/authorized_key
 
 Don't forget to modify:
 
+    :::bash
     sudo nano /etc/ssh/sshd_config
     #AuthorizedKeysFile     %h/.ssh/authorized_keys
-
+    
     /etc/init.d/ssh force-reload
     /etc/init.d/ssh restart
 
@@ -509,6 +511,7 @@ Future ideas: iptables 9090? forwarding?
 ## Docker OpenVPN
 Using Docker is one of the easiest ways to leverage all of the open source tools (assuming for security you inspect the upstream source code, clone the Dockerfile, build your own docker image/container ;)
 
+    :::bash
     # https://github.com/kylemanna/docker-openvpn
     # https://openvpn.net/index.php/open-source/documentation/howto.html
     export FQDN="example.com"
@@ -555,6 +558,7 @@ Using Docker is one of the easiest ways to leverage all of the open source tools
 - - VERIFY PERMISSIONS ONCE LOGGED IN WITH SSH: sudo su
 
 ### More Hardening
+
 - disable root user from using SSH access and harden with a non-standard port
 - - vim /etc/ssh/sshd_config
 - - - Port 22222
@@ -584,7 +588,7 @@ Setting up the certificate authority (since OpenVPN uses keys)
     ./build-ca
 > You can just press enter a bunch to use all the defaults that you preconfigured in the vars file previously
 
-`./build-key-server KEY_NAME (i.e. server or myvpn)
+`./build-key-server KEY_NAME` (i.e. server or myvpn)
 > Just press enter to accept all the defaults again (no challenge password!) and press y at the end to Sign and then Commit the certificates
 
     ./build-dh
@@ -595,11 +599,13 @@ Setting up the certificate authority (since OpenVPN uses keys)
 
 ### Configure openvpn
 
+    :::bash
     cp ~/openvpn-ca/keys
     sudo cp ca.crt myvpn.crt myvpn.key ta.key dh2048.pem /etc/openvpn
     gunzip -c /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz | sudo tee /etc/openvpn/myvpn.conf
 
 `vim /etc/openvpn/myvpn.conf`
+    :::bash
     tls-auth ta.key 0 # Remove the preceding ; to uncomment this line
     key-direction 0
     cipher AES-256-CBC
@@ -640,6 +646,7 @@ TODO: automate using packer and digital ocean apis to create an image
 
 ### OpenVPN client config infrastructure on the remote server
 
+    :::bash
     mkdir -p /root/client-configs/files
     chmod 700 /root/client-configs/files   
     cp /usr/share/doc/openvpn/examples/sample-config-files/client.conf /root/client-configs/base.conf
@@ -660,6 +667,7 @@ TODO: automate using packer and digital ocean apis to create an image
 
 
 `vim /root/client-configs/make_config.sh`
+    :::bash
     KEY_DIR=/root/openvpn-ca/keys
     OUTPUT_DIR=/root/client-configs/files
     BASE_CONFIG=/root/client-configs/base.conf
@@ -707,7 +715,15 @@ Moreover your DNS server can "leak" or be hijacked, here are some good alternati
 - 84.200.69.80 or 84.200.70.40 (dns.watch free, neutral, privacy)
 - https://www.opennic.org/
 
-`echo 185.121.177.177 >> /etc/resolvconf/resolv.conf.d/tail`
+    echo 185.121.177.177 >> /etc/resolvconf/resolv.conf.d/tail
+    sudo resolvconf -u
+> This should append the new resolver and force an update, though you may have to ifdown eth0 ; ifup eth0
+
+
+`dig -trace example.com`
+`nslookup -debug example.com`
+> either command will provide copious debugging output (and nslookup has an interactive mode with "d2" for extra debugging)
+
 
 These are DNS providers that have been assimilated into the borg:
 
@@ -722,23 +738,50 @@ A non standard protocol to encrypt DNS traffic: <https://en.wikipedia.org/wiki/D
 - - -
 # Letsencrypt and certbot for free SSL Certificates
 
-A relatively recent development has been a widespread effort to help secure more of everyone's communications by encouraing web sites to install SSL certificates (and automate renewals) for free...
+A relatively recent development has been a widespread effort to help secure more of everyone's communications by encouraing web sites to install SSL certificates (and automate renewals) for free.
 
-Here is the tool that allows you to easily automate getting a free SSL certificate (trusted by libraries and browsers no less)
+Here is the tool that allows you to easily automate getting a free SSL certificate (trusted by libraries and browsers no less)...
 
-Once again Docker simplifies things slightly (as long as you trust the container ;)
+*Once again Docker simplifies things slightly (as long as you trust the container hosted by quay.io CoreOS who was acquired by RedHat ;)*
 
-Prerequisite: setup a DNS record for yourdomain.com to point to the server
+Prerequisite: setup a DNS record for yourdomain.com to point to the server ip address.
 
-    docker run -it --rm -p 443:443 --name certbot -v /etc/letsencrypt:/etc/letsencrypt -v /var/log/letsencrypt:/var/log/letsencrypt quay.io/letsencrypt/letsencrypt certonly --standalone -d yourdomain.com
+## Create a free SSL cert with certbot in docker
 
+    :::bash
+    systemctl stop nginx
+    sudo docker run -it --rm -p 443:443 --name certbot -v /etc/letsencrypt:/etc/letsencrypt -v /var/log/letsencrypt:/var/log/letsencrypt quay.io/letsencrypt/letsencrypt certonly --standalone -d yourdomain.com
+    systemctl start nginx
+
+0. Downloads the container if it is not already in `docker images`
 1. Starts a container with a web server that binds to port 443 
-2. The same web server/tool sends a certificate signing request (from yourdomain.com) to letsencrypt.org
+2. The same web server/tool sends a certificate signing request (from your server running at yourdomain.com) to letsencrypt.org
 3. letsencrypt.org then attempts to contact the provided domain (DNS -> IP -> server -> docker container)
-4. the web server/tool then securely downloads the new SSL certificate
-5. all of the files used in the process are stored in /etc/letsencrypt (in this "simple" mode /etc/letsencrypt/live/yourdomain.com/
+4. The containerized-certbot-web-server/tool then securely downloads the new SSL certificate
+5. Files created in the process are stored in /etc/letsencrypt
+6. The "evergreen" certs are presented via symlinks in /etc/letsencrypt/live/yourdomain.com/
+7. Specific versioned copies of the certificates are stored in /etc/letsencrypt/archive/yourdomain.com
+8. letsencrypt certbot tool automatically generates the /etc/nginx/conf.d/default.conf (*which points to the config and cert files in /etc/letsencrypt/*)
 
+## Renew your SSL certificate with certbot and cron
 You can keep renewing the certificate (which lasts 90 days) for free and there are a number of other open source tools (which leverage the API/process)
+
+    :::bash
+    systemctl stop nginx
+    docker run -it --rm -p 443:443 --name certbot -v /etc/letsencrypt:/etc/letsencrypt -v /var/log/letsencrypt:/var/log/letsencrypt quay.io/letsencrypt/letsencrypt certonly --standalone --force-renewal -d yourdomain.com
+    systemctl start nginx
+> you must stop the production web server briefly in order to generate the updated certificate
+
+
+If you want to use a cron job for certificate renewal then put the previous instructions into an executable file named ssl-cert-renewal.sh
+
+    :::bash
+    echo '59 23 01 * * /home/USERNAME/ssl-cert-renewal.sh' >> /home/USERNAME/mymonthly.cron
+    crontab /home/USERNAME/mymonthly.cron
+    crontab -l
+
+> be sure to append to mymonthly.cron as the crontab command will override any previous cron jobs
+
 
 - <https://letsencrypt.org/how-it-works/>
 - <https://certbot.eff.org/docs/using.html#certbot-commands>
