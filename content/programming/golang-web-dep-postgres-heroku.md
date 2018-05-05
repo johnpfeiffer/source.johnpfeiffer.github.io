@@ -159,6 +159,8 @@ Templates built into the Go standard library can provide output that is safe fro
     }
 > This small change to our previous *main.go* allows our default web handler (aka controller) to return html
 
+*indextemplate.go*
+
     :::go
     package main
     
@@ -178,6 +180,8 @@ Templates built into the Go standard library can provide output that is safe fro
         return indexTemplate
     }
 > The function just returns the rendered template; since it is only called once in main it is not inefficient, and Must will panic if the template has an error
+
+`go run main.go indextemplate.go` allows you to test it locally
 
 - <https://golang.org/pkg/html/template/>
 
