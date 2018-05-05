@@ -4,7 +4,7 @@ Tags: go, golang, vscode, testing, arrays, slices, binary search
 
 [TOC]
 
-Introducing the Go Programming Language (aka golang) basics, interactive sandbox with <http://play.golang.org>
+Introducing the Go Programming Language (aka golang) basics, interactive sandbox with <https://play.golang.org>
 
 ## Prerequisites
 
@@ -66,7 +66,7 @@ To build a binary in the current directory:
 > Be aware that sometimes you may forget and commit this new binary to version control (badpokerface)
 
 - <https://golang.org/doc/code.html#Command>
-- <http://dave.cheney.net/2014/01/21/using-go-test-build-and-install>
+- <https://dave.cheney.net/2014/01/21/using-go-test-build-and-install>
 
 A concrete example:
 
@@ -158,7 +158,7 @@ If developing on Mac OSX and wanted to compile/build a 64bit linux binary
 Dave Cheney's suggestion about "build vs install" is a good one since the cached intermediate .a files in the directory pkg/ may complicate things, especially for a cross compilation.
 
 - <https://golang.org/doc/install/source#environment>
-- <http://dave.cheney.net/2015/08/22/cross-compilation-with-go-1-5>
+- <https://dave.cheney.net/2015/08/22/cross-compilation-with-go-1-5>
 
 ### Download and install an IDE
 
@@ -680,7 +680,7 @@ Using main and print is the poor man's Unit Testing ;)
 
 ### Efficient String append and replacement
 
-<http://stackoverflow.com/questions/1760757/how-to-efficiently-concatenate-strings-in-go>
+<https://stackoverflow.com/questions/1760757/how-to-efficiently-concatenate-strings-in-go>
 
     :::go
     func myReplace(source string) string {
@@ -699,7 +699,7 @@ Using main and print is the poor man's Unit Testing ;)
 ### Testing with Go
 
 - <https://golang.org/pkg/testing/>
-- <http://nathanleclaire.com/blog/2015/10/10/interfaces-and-composition-for-effective-unit-testing-in-golang/>
+- <https://nathanleclaire.com/blog/2015/10/10/interfaces-and-composition-for-effective-unit-testing-in-golang/>
 - <https://cloud.google.com/appengine/docs/go/tools/localunittesting/#Go_Introducing_the_Go_testing_package>
 
 ### A simple web server
@@ -828,3 +828,4 @@ The decorator pattern Anonymous functions an
 
 - <https://tour.golang.org/basics/>
 - <https://blog.joshsoftware.com/2014/03/12/learn-to-build-and-deploy-simple-go-web-apps-part-one/>
+
