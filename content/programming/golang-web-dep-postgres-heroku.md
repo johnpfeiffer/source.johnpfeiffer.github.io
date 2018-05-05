@@ -1,6 +1,6 @@
 Title: Go Web Development and Templates with Heroku
 Date: 2018-05-01 20:37
-Tags: go, golang, web, gorilla mux, http, template, heroku
+Tags: go, golang, web, gorilla mux, http, template, heroku, postgres
 
 [TOC]
 
@@ -59,7 +59,7 @@ First download and install the Go dependency tool:
 - <https://devcenter.heroku.com/articles/go-apps-with-dep#build-configuration>
 - <https://devcenter.heroku.com/articles/go-apps-with-dep#getting-started>
 
-    :::bash
+
     cd DIRECTORY/OF/WEBAPP
     dep init
     go list -e .
@@ -70,7 +70,7 @@ First download and install the Go dependency tool:
     git commit -m "initial web app and using go dep"
     git push
 
-- <https://github.com/johnpfeiffer/web-go/blob/master/Gopkg.toml>
+- Example simple Go dep configuration file <https://github.com/johnpfeiffer/web-go/blob/master/Gopkg.toml>
 
 ## Deploying to Heroku from Github via Travis-CI
 
@@ -148,7 +148,42 @@ Now a browser that hits the Heroku URL will see "hi" , <https://web-go.herokuapp
 
 ## Templates for Content
 
+Separating out the static html content from dynamic and business logic parts of the application is a key way to remain modular.
+Templates built into the Go standard library can provide output that is safe from code injection.
+
+    :::go
+    var indexTemplate = GetIndexTemplate()
+    
+    func myHandler(w http.ResponseWriter, r *http.Request) {
+        indexTemplate.Execute(w, NoData{})
+    }
+> This small change to our previous *main.go* allows our default web handler (aka controller) to return html
+
+    :::go
+    package main
+    
+    import "html/template"
+    
+    // NoData is an empty struct as I do not pass anything into the template
+    type NoData struct{}
+    
+    // GetIndexTemplate returns the index.html template https://golang.org/pkg/html/template/#Template
+    func GetIndexTemplate() *template.Template {
+        var indexTemplate = template.Must(template.New("index").Parse(`<html><head><style type="text/css">
+    body{
+      font-size: 1.9em;
+    }
+    </style></head><body>hi</body></html>
+    `))
+        return indexTemplate
+    }
+> The function just returns the rendered template; since it is only called once in main it is not inefficient, and Must will panic if the template has an error
+
 - <https://golang.org/pkg/html/template/>
+
+### Passing Variables to a Template
+
+
 
 ## TestDrivenDesign and Gorilla Mux
 
@@ -168,7 +203,7 @@ To see the logs from the web application running in heroku: `heroku logs --app A
 
 - <https://devcenter.heroku.com/articles/getting-started-with-go#define-config-vars>
 
-### Custom Domains
+### Custom Domains with Heroku
 To use a custom domain name for your traffic <https://devcenter.heroku.com/articles/custom-domains>
 
 ### Downloading the source code from Heroku
