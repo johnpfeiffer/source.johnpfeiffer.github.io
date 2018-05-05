@@ -164,3 +164,11 @@ Just use the golang image based on alpine linux ;)
 Maybe 
 
 <http://dominik.honnef.co/posts/2015/06/go-musl/> ?
+
+### Git with Alpine
+
+    :::bash
+    apk update
+    apk add --no-cache git
+    git --version
+

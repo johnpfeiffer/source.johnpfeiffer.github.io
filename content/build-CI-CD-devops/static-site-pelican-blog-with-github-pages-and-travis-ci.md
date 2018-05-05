@@ -28,8 +28,7 @@ In source.username.github.io you will put the source markdown and theme etc. fro
 
 The username.github.io will be where the output pelican transformed .html is automatically pushed by Travis CI and is conveniently served by GitHub pages. <https://pages.github.com/>
 
-
-Ensure <https://github.com/integrations/travis-ci> is authorized by clicking on the Configure button.
+Ensure <https://travis-ci.org> is authorized by clicking on the Configure button, <https://docs.travis-ci.com/user/getting-started/>
 
 (You can review the OAuth apps with <https://github.com/settings/applications>)
 
@@ -65,12 +64,14 @@ You do not want the unencrypted oauth token in your yaml file or even in the log
 
 > The easy way
 
+    :::bash
     docker run -it --rm ruby:alpine /bin/sh
     apk add --no-cache build-base
     gem install travis travis-lint
 
 > The slightly longer way with Ubuntu
 
+    :::bash
     docker run -it --rm ubuntu:trusty
     apt-get update
     apt-get install -y ruby1.9.3 build-essential
@@ -78,6 +79,7 @@ You do not want the unencrypted oauth token in your yaml file or even in the log
 
 The actual travis commands...
 
+    :::bash
     travis help
     travis pubkey -r username/source.username.github.io
     travis encrypt GH_TOKEN=your_github_personal_oauth_token -r username/source.username.github.io
@@ -96,6 +98,7 @@ The actual travis commands...
 
 At the root of your source.username.github.io you'll need the Travis configuration file (yaml)
 
+    :::bash
     language: python
     python:
         - "2.7"
