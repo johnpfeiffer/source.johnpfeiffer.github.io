@@ -53,13 +53,9 @@ While previous examples used Google App Engine  <https://blog.john-pfeiffer.com/
 
 ## Go Dependency Management
 
-First download and install the Go dependency tool:
+First download and install the Go dependency tool: <https://github.com/golang/dep>
 
-- <https://github.com/golang/dep>
-- <https://devcenter.heroku.com/articles/go-apps-with-dep#build-configuration>
-- <https://devcenter.heroku.com/articles/go-apps-with-dep#getting-started>
-
-
+    :::bash
     cd DIRECTORY/OF/WEBAPP
     dep init
     go list -e .
@@ -70,7 +66,10 @@ First download and install the Go dependency tool:
     git commit -m "initial web app and using go dep"
     git push
 
-- Example simple Go dep configuration file <https://github.com/johnpfeiffer/web-go/blob/master/Gopkg.toml>
+- An example simple Go dep configuration file <https://github.com/johnpfeiffer/web-go/blob/master/Gopkg.toml>
+- Further heroku metadata config options: <https://devcenter.heroku.com/articles/go-apps-with-dep#build-configuration>
+- Similar heroku instructions on dep: <https://devcenter.heroku.com/articles/go-apps-with-dep#getting-started>
+
 
 ## Deploying to Heroku from Github via Travis-CI
 
@@ -92,12 +91,13 @@ First download and install the Go dependency tool:
     heroku help
     heroku create APPNAME --buildpack heroku/go
     heroku status
-> This has created an empty Go application in heroku
+> This has created an empty Go application in Heroku
 
 Later on when deploying the application to heroku if you receive the following error: *No default language could be detected for this app*, it means you did not set the buildpack language yet...
 
-*If you missed setting the buildpack language via CLI you can also use the WebUI after the app was already created <https://dashboard.heroku.com/apps/APPNAME/settings>*
+*If you missed setting the buildpack language via CLI you can also use the WebUI after the app was already created:*
 
+-  <https://dashboard.heroku.com/apps/APPNAME/settings>
 - <https://devcenter.heroku.com/articles/buildpacks>
 
 Another gotcha is if you have not configured a dependency manager (even without dependencies!) you will see this error *App not compatible with buildpack*.
@@ -141,6 +141,8 @@ In your source code repository your real .travis.yml file will be:
       provider: heroku
       api_key:
         secure: ABCD1234XYZLONGENCRYPTEDSTRING
+
+An interesting alternative to github and travis is bitbucket: <https://confluence.atlassian.com/bitbucket/deploy-to-heroku-872013667.html>
 
 ### Test It
 

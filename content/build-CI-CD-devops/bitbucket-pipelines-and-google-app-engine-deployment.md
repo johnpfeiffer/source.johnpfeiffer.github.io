@@ -93,6 +93,17 @@ Full instructions: <https://cloud.google.com/solutions/continuous-delivery-bitbu
 
 ### bitbucket-pipelines.yml file
 
+> Before using a secret (or really any environment variables) with bitbucket pipelines you will need to have a placeholder bitbucket-pipelines.yml so that you can officially "enable" it for the repository - after that the WebUI for configuration for pipelines will become accessible =(
+
+    image: python:2.7
+    pipelines:
+      default:
+        - step:
+            script:
+              - python --version
+> Use this very trivial bitbucket-pipelines.yml in order to get at least one successful validation so that you can press the "Enable" button in the Bitbucket UI (I had to zoom my browser out to workaround some broken css/javascript)
+
+
 A yaml configuration file describes the work that you instruct Bitbucket Pipelines to do, in this case we are doing the extra work of grabbing the remote google cloud SDK and installing it so that we use it with the credentials to deploy the app.
 
     image: python:2.7
@@ -116,6 +127,10 @@ A yaml configuration file describes the work that you instruct Bitbucket Pipelin
               - gcloud auth activate-service-account --key-file client-secret.json
               - gcloud --verbosity=error app deploy app.yaml --promote
 > A best practice is to pull the dependency from storage you have control over (or simply vendor the SDK in the source code) rather than downloading it every time and risking the upstream pinned version being removed
+
+- <https://bitbucket-pipelines.prod.public.atl-paas.net/validator> did not work for me (crazy javascript) but in theory this would be a very helpful tool
+
+Full bitbucket pipelines documentation: <https://confluence.atlassian.com/bitbucket/build-test-and-deploy-with-pipelines-792496469.html>
 
 ### scripts/fetch_gae_sdk.py
 
@@ -301,6 +316,8 @@ Follow the steps in their tutorial to create a repository with a Dockerfile and 
 
 - <https://docs.docker.com/docker-hub/builds/>
 - <https://hub.docker.com/r/foupfeiffer/gcloud-sdk/~/dockerfile/>
+
+> Unfortunately sometimes you have to just log in to Docker Hub and press the "Trigger" button to start the build since "automatically" does not seem to trigger correctly, e.g. <https://hub.docker.com/r/foupfeiffer/gcloud-sdk/~/settings/automated-builds/>
 
 ### Using a public image from Docker Hub
 

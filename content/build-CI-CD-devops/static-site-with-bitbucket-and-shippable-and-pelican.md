@@ -18,6 +18,8 @@ What is one cost effective (free!) and efficient solution to running a static si
 - Shippable have a free plan with 1 container that will do your builds (fine by me, Docker is fast!)
 - Pelican converts markdown into .html and you can still use javascript for fancy things <http://docs.getpelican.com/>
 
+> Sadly it looks like the Shippable startup is having trouble maintaining/updating their Docker images so I recommend instead to use Bitbucket Pipelines <https://blog.john-pfeiffer.com/continuous-delivery-with-bitbucket-pipelines-and-google-app-engine-deployment-and-the-storageobjectslist-error/#bitbucket-pipelines-configuration>
+
 The basic process is to be triggered by a git push to the private repository of new/updated source markdown, use pelican to process it into .html, and then publish (git push) the new/updated .html to the static site repository.
 
 One reason to use two seperate repositories instead of only one repository is that if you make a commit to your markdown source repository that will trigger a CI run which will push the updated .html files to the repository which would be detected and maybe trigger an infinite loop.  Or at the least interleave your source code changes with generated output changes in the commit logs.  =]
@@ -67,15 +69,28 @@ Create another private repository for your public html.  It MUST be named USERNA
 
 ### Get OAuth Access
 
+The goal here is to leverage the one-hour-access-token-generation-via-Oauth in order to write to a different repository in Bitbucket.
+
 Generate a Consumer OAuth2 Token with <https://confluence.atlassian.com/bitbucket/oauth-on-bitbucket-cloud-238027431.html#OAuthonBitbucketCloud-Createaconsumer>
+
+*(The UI in <https://bitbucket.org/account/user/USERNAME/api> is fairly straightforward with "Add consumer")*
+
+> The least privilege required permissions would be "Repositories: Read, Write"
+> You must define a callback URL, i.e. http://YOURDOMAIN:8888 , even if it is not used by this workaround
 
 Use curl to verify your token (this is how Shippable will get a 1 hour expiring access token to work on the target output repository)
 
     curl https://bitbucket.org/site/oauth2/access_token -d grant_type=client_credentials -u yourkeyhere:yoursecrethere
+        {"access_token": "abcd1234...", "scopes": "repository:write", "expires_in": 3600, ...}
+
+> The curl command should get a JSON response which includes an access_token
 
 <http://stackoverflow.com/questions/24965307/how-to-manipulate-bitbucket-repository-with-token>
 
+
 ## Shippable setup
+
+> Sadly it looks like the Shippable startup is having trouble maintaining/updating their Docker images so I recommend instead to use Bitbucket Pipelines <https://blog.john-pfeiffer.com/continuous-delivery-with-bitbucket-pipelines-and-google-app-engine-deployment-and-the-storageobjectslist-error/#bitbucket-pipelines-configuration>
 
 Enable the integration with Bitbucket: <http://docs.shippable.com/#step-0-prerequisite>
 
