@@ -153,15 +153,16 @@ Now a browser that hits the Heroku URL will see "hi" , <https://web-go.herokuapp
 Separating out the static html content from dynamic and business logic parts of the application is a key way to remain modular.
 Templates built into the Go standard library can provide output that is safe from code injection.
 
+
     :::go
     var indexTemplate = GetIndexTemplate()
     
     func myHandler(w http.ResponseWriter, r *http.Request) {
         indexTemplate.Execute(w, NoData{})
     }
-> This small change to our previous *main.go* allows our default web handler (aka controller) to return html
+> These small changes (var indexTemplate and indexTemplate.Execute) to the previous **main.go** allows the default web handler (aka controller) to return html
 
-*indextemplate.go*
+**indextemplate.go**
 
     :::go
     package main
@@ -189,7 +190,158 @@ Templates built into the Go standard library can provide output that is safe fro
 
 ### Passing Variables to a Template
 
+Dynamic, data driven web sites emphasize the power of software to create tables that nobody wants to write by hand.
 
+Building on the previous two examples (main.go, indextemplate.go) we now have a variation that passes data to the template.
+
+**hexcolors.go**
+
+    :::go
+    package main
+    
+    import (
+        "fmt"
+        "html/template"
+        "net/http"
+    )
+    
+    // HexColors wraps a list of colors as hexadecimal strings
+    type HexColors struct {
+        Colors []string
+    }
+    
+    // GetHexTemplate returns the parsed file as a template object
+    func GetHexTemplate() *template.Template {
+        return template.Must(template.ParseFiles("hexcolorstemplate.html"))
+    }
+    
+    func hexController(w http.ResponseWriter, r *http.Request) {
+        colors := []string{}
+        for i := 255; i <= 16711680; i = i * 256 {
+            s := fmt.Sprintf("%06X", i)
+            colors = append(colors, s)
+        }
+        data := HexColors{colors}
+        hexTemplate.Execute(w, data)
+    }
+> A handler/controller that generates hex color data
+
+**hexcolorstemplate.html**
+
+    :::html
+    <table>
+      {{range .Colors}}
+      <tr><td>{{.}}</td><td style="background-color: {{.}}; ">__</td></tr>
+      {{end}}
+    </table>
+> range iterates and creates a table row for each color , (the html and body is elided, see the previous example)
+
+For the full implementation see the web-go code example: <https://github.com/johnpfeiffer/web-go/commit/c8636ee4f54ff95d4a804a152954874f5c23b682>
+
+`go run main.go indextemplate.go hexcolors.go` allows you to test it locally, *note that you do not have to pass the html template as a parameter*
+
+More info:
+
+- <https://golang.org/pkg/html/template/#Template.ParseFiles>
+- <https://blog.gopheracademy.com/advent-2017/using-go-templates/>
+
+### HTML Template Blocks as Reusable Components
+
+Besides dynamic data and tables for "do not repeat yourself" there are also structural components that can be deduplicated.
+Changes in a base html or css template (or common component definition) can therefore reliably be applied to a large number of files.
+
+Jinja2 is famous in Python for making it easier to work with websites, here are two different helpful mechanisms in Go:
+
+1. Use the keyword "define" to create a fragment that can be explicitly included
+2. Use the keyword "block" to create a default value that can be overridden
+
+**indextemplate.go**
+
+    :::go
+    ...
+    func GetIndexTemplate() *template.Template {
+        indexTemplate := template.Must(template.ParseFiles("base.tmpl", "index.html"))
+        return indexTemplate
+    }
+> This replaces the previous examples hardcoded html with a default base.tmpl that is then overridden by the "define" block in the index.html file, **order matters**!
+
+**base.tmpl**
+
+    :::html
+    <html><head>
+    <style type="text/css">
+    {{block "style" .}}
+    body{
+      font-family: "Georgia";
+      font-size: 1.9em;
+    }
+    {{end}}
+    </style>
+    </head>
+    <body>
+    {{block "content" .}}
+    {{end}}
+    </body></html>
+> The HTML in base.tmpl has a "block" that provides a default style, content is an empty "block", *(clearly you can define variations of bases templates)*
+
+**index.html**
+
+    :::html
+    {{define "content"}}
+    hi , try <a href="/hexcolors">hexcolors</a>
+    {{end}}
+> The tiny index file heavily leverages the default base template and uses "define" to only override the content block
+
+`go run main.go indextemplate.go hexcolors.go` allows you to test it locally, *you do not pass the .tmpl nor .html template files as parameters*
+
+Further illustration by extending the templates usage a little further:
+
+**hexcolors.go**
+
+    :::go
+    func GetHexTemplate() *template.Template {
+        return template.Must(template.ParseFiles("base.tmpl", "components.tmpl", "hexcolorstemplate.html"))
+    }
+> the template files must exist in the relative path and build in order
+
+**components.tmpl**
+
+    :::html
+    {{define "tablestyle"}}
+      table, th, td {
+        border: 2px solid black;
+        font-size: 2.5em;
+      }
+    {{end}}
+> defining a specific fragment that can be used anywhere
+
+**hexcolorstemplate.html**
+
+    :::html
+    {{define "style"}}
+    {{template "tablestyle" .}}
+    {{end}}
+    
+    {{define "content"}}
+      <table>
+        {{range .Colors}}
+        <tr><td>{{.}}</td><td style="background-color: {{.}}; ">__</td></tr>
+        {{end}}
+      </table>
+    {{end}}
+> the most complex example: the base template content is overridden with a table that gets data at runtime
+
+> the style definition overrides the base template default style ; it actually gets populated by loading the tablestyle fragment definition
+
+`go run main.go indextemplate.go hexcolors.go` allows you to test it locally, *you do not pass the .tmpl nor .html template files as parameters*
+> 2 .tmpl files, 2 .html files, 3 .go files
+
+Full source code for this example: <https://github.com/johnpfeiffer/web-go/commit/b6da397f89c8a6955a30e665ff1aa99be989e5cb>
+
+For further info and advanced features like cloning:
+
+- <https://github.com/golang/example/tree/master/template>
+- <https://golang.org/pkg/html/template/#Template.Clone>
 
 ## TestDrivenDesign and Gorilla Mux
 
