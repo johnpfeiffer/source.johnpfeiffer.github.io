@@ -254,6 +254,8 @@ Jinja2 is famous in Python for making it easier to work with websites, here are 
 
 1. Use the keyword "define" to create a fragment that can be explicitly included
 2. Use the keyword "block" to create a default value that can be overridden
+> the keyword "template" loads a template that has been created by a "define"
+
 
 **indextemplate.go**
 

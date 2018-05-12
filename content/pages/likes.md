@@ -76,16 +76,20 @@ Title: John Likes
 
 ## Tools
 
-- <https://archive.org> (the backup of the internet)
-- <https://webpagetest.org> (website speed test with slow devices)
-- <https://www.maxmind.com/en/geoip-demo> geo ip lookup
-- <https://mxtoolbox.com/NetworkTools.aspx>
-- <https://haveibeenpwned.com>
 - <https://bitbucket.org>
 - <https://github.com>
-- <https://travis-ci.org>
-- <https://www.namecheap.com>
-- <https://letsencrypt.org>
+- <https://travis-ci.org> (free continuous integration)
+- <https://www.namecheap.com> (best domain name registrar)
+- <https://letsencrypt.org> (free SSL certificates)
+- <https://www.heroku.com> (free and easy application hosting)
+- <https://archive.org> (the backup of the internet)
+- <https://webpagetest.org> (website speed test with slow devices)
+- <https://www.maxmind.com/en/geoip-demo> (geo ip lookup)
+- <https://mxtoolbox.com/NetworkTools.aspx>
+- <https://haveibeenpwned.com> (detect if your email/accounts have been hacked)
+- <https://panopticlick.eff.org> (detect if your browsing is identifiable to servers/advertisers)
+- <https://www.dnsleaktest.com> (detect if your VPN is not supporting DNS queries)
+- <https://ipleak.net/> (detect if your VPN is not fully private)
 
 ## Resources on Leadership and Management
 

@@ -56,7 +56,7 @@ PROJECTS = [{
     'url': 'https://www.linkedin.com/in/foupfeiffer',
     'description': ''},
     {'name': 'My source code',
-    'url': 'https://bitbucket.org/johnpfeiffer',
+    'url': 'https://github.com/johnpfeiffer',
     'description': ''}
 ]
 RECENT_ARTICLES_COUNT=20

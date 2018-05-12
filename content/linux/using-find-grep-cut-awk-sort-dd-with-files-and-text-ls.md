@@ -157,6 +157,9 @@ find is better than locate because locate depends on a cron job to index the fil
     find . -name "*api*" -exec cat {} \;
 > find everything containing api and cat it
 
+    find . -type f -iname '*.yaml' -exec grep --line-number --with-file 'needle' {} \;
+> search the contents of a specific file extension and output the filename and line number of each match
+
 ### find and exec to modify a set of files
 
     find . -type f -name "*api*" -exec cat {} \; | grep objectid
