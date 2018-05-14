@@ -329,6 +329,11 @@ Backup any existing ~/.ssh/id_rsa.pub
     ssh-keygen -t dsa
 > RSA is generally preferred, protocol 2, I only include the DSA command for completeness <http://security.stackexchange.com/questions/5096/rsa-vs-dsa-for-ssh-authentication-keys>
 
+    ssh-keygen -l -f ~/.ssh/id_rsa.pub
+> Check the number of bits for key strength, it should at least 2048 bits
+
+    ssh-keygen -t rsa -C "myemail@example.com" -f $HOME/.ssh/myserver.id_rsa
+> Create an RSA based key with a specific email address label as an output in a specific directory and named file
 
 ### output a .pub from a private key
     ssh-keygen -y -f id_rsa
