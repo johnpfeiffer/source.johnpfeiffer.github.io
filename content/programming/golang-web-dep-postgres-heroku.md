@@ -113,14 +113,25 @@ You can connect the repository that was already created in Github to Travis via 
 > you may need to "sync account" if you very recently created a repository , otherwise you will see this error: *repository not known to https://api.travis-ci.org/: USERNAME/REPONAME*
 
     :::bash
-    docker run -it --rm ruby:alpine /bin/sh
+    sudo docker run -it --rm --volume /absolute/path/repo:/opt/repo --volume /opt/heroku:/opt/heroku ruby:alpine /bin/sh
     apk update
     apk add --no-cache build-base git
     gem install travis travis-lint
     travis help
-> This docker example avoids installing ruby locally ;p
+> This docker example avoids installing ruby (or travis) locally ;p
 
-Inside of the docker container you will need (using "vi" ;) to create a dummy .travis.yml file with the content:
+`cd /opt/repo ; touch .travis.yml ; travis setup heroku`
+
+    /opt/web-go # travis setup heroku
+    Heroku API token: ************************************
+    Heroku application name: |web-go|
+    Deploy only from GITHUBUSERNAME/web-go? |yes| yes
+    Encrypt API key? |yes| yes
+
+> This simple CLI wizard prompts for the Heroku auth token and populates the .travis.yml with the encrypted value
+
+
+*If you want to do it manually you will need (using "vi" ;) to create a dummy .travis.yml file with the content:*
 
     deploy:
       provider: heroku
@@ -128,9 +139,11 @@ Inside of the docker container you will need (using "vi" ;) to create a dummy .t
         secure: "YOUR ENCRYPTED API KEY"
 
 You can then run the following command which will update the .travis.yml file with the real encrypted auth token.
-`travis encrypt YOUR-HEROKU-TOKEN --add deploy.api_key -r USERNAME/REPONAME`
+`travis encrypt YOUR-HEROKU-TOKEN --add deploy.api_key -r GITHUBUSERNAME/REPONAME`
+> You may get prompted to login if you use the incorrect USERNAME
 
-In your source code repository your real .travis.yml file will be:
+
+In your source code repository your more complete .travis.yml file will be:
 
     language: go
     script: go get && go test -v
