@@ -73,7 +73,7 @@ The simple and common example of deploying a new server instance from an AmazonM
     }
     resource "aws_instance" "example" {
       ami = "ami-dc2739bc"
-      instance_type = "t2.micro"
+      instance_type = "t2.nano"
       subnet_id = "${aws_subnet.us-west-1a-public.id}"
     }
     resource "aws_vpc" "example" {

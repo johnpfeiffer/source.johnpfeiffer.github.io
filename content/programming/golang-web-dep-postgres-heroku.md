@@ -360,12 +360,24 @@ For further info and advanced features like cloning:
 
 ## TestDrivenDesign and Gorilla Mux
 
-Tests help us communicate. Libraries and Composition, not Frameworks and Magic.
+> Tests communicate. Use libraries and composition, not frameworks and magic
 
-- TODO: Go Web and JSON
+Rather than re-invent the wheel it is useful to leverage well designed libraries to reduce bugs (and repetitive boilerplate code).
+
+Gorilla "mux" is a great idiomatic Go library for multi-plexing and routing. Designed to be modular to prefer composition we can also choose to leverage the Logging handler.
+
+Finally adding a bit of JSON and very concisely you have built a high performing API server.
+
+
+For the full featured source code with tests: **<https://github.com/johnpfeiffer/go-web-example>**
+
+References:
+
+- <https://github.com/gorilla/mux> in action <https://github.com/johnpfeiffer/go-web-example/blob/master/router.go> *(with dependency injection for database testability)*
+- <https://github.com/johnpfeiffer/time-go/blob/master/main.go> leverages <https://github.com/gorilla/handlers#example>
+- <https://github.com/johnpfeiffer/go-web-example/blob/master/controller_test.go> has both unit and integration test examples
+
 - TODO: integrating heroku postgres , <https://devcenter.heroku.com/articles/getting-started-with-go#use-a-database>
-- <https://github.com/johnpfeiffer/go-web-example>
-
 
 ## Miscellaneous
 
