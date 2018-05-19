@@ -168,11 +168,13 @@ Suprisingly one of the most popular and effective Go IDE combinations is: <https
 
     dpkg -i code_...amd64.deb
 
-To install <https://marketplace.visualstudio.com/items?itemName=lukehoban.Go> aka <https://github.com/Microsoft/vscode-go> you actually:
+To install <https://marketplace.visualstudio.com/items?itemName=lukehoban.Go> aka <https://github.com/Microsoft/vscode-go> you actually...
+
+> The plugin has been renamed to "ms-vscode.go" =|
 
 1. open Visual Studio Code
 2. Control + P (Launches VS Code Quick Open)
-3. `ext install Go` (capital G for "lukehoban")
+3. `ext install ms-vscode.Go`
 4. restart when prompted
 5. File -> Preferences -> Color Theme (Light Visual Studio ;)
 
@@ -202,6 +204,8 @@ Unfortunately it is not quite simple to execute the code directly in VSCode <htt
 
 #### VS Code preferences to disable telemetry and automatic updates
 
+To prevent the software from sending (some) data to Microsoft...
+
 File -> Preferences -> Settings
 
     "telemetry.enableTelemetry": false,
@@ -209,6 +213,8 @@ File -> Preferences -> Settings
     "update.channel": "none"
 
 > disabling sending stats and crash reports to vortex.data.microsoft.com and also prevent checking for software updates
+
+- <https://code.visualstudio.com/Docs/supporting/FAQ#_how-to-disable-telemetry-reporting>
 
 #### Custom VS Code icons and disabling annoying file icons
 

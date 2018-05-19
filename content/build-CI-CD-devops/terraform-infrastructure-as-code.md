@@ -21,13 +21,14 @@ Hashicorp are a trusted brand in DevOps and having produced Vagrant, Packer, Con
 
 While packer can build a single immutable image (an application or component) of a (virtual) server (or container),
 Terraform is the higher level tool where the full setup including Load Balancer, Database, etc. are managed.
+Terraform can also maintain "state" like replacing servers with (deploying) newer images that were built by packer.
 
 The configuration files can be applied to various Cloud and Infrastructure vendors providing some measure of portability.
 
 References:
 
 - <https://en.wikipedia.org/wiki/Infrastructure_as_Code>
-- <https://blog.john-pfeiffer.com/build-automation-using-packer-to-build-an-ami-use-immutable-not-chef>
+- <https://blog.john-pfeiffer.com/build-automation-using-packer-to-build-an-ami-use-immutable-not-chef> (packer runs commands to create a machine image - aka a server frozen as a file)
 - <https://aws.amazon.com/documentation/cloudformation>
 - <https://www.digitalocean.com/community/tutorials/how-to-use-terraform-with-digitalocean>
 
@@ -187,3 +188,15 @@ If you change the resource AMI ID (i.e. the base immutable image from which the 
 
 - <https://www.terraform.io/intro/examples/aws.html>
 - <https://github.com/terraform-providers/terraform-provider-aws/tree/master/examples/two-tier>
+
+
+## Tools to Manage State vs Platform as a Service
+
+Infrastructure as Code focuses on tools to manage complexity. An alternative is to outsource the infrastructure entirely by using something like a PlatformAsAService.
+
+Heroku (or Google AppEngine or Openshift) can simplify application deployment by reducing the input to simply the application code.
+
+The PaaS vendor manages the infrastructure (including load balancers) and can provide a WebUI and APIs for adding dependencies (i.e. databases).
+
+Though it may again require a vendor specific configuration file to specify which application is connected/has permissions to which database...
+
