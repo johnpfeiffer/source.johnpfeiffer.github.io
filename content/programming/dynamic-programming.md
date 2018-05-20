@@ -64,7 +64,7 @@ An interesting problem is to calculate the series up to a certain point.  The st
 
 ## Memoization aka Caching with Fibonacci
 
-It almost seems common sense that we should not be re-calculating answers that we already know for every step.
+It almost seems common sense that we should not be re-calculating answers that we already know for every step...
 
     :::go
     func fibSeriesMemoization(n int) []int {
@@ -157,7 +157,8 @@ Create **main_test.go** and run `go test -v -run=NOMATCH -bench=BenchmarkFibonac
     PASS
     ok      bitbucket.org/johnpfeiffer/gosrc/benchmarking   7.157s
 
-*Reference for running go benchmarking <https://blog.john-pfeiffer.com/golang-testing-benchmark-profiling-subtests-fuzz-testing/#running-specific-benchmarks>*
+- <https://github.com/johnpfeiffer/go-fibonacci> for full source code
+- *Reference for running go benchmarking <https://blog.john-pfeiffer.com/golang-testing-benchmark-profiling-subtests-fuzz-testing/#running-specific-benchmarks>*
 
 ## Insights
 The hardest part of applying caching is understanding the problem well enough to see where the extra work can be avoided.

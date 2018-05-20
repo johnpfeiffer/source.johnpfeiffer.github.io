@@ -360,4 +360,21 @@ With your open sourced Dockerfile and docker image built in docker hub we can si
 - <https://confluence.atlassian.com/bitbucket/debug-your-pipelines-locally-with-docker-838273569.html>
 
 
+## Bitbucket Pipelines and Go
+
+This article was about deploying a python application (which in my use case happened to distribute a Go binary).
+
+For more information about a Golang application with Go Build and Tests...
+
+- <https://bitbucket.org/atlassian/pipelines-examples-go/>
+- <https://bitbucket.org/atlassian/pipelines-examples-go/src/master/bitbucket-pipelines.yml>
+- <https://bitbucket-pipelines.prod.public.atl-paas.net/validator>
+
+## Bitbucket Pipelines and Testing with a Database
+
+There is an example of how to leverage two of the most common databases, MySQL and Postgres, in your testing pipeline:
+
+- <https://confluence.atlassian.com/bitbucket/test-with-databases-in-bitbucket-pipelines-856697462.html>
+
+Obviously since you can execute the pipeline with your own customer Docker image you can extend and build your required test/environment dependencies.
 
