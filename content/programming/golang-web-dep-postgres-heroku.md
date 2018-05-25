@@ -395,6 +395,9 @@ References:
 - <https://play.golang.org/p/GCfxTLdLGYn> example returning the HTTP Header where clearly the default status code is 200
 - <https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.7>
 
+
+Serving binary files...
+
     :::go
     func getfile(w http.ResponseWriter, r *http.Request) {
         fp := path.Join("images", "example.png")
@@ -410,7 +413,9 @@ An example http server inside the Go playground: <https://play.golang.org/p/B-aZ
 
 
 ### Logs from Heroku
+
 To see the logs from the web application running in heroku: `heroku logs --app APPNAME --tail`
+
 
 ### Environment Variables for Configuration
 
