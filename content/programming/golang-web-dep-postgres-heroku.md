@@ -395,6 +395,20 @@ References:
 - <https://play.golang.org/p/GCfxTLdLGYn> example returning the HTTP Header where clearly the default status code is 200
 - <https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.7>
 
+`curl --silent --write-out "%{http_code}" localhost:8080`
+
+    :::go
+    func httperror(w http.ResponseWriter, r *http.Request) {
+        http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+        return
+        // without the return statement execution would continue
+    }
+> The http library understands that unexpected errors do occur but make sure to return so as to not continue executing code
+
+- <https://play.golang.org/p/FyB7FwVp-ZB> example showing why the return statement is so important
+- <https://en.wikipedia.org/wiki/List_of_HTTP_status_codes>
+- <https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html>
+- <https://curl.haxx.se/docs/manpage.html>
 
 Serving binary files...
 
