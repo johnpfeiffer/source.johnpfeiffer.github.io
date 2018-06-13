@@ -7,6 +7,35 @@ Tags: go, golang, aws, lambda, cron, iam, cloudwatch
 The promise of creating functions that do not require server administration is amazing,
 the reality though includes a huge maze of vendor specific commands and frameworks (including permissions).
 
+## Why Function as a Service
+
+In many ways most of the work in software engineering is "accidental complexity". Deployment. Input/Output Parsing. Monitoring. Logging. etc.
+
+The "web request" model conquered (much like the historical domination of SQL) in the 90's as networks and the "inter-network" became popular 
+(overwhelming the fragmented and isolated vendor specific applications approaches).
+
+- <https://www.nap.edu/read/6323/chapter/8#159>
+- <https://en.wikipedia.org/wiki/SQL>
+- <https://en.wikipedia.org/wiki/Web_application#History>
+- <https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#History>
+
+
+Yet what if your problem/data is not an input/output web request? (Yes of course there are GPUs and dedicated co-location centers...)
+
+Or what about loads of traffic that spike in very extreme bursts (and diminish to very almost nothing)?
+
+The allure then is to have a function that runs on demand: truly elastic compute that does not require provisioning a server (not a virtual one and even without a web server).
+
+Without mangaing an OS (and all that security headache!) and especially not paying for idle resources but instead only getting/paying for lots of compute when needed.
+
+Of course there's no free lunch so as that complexity balloon gets squeezed it is the infrastructure/framework vendor that must "magically" provide the input, execute the function, and return the output.
+
+> The irony of "serverless" is that there's still a physical server, drivers, an operating system, and even a web framework, it's just someone else's (problem/revenue).
+
+For "straightforward" web applications it may make more sense to directly offload the hosting/framework but still be in the same comfortable web server model (like Heroku)
+
+- <https://blog.john-pfeiffer.com/infrastructure-as-code-with-terraform-and-aws/#tools-to-manage-state-vs-platform-as-a-service>
+- <https://blog.john-pfeiffer.com/go-web-development-and-templates-with-heroku>
 
 ## Source Code
 
@@ -160,9 +189,24 @@ By using the "Configure test events" (sometimes a dropdown on the right next to 
 
 You can create a new "test event" , in this case a MyRequest (though any arbitrary extraneous JSON will be ignored)
 
-> Note that the WebUI also provides a way to upload a newer zip file
+    :::json
+    {
+      "value": "john",
+      "key2": "value2",
+      "key1": "value1"
+    }
+> this test event sends one value and some extraneous JSON keys as input to the lambda function
 
 
+    :::json
+    {
+      "message": "hi john",
+      "created": "2018-06-12T04:34:22Z"
+    }
+> the lambda function output is automatically converted from an object to JSON
+
+
+Note that the WebUI also provides a way to upload a newer definition of the lambda function (zipped in a file)
 
 
 ## Lambda Cron aka CloudWatch Scheduled Events
