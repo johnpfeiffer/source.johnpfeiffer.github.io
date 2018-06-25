@@ -241,14 +241,13 @@ Of course if you haven't enabled CloudWatch Logging or more importantly created 
 
 - <https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html>
 
-## More Info
+## More Info on Lambdas
 
 Here's a full source code example: <https://github.com/johnpfeiffer/aws-go-lambda>
 Compare the unit tests to those from a full web server handler: <https://github.com/johnpfeiffer/go-web-example/blob/master/controller_test.go>
 
 Apparently in order to test the tight integration with using AWS Lambda to consume events from other AWS Services there's a tool:
 <https://aws.amazon.com/about-aws/whats-new/2017/08/introducing-aws-sam-local-a-cli-tool-to-test-aws-lambda-functions-locally>
-
 
 
 ## API Gateway
@@ -266,7 +265,7 @@ Ensure you have a new Role (confusingly in the UI click through as a Lambda Serv
 
 Modify whom can assume the Role (using the AWS Web UI Console) <https://console.aws.amazon.com/iam/home?region=us-west-1#/roles/DynamoDBFull?section=trust>
 
-*If you receive an error later on it will be because of the Edit Trust Relationship, "API Gateway does not have permission to assume the provided role" *
+*If you receive an error later on it will be because of the Edit Trust Relationship, "API Gateway does not have permission to assume the provided role"*
 
     {
       "Version": "2012-10-17",
@@ -322,28 +321,27 @@ After clicking Save and possibly a "Refresh data from server" (arrow lines in a 
 
 <https://console.aws.amazon.com/apigateway/home?region=us-west-1#/apis/create>
 
-"New API"
+- "New API"
 
-API Name: stocks
-Endpoint Type: regional
+    API Name: stocks
+    Endpoint Type: regional
 
-Actions (Resource Actions) -> Create Resource
+- Actions (Resource Actions) -> Create Resource
 
-Resource Name: stock
-Resource Path: /{symbol}
+    Resource Name: stock
+    Resource Path: /{symbol}
 
-Click "Create Resource" to save.
+- Click "Create Resource" to save.
+- Actions (Resource Actions) -> Create Method (a dropdown appears in the WebUI below /{symbol}) , choose "GET"
 
-Actions (Resource Actions) -> Create Method (a dropdown appears in the WebUI below /{symbol}) , choose "GET"
-
-Integration type: AWS Service
-Region: us-west-1
-AWS Service: DynamoDB
-HTTP Method: POST (for interactions with DynamoDB)
-Action Type: Use action name
-Action: GetItem
-Execution role: arn:aws:iam::123476797434:role/DynamoDBFull
-Content Handling: Passthrough
+	Integration type: AWS Service
+	Region: us-west-1
+	AWS Service: DynamoDB
+	HTTP Method: POST (for interactions with DynamoDB)
+	Action Type: Use action name
+	Action: GetItem
+	Execution role: arn:aws:iam::123476797434:role/DynamoDBFull
+	Content Handling: Passthrough
 
 > The permissions/role ARN was created earlier and GET using POST is actually for interacting with DynamoDB
 
@@ -374,7 +372,20 @@ In the Test UI enter the stock symbol "VFINX" underneath {symbol} to emulate a G
 
 The Response Body on the right shows the response (that the client would see - though often revealing an error directly from DynamoDB)
 
-*Careful readers will notice that the timestamp variable is hardcoded in the transformation, todo: make the timestamp part of the query parameter"
+*Careful readers will notice that the timestamp variable is hardcoded in the transformation, todo: make the timestamp part of the query parameter"*
+
+### Where is the Code?
+
+One thing that is missing from this trivial example is how version control is applied to ensure deterministic change (and best practice reviews).
+
+Rather than just using the WebUI we should leverage "Infrastructure as Code" like CloudFormation but I would suggest more complete tools like:
+
+- <https://www.terraform.io/docs/providers/aws/guides/serverless-with-aws-lambda-and-api-gateway.html>
+- <https://serverless.com/framework/docs/providers/aws/events/apigateway/>
+
+One thing you might notice as you convert API Gateway + Lambda into code is that it begins to look a lot like code you would see in any web application,
+except that it is in a DomainSpecificLanguage for a specific vendor framework.
+
 
 ## Comparisons
 
@@ -398,4 +409,13 @@ Amazon cleverly have a "free tier" that covers enough to get developer hobby pro
 
 
 From a philosophical perspective the choice is somewhat whether building with predefined vendor blocks (so WebUI or IaaC) is more valuable (time wise)/preferrable than code.
+
+## Trust
+
+Something that underlies all of the AWS Lambda thinking and work is trust in the vendor.
+
+- Trust in their security practices
+- Trust in their uptime and operations team
+- Trust in their business (both longevity and pricing)
+
 

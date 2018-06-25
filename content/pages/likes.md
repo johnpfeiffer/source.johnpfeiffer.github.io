@@ -73,6 +73,7 @@ Title: John Likes
 - <https://charity.wtf>
 - <https://urchin.biz> (pre-history of google analytics)
 - <https://www.facebook.com/notes/kent-beck/one-bite-at-a-time-partitioning-complexity/1716882961677894>
+- <https://programmingisterrible.com/post/173883533613/code-to-debug>
 
 ## Tools
 
