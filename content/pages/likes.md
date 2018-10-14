@@ -58,6 +58,7 @@ Title: John Likes
 - <http://www.se-radio.net/2017/03/se-radio-episode-285-james-cowling-on-dropboxs-distributed-storage-system>
 - <http://www.se-radio.net/2017/04/se-radio-episode-287-success-skills-for-architects-with-neil-ford>
 - <http://www.se-radio.net/2017/06/se-radio-episode-295-michael-feathers-on-legacy-code>
+- <http://www.se-radio.net/2018/03/se-radio-episode-320-nate-taggart-on-serverless-paradigm>
 - <https://www.codingblocks.net/podcast/clean-code-programming-around-boundaries>
 - <http://www.npr.org/sections/money/2017/04/28/526051566/episode-553-the-dollar-at-the-center-of-the-world>
 - <https://changelog.com/gotime/6> (Mechanical Sympathy with Bill Kennedy)
