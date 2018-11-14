@@ -99,6 +99,7 @@ Here is a major digression into Go slices which is a pointer structure that hold
 - <https://golang.org/pkg/reflect/#SliceHeader>
 - <https://golang.org/pkg/unsafe/>
 - <https://en.wikipedia.org/wiki/Dereference_operator>
+- <https://dave.cheney.net/2018/07/12/slices-from-the-ground-up>
 
 ### Examples of Go Slice operations and tricks
 Some examples of slices in action <https://github.com/golang/go/wiki/SliceTricks>

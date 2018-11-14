@@ -59,6 +59,7 @@ Title: John Likes
 - <http://www.se-radio.net/2017/04/se-radio-episode-287-success-skills-for-architects-with-neil-ford>
 - <http://www.se-radio.net/2017/06/se-radio-episode-295-michael-feathers-on-legacy-code>
 - <http://www.se-radio.net/2018/03/se-radio-episode-320-nate-taggart-on-serverless-paradigm>
+- <http://www.se-radio.net/2018/10/se-radio-episode-340-lara-hogan-and-deepa-subramaniam-on-revitalizing-a-cross-functional-product-organization/> A meandering summary
 - <https://www.codingblocks.net/podcast/clean-code-programming-around-boundaries>
 - <http://www.npr.org/sections/money/2017/04/28/526051566/episode-553-the-dollar-at-the-center-of-the-world>
 - <https://changelog.com/gotime/6> (Mechanical Sympathy with Bill Kennedy)
@@ -66,15 +67,19 @@ Title: John Likes
 
 ## Web Articles
 
-- <http://highscalability.com/blog/2014/2/26/the-whatsapp-architecture-facebook-bought-for-19-billion.html>
-- <http://highscalability.com/blog/2014/3/31/how-whatsapp-grew-to-nearly-500-million-users-11000-cores-an.html>
+- <https://hackernoon.com/the-rise-and-fall-of-knight-capital-buy-high-sell-low-rinse-and-repeat-ae17fae780f6>
+- <https://highscalability.com/blog/2014/2/26/the-whatsapp-architecture-facebook-bought-for-19-billion.html>
+- <https://highscalability.com/blog/2014/3/31/how-whatsapp-grew-to-nearly-500-million-users-11000-cores-an.html>
 - <https://news.ycombinator.com/item?id=13960107> (modules vs microservices)
 - <https://brandur.org/heroku-values>
+- <https://increment.com/documentation/>
 - <https://danluu.com>
 - <https://charity.wtf>
 - <https://urchin.biz> (pre-history of google analytics)
+- <https://www.cake.co/conversations/g4CP6zJ/the-secret-call-to-andy-grove-that-may-have-helped-apple-buy-next>
 - <https://www.facebook.com/notes/kent-beck/one-bite-at-a-time-partitioning-complexity/1716882961677894>
 - <https://programmingisterrible.com/post/173883533613/code-to-debug>
+- <https://dave.cheney.net/paste/the-past-present-and-future-of-go2.pdf> QCon Shanghai
 
 ## Tools
 
@@ -97,12 +102,17 @@ Title: John Likes
 
 - Peopleware: Productive Projects and Teams by Tom DeMarco, Timothy Lister
 - The Mythical Man-Month: Essays on Software Engineering by Frederick P. Brooks Jr.
+- The 7 Habits of Highly Effective People by Stephen Covey
 - Managing Humans: Tales of leadership from the Silicon Valley by Michael Lopp
 - The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses by Eric Ries
+- Inspired: How To Create Products Customers Love by Marty Cagan
 - Founders at Work: Stories of Startups' Early Days by Jessica Livingston
 - Steve Jobs by Walter Isaacson
 - The Everything Store: Jeff Bezos and the Age of Amazon
 
+
+- <https://www.manager-tools.com/2007/01/the-juggling-koan> Delegation
+- <https://www.manager-tools.com/2010/05/how-choose-what-delegate-hall-fame-guidance>
 - <https://www.manager-tools.com/all-podcasts> (no nonsense advice on the art of people management)
 - <http://www.se-radio.net/2017/10/se-radio-episode-306-ron-lichty-on-managing-programmers>
 - <http://alistair.cockburn.us/Characterizing+people+as+non-linear%2c+first-order+components+in+software+development> (1999)
@@ -111,6 +121,9 @@ Title: John Likes
 - <http://larahogan.me/management>
 - <https://katemats.com>
 - <https://softwareleadweekly.com> (a well curated weekly email)
+- <https://news.ycombinator.com/item?id=18264245> Crowd Sourcing 1:1 ideas
+- <https://labs.spotify.com/2014/03/27/spotify-engineering-culture-part-1/>
+- <https://labs.spotify.com/2014/09/20/spotify-engineering-culture-part-2/>
 
 - <https://thisweekinstartups.com/thisweekin-startups/advice-biggest-mistakes-founders-startups-jerry-colonna>
 - <https://thisweekinstartups.com/thisweekin-startups/steve-jurvetson-dfj-tesla-spacex>
