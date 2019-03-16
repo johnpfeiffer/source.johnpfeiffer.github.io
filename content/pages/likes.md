@@ -79,6 +79,7 @@ Title: John Likes
 - <https://www.facebook.com/notes/kent-beck/one-bite-at-a-time-partitioning-complexity/1716882961677894>
 - <https://programmingisterrible.com/post/173883533613/code-to-debug>
 - <https://dave.cheney.net/paste/the-past-present-and-future-of-go2.pdf> QCon Shanghai
+- <https://segment.com/blog/a-brief-history-of-the-uuid/>
 
 ## Tools
 
@@ -113,14 +114,18 @@ Title: John Likes
 
 - <https://www.manager-tools.com/2007/01/the-juggling-koan> Delegation
 - <https://www.manager-tools.com/2010/05/how-choose-what-delegate-hall-fame-guidance>
-- <https://www.manager-tools.com/2018/11/preparing-performance-reviews-hof-2018> Preparing Performance Reviews
+- <https://www.manager-tools.com/2018/11/preparing-performance-reviews-hof-2018>
+- <https://www.manager-tools.com/2018/11/delivering-performance-review-hof-2018>
+- <https://www.manager-tools.com/2019/02/role-power-revisited-you-speak-ceo-part-1>
 - <https://www.manager-tools.com/all-podcasts> (no nonsense advice on the art of people management)
 - <http://www.se-radio.net/2017/10/se-radio-episode-306-ron-lichty-on-managing-programmers>
+- <http://www.se-radio.net/2019/02/se-radio-episode-355-randy-shoup-scaling-technology-and-organization/>
 - <http://alistair.cockburn.us/Characterizing+people+as+non-linear%2c+first-order+components+in+software+development> (1999)
 - <http://randsinrepose.com/archives/category/management>
 - <http://tomtunguz.com/plant-a-tree-youll-never-see> (do the right thing even if you do not directly benefit)
 - <http://larahogan.me/management>
 - <https://katemats.com>
+- <https://queue.acm.org/detail.cfm?id=3308563> Design Patterns for Managing Up
 - <https://softwareleadweekly.com> (a well curated weekly email)
 - <https://news.ycombinator.com/item?id=18264245> Crowd Sourcing 1:1 ideas
 - <https://labs.spotify.com/2014/03/27/spotify-engineering-culture-part-1/>
