@@ -8,7 +8,7 @@ Title: John Likes
 + <https://github.com/getpelican/pelican-plugins/tree/master/tipue_search>
 + <https://github.com/getpelican/pelican-plugins/tree/master/sitemap>
 + <https://github.com/getpelican/pelican-plugins/tree/master/post_stats>
-+ <http://listjs.com>
++ <https://listjs.com>
 
 ## Books
 
@@ -44,28 +44,31 @@ Title: John Likes
 
 ## Podcasts
 
-- <http://www.se-radio.net/2010/03/episode-157-hadoop-with-philip-zeyliger>
-- <http://www.se-radio.net/2010/09/episode-167-the-history-of-junit-and-the-future-of-testing-with-kent-beck>
-- <http://www.se-radio.net/2010/11/episode-169-memory-grid-architecture-with-nati-shalom>
-- <http://www.se-radio.net/2014/11/episode-215-gang-of-four-20-years-later>
-- <http://www.se-radio.net/2015/02/episode-221-jez-humble-on-continuous-delivery>
-- <http://www.se-radio.net/2015/04/episode-224-sven-johann-and-eberhard-wolff-on-technical-debt>
-- <http://www.se-radio.net/2015/05/se-radio-episode-226-eric-evans-on-domain-driven-design-at-10-years>
-- <http://www.se-radio.net/2015/05/the-cap-theorem-then-and-now>
-- <http://www.se-radio.net/2015/11/se-radio-episode-241-kyle-kingsbury-on-consensus-in-distributed-systems>
-- <http://www.se-radio.net/2016/01/se-radio-show-246-john-wilkes-on-borg-and-kubernetes>
-- <http://www.se-radio.net/2017/01/se-radio-episode-280-gerald-weinberg-on-bugs-errors-and-software-quality>
-- <http://www.se-radio.net/2017/02/se-radio-episode-282-donny-nadolny-on-debugging-distributed-systems>
-- <http://www.se-radio.net/2017/03/se-radio-episode-285-james-cowling-on-dropboxs-distributed-storage-system>
-- <http://www.se-radio.net/2017/04/se-radio-episode-287-success-skills-for-architects-with-neil-ford>
-- <http://www.se-radio.net/2017/06/se-radio-episode-295-michael-feathers-on-legacy-code>
-- <http://www.se-radio.net/2018/03/se-radio-episode-320-nate-taggart-on-serverless-paradigm>
+- <https://www.se-radio.net/2010/03/episode-157-hadoop-with-philip-zeyliger>
+- <https://www.se-radio.net/2010/09/episode-167-the-history-of-junit-and-the-future-of-testing-with-kent-beck>
+- <https://www.se-radio.net/2010/11/episode-169-memory-grid-architecture-with-nati-shalom>
+- <https://www.se-radio.net/2014/11/episode-215-gang-of-four-20-years-later>
+- <https://www.se-radio.net/2015/02/episode-221-jez-humble-on-continuous-delivery>
+- <https://www.se-radio.net/2015/04/episode-224-sven-johann-and-eberhard-wolff-on-technical-debt>
+- <https://www.se-radio.net/2015/05/se-radio-episode-226-eric-evans-on-domain-driven-design-at-10-years>
+- <https://www.se-radio.net/2015/05/the-cap-theorem-then-and-now>
+- <https://www.se-radio.net/2015/11/se-radio-episode-241-kyle-kingsbury-on-consensus-in-distributed-systems>
+- <https://www.se-radio.net/2016/01/se-radio-show-246-john-wilkes-on-borg-and-kubernetes>
+- <https://www.se-radio.net/2017/01/se-radio-episode-280-gerald-weinberg-on-bugs-errors-and-software-quality>
+- <https://www.se-radio.net/2017/02/se-radio-episode-282-donny-nadolny-on-debugging-distributed-systems>
+- <https://www.se-radio.net/2017/03/se-radio-episode-285-james-cowling-on-dropboxs-distributed-storage-system>
+- <https://www.se-radio.net/2017/04/se-radio-episode-287-success-skills-for-architects-with-neil-ford>
+- <https://www.se-radio.net/2017/06/se-radio-episode-295-michael-feathers-on-legacy-code>
+- <https://www.se-radio.net/2018/03/se-radio-episode-320-nate-taggart-on-serverless-paradigm>
 - <https://www.codingblocks.net/podcast/clean-code-programming-around-boundaries>
 - <https://changelog.com/gotime/6> (Mechanical Sympathy with Bill Kennedy)
+- <https://podcasts.apple.com/us/podcast/techmeme-ride-home/id1355212895> (daily tech news)
 
 ## Web Articles
 
 - <https://hackernoon.com/the-rise-and-fall-of-knight-capital-buy-high-sell-low-rinse-and-repeat-ae17fae780f6>
+- <https://producthabits.com/my-billion-dollar-mistake/>
+- <https://www.vox.com/recode/2019/5/3/18511544/amazon-prime-oral-history-jeff-bezos-one-day-shipping>
 - <https://highscalability.com/blog/2014/2/26/the-whatsapp-architecture-facebook-bought-for-19-billion.html>
 - <https://highscalability.com/blog/2014/3/31/how-whatsapp-grew-to-nearly-500-million-users-11000-cores-an.html>
 - <https://news.ycombinator.com/item?id=18760350> A simple guide to scaling to 10M users *(with commentary from HackerNews)*
@@ -118,26 +121,29 @@ Title: John Likes
 - <https://www.manager-tools.com/2018/11/delivering-performance-review-hof-2018>
 - <https://www.manager-tools.com/2019/02/role-power-revisited-you-speak-ceo-part-1>
 - <https://www.manager-tools.com/all-podcasts> (no nonsense advice on the art of people management)
-- <http://www.se-radio.net/2017/10/se-radio-episode-306-ron-lichty-on-managing-programmers>
-- <http://www.se-radio.net/2019/02/se-radio-episode-355-randy-shoup-scaling-technology-and-organization/>
-- <http://alistair.cockburn.us/Characterizing+people+as+non-linear%2c+first-order+components+in+software+development> (1999)
-- <http://randsinrepose.com/archives/category/management>
-- <http://tomtunguz.com/plant-a-tree-youll-never-see> (do the right thing even if you do not directly benefit)
-- <http://larahogan.me/management>
+- <https://www.se-radio.net/2017/10/se-radio-episode-306-ron-lichty-on-managing-programmers>
+- <https://www.se-radio.net/2019/02/se-radio-episode-355-randy-shoup-scaling-technology-and-organization/>
+- <https://alistair.cockburn.us/Characterizing+people+as+non-linear%2c+first-order+components+in+software+development> (1999)
+- - <https://web.archive.org/web/20081016012736/http://alistair.cockburn.us/Characterizing+people+as+non-linear%2c+first-order+components+in+software+development>
+- <https://randsinrepose.com/archives/category/management>
+- <https://tomtunguz.com/plant-a-tree-youll-never-see> (do the right thing even if you do not directly benefit)
+- <https://larahogan.me/management>
 - <https://katemats.com>
+- <https://devtomanager.com/interviews/kim-moir/>
 - <https://queue.acm.org/detail.cfm?id=3308563> Design Patterns for Managing Up
-- <https://softwareleadweekly.com> (a well curated weekly email)
+- <https://softwareleadweekly.com/issues> (a well curated weekly email of links for leaders)
 - <https://news.ycombinator.com/item?id=18264245> Crowd Sourcing 1:1 ideas
 - <https://labs.spotify.com/2014/03/27/spotify-engineering-culture-part-1/>
 - <https://labs.spotify.com/2014/09/20/spotify-engineering-culture-part-2/>
 - <https://stripe.com/atlas/guides/scaling-eng> (a 1-2-3 guide to hiring engineers)
+- <https://www.se-radio.net/2019/03/se-radio-episode-359-engineering-maturity-with-jean-denis-greze/>
 
-- <http://www.se-radio.net/2018/10/se-radio-episode-340-lara-hogan-and-deepa-subramaniam-on-revitalizing-a-cross-functional-product-organization> A meandering summary of eng management
+- <https://www.se-radio.net/2018/10/se-radio-episode-340-lara-hogan-and-deepa-subramaniam-on-revitalizing-a-cross-functional-product-organization> A meandering summary of eng management
 - <https://thisweekinstartups.com/thisweekin-startups/advice-biggest-mistakes-founders-startups-jerry-colonna>
 - <https://thisweekinstartups.com/thisweekin-startups/steve-jurvetson-dfj-tesla-spacex>
 - <https://thisweekinstartups.com/glennkelman-redfin-pejmannozad-pear>
 - <https://thisweekinstartups.com/bill-gurley-benchmark>
-- <http://www.npr.org/sections/money/2017/04/28/526051566/episode-553-the-dollar-at-the-center-of-the-world>
+- <https://www.npr.org/sections/money/2017/04/28/526051566/episode-553-the-dollar-at-the-center-of-the-world>
 - <https://mastersofscale.com/brian-chesky-handcrafted> (Airbnb)
 
 ## Atom feed
