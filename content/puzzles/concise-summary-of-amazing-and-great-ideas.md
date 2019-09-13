@@ -12,7 +12,7 @@ Test, Code, Refactor <https://en.wikipedia.org/wiki/Test-driven_development>
 - Lean Startup: Measure, Learn, Build <http://theleanstartup.com/principles>
 
 ### Better than Free
-<http://www.kk.org/thetechnium/archives/2008/01/better_than_fre.php>
+<https://kk.org/thetechnium/better-than-fre/>
 
 1. immediacy
 2. personalization
@@ -61,11 +61,11 @@ Granovetter threshold model for peer effect on collective behavior and Strength 
 - Status Quo Bias: things should stay the same
 
 ### Logical Fallacies and Disinformation
+
 - Appeal to probability: because something could happen it is inevitable that it will happen (see Gambler's Fallacy and Neglect of Probability)
 - Silence, Indignant, Rumors, Straw Man, Ad Hominem, Hit and Run, Question Motives, Invoke Authority, Play Dumb, "That's old news", Confess to a lesser item and "come clean", Enigma, Rube Goldberg Logic, Demand a complete solution, Fit the facts to alternate conclusions, Remove witnesses/evidence, Change the subject, Antagonize, Ignore proof and demand impossible proof, False evidence/facts, Loudly call for a separate investigation (ideally either biased or with confidential findings), Manufacture a new truth, Larger distractions, Silence critics, Lie low
 
-<http://www.nowandfutures.com/spew_tools.html>
-
+_note that these topics are often associated with paranoid conspiracy theories, "Rules of Disinformation"_
 
 ### Keys to being successful
 - lists
@@ -88,17 +88,19 @@ brainstorm goals and feelings: "say what you're going to do and then do what you
 6. "synergize" (teamwork)
 7. "sharpen the saw" (sustainable balance)
 
-<http://en.wikipedia.org/wiki/The_7_Habits_of_Highly_Effective_People>
+<https://en.wikipedia.org/wiki/The_7_Habits_of_Highly_Effective_People>
 
 #### Maslow's Hierarchy of Needs
 
 The lowest levels of the pyramid must be satisfied before people can focus and succeed at higher levels.
 
-     Self-Actualization
-   --------Esteem--------
-  -----Love/Belonging-----
- ---------Safetey----------
--------Physiological--------
+
+         Self-Actualization
+        _______Esteem________
+      _____Love/Belonging______
+     __________Safety___________
+    _________Physiological_________
+
 
 <https://en.wikipedia.org/wiki/Maslow's_hierarchy_of_needs>
 
@@ -109,28 +111,28 @@ The lowest levels of the pyramid must be satisfied before people can focus and s
 - Atomic Consistent Isolation Durability (ACID)
 - Abstraction Polymorphism (overloading, inheritance, overriding interface) ,  Inheritance , Encapsulation
 - Consistency Availability Partition tolerance vs Basically Available Soft-State with Eventual consistency
-- Nondeterministic Polynomial ... NP-hard <http://en.wikipedia.org/wiki/NP-hard>
-- - NP-complete (subset sum problem can be verified) <http://en.wikipedia.org/wiki/NP-complete>
+- Nondeterministic Polynomial ... NP-hard <https://en.wikipedia.org/wiki/NP-hard>
+- - NP-complete (subset sum problem can be verified) <https://en.wikipedia.org/wiki/NP-complete>
 - - co-NP (verifier of "no" answer")
 
-<http://en.wikipedia.org/wiki/Timeline_of_algorithms>
+<https://en.wikipedia.org/wiki/Timeline_of_algorithms>
 
 #### Amdahl's Law
-- A system cannot be sped up by parallelization more than the inherently serial steps <http://en.wikipedia.org/wiki/Amdahl%27s_law>
+- A system cannot be sped up by parallelization more than the inherently serial steps <https://en.wikipedia.org/wiki/Amdahl%27s_law>
 - - So benchmark your system, then determine what parts can be parallelized and how much that will improve the result and how much will it cost to do so
 
 #### Conway's Law
-- The system design produced by an organization will reflect the organization's communication structure. <http://www.melconway.com/Home/Conways_Law.html>
-- - <http://www.thoughtworks.com/insights/blog/demystifying-conways-law>
-- - Possibly disastrous results when combined with Groupthink <http://en.wikipedia.org/wiki/Groupthink>
+- The system design produced by an organization will reflect the organization's communication structure. <https://www.melconway.com/Home/Conways_Law.html>
+- - <https://www.thoughtworks.com/insights/blog/demystifying-conways-law>
+- - Possibly disastrous results when combined with Groupthink <https://en.wikipedia.org/wiki/Groupthink>
 - - Commonly referred to when considering how adding a new person or new team to organization will affect productivity
 
 ####  Brooks' Law
-- Adding resources (people) later in a project will make it even later <http://en.wikipedia.org/wiki/Brooks%27s_law> 
+- Adding resources (people) later in a project will make it even later <https://en.wikipedia.org/wiki/Brooks%27s_law>
 - - A decent observation given the above "laws": if a task has serial parts adding people (parallelization) will not speed it up AND every person will have to interface 
 
 #### Moore's Law
-- Computing power will double (or become cheaper by half) every two years <http://en.wikipedia.org/wiki/Moore%27s_law>
+- Computing power will double (or become cheaper by half) every two years <https://en.wikipedia.org/wiki/Moore%27s_law>
 - - Sustained in part by improvements in complimentary technologies like Memory, Storage, Cooling, etc.
 - - At a certain point in the future potentially only possible using parallel computing but with an increased coordination cost (including software that leverages parellization)
 
@@ -141,7 +143,7 @@ Be conservative in what you do, be liberal in what you accept from others
 
 #### Laws of Unix
 
-<http://en.wikipedia.org/wiki/Unix_philosophy#Eric_Raymond.E2.80.99s_17_Unix_Rules>
+<https://en.wikipedia.org/wiki/Unix_philosophy#Eric_Raymond.E2.80.99s_17_Unix_Rules>
 
 - Modularity: Write simple parts connected by clean interfaces.
 - Clarity: Clarity is better than cleverness.
@@ -222,6 +224,7 @@ Incident Response
 Monitoring
 
 <https://docs.google.com/drawings/d/1kshrK2RLkW-XV8enmWZxeRFRgADj6d4Ru_w5txz_k9I/edit>
+
 ### Designers/Creators of Programming Languages
 
 |Language|Creator/Designer|Year|more info|
@@ -254,13 +257,13 @@ Monitoring
 
 Start by reading all of the following to nitpick how the above is fast and loose with history and the truth...
 
-- <http://en.wikipedia.org/wiki/Computer>
-- <http://en.wikipedia.org/wiki/ENIAC>
-- <http://en.wikipedia.org/wiki/Von_Neumann_architecture>
-- <http://en.wikipedia.org/wiki/Programming_paradigm>
-- <http://en.wikipedia.org/wiki/Object-oriented_programming#History>
-- <http://en.wikipedia.org/wiki/Parallel_computing#Software>
-- <http://en.wikipedia.org/wiki/Concurrent_computing>
+- <https://en.wikipedia.org/wiki/Computer>
+- <https://en.wikipedia.org/wiki/ENIAC>
+- <https://en.wikipedia.org/wiki/Von_Neumann_architecture>
+- <https://en.wikipedia.org/wiki/Programming_paradigm>
+- <https://en.wikipedia.org/wiki/Object-oriented_programming#History>
+- <https://en.wikipedia.org/wiki/Parallel_computing#Software>
+- <https://en.wikipedia.org/wiki/Concurrent_computing>
 
 ### Hacker's Jargon
 - <http://www.catb.org/jargon/oldversions/>

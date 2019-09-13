@@ -63,6 +63,7 @@ Title: John Likes
 - <https://www.codingblocks.net/podcast/clean-code-programming-around-boundaries>
 - <https://changelog.com/gotime/6> (Mechanical Sympathy with Bill Kennedy)
 - <https://podcasts.apple.com/us/podcast/techmeme-ride-home/id1355212895> (daily tech news)
+- <https://swoot.com/techmeme-ride-home/the-man-who-could-have-been-bill-gates-pt-2-ed3c4bjq>
 
 ## Web Articles
 
@@ -71,12 +72,14 @@ Title: John Likes
 - <https://www.vox.com/recode/2019/5/3/18511544/amazon-prime-oral-history-jeff-bezos-one-day-shipping>
 - <https://highscalability.com/blog/2014/2/26/the-whatsapp-architecture-facebook-bought-for-19-billion.html>
 - <https://highscalability.com/blog/2014/3/31/how-whatsapp-grew-to-nearly-500-million-users-11000-cores-an.html>
+- <https://highscalability.com/blog/2010/3/16/justintvs-live-video-broadcasting-architecture.html>
 - <https://news.ycombinator.com/item?id=18760350> A simple guide to scaling to 10M users *(with commentary from HackerNews)*
 - <https://news.ycombinator.com/item?id=13960107> (modules vs microservices)
 - <https://brandur.org/heroku-values>
 - <https://increment.com/documentation/>
 - <https://danluu.com>
 - <https://charity.wtf>
+- <http://www.elidedbranches.com/2016/08/microservices-real-architectural.html>
 - <https://urchin.biz> (pre-history of google analytics)
 - <https://www.cake.co/conversations/g4CP6zJ/the-secret-call-to-andy-grove-that-may-have-helped-apple-buy-next>
 - <https://www.facebook.com/notes/kent-beck/one-bite-at-a-time-partitioning-complexity/1716882961677894>
@@ -132,19 +135,26 @@ Title: John Likes
 - <https://devtomanager.com/interviews/kim-moir/>
 - <https://queue.acm.org/detail.cfm?id=3308563> Design Patterns for Managing Up
 - <https://softwareleadweekly.com/issues> (a well curated weekly email of links for leaders)
-- <https://news.ycombinator.com/item?id=18264245> Crowd Sourcing 1:1 ideas
+- <https://news.ycombinator.com/item?id=18264245> Crowdsourcing 1:1 ideas
+- <https://news.ycombinator.com/item?id=20230133> Crowdsourcing signs of a great manager (2019)
+- <https://news.ycombinator.com/item?id=14381264> Crowdsourcing engineering management (2017 comments about defmacro 2014)
 - <https://labs.spotify.com/2014/03/27/spotify-engineering-culture-part-1/>
 - <https://labs.spotify.com/2014/09/20/spotify-engineering-culture-part-2/>
 - <https://stripe.com/atlas/guides/scaling-eng> (a 1-2-3 guide to hiring engineers)
+- <https://markmcgranaghan.com/lessons-from-stripe>
+- <http://www.elidedbranches.com/2016/11/building-and-motivating-engineering.html>
 - <https://www.se-radio.net/2019/03/se-radio-episode-359-engineering-maturity-with-jean-denis-greze/>
-
 - <https://www.se-radio.net/2018/10/se-radio-episode-340-lara-hogan-and-deepa-subramaniam-on-revitalizing-a-cross-functional-product-organization> A meandering summary of eng management
+
+### Startups and VCs and Business Podcasts
 - <https://thisweekinstartups.com/thisweekin-startups/advice-biggest-mistakes-founders-startups-jerry-colonna>
+- <https://swoot.com/this-week-in-startups-audio/e967-twilio-ceo-co-founder-jeff-lawson-on-growing-twilio-to-160-000-10f753fjq>
 - <https://thisweekinstartups.com/thisweekin-startups/steve-jurvetson-dfj-tesla-spacex>
 - <https://thisweekinstartups.com/glennkelman-redfin-pejmannozad-pear>
 - <https://thisweekinstartups.com/bill-gurley-benchmark>
-- <https://www.npr.org/sections/money/2017/04/28/526051566/episode-553-the-dollar-at-the-center-of-the-world>
+- <https://swoot.com/this-week-in-startups-audio/e918-stack-overflow-ceo-co-founder-joel-spolsky-shares-lessons-growing-his-7a51e8jq>
 - <https://mastersofscale.com/brian-chesky-handcrafted> (Airbnb)
+- <https://www.npr.org/sections/money/2017/04/28/526051566/episode-553-the-dollar-at-the-center-of-the-world>
 
 ## Atom feed
 
