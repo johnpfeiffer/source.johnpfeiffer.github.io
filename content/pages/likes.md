@@ -69,6 +69,7 @@ Title: John Likes
 
 - <https://hackernoon.com/the-rise-and-fall-of-knight-capital-buy-high-sell-low-rinse-and-repeat-ae17fae780f6>
 - <https://producthabits.com/my-billion-dollar-mistake/>
+- <https://news.ycombinator.com/item?id=15565875> (Write tests. Not too many. Mostly integration)
 - <https://www.vox.com/recode/2019/5/3/18511544/amazon-prime-oral-history-jeff-bezos-one-day-shipping>
 - <https://highscalability.com/blog/2014/2/26/the-whatsapp-architecture-facebook-bought-for-19-billion.html>
 - <https://highscalability.com/blog/2014/3/31/how-whatsapp-grew-to-nearly-500-million-users-11000-cores-an.html>
@@ -84,6 +85,7 @@ Title: John Likes
 - <https://www.cake.co/conversations/g4CP6zJ/the-secret-call-to-andy-grove-that-may-have-helped-apple-buy-next>
 - <https://www.facebook.com/notes/kent-beck/one-bite-at-a-time-partitioning-complexity/1716882961677894>
 - <https://programmingisterrible.com/post/173883533613/code-to-debug>
+- <https://news.ycombinator.com/item?id=11416746> Crowd sourcing how to review code
 - <https://dave.cheney.net/paste/the-past-present-and-future-of-go2.pdf> QCon Shanghai
 - <https://segment.com/blog/a-brief-history-of-the-uuid/>
 
@@ -107,6 +109,7 @@ Title: John Likes
 
 ## Resources on Leadership and Management and Business
 
+### Books
 - Peopleware: Productive Projects and Teams by Tom DeMarco, Timothy Lister
 - The Mythical Man-Month: Essays on Software Engineering by Frederick P. Brooks Jr.
 - The 7 Habits of Highly Effective People by Stephen Covey
@@ -118,6 +121,7 @@ Title: John Likes
 - The Everything Store: Jeff Bezos and the Age of Amazon
 - Misbehaving: The Making of Behavioral Economics by Richard H. Thaler
 
+### Podcasts
 - <https://www.manager-tools.com/2007/01/the-juggling-koan> Delegation
 - <https://www.manager-tools.com/2010/05/how-choose-what-delegate-hall-fame-guidance>
 - <https://www.manager-tools.com/2018/11/preparing-performance-reviews-hof-2018>
@@ -126,25 +130,60 @@ Title: John Likes
 - <https://www.manager-tools.com/all-podcasts> (no nonsense advice on the art of people management)
 - <https://www.se-radio.net/2017/10/se-radio-episode-306-ron-lichty-on-managing-programmers>
 - <https://www.se-radio.net/2019/02/se-radio-episode-355-randy-shoup-scaling-technology-and-organization/>
+- <https://blog.ycombinator.com/camille-fournier-on-managing-technical-teams/>
+- <https://www.se-radio.net/2019/03/se-radio-episode-359-engineering-maturity-with-jean-denis-greze/>
+- <https://www.se-radio.net/2018/10/se-radio-episode-340-lara-hogan-and-deepa-subramaniam-on-revitalizing-a-cross-functional-product-organization> A meandering summary of eng management
+
+
+### Articles
 - <https://alistair.cockburn.us/Characterizing+people+as+non-linear%2c+first-order+components+in+software+development> (1999)
 - - <https://web.archive.org/web/20081016012736/http://alistair.cockburn.us/Characterizing+people+as+non-linear%2c+first-order+components+in+software+development>
-- <https://randsinrepose.com/archives/category/management>
 - <https://tomtunguz.com/plant-a-tree-youll-never-see> (do the right thing even if you do not directly benefit)
-- <https://larahogan.me/management>
-- <https://katemats.com>
-- <https://devtomanager.com/interviews/kim-moir/>
-- <https://queue.acm.org/detail.cfm?id=3308563> Design Patterns for Managing Up
-- <https://softwareleadweekly.com/issues> (a well curated weekly email of links for leaders)
+- <https://www.intercom.com/blog/maker-to-manager> Transitioning into Management
+- <https://cate.blog/2015/12/23/the-hardest-shortest-lesson-becoming-a-manager/>
+- <https://firstround.com/review/these-13-exercises-will-prepare-you-for-works-toughest-situations/>
+- <https://medium.com/startup-patterns/the-dangers-of-measuring-performance-d21cd61426df>
+- <https://humanwhocodes.com/blog/2013/10/15/the-best-career-advice-ive-received/>
+- <https://firstround.com/review/our-6-must-reads-for-scaling-yourself-as-a-leader/>
+- <https://www.tombartel.me/blog/a-primer-on-giving-critical-feedback/>
+- <https://jvns.ca/blog/good-questions/>
 - <https://news.ycombinator.com/item?id=18264245> Crowdsourcing 1:1 ideas
 - <https://news.ycombinator.com/item?id=20230133> Crowdsourcing signs of a great manager (2019)
 - <https://news.ycombinator.com/item?id=14381264> Crowdsourcing engineering management (2017 comments about defmacro 2014)
+- <https://markmcgranaghan.com/lessons-from-stripe>
 - <https://labs.spotify.com/2014/03/27/spotify-engineering-culture-part-1/>
 - <https://labs.spotify.com/2014/09/20/spotify-engineering-culture-part-2/>
+- <https://medium.com/the-mission/part-2-overcome-the-5-dysfunctions-of-a-team-ef922309f8b5>
+- <https://www.intercom.com/blog/keeping-information-flowing-as-you-grow/>
+- <https://hackernoon.com/the-90-agreement-rule-36757dcc8eaa>
+- <https://mfbt.ca/what-i-hear-when-you-tell-me-your-company-doesnt-do-meetings-dfbb57a038d6?gi=9c2f0ad8ab87>
+- <https://medium.com/@skamille/yes-virginia-you-can-estimate-that-e33303eec9cf>
+- <https://codeburst.io/on-writing-tech-specs-6404c9791159?gi=147dabb57a56>
+- <https://queue.acm.org/detail.cfm?id=3308563> Design Patterns for Managing Up
+- <https://medium.learningbyshipping.com/how-much-to-manage-management-energy-units-ca1637a05140?gi=6335720cc42e>
+- <https://web.hypothes.is/blog/code-review-in-remote-teams/>
+- <https://news.ycombinator.com/item?id=16197364> (Showing work as a remote)
+
+#### Hiring and Interviewing
 - <https://stripe.com/atlas/guides/scaling-eng> (a 1-2-3 guide to hiring engineers)
-- <https://markmcgranaghan.com/lessons-from-stripe>
-- <http://www.elidedbranches.com/2016/11/building-and-motivating-engineering.html>
-- <https://www.se-radio.net/2019/03/se-radio-episode-359-engineering-maturity-with-jean-denis-greze/>
-- <https://www.se-radio.net/2018/10/se-radio-episode-340-lara-hogan-and-deepa-subramaniam-on-revitalizing-a-cross-functional-product-organization> A meandering summary of eng management
+- <https://firstround.com/review/The-anatomy-of-the-perfect-technical-interview-from-a-former-Amazon-VP/>
+- <https://firstround.com/review/What-You-Want-in-a-VP-Eng-from-the-Recruiters-Behind-Twitter-and-LinkedIn/>
+- <http://www.lihaoyi.com/post/HowtoconductagoodProgrammingInterview.html>
+- <https://www.kennorton.com/essays/happy-10th-birthday-to-hthapm.html>
+
+### Blogs on Engineering Leadership
+- <https://randsinrepose.com/archives/category/management>
+- - <https://randsinrepose.com/archives/say-the-hard-thing/>
+- <https://larahogan.me/management>
+- - <https://larahogan.me/blog/desk-moves/>
+- <https://cate.blog/tag/management/>
+- - <https://qz.com/work/1447711/how-to-tell-if-youre-a-good-manager/>
+- <https://katemats.com>
+- - <https://katemats.com/the-art-of-delegating/>
+- <http://www.elidedbranches.com/> (Camille Fournier)
+- - <http://www.elidedbranches.com/2016/11/building-and-motivating-engineering.html>
+- <https://devtomanager.com/interviews/kim-moir/>
+- <https://softwareleadweekly.com/issues> (a well curated weekly email of links for leaders)
 
 ### Startups and VCs and Business Podcasts
 - <https://thisweekinstartups.com/thisweekin-startups/advice-biggest-mistakes-founders-startups-jerry-colonna>
