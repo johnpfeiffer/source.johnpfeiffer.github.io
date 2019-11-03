@@ -165,6 +165,7 @@ Title: John Likes
 - <https://news.ycombinator.com/item?id=16197364> (Showing work as a remote)
 - <https://hbr.org/2009/05/what-only-the-ceo-can-do>
 - <https://hbr.org/2019/08/8-ways-leaders-delegate-successfully>
+- <https://lethain.com/path-to-eng-manager-of-managers>
 
 #### Meetings and Decisions
 - <https://mfbt.ca/what-i-hear-when-you-tell-me-your-company-doesnt-do-meetings-dfbb57a038d6?gi=9c2f0ad8ab87>
