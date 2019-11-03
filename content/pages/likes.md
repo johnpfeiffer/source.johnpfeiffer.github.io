@@ -43,7 +43,7 @@ Title: John Likes
 - <https://spectrum.ieee.org/tech-history/silicon-revolution/hans-peter-luhn-and-the-birth-of-the-hashing-algorithm>
 
 ## Podcasts
-
+- <https://podcasts.apple.com/us/podcast/techmeme-ride-home/id1355212895> (daily tech news)
 - <https://www.se-radio.net/2010/03/episode-157-hadoop-with-philip-zeyliger>
 - <https://www.se-radio.net/2010/09/episode-167-the-history-of-junit-and-the-future-of-testing-with-kent-beck>
 - <https://www.se-radio.net/2010/11/episode-169-memory-grid-architecture-with-nati-shalom>
@@ -60,13 +60,12 @@ Title: John Likes
 - <https://www.se-radio.net/2017/04/se-radio-episode-287-success-skills-for-architects-with-neil-ford>
 - <https://www.se-radio.net/2017/06/se-radio-episode-295-michael-feathers-on-legacy-code>
 - <https://www.se-radio.net/2018/03/se-radio-episode-320-nate-taggart-on-serverless-paradigm>
+- <https://www.se-radio.net/2019/02/se-radio-episode-358-probabilistic-data-structure-for-big-data-problems/>
 - <https://www.codingblocks.net/podcast/clean-code-programming-around-boundaries>
 - <https://changelog.com/gotime/6> (Mechanical Sympathy with Bill Kennedy)
-- <https://podcasts.apple.com/us/podcast/techmeme-ride-home/id1355212895> (daily tech news)
-- <https://swoot.com/techmeme-ride-home/the-man-who-could-have-been-bill-gates-pt-2-ed3c4bjq>
+- <https://swoot.com/artificial-intellence-ai/gustav-soderstrom-spotify-fd18d8jq>
 
 ## Web Articles
-
 - <https://hackernoon.com/the-rise-and-fall-of-knight-capital-buy-high-sell-low-rinse-and-repeat-ae17fae780f6>
 - <https://producthabits.com/my-billion-dollar-mistake/>
 - <https://news.ycombinator.com/item?id=15565875> (Write tests. Not too many. Mostly integration)
@@ -88,6 +87,7 @@ Title: John Likes
 - <https://news.ycombinator.com/item?id=11416746> Crowd sourcing how to review code
 - <https://dave.cheney.net/paste/the-past-present-and-future-of-go2.pdf> QCon Shanghai
 - <https://segment.com/blog/a-brief-history-of-the-uuid/>
+- <https://robertheaton.com/2014/06/20/code-review-without-your-eyes/> (Heuristics for quickly reviewing code)
 
 ## Tools
 
@@ -121,21 +121,23 @@ Title: John Likes
 - The Everything Store: Jeff Bezos and the Age of Amazon
 - Misbehaving: The Making of Behavioral Economics by Richard H. Thaler
 
-### Podcasts
+### Manager Podcasts
 - <https://www.manager-tools.com/2007/01/the-juggling-koan> Delegation
 - <https://www.manager-tools.com/2010/05/how-choose-what-delegate-hall-fame-guidance>
 - <https://www.manager-tools.com/2018/11/preparing-performance-reviews-hof-2018>
 - <https://www.manager-tools.com/2018/11/delivering-performance-review-hof-2018>
 - <https://www.manager-tools.com/2019/02/role-power-revisited-you-speak-ceo-part-1>
 - <https://www.manager-tools.com/all-podcasts> (no nonsense advice on the art of people management)
+
 - <https://www.se-radio.net/2017/10/se-radio-episode-306-ron-lichty-on-managing-programmers>
+- <https://www.se-radio.net/2019/07/episode-374-marcus-blankenship-on-motivating-programmers/>
 - <https://www.se-radio.net/2019/02/se-radio-episode-355-randy-shoup-scaling-technology-and-organization/>
 - <https://blog.ycombinator.com/camille-fournier-on-managing-technical-teams/>
 - <https://www.se-radio.net/2019/03/se-radio-episode-359-engineering-maturity-with-jean-denis-greze/>
 - <https://www.se-radio.net/2018/10/se-radio-episode-340-lara-hogan-and-deepa-subramaniam-on-revitalizing-a-cross-functional-product-organization> A meandering summary of eng management
 
 
-### Articles
+### People Management Articles
 - <https://alistair.cockburn.us/Characterizing+people+as+non-linear%2c+first-order+components+in+software+development> (1999)
 - - <https://web.archive.org/web/20081016012736/http://alistair.cockburn.us/Characterizing+people+as+non-linear%2c+first-order+components+in+software+development>
 - <https://tomtunguz.com/plant-a-tree-youll-never-see> (do the right thing even if you do not directly benefit)
@@ -155,14 +157,21 @@ Title: John Likes
 - <https://labs.spotify.com/2014/09/20/spotify-engineering-culture-part-2/>
 - <https://medium.com/the-mission/part-2-overcome-the-5-dysfunctions-of-a-team-ef922309f8b5>
 - <https://www.intercom.com/blog/keeping-information-flowing-as-you-grow/>
-- <https://hackernoon.com/the-90-agreement-rule-36757dcc8eaa>
-- <https://mfbt.ca/what-i-hear-when-you-tell-me-your-company-doesnt-do-meetings-dfbb57a038d6?gi=9c2f0ad8ab87>
 - <https://medium.com/@skamille/yes-virginia-you-can-estimate-that-e33303eec9cf>
 - <https://codeburst.io/on-writing-tech-specs-6404c9791159?gi=147dabb57a56>
 - <https://queue.acm.org/detail.cfm?id=3308563> Design Patterns for Managing Up
 - <https://medium.learningbyshipping.com/how-much-to-manage-management-energy-units-ca1637a05140?gi=6335720cc42e>
 - <https://web.hypothes.is/blog/code-review-in-remote-teams/>
 - <https://news.ycombinator.com/item?id=16197364> (Showing work as a remote)
+- <https://hbr.org/2009/05/what-only-the-ceo-can-do>
+- <https://hbr.org/2019/08/8-ways-leaders-delegate-successfully>
+
+#### Meetings and Decisions
+- <https://mfbt.ca/what-i-hear-when-you-tell-me-your-company-doesnt-do-meetings-dfbb57a038d6?gi=9c2f0ad8ab87>
+- <http://timharford.com/2019/08/what-we-get-wrong-about-meetings-and-how-to-make-them-worth-attending/>
+- <https://firstround.com/review/square-defangs-difficult-decisions-with-this-system-heres-how/>
+- <https://hackernoon.com/the-90-agreement-rule-36757dcc8eaa>
+
 
 #### Hiring and Interviewing
 - <https://stripe.com/atlas/guides/scaling-eng> (a 1-2-3 guide to hiring engineers)
@@ -186,13 +195,18 @@ Title: John Likes
 - <https://softwareleadweekly.com/issues> (a well curated weekly email of links for leaders)
 
 ### Startups and VCs and Business Podcasts
+- <https://money.howstuffworks.com/question398.htm>
+- <https://hbr.org/1998/11/how-venture-capital-works>
+- <https://www.marketplace.org/2017/09/07/venture-vocabulary/>
 - <https://thisweekinstartups.com/thisweekin-startups/advice-biggest-mistakes-founders-startups-jerry-colonna>
 - <https://swoot.com/this-week-in-startups-audio/e967-twilio-ceo-co-founder-jeff-lawson-on-growing-twilio-to-160-000-10f753fjq>
 - <https://thisweekinstartups.com/thisweekin-startups/steve-jurvetson-dfj-tesla-spacex>
 - <https://thisweekinstartups.com/glennkelman-redfin-pejmannozad-pear>
 - <https://thisweekinstartups.com/bill-gurley-benchmark>
 - <https://swoot.com/this-week-in-startups-audio/e918-stack-overflow-ceo-co-founder-joel-spolsky-shares-lessons-growing-his-7a51e8jq>
+- <https://www.se-radio.net/2019/07/episode-373-joel-spolsky-on-startups-growth-and-valuation/>
 - <https://mastersofscale.com/brian-chesky-handcrafted> (Airbnb)
+- <https://swoot.com/techmeme-ride-home/the-man-who-could-have-been-bill-gates-pt-2-ed3c4bjq>
 - <https://www.npr.org/sections/money/2017/04/28/526051566/episode-553-the-dollar-at-the-center-of-the-world>
 
 ## Atom feed
