@@ -43,9 +43,11 @@ Title: John Likes
 - <https://spectrum.ieee.org/tech-history/silicon-revolution/hans-peter-luhn-and-the-birth-of-the-hashing-algorithm>
 
 ## Podcasts
-- <https://podcasts.apple.com/us/podcast/techmeme-ride-home/id1355212895> (daily tech news)
-- <https://www.se-radio.net/2010/03/episode-157-hadoop-with-philip-zeyliger>
 - <https://www.se-radio.net/2010/09/episode-167-the-history-of-junit-and-the-future-of-testing-with-kent-beck>
+- <https://www.se-radio.net/2017/06/se-radio-episode-295-michael-feathers-on-legacy-code>
+- <https://www.se-radio.net/2016/01/se-radio-show-246-john-wilkes-on-borg-and-kubernetes>
+- <https://changelog.com/gotime/6> (Mechanical Sympathy with Bill Kennedy)
+- <https://www.se-radio.net/2010/03/episode-157-hadoop-with-philip-zeyliger>
 - <https://www.se-radio.net/2010/11/episode-169-memory-grid-architecture-with-nati-shalom>
 - <https://www.se-radio.net/2014/11/episode-215-gang-of-four-20-years-later>
 - <https://www.se-radio.net/2015/02/episode-221-jez-humble-on-continuous-delivery>
@@ -53,21 +55,20 @@ Title: John Likes
 - <https://www.se-radio.net/2015/05/se-radio-episode-226-eric-evans-on-domain-driven-design-at-10-years>
 - <https://www.se-radio.net/2015/05/the-cap-theorem-then-and-now>
 - <https://www.se-radio.net/2015/11/se-radio-episode-241-kyle-kingsbury-on-consensus-in-distributed-systems>
-- <https://www.se-radio.net/2016/01/se-radio-show-246-john-wilkes-on-borg-and-kubernetes>
 - <https://www.se-radio.net/2017/01/se-radio-episode-280-gerald-weinberg-on-bugs-errors-and-software-quality>
 - <https://www.se-radio.net/2017/02/se-radio-episode-282-donny-nadolny-on-debugging-distributed-systems>
 - <https://www.se-radio.net/2017/03/se-radio-episode-285-james-cowling-on-dropboxs-distributed-storage-system>
 - <https://www.se-radio.net/2017/04/se-radio-episode-287-success-skills-for-architects-with-neil-ford>
-- <https://www.se-radio.net/2017/06/se-radio-episode-295-michael-feathers-on-legacy-code>
 - <https://www.se-radio.net/2018/03/se-radio-episode-320-nate-taggart-on-serverless-paradigm>
 - <https://www.se-radio.net/2019/02/se-radio-episode-358-probabilistic-data-structure-for-big-data-problems/>
 - <https://www.codingblocks.net/podcast/clean-code-programming-around-boundaries>
-- <https://changelog.com/gotime/6> (Mechanical Sympathy with Bill Kennedy)
 - <https://swoot.com/artificial-intellence-ai/gustav-soderstrom-spotify-fd18d8jq>
+- <https://swoot.com/13-minutes-to-the-moon/ep-05-the-fourth-astronaut-da55a2jq> (the first mission critical software)
+- <https://podcasts.apple.com/us/podcast/techmeme-ride-home/id1355212895> (daily tech news)
 
 ## Web Articles
 - <https://hackernoon.com/the-rise-and-fall-of-knight-capital-buy-high-sell-low-rinse-and-repeat-ae17fae780f6>
-- <https://producthabits.com/my-billion-dollar-mistake/>
+- <https://news.ycombinator.com/item?id=21849977> (Etsy succeeded in spite of itself)
 - <https://news.ycombinator.com/item?id=15565875> (Write tests. Not too many. Mostly integration)
 - <https://www.vox.com/recode/2019/5/3/18511544/amazon-prime-oral-history-jeff-bezos-one-day-shipping>
 - <https://highscalability.com/blog/2014/2/26/the-whatsapp-architecture-facebook-bought-for-19-billion.html>
@@ -85,9 +86,11 @@ Title: John Likes
 - <https://www.facebook.com/notes/kent-beck/one-bite-at-a-time-partitioning-complexity/1716882961677894>
 - <https://programmingisterrible.com/post/173883533613/code-to-debug>
 - <https://news.ycombinator.com/item?id=11416746> Crowd sourcing how to review code
+- <https://robertheaton.com/2014/06/20/code-review-without-your-eyes/> (Heuristics for quickly reviewing code)
 - <https://dave.cheney.net/paste/the-past-present-and-future-of-go2.pdf> QCon Shanghai
 - <https://segment.com/blog/a-brief-history-of-the-uuid/>
-- <https://robertheaton.com/2014/06/20/code-review-without-your-eyes/> (Heuristics for quickly reviewing code)
+- <https://www.bluematador.com/blog/delight-customers-this-black-friday-7-surefire-strategies-to-prevent-downtime>
+- <https://github.com/joelparkerhenderson/queueing_theory>
 
 ## Tools
 
@@ -106,6 +109,7 @@ Title: John Likes
 - <https://www.dnsleaktest.com> (detect if your VPN is not supporting DNS queries)
 - <https://ipleak.net/> (detect if your VPN is not fully private)
 - <https://news.ycombinator.com/item?id=18466787> List of strings to use in QA testing
+- <http://cslibrary.stanford.edu/105/> (list of LinkedList problems)
 
 ## Resources on Leadership and Management and Business
 
@@ -124,6 +128,7 @@ Title: John Likes
 ### Manager Podcasts
 - <https://www.manager-tools.com/2007/01/the-juggling-koan> Delegation
 - <https://www.manager-tools.com/2010/05/how-choose-what-delegate-hall-fame-guidance>
+- <https://www.manager-tools.com/2018/06/employee-retention-hof>
 - <https://www.manager-tools.com/2018/11/preparing-performance-reviews-hof-2018>
 - <https://www.manager-tools.com/2018/11/delivering-performance-review-hof-2018>
 - <https://www.manager-tools.com/2019/02/role-power-revisited-you-speak-ceo-part-1>
@@ -166,6 +171,8 @@ Title: John Likes
 - <https://hbr.org/2009/05/what-only-the-ceo-can-do>
 - <https://hbr.org/2019/08/8-ways-leaders-delegate-successfully>
 - <https://lethain.com/path-to-eng-manager-of-managers>
+- <https://web.archive.org/web/20191121000646/https://genius.com/4336630> (Lecture 14: How to Operate by Keith Rabois)
+- <https://www.gwern.net/Complement> (Commoditize your Complement aka weaponizing open-source)
 
 #### Meetings and Decisions
 - <https://mfbt.ca/what-i-hear-when-you-tell-me-your-company-doesnt-do-meetings-dfbb57a038d6?gi=9c2f0ad8ab87>
@@ -180,6 +187,7 @@ Title: John Likes
 - <https://firstround.com/review/What-You-Want-in-a-VP-Eng-from-the-Recruiters-Behind-Twitter-and-LinkedIn/>
 - <http://www.lihaoyi.com/post/HowtoconductagoodProgrammingInterview.html>
 - <https://www.kennorton.com/essays/happy-10th-birthday-to-hthapm.html>
+- <https://guykawasaki.com/the_inside_scoo/> (Pragmatic Resume and Interview Prep)
 
 ### Blogs on Engineering Leadership
 - <https://randsinrepose.com/archives/category/management>
@@ -196,8 +204,10 @@ Title: John Likes
 - <https://softwareleadweekly.com/issues> (a well curated weekly email of links for leaders)
 
 ### Startups and VCs and Business Podcasts
+- <https://www.npr.org/sections/money/2017/04/28/526051566/episode-553-the-dollar-at-the-center-of-the-world>
 - <https://money.howstuffworks.com/question398.htm>
 - <https://hbr.org/1998/11/how-venture-capital-works>
+- <https://vcstarterkit.substack.com/p/how-vcs-make-money>
 - <https://www.marketplace.org/2017/09/07/venture-vocabulary/>
 - <https://thisweekinstartups.com/thisweekin-startups/advice-biggest-mistakes-founders-startups-jerry-colonna>
 - <https://swoot.com/this-week-in-startups-audio/e967-twilio-ceo-co-founder-jeff-lawson-on-growing-twilio-to-160-000-10f753fjq>
@@ -208,7 +218,8 @@ Title: John Likes
 - <https://www.se-radio.net/2019/07/episode-373-joel-spolsky-on-startups-growth-and-valuation/>
 - <https://mastersofscale.com/brian-chesky-handcrafted> (Airbnb)
 - <https://swoot.com/techmeme-ride-home/the-man-who-could-have-been-bill-gates-pt-2-ed3c4bjq>
-- <https://www.npr.org/sections/money/2017/04/28/526051566/episode-553-the-dollar-at-the-center-of-the-world>
+- <https://producthabits.com/my-billion-dollar-mistake/> (Getting "Foundered", become a good PM)
+
 
 ## Atom feed
 
