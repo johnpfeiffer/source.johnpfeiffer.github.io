@@ -701,7 +701,7 @@ TODO: automate using packer and digital ocean apis to create an image
 `scp -i ~/.ssh/VPNKEY -P 22222  NEWUSERNAME@VPN-IP-ADDRESS:client1.ovpn .`
 > of course no matter what we need the open vpn client configuration
 
-Or... From a client computer SCP to download the $FQDN>ovpn and then connect to the openvpn server
+Or... From a client computer SCP to download the $FQDN.ovpn and then connect to the openvpn server
 
     sudo openvpn --config client1.ovpn
 
@@ -710,6 +710,18 @@ Or... From a client computer SCP to download the $FQDN>ovpn and then connect to 
     curl checkip.amazonaws.com  # should return the IP address of the VPN server (not your local Wifi/ISP)
     curl https://dnsleaktest.com/
     # https://whoer.net/#extended
+
+### Import a .ovpn config file into ubuntu network manager
+`sudo nmcli connection import type openvpn file myname.tcp.ovpn`
+> [sudo] password for your-username:
+> Connection 'mynameVPN' (abcd-37c175b2325d) successfully added.
+
+#### Connect to a VPN from the CLI
+
+`nmcli connection up mynameVPN`
+> presuming the prior connection config was named mynameVPN
+
+`nmcli connection show mynameVPN`
 
 ### DNS Security
 

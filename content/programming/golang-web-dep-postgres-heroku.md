@@ -157,6 +157,52 @@ In your source code repository your more complete .travis.yml file will be:
 
 An interesting alternative to github and travis is bitbucket: <https://confluence.atlassian.com/bitbucket/deploy-to-heroku-872013667.html>
 
+- <https://confluence.atlassian.com/bitbucket/variables-in-pipelines-794502608.html> (where you enter your heroku API key as a variable)
+- e.g. https://bitbucket.org/YOURUSERNAME/YOURREPONAME/addon/pipelines/deployments (on the far right there will be a gear symbol to configure variables)
+
+> Note that Using the Deployments UI (via adding the deployment: production line) will change the UI layout, and may require re-entering any Variables
+> Also, use the Secured checkbox for any passwords or API keys when entered as a Variable
+
+*bitbucket-pipelines.yml*
+	image: golang
+	clone:
+	  depth: full
+	pipelines:
+	  default:
+	    - step:
+		name: Build and test
+		script:
+		  - source bitbucket-pipelines-go.sh
+		  - cd ${IMPORT_PATH}/
+		  - go get
+		  - go build
+		  - go test -v
+	# - git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git HEAD
+		services:
+		  - postgres 
+	    - step:
+		name: Create artifact
+		script:
+		  - tar czfv application.tgz *.go 
+		artifacts:
+		  - application.tgz
+	    - step:
+		name: Deploy to production
+		deployment: production
+		script:
+		  - pipe: atlassian/heroku-deploy:0.1.1
+		    variables:
+		      HEROKU_API_KEY: $HEROKU_API_KEY
+		      HEROKU_APP_NAME: $HEROKU_APP_NAME
+              ZIP_FILE: "application.tgz"
+    
+    
+	definitions:
+	  services:
+	    postgres:
+	      image: postgres
+
+
 ### Test It
 
 Now a browser that hits the Heroku URL will see "hi" , <https://web-go.herokuapp.com/>
