@@ -497,3 +497,43 @@ To use a custom domain name for your traffic <https://devcenter.heroku.com/artic
 To download the source code from a running Heroku application: `heroku git:clone --app APPNAME` <https://devcenter.heroku.com/articles/git-clone-heroku-app>
 
 
+## Using HTTPS for a Go Web Server with a Self Signed SSL Certficate
+
+### One Liner to generate a self signed certificate
+`openssl req -subj '/CN=example.com/O=My Company Name LTD./C=US' -new -newkey rsa:2048 -days 365 -nodes -x509 -keyout server.key -out server.crt`
+
+### SSL Web Server in Golang
+
+    :::go
+    package main
+    
+    import (
+            "log"
+            "net/http"
+            "os"
+    )
+    
+    func myHandler(w http.ResponseWriter, r *http.Request) {
+            w.Write([]byte("hi"))
+    }
+    
+    func main() {
+            certname := "server.crt"
+            keyname := "server.key"
+            port := getEnvOrDefault("PORT", "8080")
+            log.Println("Listening on port", port)
+            http.HandleFunc("/", myHandler)
+            log.Fatal(http.ListenAndServeTLS(":"+port, certname, keyname, nil))
+    }
+    
+    func getEnvOrDefault(key, defaultValue string) string {
+            result := defaultValue
+            val, ok := os.LookupEnv(key)
+            if ok {
+                    result = val
+            }
+            return result
+    }
+
+> Note that self signed certificates will prompt a browser warning
+`curl --insecure https://localhost:8080`
