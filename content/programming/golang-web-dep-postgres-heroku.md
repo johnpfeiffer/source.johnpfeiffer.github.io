@@ -162,6 +162,7 @@ An interesting alternative to github and travis is bitbucket: <https://confluenc
 
 > Note that Using the Deployments UI (via adding the deployment: production line) will change the UI layout, and may require re-entering any Variables
 > Also, use the Secured checkbox for any passwords or API keys when entered as a Variable
+- <https://bitbucket.org/atlassian/heroku-deploy/src/master/README.md>
 
 *bitbucket-pipelines.yml*
 	image: golang
@@ -202,6 +203,14 @@ An interesting alternative to github and travis is bitbucket: <https://confluenc
 	    postgres:
 	      image: postgres
 
+
+> Try creating new credentials if you get an unauthorized error: Failed to create sources. Expected HTTP Status 200, got 401. Error message: {"id":"unauthorized","message":"Invalid credentials provided."}
+
+`heroku authorizations:create`
+
+You can see (and rename the description) of the Heroku tokens/api-keys listed at <https://dashboard.heroku.com/account/applications>
+
+You can input/update the token here: https://bitbucket.org/USERNAME/REPONAME/admin/addon/admin/pipelines/deployment-settings
 
 ### Test It
 
