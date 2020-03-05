@@ -30,11 +30,16 @@ Title: John Likes
 
 ## Papers and Articles
 
-- <https://www.essrl.wustl.edu/~jao/itrg/shannon.pdf> (Claude Shannon on Communication)
+- <http://www.essrl.wustl.edu/~jao/itrg/shannon.pdf> (Claude Shannon on Communication)
 - <https://www.cs.cmu.edu/~crary/819-f09/Hoare78.pdf> (Tony Hoare on Communicating Sequential Processes)
 - <https://research.microsoft.com/en-us/um/people/lamport/pubs/time-clocks.pdf> (Leslie Lamport on Time)
 - <https://research.microsoft.com/en-us/um/people/lamport/pubs/lamport-paxos.pdf> (Leslie Lamport on Paxos)
 - <https://research.microsoft.com/en-us/um/people/lamport/pubs/paxos-simple.pdf> (Leslie Lamport on Paxos Simplified)
+- - <https://www.microsoft.com/en-us/research/uploads/prod/2016/12/paxos-simple-Copy.pdf>
+- <https://bwlampson.site/65-ABCDPaxos/Acrobat.pdf>
+- <https://bwlampson.site/33-Hints/WebPage.html> (Butler Lampson on Hints for Computer System Design 1983)
+- - <https://news.microsoft.com/stories/people/butler-lampson.html>
+- <https://bwlampson.site/10-SPEGuestEditorial/WebPage.html> (1972: "Almost everyone who uses a pencil will use a computer")
 - <https://queue.acm.org/detail.cfm?id=1142065> (Werner Vogels about AWS)
 - <https://queue.acm.org/detail.cfm?id=3104030> (Data Sketching summary)
 - <https://queue.acm.org/detail.cfm?id=3197520> (Always be automating)
@@ -64,10 +69,12 @@ Title: John Likes
 - <https://www.codingblocks.net/podcast/clean-code-programming-around-boundaries>
 - <https://swoot.com/artificial-intellence-ai/gustav-soderstrom-spotify-fd18d8jq>
 - <https://swoot.com/13-minutes-to-the-moon/ep-05-the-fourth-astronaut-da55a2jq> (the first mission critical software)
+- <https://swoot.com/darknet-diaries/ep-52-magecart-15881b7jq> (credit card skimming and websites)
+- <https://swoot.com/cautionary-tales/la-la-land-galileos-warning-155f434jq> (quality "theater")
 - <https://podcasts.apple.com/us/podcast/techmeme-ride-home/id1355212895> (daily tech news)
 
 ## Web Articles
-- <https://hackernoon.com/the-rise-and-fall-of-knight-capital-buy-high-sell-low-rinse-and-repeat-ae17fae780f6>
+- <https://medium.com/dataseries/the-rise-and-fall-of-knight-capital-buy-high-sell-low-rinse-and-repeat-ae17fae780f6>
 - <https://news.ycombinator.com/item?id=21849977> (Etsy succeeded in spite of itself)
 - <https://news.ycombinator.com/item?id=15565875> (Write tests. Not too many. Mostly integration)
 - <https://www.vox.com/recode/2019/5/3/18511544/amazon-prime-oral-history-jeff-bezos-one-day-shipping>
@@ -104,7 +111,7 @@ Title: John Likes
 - <https://webpagetest.org> (website speed test with slow devices)
 - <https://www.maxmind.com/en/geoip-demo> (geo ip lookup)
 - <https://mxtoolbox.com/NetworkTools.aspx>
-- <https://haveibeenpwned.com> (detect if your email/accounts have been hacked)
+- <https://haveibeenpwned.com/> (detect if your email/accounts have been hacked)
 - <https://panopticlick.eff.org> (detect if your browsing is identifiable to servers/advertisers)
 - <https://www.dnsleaktest.com> (detect if your VPN is not supporting DNS queries)
 - <https://ipleak.net/> (detect if your VPN is not fully private)
@@ -172,6 +179,7 @@ Title: John Likes
 - <https://hbr.org/2019/08/8-ways-leaders-delegate-successfully>
 - <https://lethain.com/path-to-eng-manager-of-managers>
 - <https://web.archive.org/web/20191121000646/https://genius.com/4336630> (Lecture 14: How to Operate by Keith Rabois)
+- <https://delian.io/lessons-3> (Keith Rabois on How to be an Effective Executive)
 - <https://www.gwern.net/Complement> (Commoditize your Complement aka weaponizing open-source)
 
 #### Meetings and Decisions
@@ -209,17 +217,19 @@ Title: John Likes
 - <https://hbr.org/1998/11/how-venture-capital-works>
 - <https://vcstarterkit.substack.com/p/how-vcs-make-money>
 - <https://www.marketplace.org/2017/09/07/venture-vocabulary/>
+- <https://a16z.com/2011/08/20/why-software-is-eating-the-world/>
 - <https://thisweekinstartups.com/thisweekin-startups/advice-biggest-mistakes-founders-startups-jerry-colonna>
 - <https://swoot.com/this-week-in-startups-audio/e967-twilio-ceo-co-founder-jeff-lawson-on-growing-twilio-to-160-000-10f753fjq>
 - <https://thisweekinstartups.com/thisweekin-startups/steve-jurvetson-dfj-tesla-spacex>
 - <https://thisweekinstartups.com/glennkelman-redfin-pejmannozad-pear>
 - <https://thisweekinstartups.com/bill-gurley-benchmark>
+- <https://swoot.com/this-week-in-startups-audio/e1002-wealthfront-ceo-co-founder-andy-archleff-on-hitting-escape-velocity-at-1546afejq>
+- <https://alexdanco.com/2020/02/07/debt-is-coming/>
 - <https://swoot.com/this-week-in-startups-audio/e918-stack-overflow-ceo-co-founder-joel-spolsky-shares-lessons-growing-his-7a51e8jq>
 - <https://www.se-radio.net/2019/07/episode-373-joel-spolsky-on-startups-growth-and-valuation/>
 - <https://mastersofscale.com/brian-chesky-handcrafted> (Airbnb)
 - <https://swoot.com/techmeme-ride-home/the-man-who-could-have-been-bill-gates-pt-2-ed3c4bjq>
 - <https://producthabits.com/my-billion-dollar-mistake/> (Getting "Foundered", become a good PM)
-
 
 ## Atom feed
 
