@@ -580,8 +580,17 @@ Complex real systems have multiple dependencies and following the recommended Do
 
 While there are some amazing open source projects (<http://kubernetes.io/> , <https://mesos.apache.org/documentation/latest/docker-containerizer/>) it is instructive to start with the simplest model provided directly from Docker, **<https://docs.docker.com/compose/>**
 
+Either download the docker-compose binary directly (to /usr/local/bin):
+- <https://github.com/docker/compose/releases>
+
+`sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose`
+`sudo chmod +x /usr/local/bin/docker-compose`
+
+Or use pip/python to install it...
+
     sudo pip install --upgrade docker-compose
-    docker-compose --version
+
+`which docker-compose ; sudo docker-compose --version`
 
 ### app.py
 

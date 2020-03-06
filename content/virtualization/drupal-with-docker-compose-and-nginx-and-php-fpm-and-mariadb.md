@@ -224,6 +224,13 @@ Instead, as I was already using packer on DigitalOcean to automate building the 
     docker info || exit 1
 > linux-image-extra is to ensure we have AUFS because docker needs a proper storage driver
 
+An alternative is to download the docker-compose binary directly (to /usr/local/bin):
+- <https://github.com/docker/compose/releases> 
+
+`sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose`
+`sudo chmod +x /usr/local/bin/docker-compose`
+`which docker-compose ; sudo docker-compose --version`
+
 #### docker-compose.yml with drupal:7-fpm and mariadb:5.5
 
     :::docker
