@@ -43,7 +43,6 @@ Title: John Likes
 - <https://bwlampson.site/10-SPEGuestEditorial/WebPage.html> (1972: "Almost everyone who uses a pencil will use a computer")
 - <https://queue.acm.org/detail.cfm?id=3104030> (Data Sketching summary)
 - <https://cacm.acm.org/magazines/2009/10/42360-retrospective-an-axiomatic-basis-for-computer-programming/fulltext> (C.A.R. Hoare on formal verification)
-- <https://spectrum.ieee.org/tech-history/silicon-revolution/hans-peter-luhn-and-the-birth-of-the-hashing-algorithm>
 
 ## Podcasts
 - <https://www.se-radio.net/2016/01/se-radio-show-246-john-wilkes-on-borg-and-kubernetes>
@@ -65,12 +64,13 @@ Title: John Likes
 - <https://podcasts.apple.com/us/podcast/techmeme-ride-home/id1355212895> (daily tech news)
 
 ## History
+- <https://spectrum.ieee.org/tech-history/silicon-revolution/hans-peter-luhn-and-the-birth-of-the-hashing-algorithm>
+- <https://segment.com/blog/a-brief-history-of-the-uuid/>
 - <https://www.cake.co/conversations/g4CP6zJ/the-secret-call-to-andy-grove-that-may-have-helped-apple-buy-next>
 - <https://www.cake.co/conversations/VXHSjBG/the-untold-origin-story-of-ebay-that-i-lived-and-the-times-that-could-have-killed-it>
 - <https://news.ycombinator.com/item?id=21849977> (Etsy succeeded in spite of itself)
 - <https://queue.acm.org/detail.cfm?id=1142065> (Werner Vogels about AWS 2006)
 - <https://www.vox.com/recode/2019/5/3/18511544/amazon-prime-oral-history-jeff-bezos-one-day-shipping>
-- <https://segment.com/blog/a-brief-history-of-the-uuid/>
 
 
 - <https://swoot.com/guy-kawasakis-remarkable-people/steve-wozniak-pirate-co-founder-of-apple-and-hardware-wizard-1870ecdjq>
