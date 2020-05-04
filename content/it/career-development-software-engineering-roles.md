@@ -126,3 +126,12 @@ For each skill it is worth considering:
 Did I miss something? Are there missing nuances or outright incorrect statements?  Of course! =)
 > There is no one-size-fits-all definition to this NP-Hard problem of "people and organizations over time"
 
+## Iterative Improvement on this Article
+My brash/blunt style is apparent in this article, but for a peek at how much better things get with collaboration and an editor check out the polished version:
+
+<https://web.archive.org/web/20200415071712/https://blog.helix.com/helping-your-engineers-grow/>
+
+Also, I have later stumbled across this similar idea of "the range of software careers" done as a podcast back in 2008:
+- <https://www.se-radio.net/2008/09/episode-110-roles-in-software-engineering-i/>
+- <https://www.se-radio.net/2008/09/episode-112-roles-in-software-engineering-ii/>
+
