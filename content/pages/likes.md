@@ -26,6 +26,7 @@ Title: John Likes
 - The Tangled Web: A Guide to Securing Modern Web Applications by Michal Zalewski
 - The Algorithm Design Manual, 2nd Edition by Steven Skiena
 - Testing Computer Software, 2nd Edition by Cem Kaner, Jack Falk, Hung Q. Nguyen
+- Working Effectively with Legacy Code by Michael Feathers
 
 
 ## Papers and Articles
@@ -40,64 +41,83 @@ Title: John Likes
 - <https://bwlampson.site/33-Hints/WebPage.html> (Butler Lampson on Hints for Computer System Design 1983)
 - - <https://news.microsoft.com/stories/people/butler-lampson.html>
 - <https://bwlampson.site/10-SPEGuestEditorial/WebPage.html> (1972: "Almost everyone who uses a pencil will use a computer")
-- <https://queue.acm.org/detail.cfm?id=1142065> (Werner Vogels about AWS)
 - <https://queue.acm.org/detail.cfm?id=3104030> (Data Sketching summary)
-- <https://queue.acm.org/detail.cfm?id=3197520> (Always be automating)
-- <https://queue.acm.org/detail.cfm?id=2945077> (Small batches principle)
 - <https://cacm.acm.org/magazines/2009/10/42360-retrospective-an-axiomatic-basis-for-computer-programming/fulltext> (C.A.R. Hoare on formal verification)
 - <https://spectrum.ieee.org/tech-history/silicon-revolution/hans-peter-luhn-and-the-birth-of-the-hashing-algorithm>
 
 ## Podcasts
-- <https://www.se-radio.net/2010/09/episode-167-the-history-of-junit-and-the-future-of-testing-with-kent-beck>
-- <https://www.se-radio.net/2017/06/se-radio-episode-295-michael-feathers-on-legacy-code>
 - <https://www.se-radio.net/2016/01/se-radio-show-246-john-wilkes-on-borg-and-kubernetes>
 - <https://changelog.com/gotime/6> (Mechanical Sympathy with Bill Kennedy)
 - <https://www.se-radio.net/2010/03/episode-157-hadoop-with-philip-zeyliger>
 - <https://www.se-radio.net/2010/11/episode-169-memory-grid-architecture-with-nati-shalom>
 - <https://www.se-radio.net/2014/11/episode-215-gang-of-four-20-years-later>
-- <https://www.se-radio.net/2015/02/episode-221-jez-humble-on-continuous-delivery>
 - <https://www.se-radio.net/2015/04/episode-224-sven-johann-and-eberhard-wolff-on-technical-debt>
 - <https://www.se-radio.net/2015/05/se-radio-episode-226-eric-evans-on-domain-driven-design-at-10-years>
 - <https://www.se-radio.net/2015/05/the-cap-theorem-then-and-now>
 - <https://www.se-radio.net/2015/11/se-radio-episode-241-kyle-kingsbury-on-consensus-in-distributed-systems>
-- <https://www.se-radio.net/2017/01/se-radio-episode-280-gerald-weinberg-on-bugs-errors-and-software-quality>
 - <https://www.se-radio.net/2017/02/se-radio-episode-282-donny-nadolny-on-debugging-distributed-systems>
 - <https://www.se-radio.net/2017/03/se-radio-episode-285-james-cowling-on-dropboxs-distributed-storage-system>
 - <https://www.se-radio.net/2017/04/se-radio-episode-287-success-skills-for-architects-with-neil-ford>
-- <https://www.se-radio.net/2018/03/se-radio-episode-320-nate-taggart-on-serverless-paradigm>
 - <https://www.se-radio.net/2019/02/se-radio-episode-358-probabilistic-data-structure-for-big-data-problems/>
 - <https://www.codingblocks.net/podcast/clean-code-programming-around-boundaries>
 - <https://swoot.com/artificial-intellence-ai/gustav-soderstrom-spotify-fd18d8jq>
-- <https://swoot.com/13-minutes-to-the-moon/ep-05-the-fourth-astronaut-da55a2jq> (the first mission critical software)
 - <https://swoot.com/darknet-diaries/ep-52-magecart-15881b7jq> (credit card skimming and websites)
-- <https://swoot.com/cautionary-tales/la-la-land-galileos-warning-155f434jq> (quality "theater")
 - <https://podcasts.apple.com/us/podcast/techmeme-ride-home/id1355212895> (daily tech news)
 
-## Web Articles
-- <https://medium.com/dataseries/the-rise-and-fall-of-knight-capital-buy-high-sell-low-rinse-and-repeat-ae17fae780f6>
+## History
+- <https://www.cake.co/conversations/g4CP6zJ/the-secret-call-to-andy-grove-that-may-have-helped-apple-buy-next>
+- <https://www.cake.co/conversations/VXHSjBG/the-untold-origin-story-of-ebay-that-i-lived-and-the-times-that-could-have-killed-it>
 - <https://news.ycombinator.com/item?id=21849977> (Etsy succeeded in spite of itself)
-- <https://news.ycombinator.com/item?id=15565875> (Write tests. Not too many. Mostly integration)
+- <https://queue.acm.org/detail.cfm?id=1142065> (Werner Vogels about AWS 2006)
 - <https://www.vox.com/recode/2019/5/3/18511544/amazon-prime-oral-history-jeff-bezos-one-day-shipping>
+- <https://segment.com/blog/a-brief-history-of-the-uuid/>
+
+
+- <https://swoot.com/guy-kawasakis-remarkable-people/steve-wozniak-pirate-co-founder-of-apple-and-hardware-wizard-1870ecdjq>
+- <https://swoot.com/techmeme-ride-home/the-man-who-could-have-been-bill-gates-pt-2-ed3c4bjq> (Gary Kildall)
+
+## Miscellaneous Great Web Sites and Articles
+- <https://brandur.org/heroku-values>
+- <https://increment.com/documentation/>
+- <https://danluu.com>
+- <https://charity.wtf>
+- <https://urchin.biz> (pre-history of google analytics)
+- <https://www.facebook.com/notes/kent-beck/one-bite-at-a-time-partitioning-complexity/1716882961677894>
+- <https://dave.cheney.net/paste/the-past-present-and-future-of-go2.pdf> QCon Shanghai
+- <https://github.com/joelparkerhenderson/queueing_theory> (summary and links to resources)
+
+## Quality and Testing
+- <https://medium.com/dataseries/the-rise-and-fall-of-knight-capital-buy-high-sell-low-rinse-and-repeat-ae17fae780f6>
+- <https://rbcs-us.com/documents/Why-Most-Unit-Testing-is-Waste.pdf>
+- <https://news.ycombinator.com/item?id=15565875> (Write tests. Not too many. Mostly integration)
+- <https://programmingisterrible.com/post/173883533613/code-to-debug>
+- <https://news.ycombinator.com/item?id=11416746> Crowd sourcing how to review code
+- <https://robertheaton.com/2014/06/20/code-review-without-your-eyes/> (Heuristics for quickly reviewing code)
+- <https://www.bluematador.com/blog/delight-customers-this-black-friday-7-surefire-strategies-to-prevent-downtime>
+- <https://queue.acm.org/detail.cfm?id=3197520> (Always be automating, Thomas Limoncelli)
+- <https://queue.acm.org/detail.cfm?id=2945077> (Small batches principle, Thomas Limoncelli)
+
+- <https://swoot.com/13-minutes-to-the-moon/ep-05-the-fourth-astronaut-da55a2jq> (the first mission critical software)
+- <https://swoot.com/cautionary-tales/la-la-land-galileos-warning-155f434jq> (quality "theater")
+- <https://www.se-radio.net/2010/09/episode-167-the-history-of-junit-and-the-future-of-testing-with-kent-beck>
+- <https://www.se-radio.net/2015/02/episode-221-jez-humble-on-continuous-delivery>
+- <https://www.se-radio.net/2017/01/se-radio-episode-280-gerald-weinberg-on-bugs-errors-and-software-quality>
+- <https://www.se-radio.net/2017/06/se-radio-episode-295-michael-feathers-on-legacy-code>
+
+## Architectures and Scalability
 - <https://highscalability.com/blog/2014/2/26/the-whatsapp-architecture-facebook-bought-for-19-billion.html>
 - <https://highscalability.com/blog/2014/3/31/how-whatsapp-grew-to-nearly-500-million-users-11000-cores-an.html>
 - <https://highscalability.com/blog/2010/3/16/justintvs-live-video-broadcasting-architecture.html>
 - <https://news.ycombinator.com/item?id=18760350> A simple guide to scaling to 10M users *(with commentary from HackerNews)*
 - <https://news.ycombinator.com/item?id=13960107> (modules vs microservices)
-- <https://brandur.org/heroku-values>
-- <https://increment.com/documentation/>
-- <https://danluu.com>
-- <https://charity.wtf>
-- <http://www.elidedbranches.com/2016/08/microservices-real-architectural.html>
-- <https://urchin.biz> (pre-history of google analytics)
-- <https://www.cake.co/conversations/g4CP6zJ/the-secret-call-to-andy-grove-that-may-have-helped-apple-buy-next>
-- <https://www.facebook.com/notes/kent-beck/one-bite-at-a-time-partitioning-complexity/1716882961677894>
-- <https://programmingisterrible.com/post/173883533613/code-to-debug>
-- <https://news.ycombinator.com/item?id=11416746> Crowd sourcing how to review code
-- <https://robertheaton.com/2014/06/20/code-review-without-your-eyes/> (Heuristics for quickly reviewing code)
-- <https://dave.cheney.net/paste/the-past-present-and-future-of-go2.pdf> QCon Shanghai
-- <https://segment.com/blog/a-brief-history-of-the-uuid/>
-- <https://www.bluematador.com/blog/delight-customers-this-black-friday-7-surefire-strategies-to-prevent-downtime>
-- <https://github.com/joelparkerhenderson/queueing_theory>
+- <http://www.elidedbranches.com/2016/08/microservices-real-architectural.html> (Camille Fournier)
+- <https://swoot.com/go-time/the-monolith-vs-microservices-debate-1b4fe3cjq>
+- <https://www.se-radio.net/2018/03/se-radio-episode-320-nate-taggart-on-serverless-paradigm>
+- <https://martinfowler.com/articles/serverless.html#drawbacks>
+
+## Game Theory
+- <https://ncase.me/trust/> (interactive game theory for prisoner's dilemma)
+- <https://www.wnycstudios.org/podcasts/radiolab/segments/golden-rule> (game theory in practice)
 
 ## Tools
 
@@ -139,6 +159,7 @@ Title: John Likes
 - <https://www.manager-tools.com/2018/11/preparing-performance-reviews-hof-2018>
 - <https://www.manager-tools.com/2018/11/delivering-performance-review-hof-2018>
 - <https://www.manager-tools.com/2019/02/role-power-revisited-you-speak-ceo-part-1>
+- <https://swoot.com/manager-tools/rules-of-small-project-management-chatper-1-deliverables-basics-185bd40jq>
 - <https://www.manager-tools.com/all-podcasts> (no nonsense advice on the art of people management)
 
 - <https://www.se-radio.net/2017/10/se-radio-episode-306-ron-lichty-on-managing-programmers>
@@ -187,6 +208,7 @@ Title: John Likes
 - <http://timharford.com/2019/08/what-we-get-wrong-about-meetings-and-how-to-make-them-worth-attending/>
 - <https://firstround.com/review/square-defangs-difficult-decisions-with-this-system-heres-how/>
 - <https://hackernoon.com/the-90-agreement-rule-36757dcc8eaa>
+- <https://en.wikipedia.org/wiki/Tuckman%27s_stages_of_group_development>
 
 
 #### Hiring and Interviewing
@@ -217,18 +239,21 @@ Title: John Likes
 - <https://hbr.org/1998/11/how-venture-capital-works>
 - <https://vcstarterkit.substack.com/p/how-vcs-make-money>
 - <https://www.marketplace.org/2017/09/07/venture-vocabulary/>
+- <https://medium.com/the-saas-growth-blog/from-pre-seed-to-series-c-startup-funding-rounds-explained-f6647156e28b>
+- <https://bothsidesofthetable.com/how-much-should-you-raise-in-your-vc-round-and-what-is-a-vc-looking-at-in-your-model-3b79ff436b63>
 - <https://a16z.com/2011/08/20/why-software-is-eating-the-world/>
+- <https://alexdanco.com/2020/02/07/debt-is-coming/>
+
 - <https://thisweekinstartups.com/thisweekin-startups/advice-biggest-mistakes-founders-startups-jerry-colonna>
 - <https://swoot.com/this-week-in-startups-audio/e967-twilio-ceo-co-founder-jeff-lawson-on-growing-twilio-to-160-000-10f753fjq>
 - <https://thisweekinstartups.com/thisweekin-startups/steve-jurvetson-dfj-tesla-spacex>
 - <https://thisweekinstartups.com/glennkelman-redfin-pejmannozad-pear>
 - <https://thisweekinstartups.com/bill-gurley-benchmark>
 - <https://swoot.com/this-week-in-startups-audio/e1002-wealthfront-ceo-co-founder-andy-archleff-on-hitting-escape-velocity-at-1546afejq>
-- <https://alexdanco.com/2020/02/07/debt-is-coming/>
+
 - <https://swoot.com/this-week-in-startups-audio/e918-stack-overflow-ceo-co-founder-joel-spolsky-shares-lessons-growing-his-7a51e8jq>
 - <https://www.se-radio.net/2019/07/episode-373-joel-spolsky-on-startups-growth-and-valuation/>
 - <https://mastersofscale.com/brian-chesky-handcrafted> (Airbnb)
-- <https://swoot.com/techmeme-ride-home/the-man-who-could-have-been-bill-gates-pt-2-ed3c4bjq>
 - <https://producthabits.com/my-billion-dollar-mistake/> (Getting "Foundered", become a good PM)
 
 ## Atom feed
