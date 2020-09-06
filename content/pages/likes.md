@@ -59,8 +59,8 @@ Title: John Likes
 - <https://www.se-radio.net/2017/04/se-radio-episode-287-success-skills-for-architects-with-neil-ford>
 - <https://www.se-radio.net/2019/02/se-radio-episode-358-probabilistic-data-structure-for-big-data-problems/>
 - <https://www.codingblocks.net/podcast/clean-code-programming-around-boundaries>
-- <https://swoot.com/artificial-intellence-ai/gustav-soderstrom-spotify-fd18d8jq>
-- <https://swoot.com/darknet-diaries/ep-52-magecart-15881b7jq> (credit card skimming and websites)
+- <https://podhero.com/artificial-intellence-ai/gustav-soderstrom-spotify-fd18d8jq>
+- <https://podhero.com/darknet-diaries/ep-52-magecart-15881b7jq> (credit card skimming and websites)
 - <https://podcasts.apple.com/us/podcast/techmeme-ride-home/id1355212895> (daily tech news)
 
 ## History
@@ -73,8 +73,8 @@ Title: John Likes
 - <https://www.vox.com/recode/2019/5/3/18511544/amazon-prime-oral-history-jeff-bezos-one-day-shipping>
 
 
-- <https://swoot.com/guy-kawasakis-remarkable-people/steve-wozniak-pirate-co-founder-of-apple-and-hardware-wizard-1870ecdjq>
-- <https://swoot.com/techmeme-ride-home/the-man-who-could-have-been-bill-gates-pt-2-ed3c4bjq> (Gary Kildall)
+- <https://podhero.com/guy-kawasakis-remarkable-people/steve-wozniak-pirate-co-founder-of-apple-and-hardware-wizard-1870ecdjq>
+- <https://podhero.com/techmeme-ride-home/the-man-who-could-have-been-bill-gates-pt-2-ed3c4bjq> (Gary Kildall)
 
 ## Miscellaneous Great Web Sites and Articles
 - <https://brandur.org/heroku-values>
@@ -97,8 +97,8 @@ Title: John Likes
 - <https://queue.acm.org/detail.cfm?id=3197520> (Always be automating, Thomas Limoncelli)
 - <https://queue.acm.org/detail.cfm?id=2945077> (Small batches principle, Thomas Limoncelli)
 
-- <https://swoot.com/13-minutes-to-the-moon/ep-05-the-fourth-astronaut-da55a2jq> (the first mission critical software)
-- <https://swoot.com/cautionary-tales/la-la-land-galileos-warning-155f434jq> (quality "theater")
+- <https://podhero.com/13-minutes-to-the-moon/ep-05-the-fourth-astronaut-da55a2jq> (the first mission critical software)
+- <https://podhero.com/cautionary-tales/la-la-land-galileos-warning-155f434jq> (quality "theater")
 - <https://www.se-radio.net/2010/09/episode-167-the-history-of-junit-and-the-future-of-testing-with-kent-beck>
 - <https://www.se-radio.net/2015/02/episode-221-jez-humble-on-continuous-delivery>
 - <https://www.se-radio.net/2017/01/se-radio-episode-280-gerald-weinberg-on-bugs-errors-and-software-quality>
@@ -111,7 +111,7 @@ Title: John Likes
 - <https://news.ycombinator.com/item?id=18760350> A simple guide to scaling to 10M users *(with commentary from HackerNews)*
 - <https://news.ycombinator.com/item?id=13960107> (modules vs microservices)
 - <http://www.elidedbranches.com/2016/08/microservices-real-architectural.html> (Camille Fournier)
-- <https://swoot.com/go-time/the-monolith-vs-microservices-debate-1b4fe3cjq>
+- <https://podhero.com/go-time/the-monolith-vs-microservices-debate-1b4fe3cjq>
 - <https://www.se-radio.net/2018/03/se-radio-episode-320-nate-taggart-on-serverless-paradigm>
 - <https://martinfowler.com/articles/serverless.html#drawbacks>
 
@@ -159,7 +159,7 @@ Title: John Likes
 - <https://www.manager-tools.com/2018/11/preparing-performance-reviews-hof-2018>
 - <https://www.manager-tools.com/2018/11/delivering-performance-review-hof-2018>
 - <https://www.manager-tools.com/2019/02/role-power-revisited-you-speak-ceo-part-1>
-- <https://swoot.com/manager-tools/rules-of-small-project-management-chatper-1-deliverables-basics-185bd40jq>
+- <https://podhero.com/manager-tools/rules-of-small-project-management-chatper-1-deliverables-basics-185bd40jq>
 - <https://www.manager-tools.com/all-podcasts> (no nonsense advice on the art of people management)
 
 - <https://www.se-radio.net/2017/10/se-radio-episode-306-ron-lichty-on-managing-programmers>
@@ -245,13 +245,13 @@ Title: John Likes
 - <https://alexdanco.com/2020/02/07/debt-is-coming/>
 
 - <https://thisweekinstartups.com/thisweekin-startups/advice-biggest-mistakes-founders-startups-jerry-colonna>
-- <https://swoot.com/this-week-in-startups-audio/e967-twilio-ceo-co-founder-jeff-lawson-on-growing-twilio-to-160-000-10f753fjq>
+- <https://podhero.com/this-week-in-startups-audio/e967-twilio-ceo-co-founder-jeff-lawson-on-growing-twilio-to-160-000-10f753fjq>
 - <https://thisweekinstartups.com/thisweekin-startups/steve-jurvetson-dfj-tesla-spacex>
 - <https://thisweekinstartups.com/glennkelman-redfin-pejmannozad-pear>
 - <https://thisweekinstartups.com/bill-gurley-benchmark>
-- <https://swoot.com/this-week-in-startups-audio/e1002-wealthfront-ceo-co-founder-andy-archleff-on-hitting-escape-velocity-at-1546afejq>
+- <https://podhero.com/this-week-in-startups-audio/e1002-wealthfront-ceo-co-founder-andy-archleff-on-hitting-escape-velocity-at-1546afejq>
 
-- <https://swoot.com/this-week-in-startups-audio/e918-stack-overflow-ceo-co-founder-joel-spolsky-shares-lessons-growing-his-7a51e8jq>
+- <https://podhero.com/this-week-in-startups-audio/e918-stack-overflow-ceo-co-founder-joel-spolsky-shares-lessons-growing-his-7a51e8jq>
 - <https://www.se-radio.net/2019/07/episode-373-joel-spolsky-on-startups-growth-and-valuation/>
 - <https://mastersofscale.com/brian-chesky-handcrafted> (Airbnb)
 - <https://producthabits.com/my-billion-dollar-mistake/> (Getting "Foundered", become a good PM)
