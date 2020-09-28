@@ -119,6 +119,7 @@ Setup fake credentials...
 `docker pull lambci/lambda:go1.x`
 
 **Now you can invoke the Lambda with an input...**
+
 `aws lambda --endpoint-url=http://localhost:4574 invoke --function-name task --payload='{"Name": "world"}' --region=us-east-1 myout.log`
 
 > {    "StatusCode": 200    }
@@ -129,6 +130,7 @@ Setup fake credentials...
 
 ### Other useful commands for updating or deleting your localstack lambda
 `aws --endpoint-url=http://localhost:4574 lambda list-functions`
+
 `aws --endpoint-url=http://localhost:4574 lambda update-function-code --function-name=task --zip-file fileb://task.zip`
 `aws --endpoint-url=http://localhost:4574 lambda delete-function --function-name task`
 
@@ -137,7 +139,7 @@ Setup fake credentials...
 
 A very simple bit of "handler" code to exemplify the AWS Lambda Proxy Integration
 
-:::go
+    :::go
     package main
     
     import (
@@ -176,6 +178,7 @@ A very simple bit of "handler" code to exemplify the AWS Lambda Proxy Integratio
 > The custom reponse headers are where CORS can be configured
 
 `GOOS=linux go build && zip task.zip task`
+
 `aws --endpoint-url=http://localhost:4574 lambda update-function-code --function-name=task --zip-file fileb://task.zip`
 `aws --endpoint-url=http://localhost:4574 lambda list-functions`
 > arn:aws:lambda:us-east-1:000000000000:function:task
@@ -187,6 +190,7 @@ A very simple bit of "handler" code to exemplify the AWS Lambda Proxy Integratio
 
 - - -
 `aws --endpoint-url=http://localhost:4567 apigateway create-rest-api --name myapi`
+
     :::json
     {
         "createdDate": 1583558847,
@@ -204,6 +208,7 @@ A very simple bit of "handler" code to exemplify the AWS Lambda Proxy Integratio
 > That "id" of this REST API is important throughout the rest of the commands
 
 `aws --endpoint-url=http://localhost:4567 apigateway get-resources --rest-api-id 29a3p9encp`
+
     :::json
     {
         "items": [
@@ -219,6 +224,7 @@ A very simple bit of "handler" code to exemplify the AWS Lambda Proxy Integratio
 > The "id" for the "/" resource is used as the "parent" for adding a "child" resource
 
 `aws --endpoint-url=http://localhost:4567 apigateway create-resource --rest-api-id 29a3p9encp --parent-id 62wy7bzofu --path-part mywidget`
+
     :::json
     {
         "pathPart": "mywidget",
@@ -232,6 +238,7 @@ A very simple bit of "handler" code to exemplify the AWS Lambda Proxy Integratio
 > We have created a REST resource /mywidget
 
 `aws --endpoint-url=http://localhost:4567 apigateway put-method --rest-api-id 29a3p9encp --resource-id jylycd8v4u --http-method GET --authorization-type NONE`
+
     :::json
     {
         "authorizationType": "NONE",
@@ -260,6 +267,7 @@ A very simple bit of "handler" code to exemplify the AWS Lambda Proxy Integratio
 > POST is required <https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html>
 
 aws --endpoint-url=http://localhost:4567 apigateway create-deployment --rest-api-id 29a3p9encp --stage-name foobar
+
     :::json
     {
         "createdDate": 1583565386,
@@ -273,6 +281,7 @@ aws --endpoint-url=http://localhost:4567 apigateway create-deployment --rest-api
 List everything that we have created...
 
 `aws --endpoint-url=http://localhost:4567 apigateway get-resources --rest-api-id 29a3p9encp`
+
     :::json
     {
         "items": [
@@ -318,18 +327,18 @@ List everything that we have created...
 - - -
 
 `curl http://localhost:4567/restapis/29a3p9encp/`
+
     :::json
     {"id": "29a3p9encp", "name": "myapi", "description": null, "createdDate": 1583565481, 
         "apiKeySource": "HEADER", "endpointConfiguration": {"types": ["EDGE"]}, "tags": {}
     }
 
 
-curl -i http://localhost:4567/restapis/29a3p9encp/foobar/
-curl -i http://localhost:4567/restapis/29a3p9encp/foobar/_user_request_/mywidget
+`curl -i http://localhost:4567/restapis/29a3p9encp/foobar/`
+
+`curl -i http://localhost:4567/restapis/29a3p9encp/foobar/_user_request_/mywidget`
 
 
-
-- - -
 - - -
 
 
