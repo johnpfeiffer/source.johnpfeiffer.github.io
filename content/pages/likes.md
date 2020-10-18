@@ -76,6 +76,7 @@ Title: John Likes
 - <https://queue.acm.org/detail.cfm?id=1142065> (Werner Vogels about AWS 2006)
 - <https://www.vox.com/recode/2019/5/3/18511544/amazon-prime-oral-history-jeff-bezos-one-day-shipping>
 - <https://www.wired.com/story/confessions-marcus-hutchins-hacker-who-saved-the-internet/>
+- <https://www.se-radio.net/2015/07/episode-232-mark-nottingham-on-http2/>
 
 - <https://podhero.com/guy-kawasakis-remarkable-people/steve-wozniak-pirate-co-founder-of-apple-and-hardware-wizard-1870ecdjq>
 - <https://podhero.com/techmeme-ride-home/the-man-who-could-have-been-bill-gates-pt-2-ed3c4bjq> (Gary Kildall)
@@ -91,6 +92,7 @@ Title: John Likes
 - <https://www.facebook.com/notes/kent-beck/one-bite-at-a-time-partitioning-complexity/1716882961677894>
 - <https://dave.cheney.net/paste/the-past-present-and-future-of-go2.pdf> QCon Shanghai
 - <https://github.com/joelparkerhenderson/queueing_theory> (summary and links to resources)
+- <https://http2-explained.haxx.se/en/part2>
 
 ## Quality and Testing
 - <https://medium.com/dataseries/the-rise-and-fall-of-knight-capital-buy-high-sell-low-rinse-and-repeat-ae17fae780f6>
@@ -119,6 +121,7 @@ Title: John Likes
 - <https://news.ycombinator.com/item?id=13960107> (modules vs microservices)
 - <http://www.elidedbranches.com/2016/08/microservices-real-architectural.html> (Camille Fournier)
 - <https://podhero.com/go-time/the-monolith-vs-microservices-debate-1b4fe3cjq>
+- <https://alibaba-cloud.medium.com/conways-law-a-theoretical-basis-for-the-microservice-architecture-c666f7fcc66a>
 - <https://www.se-radio.net/2018/03/se-radio-episode-320-nate-taggart-on-serverless-paradigm>
 - <https://martinfowler.com/articles/serverless.html#drawbacks>
 
@@ -161,6 +164,7 @@ Title: John Likes
 
 ### Manager Podcasts
 *tip: listen at 1.5x or 2x speed*
+
 - <https://www.manager-tools.com/2007/01/the-juggling-koan> Delegation
 - <https://www.manager-tools.com/2010/05/how-choose-what-delegate-hall-fame-guidance>
 - <https://www.manager-tools.com/2018/06/employee-retention-hof>
