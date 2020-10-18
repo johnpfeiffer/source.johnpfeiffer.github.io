@@ -91,6 +91,7 @@ Title: John Likes
 - <https://kalzumeus.com/2010/01/24/startup-seo/>
 - <https://www.facebook.com/notes/kent-beck/one-bite-at-a-time-partitioning-complexity/1716882961677894>
 - <https://dave.cheney.net/paste/the-past-present-and-future-of-go2.pdf> QCon Shanghai
+- <https://robertheaton.com/2015/10/26/why-and-how-to-make-smaller-pull-requests/>
 - <https://github.com/joelparkerhenderson/queueing_theory> (summary and links to resources)
 - <https://http2-explained.haxx.se/en/part2>
 
