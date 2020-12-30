@@ -50,6 +50,7 @@ Title: John Likes
 
 - <https://www.se-radio.net/2016/01/se-radio-show-246-john-wilkes-on-borg-and-kubernetes>
 - <https://changelog.com/gotime/6> (Mechanical Sympathy with Bill Kennedy)
+- <https://changelog.com/gotime/142> (All about that infrastructure and DevOps)
 - <https://www.se-radio.net/2010/03/episode-157-hadoop-with-philip-zeyliger>
 - <https://www.se-radio.net/2010/11/episode-169-memory-grid-architecture-with-nati-shalom>
 - <https://www.se-radio.net/2014/11/episode-215-gang-of-four-20-years-later>
@@ -66,6 +67,7 @@ Title: John Likes
 - <https://podhero.com/artificial-intellence-ai/gustav-soderstrom-spotify-fd18d8jq>
 - <https://podhero.com/darknet-diaries/ep-52-magecart-15881b7jq> (credit card skimming and websites)
 - <https://podcasts.apple.com/us/podcast/techmeme-ride-home/id1355212895> (daily tech news)
+- <https://podhero.com/lex-fridman-podcast-artificial-intelligence-ai/104-david-patterson-computer-architecture-and-data-storage-1f0067fjq>
 
 ## History
 - <https://spectrum.ieee.org/tech-history/silicon-revolution/hans-peter-luhn-and-the-birth-of-the-hashing-algorithm>
@@ -162,6 +164,7 @@ Title: John Likes
 - Steve Jobs by Walter Isaacson
 - The Everything Store: Jeff Bezos and the Age of Amazon
 - Misbehaving: The Making of Behavioral Economics by Richard H. Thaler
+- Never Split the Difference by Chris Voss
 
 ### Manager Podcasts
 *tip: listen at 1.5x or 2x speed*
@@ -267,6 +270,7 @@ Title: John Likes
 #### Startups and VCs Podcasts
 - <https://thisweekinstartups.com/thisweekin-startups/advice-biggest-mistakes-founders-startups-jerry-colonna>
 - <https://podhero.com/naval/play-long-term-games-with-long-term-people-738094jq>
+- <https://podhero.com/naval/embrace-accountability-to-get-leverage-7aea6djq>
 - <https://thisweekinstartups.com/thisweekin-startups/steve-jurvetson-dfj-tesla-spacex>
 - <https://thisweekinstartups.com/glennkelman-redfin-pejmannozad-pear>
 - <https://thisweekinstartups.com/bill-gurley-benchmark>
@@ -280,6 +284,7 @@ Title: John Likes
 - <https://podhero.com/this-week-in-startups-audio/e967-twilio-ceo-co-founder-jeff-lawson-on-growing-twilio-to-160-000-10f753fjq>
 - <https://podhero.com/acquired/episode-2-instagram-5cb4c3jq> Instagram acquisition analysis
 - <https://producthabits.com/my-billion-dollar-mistake/> (Getting "Foundered", become a good PM)
+- <https://podhero.com/cautionary-tales/buried-by-the-wall-street-crash-15eb57fjq>
 
 ## Misc
 
