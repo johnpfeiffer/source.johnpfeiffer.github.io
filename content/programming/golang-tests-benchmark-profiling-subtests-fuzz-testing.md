@@ -140,11 +140,30 @@ This example function requires two slices of integers.
 
 - <https://golang.org/pkg/reflect/#DeepEqual>
 
+#### Running the tests in sequence and not parallel
+
+`t.Parallel()` indicates a test can run in parallel, but if you are debugging or really need a specific order then using `go test -p 1` will force it to run each test sequentially.
+
+- <https://github.com/golang/go/blob/master/src/testing/testing.go#L300>
+- <https://golang.org/pkg/cmd/go/internal/test/>
+
+Note that Go Test will execute multiple different package tests in parallel...
+
+>     -parallel n
+>        Allow parallel execution of test functions that call t.Parallel.
+>        The value of this flag is the maximum number of tests to run
+>        simultaneously; by default, it is set to the value of GOMAXPROCS.
+>        Note that -parallel only applies within a single test binary.
+>        The 'go test' command may run tests for different packages
+>        in parallel as well, according to the setting of the -p flag
+>        (see 'go help build').
+
 #### Running a specific test
 
 `go test -v -run TestSlicesMergeHalf`
 
 > Getting verbose output and specifying tests is quite helpful when fixing a piece of code or test.  **Note** the run parameter takes a regular expression
+
 
 #### Test Coverage
 
