@@ -209,25 +209,25 @@ If I ever put more time into various ideas or helper functions it will end up he
 There is a helper function that just reverses the sorting order, so once you can Sort (because you fulfill the Interface), then you can "reverse sort" =)
 **alternatively you could use a for loop and iterate over a sorted slice, starting from index length-1 down to 0**
 
-- <https://golang.org/pkg/sort/#Reverse>
-- <https://play.golang.org/p/EdVA6NzNRiF>
-
     :::go
     package main
     
     import (
-	"fmt"
-	"sort"
+        "fmt"
+        "sort"
     )
     
     func main() {
-	a := []int{4, 2, 1, 3}
-	// convert a to an IntSlice so it can be Reverse Sorted
-	sort.Sort(sort.Reverse(sort.IntSlice(a)))
-	fmt.Println(a)
+        a := []int{4, 2, 1, 3}
+        // convert a to an IntSlice so it can be Reverse Sorted
+        sort.Sort(sort.Reverse(sort.IntSlice(a)))
+        fmt.Println(a)
     }
 
 > Typically this is how to control "ascending" or "descending" sorted order
+
+- <https://golang.org/pkg/sort/#Reverse>
+- <https://play.golang.org/p/EdVA6NzNRiF>
 
 ## Sorting a Map in Go
 
