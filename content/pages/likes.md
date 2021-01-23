@@ -281,6 +281,7 @@ Title: John Likes
 - <https://podhero.com/this-week-in-startups-audio/e918-stack-overflow-ceo-co-founder-joel-spolsky-shares-lessons-growing-his-7a51e8jq>
 - <https://www.se-radio.net/2019/07/episode-373-joel-spolsky-on-startups-growth-and-valuation/>
 - <https://mastersofscale.com/brian-chesky-handcrafted> (Airbnb)
+- <https://mastersofscale.com/stewart-butterfield-the-big-pivot/> (Slack)
 - <https://podhero.com/this-week-in-startups-audio/e967-twilio-ceo-co-founder-jeff-lawson-on-growing-twilio-to-160-000-10f753fjq>
 - <https://podhero.com/acquired/episode-2-instagram-5cb4c3jq> Instagram acquisition analysis
 - <https://producthabits.com/my-billion-dollar-mistake/> (Getting "Foundered", become a good PM)
