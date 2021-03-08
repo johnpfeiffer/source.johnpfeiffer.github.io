@@ -4,15 +4,27 @@ Tags: go, golang, aws, lambda, apigateway, cdk
 
 [TOC]
 
-Infrastructure as Code helps guarantee the elusive determinism we all seek in building applications and services.
+Infrastructure as Code helps guarantee the elusive determinism in infrastructure that we all seek in building applications and services.
+Often you can defer that complexity by using Heroku, Google App Engine,  or other PaaS providers. But when you need to build something really complex (or with specific controls required including managing costs) then using IaaC to tame AWS Serverless reduces some of that pain.
 
-AWS have brought their own specific product out which competes with the venerable Terraform and nicely focused Serverless.
+AWS have created their own specific product (domain specific language) "CDK" which competes with the venerable Terraform and nicely focused Serverless.
 
 _All of these products use the json syntax of CloudFormation which is the foundational AWS syntax for describing resources_
 
 It is straightforward to iteratively setup and use AWS CDK (with the native Typescript syntax).
 
-_TODO: later add a quick CDK vocabulary guide_
+
+## CDK vocabulary
+It all begins with **stacks**.
+
+From an object oriented perspective, a stack is a definition of components that can be instantiated. An "app" is a collection of related stacks.
+
+Let's say you wanted your persistence (DynamoDB) in one stack, and your more execution oriented components (APIGateway and Lambda) in another stack, and your App might have environment specific parameters it needs to define and pass through to each stack.
+
+This ability to use templates and customize how you structure things, reference other CDK files, etc. makes CDK very modular and re-usable (and yes Typescript is a programming language so you can have linters and tests).
+
+- <https://docs.aws.amazon.com/cdk/latest/guide/stacks.html>
+- <https://intro-to-cdk.workshop.aws/what-is-cdk.html>
 
 ## Install the AWS CDK Tool
 
@@ -64,7 +76,7 @@ _A stack is the group of resources together_
     :::typescript
     import * as cdk from '@aws-cdk/core';
     import * as s3 from '@aws-cdk/aws-s3';
-    
+     
     export class InfraStack extends cdk.Stack {
       constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
         super(scope, id, props);
@@ -137,10 +149,12 @@ A tiny snippet change to allow bucket deletion...
 - <https://docs.aws.amazon.com/cdk/api/latest/typescript/api/aws-s3/bucketpolicyprops.html#aws_s3_BucketPolicyProps>
 - <https://docs.aws.amazon.com/cdk/api/latest/typescript/api/core/removalpolicy.html#core_RemovalPolicy>
 
+
     :::typescript
+    
     new s3.Bucket(this, 'MyExampleBucket', {
       versioned: true,
-          removalPolicy: cdk.RemovalPolicy.DESTROY
+      removalPolicy: cdk.RemovalPolicy.DESTROY
     });
 
 ### Preview changes with diff
@@ -243,7 +257,7 @@ Put a simple placeholder Golang Lambda in place _using the Gin web framework for
 
 ### CDK with a Golang Lambda
 
-No working from just the "infra" subdirectory in our project:
+Focusing on just the "infra" subdirectory in our project:
 
 - **cdk-example/infra/package.json**
 - **cdk-example/infra/lib/infra-stack.ts**
@@ -269,6 +283,7 @@ Next update the **lib/infra-stack.ts**
 
 - <https://docs.aws.amazon.com/cdk/api/latest/docs/aws-s3-assets-readme.html>
 - <https://docs.aws.amazon.com/cdk/api/latest/docs/aws-lambda-readme.html#handler-code>
+
 
     :::typescript
     import * as cdk from '@aws-cdk/core';
@@ -300,6 +315,9 @@ Next update the **lib/infra-stack.ts**
 
 `cdk synth`
 > outputting the CloudFormation is a quick way to valied the syntax and see any warnings
+
+`cdk diff`
+> outputting and previewing the changes that will appear in AWS
 
 `cdk deploy`
 
