@@ -51,6 +51,7 @@ Title: John Likes
 - <https://www.se-radio.net/2016/01/se-radio-show-246-john-wilkes-on-borg-and-kubernetes>
 - <https://changelog.com/gotime/6> (Mechanical Sympathy with Bill Kennedy)
 - <https://changelog.com/gotime/142> (All about that infrastructure and DevOps)
+- <https://changelog.com/gotime/132> (The trouble with databases)
 - <https://www.se-radio.net/2010/03/episode-157-hadoop-with-philip-zeyliger>
 - <https://www.se-radio.net/2010/11/episode-169-memory-grid-architecture-with-nati-shalom>
 - <https://www.se-radio.net/2014/11/episode-215-gang-of-four-20-years-later>
@@ -63,6 +64,8 @@ Title: John Likes
 - <https://www.se-radio.net/2017/04/se-radio-episode-287-success-skills-for-architects-with-neil-ford>
 - <https://www.se-radio.net/2019/02/se-radio-episode-358-probabilistic-data-structure-for-big-data-problems/>
 - <https://www.se-radio.net/2020/04/episode-405-yevgeniy-brikman-on-infrastructure-as-code-best-practices/>
+- <https://www.se-radio.net/2021/02/episode-447-michael-perry-on-immutable-architecture/>
+
 - <https://www.codingblocks.net/podcast/clean-code-programming-around-boundaries>
 - <https://podhero.com/artificial-intellence-ai/gustav-soderstrom-spotify-fd18d8jq>
 - <https://podhero.com/darknet-diaries/ep-52-magecart-15881b7jq> (credit card skimming and websites)
@@ -74,6 +77,7 @@ Title: John Likes
 - <https://segment.com/blog/a-brief-history-of-the-uuid/>
 - <https://www.cake.co/conversations/g4CP6zJ/the-secret-call-to-andy-grove-that-may-have-helped-apple-buy-next>
 - <https://www.cake.co/conversations/VXHSjBG/the-untold-origin-story-of-ebay-that-i-lived-and-the-times-that-could-have-killed-it>
+- <https://tedium.co/2020/12/15/altavista-history-digital-dot-com-domain-name/>
 - <https://news.ycombinator.com/item?id=21849977> (Etsy succeeded in spite of itself)
 - <https://queue.acm.org/detail.cfm?id=1142065> (Werner Vogels about AWS 2006)
 - <https://www.vox.com/recode/2019/5/3/18511544/amazon-prime-oral-history-jeff-bezos-one-day-shipping>
@@ -171,6 +175,7 @@ Title: John Likes
 
 - <https://www.manager-tools.com/2007/01/the-juggling-koan> Delegation
 - <https://www.manager-tools.com/2010/05/how-choose-what-delegate-hall-fame-guidance>
+- <https://www.manager-tools.com/2012/02/delegating-floor>
 - <https://www.manager-tools.com/2018/06/employee-retention-hof>
 - <https://www.manager-tools.com/2018/11/preparing-performance-reviews-hof-2018>
 - <https://www.manager-tools.com/2018/11/delivering-performance-review-hof-2018>
@@ -291,6 +296,8 @@ Title: John Likes
 
 - <https://news.ycombinator.com/item?id=21366324> Viktor Frankl: Why believe in others
 - <https://podhero.com/unlocking-us-with-brene-brown/brene-with-judd-apatow-on-vulnerability-and-laughter-1eccbe1jq>
+- <https://podhero.com/lex-fridman-podcast/113-manolis-kellis-human-genome-and-evolutionary-dynamics-2331b1ajq>
+- <https://podhero.com/the-knowledge-project-with-shane-parrish/57-sheila-heen-decoding-difficult-conversations-b11fb7jq>
 
 ## Atom feed
 
