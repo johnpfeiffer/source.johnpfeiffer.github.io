@@ -32,18 +32,21 @@ Have to use npm to install the cdk tool...
 
 `npm install -g aws-cdk`
 
+- <https://docs.aws.amazon.com/cdk/latest/guide/cli.html>
+
 ## Setup the project directories
 `mkdir cdk-example`
 
 `cd cdk-example`
 
-Create a subdirectory to compartmentalize all the infrastructure code (from the rest of the application)
+Create a subdirectory to compartmentalize all the infrastructure code *(from the rest of the application, i.e. don't mix the business logic with the infrastructure plumbing)*
 
 `mkdir infra`
-
 `cd infra`
 
 `cdk init app --language typescript`
+> creates the default files in this directory for an empty CDK app
+
 
 `cdk ls`
 >        InfraStack
@@ -68,8 +71,7 @@ Option 2: write the lines into packages.json and run at the command line in the 
 
 
 ## Write the actual Infrastructure Code
-The initial application template creates an empty "class" that represents the "stack"
-_A stack is the group of resources together_
+The initial application template creates an empty "class" that represents the "stack", we customize and replace that code with the following...
 
 **lib/infra-stack.ts** has only 2 changes to the default file, the import of S3 and the new Bucket resource "MyExampleBucket"
 
@@ -88,6 +90,9 @@ _A stack is the group of resources together_
     }
 
 > The import renames are important to be consistent in subsequent code, so if something is "cdk" then it is cdk.Construct
+
+More complex applications will use a "main entry point" that can refer to specific files for various stacks.
+- <https://docs.aws.amazon.com/cdk/latest/guide/serverless_example.html>
 
 ### Output CloudFormation from a CDK Typescript file
 
@@ -150,8 +155,9 @@ A tiny snippet change to allow bucket deletion...
 - <https://docs.aws.amazon.com/cdk/api/latest/typescript/api/core/removalpolicy.html#core_RemovalPolicy>
 
 
+Below is the specific code:
+
     :::typescript
-    
     new s3.Bucket(this, 'MyExampleBucket', {
       versioned: true,
       removalPolicy: cdk.RemovalPolicy.DESTROY
@@ -193,6 +199,7 @@ CDK enables "InfrastructureAsCode" and command line (or scripted) resource manag
 
 ## APIGateway plus Lambda plus Go
 
+The trick to using Golang with AWS Lambdas is that it is a compiled language. Many tutorials for lambdas (even for CDK) use javascript or python since those dynamic languages can just be put in "one more file" without a build step.
 
 ### A tiny Go Web Request Handler
 Put a simple placeholder Golang Lambda in place _using the Gin web framework for convenience_
@@ -244,15 +251,21 @@ Put a simple placeholder Golang Lambda in place _using the Gin web framework for
 > Ensure dependencies (like the AWS SDK) are recognized by the Go package manager
 
 `go test`
-> This is the simplest way to trigger downloading the dependencies (imported packages)
+> This is the simplest way to trigger downloading the dependencies (imported packages), you may have to create a tiny main_test.go in order to force this to work
 
 <https://blog.golang.org/using-go-modules>
 
+#### Manually build your go binary for AWS Lambda
+
+This will create an output file named "main"
 
 `GOOS=linux GOARCH=amd64 go build -o main main.go`
 > compile for the target arch , AWS Lambda ("firecracker") is Linux =]
 
-<https://www.usenix.org/system/files/nsdi20-paper-agache.pdf>
+- <https://www.usenix.org/system/files/nsdi20-paper-agache.pdf>
+
+`zip examplefunction.zip main`
+> AWS requires these precompiled binaries to in .zip format
 
 
 ### CDK with a Golang Lambda
@@ -281,10 +294,6 @@ Next update the **lib/infra-stack.ts**
 
 > Layout the resources from the deepest dependency first, so in this case a place for the golang function to be zipped
 
-- <https://docs.aws.amazon.com/cdk/api/latest/docs/aws-s3-assets-readme.html>
-- <https://docs.aws.amazon.com/cdk/api/latest/docs/aws-lambda-readme.html#handler-code>
-
-
     :::typescript
     import * as cdk from '@aws-cdk/core';
     import * as s3 from '@aws-cdk/aws-s3';
@@ -298,7 +307,7 @@ Next update the **lib/infra-stack.ts**
     
         // Golang binaries must have a place where they are uploaded to s3 as a .zip
         const asset = new assets.Asset(this, 'ExampleFunctionZip', {
-          path: path.join(__dirname, '../../examplefunction'),
+          path: path.join(__dirname, '../../examplefunction.zip'),
         });
     
         const handler = new lambda.Function(this, "ExampleFunction", {
@@ -312,6 +321,12 @@ Next update the **lib/infra-stack.ts**
       }
     }
 
+> This crucial glue code indicates that the Lambda will be named "ExampleFunction", that it will get the binary (zipped) from S3, and that the handler expects to have a binary "main"
+
+Note that CDK will handle actually uploading the .zip to an s3 bucket
+
+- <https://docs.aws.amazon.com/cdk/api/latest/docs/aws-s3-assets-readme.html>
+- <https://docs.aws.amazon.com/cdk/api/latest/docs/aws-lambda-readme.html#handler-code>
 
 `cdk synth`
 > outputting the CloudFormation is a quick way to valied the syntax and see any warnings
