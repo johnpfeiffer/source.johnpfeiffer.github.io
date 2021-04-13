@@ -71,8 +71,13 @@ Title: John Likes
 - <https://podhero.com/darknet-diaries/ep-52-magecart-15881b7jq> (credit card skimming and websites)
 - <https://podcasts.apple.com/us/podcast/techmeme-ride-home/id1355212895> (daily tech news)
 - <https://podhero.com/lex-fridman-podcast-artificial-intelligence-ai/104-david-patterson-computer-architecture-and-data-storage-1f0067fjq>
+- <https://www.youtube.com/watch?v=MksJTtt7jS4&t=93s> Presentation on Code Smells by Sandi Metz at Laracon 2016
+- <https://blog.golang.org/waza-talk> Concurrency is not parallelism by Rob Pike at Waza 2013
 
 ## History
+- <https://podhero.com/in-our-time-science/alan-turing-2b744efjq>
+- <https://podhero.com/guy-kawasakis-remarkable-people/steve-wozniak-pirate-co-founder-of-apple-and-hardware-wizard-1870ecdjq>
+- <https://podhero.com/techmeme-ride-home/the-man-who-could-have-been-bill-gates-pt-2-ed3c4bjq> (Gary Kildall)
 - <https://spectrum.ieee.org/tech-history/silicon-revolution/hans-peter-luhn-and-the-birth-of-the-hashing-algorithm>
 - <https://segment.com/blog/a-brief-history-of-the-uuid/>
 - <https://www.cake.co/conversations/g4CP6zJ/the-secret-call-to-andy-grove-that-may-have-helped-apple-buy-next>
@@ -84,8 +89,6 @@ Title: John Likes
 - <https://www.wired.com/story/confessions-marcus-hutchins-hacker-who-saved-the-internet/>
 - <https://www.se-radio.net/2015/07/episode-232-mark-nottingham-on-http2/>
 
-- <https://podhero.com/guy-kawasakis-remarkable-people/steve-wozniak-pirate-co-founder-of-apple-and-hardware-wizard-1870ecdjq>
-- <https://podhero.com/techmeme-ride-home/the-man-who-could-have-been-bill-gates-pt-2-ed3c4bjq> (Gary Kildall)
 
 ## Miscellaneous Great Web Sites and Articles
 - <https://brandur.org/heroku-values>
@@ -190,6 +193,7 @@ Title: John Likes
 - <https://blog.ycombinator.com/camille-fournier-on-managing-technical-teams/>
 - <https://www.se-radio.net/2019/03/se-radio-episode-359-engineering-maturity-with-jean-denis-greze/>
 - <https://www.se-radio.net/2018/10/se-radio-episode-340-lara-hogan-and-deepa-subramaniam-on-revitalizing-a-cross-functional-product-organization> A meandering summary of eng management
+- <https://www.se-radio.net/2020/03/episode-403-karl-hughes-on-speaking-at-tech-conferences/>
 
 
 ### People Management Articles
