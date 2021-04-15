@@ -45,7 +45,7 @@ This is the one time you "authorize all the access", everything afterwards are c
 > In Github you can review what applications have access to your github account's source code with <https://github.com/settings/applications>
 > **"Authorized Oauth Apps"**
 
-In CircleCI you can now see what projects you can setup builds for (apparently segregated by "organization" <https://app.circleci.com/projects/>
+In CircleCI you can now see what projects you can setup builds, apparently segregated by "organization" <https://app.circleci.com/projects/>
 
 ## Setup a Project
 
@@ -102,11 +102,17 @@ To resolve the issue run this golang command in the top directory of your source
 
 This will create a **go.mod** file in your repository that allows dependencies to be properly resolved (and `go test` which implicitly uses "go mod" to execute successfully)
 
+Once that go.mod is committed and sent up to the github repo then CircleCI build will detect it and your go test during the build/test steps will stop failing
+
 - <https://golang.org/ref/mod#mod-commands>
 
 ## Tweaks to your CircleCI Config
 
-After you have successfully run a build then the UI will show you what git sha commit kicked off the build, all the steps executed and output, etc.
+After you have successfully run a build then the UI will show you:
+- how long the build took
+- what git sha commit kicked off the build
+- commit message
+- all the steps executed and output, etc.
 
 <https://app.circleci.com/pipelines/github/johnpfeiffer/stringsmoar/7/workflows/39b3f880-2473-49d7-804d-d1364f08853e/jobs/9>
 
@@ -127,9 +133,9 @@ In a given Project, the three little dots will allow you to choose how to config
 
 <https://app.circleci.com/settings/project/github/johnpfeiffer/stringsmoar>
 
-The one annoying thing is that if you remove your 3rd party access creds in GitHub its a pain to reconnect CircleCI
+The one annoying thing is that if you remove your 3rd party access creds in GitHub it's a pain to reconnect CircleCI
 
-You should see a listing of SSH keys, you have to remove the old one there, unfollow the project and then re-follow it.
+In CircleCI project configuration you should see a listing of SSH keys, you have to remove the old one there, unfollow the project, and then re-follow the project.
 
 Afterward you should see a new SSH key that CircleCI created in Github for this Project (the UI's both show the sha of the key but one is sha256 and the other is not)
 
@@ -182,7 +188,9 @@ CircleCI has an extra of space in the UI to display specific test output or arti
             command: |
               go test -coverprofile=c.out
               go tool cover -html=c.out -o coverage.html
-              mv coverage.html $TEST_RESULTS # extraneous use of an environment variable
+              mv coverage.html $TEST_RESULTS
+              go test -v ./... | go tool test2json > $TEST_RESULTS/test2json-output.json
+              gotestsum --junitfile $TEST_RESULTS/gotestsum-report.xml
     
         - store_artifacts: # Upload test summary for display https://circleci.com/docs/2.0/artifacts/
             path: /tmp/test-results
@@ -200,11 +208,10 @@ Artifacts will be deleted after 30 days but would be output like this: <https://
 - <https://circleci.com/docs/2.0/language-go/>
 
 
-
-_note that CircleCI seem to recommend the opensource helper "gotestsum" to generate junit style XML output from tests_
-
-TODO: have a better way to generate XML for the tests tab?
+_note that CircleCI golang docker container has the opensource helper "gotestsum" to generate junit style XML output from tests_
 > JUnit XML or Cucumber JSON test metadata files
 
 
 From here on out you should hopefully have only Green Builds!
+
+TODO: an article about how to do continuous deployment _(maybe CDK and AWS?)_

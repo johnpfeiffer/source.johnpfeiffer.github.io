@@ -149,19 +149,19 @@ _this assumes you have installed the AWS CLI like `sudo apt install awscli`_
 
 A tiny snippet change to allow bucket deletion...
 
+    :::typescript
+    new s3.Bucket(this, 'MyExampleBucket', {
+      versioned: true,
+      removalPolicy: cdk.RemovalPolicy.DESTROY
+    });
+
+
 - <https://docs.aws.amazon.com/cdk/latest/guide/hello_world.html>
 - <https://docs.aws.amazon.com/cdk/api/latest/typescript/api/aws-s3.html>
 - <https://docs.aws.amazon.com/cdk/api/latest/typescript/api/aws-s3/bucketpolicyprops.html#aws_s3_BucketPolicyProps>
 - <https://docs.aws.amazon.com/cdk/api/latest/typescript/api/core/removalpolicy.html#core_RemovalPolicy>
 
 
-Below is the specific code:
-
-    :::typescript
-    new s3.Bucket(this, 'MyExampleBucket', {
-      versioned: true,
-      removalPolicy: cdk.RemovalPolicy.DESTROY
-    });
 
 ### Preview changes with diff
 `cdk diff`
@@ -293,6 +293,7 @@ Do not forget to `npm install`
 Next update the **lib/infra-stack.ts**
 
 > Layout the resources from the deepest dependency first, so in this case a place for the golang function to be zipped
+
 
     :::typescript
     import * as cdk from '@aws-cdk/core';
