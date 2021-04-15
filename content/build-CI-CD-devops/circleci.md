@@ -160,7 +160,7 @@ By default CircleCI will choose "medium", if you want to save (free) credits the
 
 ## Outputting Test Coverage and Artifacts
 
-CircleCI has an extra of space in the UI to display specific test output or artifacts (i.e. make it easy to see the most common pain points rather than digging through all of the build stages).
+CircleCI has an extra space in the UI to display specific test output or artifacts whichmakes it easy to see the most common pain points rather than digging through all of the build stages output.
 
 **your-repo/.circleci/config.yml**
 
@@ -206,9 +206,10 @@ Artifacts will be deleted after 30 days but would be output like this: <https://
 - <https://blog.golang.org/cover>
 - <https://circleci.com/docs/2.0/artifacts/>
 - <https://circleci.com/docs/2.0/language-go/>
+- <https://blog.john-pfeiffer.com/golang-testing-benchmark-profiling-subtests-fuzz-testing/>
 
 
-_note that CircleCI golang docker container has the opensource helper "gotestsum" to generate junit style XML output from tests_
+_the CircleCI golang docker container has the opensource helper "gotestsum" to generate junit style XML output from tests_
 > JUnit XML or Cucumber JSON test metadata files
 
 
