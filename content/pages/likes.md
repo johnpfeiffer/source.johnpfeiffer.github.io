@@ -64,6 +64,7 @@ Title: John Likes
 - <https://www.se-radio.net/2017/04/se-radio-episode-287-success-skills-for-architects-with-neil-ford>
 - <https://www.se-radio.net/2019/02/se-radio-episode-358-probabilistic-data-structure-for-big-data-problems/>
 - <https://www.se-radio.net/2020/04/episode-405-yevgeniy-brikman-on-infrastructure-as-code-best-practices/>
+- <https://www.se-radio.net/2020/05/episode-409-joe-kutner-on-the-twelve-factor-app/>
 - <https://www.se-radio.net/2021/02/episode-447-michael-perry-on-immutable-architecture/>
 
 - <https://www.codingblocks.net/podcast/clean-code-programming-around-boundaries>
@@ -230,6 +231,7 @@ Title: John Likes
 - <https://delian.io/lessons-3> (Keith Rabois on How to be an Effective Executive)
 - <https://www.gwern.net/Complement> (Commoditize your Complement aka weaponizing open-source)
 - <https://kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/> (Opinions for a career as a Software Engineer)
+- <https://www.intercom.com/blog/run-less-software/>
 
 #### Meetings and Decisions
 - <https://mfbt.ca/what-i-hear-when-you-tell-me-your-company-doesnt-do-meetings-dfbb57a038d6?gi=9c2f0ad8ab87>
@@ -244,7 +246,7 @@ Title: John Likes
 - <https://stripe.com/atlas/guides/scaling-eng> (a 1-2-3 guide to hiring engineers)
 - <https://firstround.com/review/The-anatomy-of-the-perfect-technical-interview-from-a-former-Amazon-VP/>
 - <https://firstround.com/review/What-You-Want-in-a-VP-Eng-from-the-Recruiters-Behind-Twitter-and-LinkedIn/>
-- <http://www.lihaoyi.com/post/HowtoconductagoodProgrammingInterview.html>
+- <https://www.lihaoyi.com/post/HowtoconductagoodProgrammingInterview.html>
 - <https://www.kennorton.com/essays/happy-10th-birthday-to-hthapm.html>
 - <https://guykawasaki.com/the_inside_scoo/> (Pragmatic Resume and Interview Prep)
 
@@ -260,6 +262,9 @@ Title: John Likes
 - <http://www.elidedbranches.com/> (Camille Fournier)
 - - <http://www.elidedbranches.com/2016/11/building-and-motivating-engineering.html>
 - <https://devtomanager.com/interviews/kim-moir/>
+- <https://medium.com/@kimber_lockhart>
+- - <https://medium.com/@kimber_lockhart/priorities-and-taxes-7f8726cff868>
+- - <https://medium.com/@kimber_lockhart/how-to-give-a-great-1-1-5cf923d9c6d8>
 - <https://softwareleadweekly.com/issues> (a well curated weekly email of links for leaders)
 
 ### Economics, Startups and VCs, and Business Articles

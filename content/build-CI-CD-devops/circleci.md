@@ -84,8 +84,9 @@ The wonderful thing about Docker is the extra transparency. In this case we migh
 
 You can download and execute the same environment locally:
 
-`docker run --rm -it circleci/golang:1.16`
-`go version`
+    :::bash
+    docker run --rm -it circleci/golang:1.16
+    go version
 > go version go1.16.3 linux/amd64
 
 - <https://hub.docker.com/r/circleci/golang/>
@@ -94,7 +95,7 @@ You can download and execute the same environment locally:
 
 > go: cannot find main module
 
-This means you have created a golang repo awhile back *(Golang 1.15 and older)* but are now using a later Golang binary...
+This means you have created a golang repo awhile back *(Golang 1.15 and older)* but are now using a newer/later Golang binary...
 
 To resolve the issue run this golang command in the top directory of your source code:
 
@@ -102,13 +103,14 @@ To resolve the issue run this golang command in the top directory of your source
 
 This will create a **go.mod** file in your repository that allows dependencies to be properly resolved (and `go test` which implicitly uses "go mod" to execute successfully)
 
-Once that go.mod is committed and sent up to the github repo then CircleCI build will detect it and your go test during the build/test steps will stop failing
+Once that go.mod is committed and sent up to the Main branch in your github repo then CircleCI build will detect it and your "go test" step during the build/test steps will stop failing
 
 - <https://golang.org/ref/mod#mod-commands>
 
 ## Tweaks to your CircleCI Config
 
 After you have successfully run a build then the UI will show you:
+
 - how long the build took
 - what git sha commit kicked off the build
 - commit message
@@ -129,22 +131,22 @@ _Flaky tests aka intermittent failures is not resolved by re-running your build/
 
 ### Specific Project Settings in CircleCI
 
-In a given Project, the three little dots will allow you to choose how to configure the project
+In the CircleCI UI, for a given Project, the three little dots will allow you to choose how to configure the project
 
 <https://app.circleci.com/settings/project/github/johnpfeiffer/stringsmoar>
 
 The one annoying thing is that if you remove your 3rd party access creds in GitHub it's a pain to reconnect CircleCI
 
-In CircleCI project configuration you should see a listing of SSH keys, you have to remove the old one there, unfollow the project, and then re-follow the project.
+In the CircleCI configuration for a Project you should see a listing of SSH keys, you have to remove the old "deployment key" there (which means CircleCI can no longer access github), unfollow the project, and then re-follow the project _(which will then have CircleCI use your initial OAuth authorization to generate a new SSH deployment key in GitHub)._
 
-Afterward you should see a new SSH key that CircleCI created in Github for this Project (the UI's both show the sha of the key but one is sha256 and the other is not)
+Afterward you should see a new SSH key that CircleCI created in Github for this Project _(the UI's both show the sha of the key but one is sha256 and the other is not)_
 
 - <https://github.com/johnpfeiffer/stringsmoar/settings/keys>
-- <https://discuss.circleci.com/t/solved-permission-denied-publickey/19562> (someone had the same problem as me)
+- <https://discuss.circleci.com/t/solved-permission-denied-publickey/19562> _(someone else had the same problem and documented their solution)_
 
 ### Picking the size of your build executor
 
-By default CircleCI will choose "medium", if you want to save (free) credits then for smaller projects use
+By default CircleCI will choose executor size of "medium", if you want to save (free) credits then for smaller projects use "small" _(or conversely if you need more cpu/ram choose a larger size)_
 
     :::yaml
     jobs:
@@ -153,14 +155,14 @@ By default CircleCI will choose "medium", if you want to save (free) credits the
         docker:
           - image: circleci/golang:1.16
 
-> Good news is that builds usually trigger almost instantly so all the tweaks have a super fast feedback loop
+> Good news: builds usually trigger almost instantly so all the little config tweaks have a super fast feedback loop
 
 - <https://circleci.com/docs/2.0/executor-types/#available-docker-resource-classes>
 - <https://circleci.com/docs/2.0/getting-started/?section=getting-started>
 
 ## Outputting Test Coverage and Artifacts
 
-CircleCI has an extra space in the UI to display specific test output or artifacts whichmakes it easy to see the most common pain points rather than digging through all of the build stages output.
+CircleCI has an extra space in the UI to display specific test output or artifacts which makes it easy to see the most common pain points rather than digging through all of the build stages output.
 
 **your-repo/.circleci/config.yml**
 
@@ -178,7 +180,6 @@ CircleCI has an extra space in the UI to display specific test output or artifac
     
       steps:
         - checkout
-        - run: mkdir -p $TEST_RESULTS
         - run:
             name: Run unit tests
             command: |
@@ -186,13 +187,14 @@ CircleCI has an extra space in the UI to display specific test output or artifac
         - run:
             name: Run code coverage
             command: |
+              mkdir -p $TEST_RESULTS
               go test -coverprofile=c.out
               go tool cover -html=c.out -o coverage.html
               mv coverage.html $TEST_RESULTS
               go test -v ./... | go tool test2json > $TEST_RESULTS/test2json-output.json
               gotestsum --junitfile $TEST_RESULTS/gotestsum-report.xml
     
-        - store_artifacts: # Upload test summary for display https://circleci.com/docs/2.0/artifacts/
+        - store_artifacts: # Upload files like code coverage html for later viewing https://circleci.com/docs/2.0/artifacts/
             path: /tmp/test-results
             destination: raw-test-output
         - store_test_results: # Upload test results for display https://circleci.com/docs/2.0/collect-test-data/
@@ -216,3 +218,4 @@ _the CircleCI golang docker container has the opensource helper "gotestsum" to g
 From here on out you should hopefully have only Green Builds!
 
 TODO: an article about how to do continuous deployment _(maybe CDK and AWS?)_
+
