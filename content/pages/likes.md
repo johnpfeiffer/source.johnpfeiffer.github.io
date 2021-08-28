@@ -43,7 +43,9 @@ Title: John Likes
 - <https://bwlampson.site/10-SPEGuestEditorial/WebPage.html> (1972: "Almost everyone who uses a pencil will use a computer")
 - <https://queue.acm.org/detail.cfm?id=3104030> (Data Sketching summary)
 - <https://cacm.acm.org/magazines/2009/10/42360-retrospective-an-axiomatic-basis-for-computer-programming/fulltext> (C.A.R. Hoare on formal verification)
-- <https://www.usenix.org/system/files/nsdi20-paper-agache.pdf> AWS Lambdas are powered by Firecracker
+- <https://www.usenix.org/system/files/nsdi20-paper-agache.pdf> AWS Lambdas are powered by Firecracker OS
+- - <https://blog.acolyer.org/2020/03/02/firecracker/>
+- <https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying>
 
 ## Podcasts
 *tip: listen at 1.5x or 2x speed*
@@ -71,12 +73,12 @@ Title: John Likes
 - <https://podhero.com/artificial-intellence-ai/gustav-soderstrom-spotify-fd18d8jq>
 - <https://podhero.com/darknet-diaries/ep-52-magecart-15881b7jq> (credit card skimming and websites)
 - <https://podcasts.apple.com/us/podcast/techmeme-ride-home/id1355212895> (daily tech news)
-- <https://podhero.com/lex-fridman-podcast-artificial-intelligence-ai/104-david-patterson-computer-architecture-and-data-storage-1f0067fjq>
+- <https://lexfridman.com/david-patterson/> RISC
 - <https://www.youtube.com/watch?v=MksJTtt7jS4&t=93s> Presentation on Code Smells by Sandi Metz at Laracon 2016
 - <https://blog.golang.org/waza-talk> Concurrency is not parallelism by Rob Pike at Waza 2013
 
 ## History
-- <https://podhero.com/in-our-time-science/alan-turing-2b744efjq>
+- <https://www.bbc.co.uk/programmes/m000ncmw> Alan Turing
 - <https://podhero.com/guy-kawasakis-remarkable-people/steve-wozniak-pirate-co-founder-of-apple-and-hardware-wizard-1870ecdjq>
 - <https://podhero.com/techmeme-ride-home/the-man-who-could-have-been-bill-gates-pt-2-ed3c4bjq> (Gary Kildall)
 - <https://spectrum.ieee.org/tech-history/silicon-revolution/hans-peter-luhn-and-the-birth-of-the-hashing-algorithm>
@@ -84,6 +86,7 @@ Title: John Likes
 - <https://www.cake.co/conversations/g4CP6zJ/the-secret-call-to-andy-grove-that-may-have-helped-apple-buy-next>
 - <https://www.cake.co/conversations/VXHSjBG/the-untold-origin-story-of-ebay-that-i-lived-and-the-times-that-could-have-killed-it>
 - <https://tedium.co/2020/12/15/altavista-history-digital-dot-com-domain-name/>
+- <https://podhero.com/techmeme-ride-home/bonus-joshua-schachter-and-the-del-icio-us-story-2c8ce62jq>
 - <https://news.ycombinator.com/item?id=21849977> (Etsy succeeded in spite of itself)
 - <https://queue.acm.org/detail.cfm?id=1142065> (Werner Vogels about AWS 2006)
 - <https://www.vox.com/recode/2019/5/3/18511544/amazon-prime-oral-history-jeff-bezos-one-day-shipping>
@@ -115,6 +118,7 @@ Title: John Likes
 - <https://www.bluematador.com/blog/delight-customers-this-black-friday-7-surefire-strategies-to-prevent-downtime>
 - <https://queue.acm.org/detail.cfm?id=3197520> (Always be automating, Thomas Limoncelli)
 - <https://queue.acm.org/detail.cfm?id=2945077> (Small batches principle, Thomas Limoncelli)
+- <https://martinfowler.com/articles/developer-effectiveness.html>
 
 - <https://podhero.com/13-minutes-to-the-moon/ep-05-the-fourth-astronaut-da55a2jq> (the first mission critical software)
 - <https://podhero.com/cautionary-tales/la-la-land-galileos-warning-155f434jq> (quality "theater")
@@ -184,8 +188,9 @@ Title: John Likes
 - <https://www.manager-tools.com/2018/11/preparing-performance-reviews-hof-2018>
 - <https://www.manager-tools.com/2018/11/delivering-performance-review-hof-2018>
 - <https://www.manager-tools.com/2019/02/role-power-revisited-you-speak-ceo-part-1>
-- <https://podhero.com/manager-tools/rules-of-small-project-management-chatper-1-deliverables-basics-185bd40jq>
-- <https://podhero.com/manager-tools/negative-feedback-pushback-examples-part-1-12a2ecejq> (Build trust, then regularly deliver honest feedback)
+- <https://www.manager-tools.com/2020/02/rules-small-project-management-chapter-1-deliverables-basics-part-1-hall-fame-guidance>
+- <https://www.manager-tools.com/2019/10/negative-feedback-pushback-examples-part-1> (Build trust, then regularly deliver honest feedback)
+- <https://www.manager-tools.com/2020/10/decisions-not-choices-part-2-hall-fame-guidance>
 - <https://www.manager-tools.com/all-podcasts> (no nonsense advice on the art of people management)
 
 - <https://www.se-radio.net/2017/10/se-radio-episode-306-ron-lichty-on-managing-programmers>
@@ -195,6 +200,7 @@ Title: John Likes
 - <https://www.se-radio.net/2019/03/se-radio-episode-359-engineering-maturity-with-jean-denis-greze/>
 - <https://www.se-radio.net/2018/10/se-radio-episode-340-lara-hogan-and-deepa-subramaniam-on-revitalizing-a-cross-functional-product-organization> A meandering summary of eng management
 - <https://www.se-radio.net/2020/03/episode-403-karl-hughes-on-speaking-at-tech-conferences/>
+- <https://podcasts.apple.com/us/podcast/mastering-difficult-conversations-sarah-clatterbuck/id1481996448?i=1000451921123>
 
 
 ### People Management Articles
@@ -240,6 +246,7 @@ Title: John Likes
 - <https://hackernoon.com/the-90-agreement-rule-36757dcc8eaa>
 - <https://en.wikipedia.org/wiki/Tuckman%27s_stages_of_group_development> Storming, Norming, and Performing
 - <https://switchingtoscrum.wordpress.com/2012/11/28/what-are-story-time-meetings-for/>
+- <https://lexfridman.com/cal-newport/> (Deep Work)
 
 
 #### Hiring and Interviewing
@@ -288,24 +295,30 @@ Title: John Likes
 - <https://thisweekinstartups.com/thisweekin-startups/steve-jurvetson-dfj-tesla-spacex>
 - <https://thisweekinstartups.com/glennkelman-redfin-pejmannozad-pear>
 - <https://thisweekinstartups.com/bill-gurley-benchmark>
-- <https://podhero.com/this-week-in-startups-audio/e1002-wealthfront-ceo-co-founder-andy-archleff-on-hitting-escape-velocity-at-1546afejq>
-- <https://podhero.com/invest-like-the-best/ben-thompson-platforms-ecosystems-and-aggregators-invest-like-the-best-1d514b2jq>
-- <https://podhero.com/invest-like-the-best/john-collison-growing-the-internet-economy-invest-like-the-best-1dfd2acjq>
+- <https://thisweekinstartups.com/andy-rachleff-ceo-of-wealthfront-twist-e335/>
+- <https://thisweekinstartups.com/e1002-wealthfront-ceo-co-founder-andy-rachleff-on-hitting-escape-velocity-at-wealthfront-pioneering-self-driving-money-for-consumers-shares-insights-on-product-building-in-1980s-vs-today/>
+- <https://exponent.fm/episode-194-back-on-spotify/> Spotify surviving and thriving as a platform
+- <https://investlikethebest.libsyn.com/ben-thompson-platforms-ecosystems-and-aggregators-invest-like-the-best-ep176>
+- <https://investlikethebest.libsyn.com/john-collison-growing-the-internet-economy-invest-like-the-best-ep178>
+- <https://podcasts.apple.com/us/podcast/david-sacks-how-to-operate-a-saas-startup/id1154105909?i=1000528710000> Invest like the best on operating a SaaS
+- <https://podhero.com/cautionary-tales/buried-by-the-wall-street-crash-15eb57fjq>
 
-- <https://podhero.com/this-week-in-startups-audio/e918-stack-overflow-ceo-co-founder-joel-spolsky-shares-lessons-growing-his-7a51e8jq>
+- <https://thisweekinstartups.com/twist-51-with-joel-spolsky-2/>
+- <https://thisweekinstartups.com/joel-spolsky-ceo-of-stack-exchange-co-founder-at-fog-creek/> (episode 365)
+- <https://thisweekinstartups.com/e918-stack-overflow-ceo-co-founder-joel-spolsky-shares-lessons-growing-his-groundbreaking-qa-site-to-100m-monthly-visitors-insights-on-leading-pivoting-selling-trello-engaging-with-vcs-becom/>
 - <https://www.se-radio.net/2019/07/episode-373-joel-spolsky-on-startups-growth-and-valuation/>
 - <https://mastersofscale.com/brian-chesky-handcrafted> (Airbnb)
 - <https://mastersofscale.com/stewart-butterfield-the-big-pivot/> (Slack)
+- <https://investlikethebest.libsyn.com/stewart-butterfield-we-dont-sell-saddles-here-founders-field-guide-ep-43>
 - <https://podhero.com/this-week-in-startups-audio/e967-twilio-ceo-co-founder-jeff-lawson-on-growing-twilio-to-160-000-10f753fjq>
 - <https://podhero.com/acquired/episode-2-instagram-5cb4c3jq> Instagram acquisition analysis
 - <https://producthabits.com/my-billion-dollar-mistake/> (Getting "Foundered", become a good PM)
-- <https://podhero.com/cautionary-tales/buried-by-the-wall-street-crash-15eb57fjq>
 
 ## Misc
 
 - <https://news.ycombinator.com/item?id=21366324> Viktor Frankl: Why believe in others
 - <https://podhero.com/unlocking-us-with-brene-brown/brene-with-judd-apatow-on-vulnerability-and-laughter-1eccbe1jq>
-- <https://podhero.com/lex-fridman-podcast/113-manolis-kellis-human-genome-and-evolutionary-dynamics-2331b1ajq>
+- <https://lexfridman.com/manolis-kellis/> (Human Genome and Evolutionary Dynamics)
 - <https://podhero.com/the-knowledge-project-with-shane-parrish/57-sheila-heen-decoding-difficult-conversations-b11fb7jq>
 
 ## Atom feed
