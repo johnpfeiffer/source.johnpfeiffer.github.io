@@ -68,6 +68,7 @@ Title: John Likes
 - <https://www.se-radio.net/2020/04/episode-405-yevgeniy-brikman-on-infrastructure-as-code-best-practices/>
 - <https://www.se-radio.net/2020/05/episode-409-joe-kutner-on-the-twelve-factor-app/>
 - <https://www.se-radio.net/2021/02/episode-447-michael-perry-on-immutable-architecture/>
+- <https://www.se-radio.net/2021/07/episode-470-l-peter-deutsch-on-the-fallacies-of-distributed-computing/>
 
 - <https://www.codingblocks.net/podcast/clean-code-programming-around-boundaries>
 - <https://podhero.com/artificial-intellence-ai/gustav-soderstrom-spotify-fd18d8jq>
@@ -289,9 +290,10 @@ Title: John Likes
 - <https://www.visualcapitalist.com/how-big-tech-makes-their-billions-2020/>
 
 #### Startups and VCs Podcasts
-- <https://thisweekinstartups.com/thisweekin-startups/advice-biggest-mistakes-founders-startups-jerry-colonna>
 - <https://podhero.com/naval/play-long-term-games-with-long-term-people-738094jq>
 - <https://podhero.com/naval/embrace-accountability-to-get-leverage-7aea6djq>
+- <https://thisweekinstartups.com/thisweekin-startups/advice-biggest-mistakes-founders-startups-jerry-colonna>
+- <https://podhero.com/cautionary-tales/buried-by-the-wall-street-crash-15eb57fjq>
 - <https://thisweekinstartups.com/thisweekin-startups/steve-jurvetson-dfj-tesla-spacex>
 - <https://thisweekinstartups.com/glennkelman-redfin-pejmannozad-pear>
 - <https://thisweekinstartups.com/bill-gurley-benchmark>
@@ -301,7 +303,7 @@ Title: John Likes
 - <https://investlikethebest.libsyn.com/ben-thompson-platforms-ecosystems-and-aggregators-invest-like-the-best-ep176>
 - <https://investlikethebest.libsyn.com/john-collison-growing-the-internet-economy-invest-like-the-best-ep178>
 - <https://podcasts.apple.com/us/podcast/david-sacks-how-to-operate-a-saas-startup/id1154105909?i=1000528710000> Invest like the best on operating a SaaS
-- <https://podhero.com/cautionary-tales/buried-by-the-wall-street-crash-15eb57fjq>
+- <https://podhero.com/the-twenty-minute-vc-venture-capital-startup-funding-the-pitch/20vc-why-and-how-the-best-companies-build-economies-around-themselves-when-3eff7b9jq>
 
 - <https://thisweekinstartups.com/twist-51-with-joel-spolsky-2/>
 - <https://thisweekinstartups.com/joel-spolsky-ceo-of-stack-exchange-co-founder-at-fog-creek/> (episode 365)
@@ -320,6 +322,7 @@ Title: John Likes
 - <https://podhero.com/unlocking-us-with-brene-brown/brene-with-judd-apatow-on-vulnerability-and-laughter-1eccbe1jq>
 - <https://lexfridman.com/manolis-kellis/> (Human Genome and Evolutionary Dynamics)
 - <https://podhero.com/the-knowledge-project-with-shane-parrish/57-sheila-heen-decoding-difficult-conversations-b11fb7jq>
+- <https://www.jordanharbinger.com/robert-cialdini-a-new-look-at-the-science-of-influence/>
 
 ## Atom feed
 
