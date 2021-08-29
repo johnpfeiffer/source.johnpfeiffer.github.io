@@ -9,3 +9,7 @@ jobs:
           name: Install Pelican
           command: |
             python -m pip install "pelican[markdown]" 
+            git clone https://github.com/getpelican/pelican-plugins
+            pwd
+            ls -ahl
+            
