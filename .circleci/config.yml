@@ -12,4 +12,5 @@ jobs:
             git clone https://github.com/getpelican/pelican-plugins
             pwd
             ls -ahl
-             mv ./pelican-plugins/* ./plugins
+            # mv ./pelican-plugins/* ./plugins
+            pelican ./content -o ./output -s ./publishconf.py
