@@ -13,7 +13,7 @@ jobs:
             pip freeze | grep pelican
             cd ..
             find . -type f -iname pelican
-            ./.pyenv/versions/3.8.11/bin/pelican --version            
-            # which pelican
-            # ls -ahl
+            cd .pyenv/versions/3.8.11/bin/
+            ./pelican --help
+            ./pelican --version
             # pelican ./content -o ./output -s ./publishconf.py
