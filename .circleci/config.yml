@@ -9,6 +9,9 @@ jobs:
       - run:
           name: Install Pelican
           command: |
+            pyenv virtualenv system myproject 
+            pyenv activate myproject
+            python --version
             python -m pip install "pelican[markdown]" 
             ls -ahl
             pip freeze | grep pelican
