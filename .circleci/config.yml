@@ -35,6 +35,7 @@ jobs:
             ls -ahl
             cp -a /home/circleci/project/output/* .
             ls -ahl
+            cat ./john-likes/index.html | wc -l
             # git commit --allow-empty -am "Automatic commit from CircleCI [skip ci]"
             # git push origin master
 
