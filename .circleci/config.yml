@@ -15,7 +15,7 @@ jobs:
             cd ..
             ls -ahl
             find . -type f -iname pelican
-            pelican --version
+            pyenv versions
             # which pelican
             # ls -ahl
             # pelican ./content -o ./output -s ./publishconf.py
