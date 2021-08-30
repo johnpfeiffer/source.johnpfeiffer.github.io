@@ -9,7 +9,7 @@ jobs:
       - run:
           name: Install Pelican
           command: |
-            pyenv virtualenv system myproject 
+            pyenv virtualenv 3.8 myproject 
             pyenv activate myproject
             python --version
             python -m pip install "pelican[markdown]" 
