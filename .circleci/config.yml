@@ -12,9 +12,9 @@ jobs:
             python -m pip install "pelican[markdown]" beautifulsoup4
             pip freeze | grep pelican
             cd ..
+            pwd
+            ls -ahl /home/circleci/project
             find . -type f -iname pelican
             cd .pyenv/versions/3.8.11/bin/
-            ./pelican --help
             ./pelican --version
-            ls -ahl /home/circleci/project
-            pelican /home/circleci/project/content -o /home/circleci/project/output -s ./publishconf.py
+            ./pelican /home/circleci/project/content -o /home/circleci/project/output -s ./publishconf.py
