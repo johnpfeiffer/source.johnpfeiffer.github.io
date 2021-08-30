@@ -1,6 +1,7 @@
 version: 2.1
 jobs:
   build:
+    resource_class: small
     docker:
       - image: cimg/python:3.8
     steps:
@@ -8,4 +9,12 @@ jobs:
       - run:
           name: Install Pelican
           command: |
-            python -m pip install "pelican[markdown]" 
+            python -m pip install "pelican[markdown]" beautifulsoup4
+            pip freeze | grep pelican
+            cd ..
+            pwd
+            ls -ahl /home/circleci/project
+            find . -type f -iname pelican
+            cd .pyenv/versions/3.8.11/bin/
+            ./pelican --version
+            ./pelican /home/circleci/project/content -o /home/circleci/project/output -s /home/circleci/project/publishconf.py
