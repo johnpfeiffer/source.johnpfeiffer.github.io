@@ -28,9 +28,13 @@ jobs:
             cd ..
             ls -ahl
             git clone git@github.com:johnpfeiffer/johnpfeiffer.github.io.git
+            cd johnpfeiffer.github.io
             git config user.email "me@john-pfeiffer.com"
             git config user.name "John Pfeiffer CircleCI"
             git checkout master
+            ls -ahl
+            cp -a /home/circleci/project/output/* .
+            ls -ahl
             # git commit --allow-empty -am "Automatic commit from CircleCI [skip ci]"
             # git push origin master
 
