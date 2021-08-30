@@ -10,6 +10,8 @@ jobs:
           name: Install Pelican
           command: |
             python -m pip install "pelican[markdown]" 
+            ls -ahl
+            ls -ahl /home/circleci/.local/bin/
             # which pelican
             # ls -ahl
             # pelican ./content -o ./output -s ./publishconf.py
