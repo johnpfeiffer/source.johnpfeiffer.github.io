@@ -36,5 +36,5 @@ jobs:
             cp -a /home/circleci/project/output/* .
             git commit --allow-empty -am "CircleCI publishing $CIRCLE_BUILD_NUM from sha $CIRCLE_SHA1"
             ls -ahl ~/.ssh/
-            GIT_SSH_COMMAND='ssh -v -i ~/.ssh/id_rsa_4e:c1:a6:83:cc:89:e6:89:ed:53:a3:f4:46:9b:d8:d7' git push origin master'
+            GIT_SSH_COMMAND='ssh -v -i ~/.ssh/id_rsa_4ec1a683cc89e689ed53a3f4469bd8d7' git push origin master
 
