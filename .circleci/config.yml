@@ -32,10 +32,7 @@ jobs:
             git config user.email "me@john-pfeiffer.com"
             git config user.name "John Pfeiffer CircleCI"
             git checkout master
-            ls -ahl
             cp -a /home/circleci/project/output/* .
-            ls -ahl
-            cat ./john-likes/index.html | wc -l
-            git commit --allow-empty -am "publishing $CIRCLE_BUILD_NUM from sha $CIRCLE_SHA1"
-            git push origin master
+            git commit --allow-empty -am "CircleCI publishing $CIRCLE_BUILD_NUM from sha $CIRCLE_SHA1"
+            git push -fq origin master
 
