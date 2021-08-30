@@ -18,8 +18,8 @@ jobs:
             cd .pyenv/versions/3.8.11/bin/
             ./pelican --version
             ./pelican /home/circleci/project/content -o /home/circleci/project/output -s /home/circleci/project/publishconf.py
-            ls -ahl /home/circleci/.ssh/
-
+            ssh-add -D
+            
       - add_ssh_keys:
                   fingerprints:
                               - "4e:c1:a6:83:cc:89:e6:89:ed:53:a3:f4:46:9b:d8:d7"
