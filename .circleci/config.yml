@@ -9,17 +9,11 @@ jobs:
       - run:
           name: Install Pelican
           command: |
-            #PYENVVER=$(pyenv install --list)
-            pyenv virtualenv 3.8.11 myproject 
-            pyenv activate myproject
-            python --version
             python -m pip install "pelican[markdown]" 
-            ls -ahl
             pip freeze | grep pelican
             cd ..
-            ls -ahl
             find . -type f -iname pelican
-            
+            ./.pyenv/versions/3.8.11/bin/pelican --version            
             # which pelican
             # ls -ahl
             # pelican ./content -o ./output -s ./publishconf.py
