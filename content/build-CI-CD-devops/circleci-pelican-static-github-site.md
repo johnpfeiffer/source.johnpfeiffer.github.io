@@ -153,7 +153,9 @@ Now your source code (markdown) for your (pelican) blog should have a CircleCI c
                 git config user.name "John Pfeiffer CircleCI"
                 git checkout master
                 cp -a /home/circleci/OUT/* .
-                git commit --allow-empty -am "CircleCI publishing $CIRCLE_BUILD_NUM from sha $CIRCLE_SHA1"
+                git status
+                git add --all .
+                git commit --allow-empty -m "CircleCI publishing $CIRCLE_BUILD_NUM from sha $CIRCLE_SHA1"
                 ls -ahl ~/.ssh/
                 GIT_SSH_COMMAND='ssh -v -i ~/.ssh/id_rsa_4ec1a683...cc' git push origin master
 
