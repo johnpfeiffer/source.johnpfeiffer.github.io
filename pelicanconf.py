@@ -36,7 +36,7 @@ SITEMAP = {
     },
     'changefreqs': {
         'articles': 'monthly',
-        'indexes': 'daily',
+        'indexes': 'weekly',
         'pages': 'monthly'
     }
 }
@@ -50,7 +50,7 @@ MARKDOWN = {
     'markdown.extensions.codehilite': {'css_class': 'highlight'},
     'markdown.extensions.extra': {},
     'markdown.extensions.meta': {},
-    'markdown.extensions.toc': {'title': 'Table of Contents'},
+    'markdown.extensions.toc': {'title': ''},
   },
   'output_format': 'html5',
 }
