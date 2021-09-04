@@ -95,6 +95,7 @@ You still need an article with a minimum of content...
 > Docker will mount your local directory with pelican project markdown mapped to "/home/circleci/blogsource" in the docker container
 _your local directory name and subdirectories are up to you ;)_
 
+_If you do not specify a new "output directory" then pelican may get confused if there is already content in "pelican-project/output"_
 
 
 # Linking Github to CircleCI
@@ -134,7 +135,8 @@ Now your source code (markdown) for your (pelican) blog should have a CircleCI c
                 PYVER=$(ls /home/circleci/.pyenv/versions | grep 3.8)
                 cd ".pyenv/versions/$PYVER/bin/"
                 ./pelican --version
-                ./pelican /home/circleci/project/content -o /home/circleci/project/output -s /home/circleci/project/publishconf.py
+                mkdir -p /home/circleci/OUT
+                ./pelican /home/circleci/project/content -o /home/circleci/OUT -s /home/circleci/project/publishconf.py
                 ssh-add -D
                 
           - add_ssh_keys:
@@ -150,7 +152,7 @@ Now your source code (markdown) for your (pelican) blog should have a CircleCI c
                 git config user.email "me@john-pfeiffer.com"
                 git config user.name "John Pfeiffer CircleCI"
                 git checkout master
-                cp -a /home/circleci/project/output/* .
+                cp -a /home/circleci/OUT/* .
                 git commit --allow-empty -am "CircleCI publishing $CIRCLE_BUILD_NUM from sha $CIRCLE_SHA1"
                 ls -ahl ~/.ssh/
                 GIT_SSH_COMMAND='ssh -v -i ~/.ssh/id_rsa_4ec1a683...cc' git push origin master
@@ -164,7 +166,7 @@ Now your source code (markdown) for your (pelican) blog should have a CircleCI c
 
 The target for all of this has been your Github static page: <https://pages.github.com/>
 
-Create a new SSH key dedicated to only this purpose
+## Create a new SSH key dedicated to only this purpose
 
     :::bash
     ssh-keygen -t rsa -b 4096 -C "CircleCI Deploy Key with Write Access" -f /tmp/cikey
@@ -189,7 +191,23 @@ Hostname: githubstaticpage
 Private Key: -----BEGIN RSA PRIVATE KEY-----...
 
 Now copy the "Fingerprint" of the key e.g. something like 4e:c1:...
-This is what goes in your circleCI
+This is what goes in your circleCI config
+
+## CircleCI config explained
+
+This portion is your CircleCI agent manually checking out the actual "Pages" HTML repository:
+
+    :::text
+                git clone git@github.com:johnpfeiffer/johnpfeiffer.github.io.git
+                cd johnpfeiffer.github.io
+                git config user.email "me@john-pfeiffer.com"
+                git config user.name "John Pfeiffer CircleCI"
+                git checkout master
+
+It is important to copy the new HTML content in...
+                cp -a /home/circleci/OUT/* .
+
+_technical debt is to use the rsync command to actually reflect removed content too_
 
 Later we can use that fingerprint to explicitly specify git use that ssh key to push to github...
 
