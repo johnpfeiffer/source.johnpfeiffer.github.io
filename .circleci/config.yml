@@ -15,7 +15,8 @@ jobs:
             pwd
             ls -ahl /home/circleci/project
             find . -type f -iname pelican
-            cd .pyenv/versions/3.8.11/bin/
+            PYVER=$(ls /home/circleci/.pyenv/versions | grep 3.8)
+            cd ".pyenv/versions/$PYVER/bin/"
             ./pelican --version
             ./pelican /home/circleci/project/content -o /home/circleci/project/output -s /home/circleci/project/publishconf.py
             ssh-add -D
