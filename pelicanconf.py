@@ -45,6 +45,16 @@ THEME = 'themes/pelican-elegant'
 PLUGIN_PATHS = ['plugins']
 PLUGINS = ['sitemap', 'extract_toc', 'tipue_search', 'post_stats']
 MD_EXTENSIONS = ['codehilite(css_class=highlight)', 'extra', 'headerid', 'toc']
+MARKDOWN = {
+  'extension_configs': {
+    'markdown.extensions.codehilite': {'css_class': 'highlight'},
+    'markdown.extensions.extra': {},
+    'markdown.extensions.meta': {},
+    'markdown.extensions.toc': {'title': 'Table of Contents'},
+  },
+  'output_format': 'html5',
+}
+
 DIRECT_TEMPLATES = (('index', 'tags', 'categories','archives', 'search', '404'))
 STATIC_PATHS = ['theme/images', 'themes/images', 'images']
 LANDING_PAGE_ABOUT={'title': '', 
