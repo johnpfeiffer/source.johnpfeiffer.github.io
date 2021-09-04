@@ -90,10 +90,9 @@ You still need an article with a minimum of content...
     mkdir /home/circleci/OUT
     PYVER=$(ls /home/circleci/.pyenv/versions | grep 3.8)
     cd "/home/circleci/.pyenv/versions/$PYVER/bin/"
-   ./pelican /home/circleci/blogsource/pelican-project/content -o /home/circleci/OUT -s /home/circleci/blogsource/pelican-project/publishconf.py
+    ./pelican /home/circleci/blogsource/pelican-project/content -o /home/circleci/OUT -s /home/circleci/blogsource/pelican-project/publishconf.py
 
 > Docker will mount your local directory with pelican project markdown mapped to "/home/circleci/blogsource" in the docker container
-_your local directory name and subdirectories are up to you ;)_
 
 _If you do not specify a new "output directory" then pelican may get confused if there is already content in "pelican-project/output"_
 
@@ -115,6 +114,7 @@ Now your source code (markdown) for your (pelican) blog should have a CircleCI c
 
 **.circleci/config.yml**
 
+    :::yaml
     version: 2.1
     jobs:
       build:
@@ -207,11 +207,13 @@ This portion is your CircleCI agent manually checking out the actual "Pages" HTM
                 git checkout master
 
 It is important to copy the new HTML content in...
-                cp -a /home/circleci/OUT/* .
 
-_technical debt is to use the rsync command to actually reflect removed content too_
+    :::bash
+    cp -a /home/circleci/OUT/* .
 
-Later we can use that fingerprint to explicitly specify git use that ssh key to push to github...
+_technical debt: should use the rsync command to actually reflect removed content too_
+
+Here is where the previously created SSH Key and fingerprint are explicitly used to specify to git to use that ssh key to push to github...
 
             GIT_SSH_COMMAND='ssh -v -i ~/.ssh/id_rsa_4ec1a683...cc' git push origin master
 
@@ -219,6 +221,7 @@ Later we can use that fingerprint to explicitly specify git use that ssh key to 
 
 
 References
+
 - <https://circleci.com/docs/2.0/add-ssh-key/>
 - <https://blog.jdblischak.com/posts/circleci-ssh/>
 - <https://discuss.circleci.com/t/multiple-deploy-keys-for-github/25658/8>
@@ -233,8 +236,10 @@ My site still uses the old plugins which I "vendored" into the actual repo for s
 > 10 MB of legacy plugins at "getpelican" because they still work
 
 Instructions on Pelican Plugins in general (and the new way that I have not yet adopted)
+
 - <https://docs.getpelican.com/en/latest/plugins.html>
 
 Thankfully this person documented how to use Pelican4.6 with MARKDOWN for the built in Table of Contents (TOC):
+
 - <https://cloudbytes.dev/articles/add-a-table-of-contents-using-markdown-in-pelican>
 
