@@ -71,7 +71,7 @@ Title: John Likes
 - <https://podhero.com/artificial-intellence-ai/gustav-soderstrom-spotify-fd18d8jq>
 - <https://podhero.com/darknet-diaries/ep-52-magecart-15881b7jq> (credit card skimming and websites)
 - <https://podcasts.apple.com/us/podcast/techmeme-ride-home/id1355212895> (daily tech news)
-- <https://lexfridman.com/david-patterson/> RISC
+- <https://lexfridman.com/david-patterson/> RISC (reduced instruction set computer)
 - <https://www.youtube.com/watch?v=MksJTtt7jS4&t=93s> Presentation on Code Smells by Sandi Metz at Laracon 2016
 - <https://blog.golang.org/waza-talk> Concurrency is not parallelism by Rob Pike at Waza 2013
 
@@ -107,7 +107,6 @@ Title: John Likes
 - <https://www.wired.com/story/confessions-marcus-hutchins-hacker-who-saved-the-internet/>
 - <https://www.se-radio.net/2015/07/episode-232-mark-nottingham-on-http2/>
 
-
 ## Miscellaneous Great Web Sites and Articles
 - <https://brandur.org/heroku-values>
 - <https://increment.com/documentation/>
@@ -139,30 +138,38 @@ Title: John Likes
 - <https://www.se-radio.net/2009/05/episode-134-release-it-with-michael-nygard/>
 - <https://www.se-radio.net/2010/09/episode-167-the-history-of-junit-and-the-future-of-testing-with-kent-beck>
 - <https://www.se-radio.net/2015/02/episode-221-jez-humble-on-continuous-delivery>
+- <https://www.se-radio.net/2015/04/episode-224-sven-johann-and-eberhard-wolff-on-technical-debt>
 - <https://www.se-radio.net/2017/01/se-radio-episode-280-gerald-weinberg-on-bugs-errors-and-software-quality>
 - <https://www.se-radio.net/2017/06/se-radio-episode-295-michael-feathers-on-legacy-code>
 
-## Architectures and Scalability
+## Software Architecture
+- <https://web.archive.org/web/20210414115314/http://www.laputan.org/mud/> Foundational Essay on architectures and the infamous "Ball of Mud"
+- <https://docs.microsoft.com/en-us/archive/msdn-magazine/2009/february/best-practice-an-introduction-to-domain-driven-design>
+- <https://www.se-radio.net/2015/05/se-radio-episode-226-eric-evans-on-domain-driven-design-at-10-years>
+- <https://www.se-radio.net/2014/11/episode-215-gang-of-four-20-years-later> Gang of Four Architecture Patterns
+- <http://www.elidedbranches.com/2016/08/microservices-real-architectural.html> (Camille Fournier) 
+- <https://alibaba-cloud.medium.com/conways-law-a-theoretical-basis-for-the-microservice-architecture-c666f7fcc66a>
+- <https://news.ycombinator.com/item?id=13960107> (modules vs microservices)
+- <https://podhero.com/go-time/the-monolith-vs-microservices-debate-1b4fe3cjq>
+- <https://www.se-radio.net/2021/02/episode-447-michael-perry-on-immutable-architecture/>
+- <https://www.se-radio.net/2018/03/se-radio-episode-320-nate-taggart-on-serverless-paradigm>
+- <https://martinfowler.com/articles/serverless.html#drawbacks>
+
+### Architectural Scalability
 - <https://highscalability.com/blog/2014/2/26/the-whatsapp-architecture-facebook-bought-for-19-billion.html>
 - <https://highscalability.com/blog/2014/3/31/how-whatsapp-grew-to-nearly-500-million-users-11000-cores-an.html>
 - <https://highscalability.com/blog/2010/3/16/justintvs-live-video-broadcasting-architecture.html>
 - <https://news.ycombinator.com/item?id=18760350> A simple guide to scaling to 10M users *(with commentary from HackerNews)*
-- <https://news.ycombinator.com/item?id=13960107> (modules vs microservices)
-- <http://www.elidedbranches.com/2016/08/microservices-real-architectural.html> (Camille Fournier)
-- <https://podhero.com/go-time/the-monolith-vs-microservices-debate-1b4fe3cjq>
-- <https://alibaba-cloud.medium.com/conways-law-a-theoretical-basis-for-the-microservice-architecture-c666f7fcc66a>
-- <https://www.se-radio.net/2018/03/se-radio-episode-320-nate-taggart-on-serverless-paradigm>
-- <https://martinfowler.com/articles/serverless.html#drawbacks>
 
 ## Game Theory
 - <https://ncase.me/trust/> (interactive game theory for prisoner's dilemma)
 - <https://www.wnycstudios.org/podcasts/radiolab/segments/golden-rule> (game theory in practice)
 
 ## Tools
-
-- <https://bitbucket.org>
-- <https://github.com>
-- <https://travis-ci.org> (free continuous integration)
+- <https://bitbucket.org> Source code version control
+- <https://bitbucket.org/product/features/pipelines> Free CI/CD
+- <https://github.com> Source code version control
+- <https://circleci.com> (free continuous integration)
 - <https://www.namecheap.com> (best domain name registrar)
 - <https://letsencrypt.org> (free SSL certificates)
 - <https://www.heroku.com> (free and easy application hosting)
@@ -182,6 +189,7 @@ Title: John Likes
 ### Books
 - Peopleware: Productive Projects and Teams by Tom DeMarco, Timothy Lister
 - The Mythical Man-Month: Essays on Software Engineering by Frederick P. Brooks Jr.
+- The Manager's Path: A Guide for Tech Leaders Navigating Growth and Change by Camille Fournier
 - The 7 Habits of Highly Effective People by Stephen Covey
 - Managing Humans: Tales of leadership from the Silicon Valley by Michael Lopp
 - The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses by Eric Ries
