@@ -50,33 +50,44 @@ Title: John Likes
 ## Podcasts
 *tip: listen at 1.5x or 2x speed*
 
-- <https://www.se-radio.net/2016/01/se-radio-show-246-john-wilkes-on-borg-and-kubernetes>
 - <https://changelog.com/gotime/6> (Mechanical Sympathy with Bill Kennedy)
-- <https://changelog.com/gotime/142> (All about that infrastructure and DevOps)
 - <https://changelog.com/gotime/132> (The trouble with databases)
 - <https://www.se-radio.net/2010/03/episode-157-hadoop-with-philip-zeyliger>
 - <https://www.se-radio.net/2010/11/episode-169-memory-grid-architecture-with-nati-shalom>
-- <https://www.se-radio.net/2014/11/episode-215-gang-of-four-20-years-later>
 - <https://www.se-radio.net/2015/04/episode-224-sven-johann-and-eberhard-wolff-on-technical-debt>
-- <https://www.se-radio.net/2015/05/se-radio-episode-226-eric-evans-on-domain-driven-design-at-10-years>
 - <https://www.se-radio.net/2015/05/the-cap-theorem-then-and-now>
 - <https://www.se-radio.net/2015/11/se-radio-episode-241-kyle-kingsbury-on-consensus-in-distributed-systems>
 - <https://www.se-radio.net/2017/02/se-radio-episode-282-donny-nadolny-on-debugging-distributed-systems>
 - <https://www.se-radio.net/2017/03/se-radio-episode-285-james-cowling-on-dropboxs-distributed-storage-system>
-- <https://www.se-radio.net/2017/04/se-radio-episode-287-success-skills-for-architects-with-neil-ford>
 - <https://www.se-radio.net/2019/02/se-radio-episode-358-probabilistic-data-structure-for-big-data-problems/>
-- <https://www.se-radio.net/2020/04/episode-405-yevgeniy-brikman-on-infrastructure-as-code-best-practices/>
-- <https://www.se-radio.net/2020/05/episode-409-joe-kutner-on-the-twelve-factor-app/>
-- <https://www.se-radio.net/2021/02/episode-447-michael-perry-on-immutable-architecture/>
 - <https://www.se-radio.net/2021/07/episode-470-l-peter-deutsch-on-the-fallacies-of-distributed-computing/>
 
-- <https://www.codingblocks.net/podcast/clean-code-programming-around-boundaries>
+- <https://podhero.com/fragmented-the-software-podcast/214-3-things-every-developer-needs-to-know-how-to-do-3ee389ejq>
+- <https://podhero.com/fragmented-the-software-podcast/041-yagni-7e48bjq>
+- <https://podhero.com/fragmented-the-software-podcast/183-the-testing-paradox-157b7f7jq>
+- <https://podhero.com/fragmented-the-software-podcast/219-the-legacy-code-change-algorithm-40f0f9cjq>
+
+- <https://podhero.com/in-our-time-science/game-theory-86427jq>
 - <https://podhero.com/artificial-intellence-ai/gustav-soderstrom-spotify-fd18d8jq>
 - <https://podhero.com/darknet-diaries/ep-52-magecart-15881b7jq> (credit card skimming and websites)
 - <https://podcasts.apple.com/us/podcast/techmeme-ride-home/id1355212895> (daily tech news)
 - <https://lexfridman.com/david-patterson/> RISC
 - <https://www.youtube.com/watch?v=MksJTtt7jS4&t=93s> Presentation on Code Smells by Sandi Metz at Laracon 2016
 - <https://blog.golang.org/waza-talk> Concurrency is not parallelism by Rob Pike at Waza 2013
+
+### Architecture Podcasts
+- <https://www.se-radio.net/2014/11/episode-215-gang-of-four-20-years-later>
+- <https://www.se-radio.net/2015/05/se-radio-episode-226-eric-evans-on-domain-driven-design-at-10-years>
+- <https://www.se-radio.net/2017/04/se-radio-episode-287-success-skills-for-architects-with-neil-ford>
+- <https://www.se-radio.net/2020/05/episode-409-joe-kutner-on-the-twelve-factor-app/>
+- <https://www.se-radio.net/2021/02/episode-447-michael-perry-on-immutable-architecture/>
+- <https://www.codingblocks.net/podcast/clean-code-programming-around-boundaries>
+
+### Infrastructure Podcasts
+- <https://changelog.com/gotime/142> (All about that infrastructure and DevOps)
+- <https://www.se-radio.net/2016/01/se-radio-show-246-john-wilkes-on-borg-and-kubernetes>
+- <https://www.se-radio.net/2020/04/episode-405-yevgeniy-brikman-on-infrastructure-as-code-best-practices/>
+
 
 ## History
 - <https://www.bbc.co.uk/programmes/m000ncmw> Alan Turing
@@ -85,6 +96,8 @@ Title: John Likes
 - <https://spectrum.ieee.org/tech-history/silicon-revolution/hans-peter-luhn-and-the-birth-of-the-hashing-algorithm>
 - <https://segment.com/blog/a-brief-history-of-the-uuid/>
 - <https://www.cake.co/conversations/g4CP6zJ/the-secret-call-to-andy-grove-that-may-have-helped-apple-buy-next>
+- <https://podhero.com/internet-history-podcast/2-ch-1-2-the-creation-of-netscape-25b2b6jq>
+- <https://podhero.com/internet-history-podcast/5-netscape-and-mosaic-founding-engineer-lou-montulli-25b246jq>
 - <https://www.cake.co/conversations/VXHSjBG/the-untold-origin-story-of-ebay-that-i-lived-and-the-times-that-could-have-killed-it>
 - <https://tedium.co/2020/12/15/altavista-history-digital-dot-com-domain-name/>
 - <https://podhero.com/techmeme-ride-home/bonus-joshua-schachter-and-the-del-icio-us-story-2c8ce62jq>
@@ -182,6 +195,15 @@ Title: John Likes
 ### Manager Podcasts
 *tip: listen at 1.5x or 2x speed*
 
+- <https://podhero.com/go-time-golang-software-engineering/just-about-managing-454597cjq>
+- <https://www.se-radio.net/2017/10/se-radio-episode-306-ron-lichty-on-managing-programmers>
+- <https://www.se-radio.net/2019/07/episode-374-marcus-blankenship-on-motivating-programmers/>
+- <https://www.se-radio.net/2019/02/se-radio-episode-355-randy-shoup-scaling-technology-and-organization/>
+- <https://blog.ycombinator.com/camille-fournier-on-managing-technical-teams/>
+- <https://podhero.com/the-engineering-leadership-podcast/debate-flat-vs-hierarchical-organizations-w-farhan-thawar-jerry-krikheli-60-43121c3jq>
+- <https://www.se-radio.net/2019/03/se-radio-episode-359-engineering-maturity-with-jean-denis-greze/>
+- <https://podhero.com/the-engineering-leadership-podcast/changing-priorities-making-massive-engineering-pivots-with-vivian-shen-62-43a7212jq>
+
 - <https://www.manager-tools.com/2007/01/the-juggling-koan> Delegation
 - <https://www.manager-tools.com/2010/05/how-choose-what-delegate-hall-fame-guidance>
 - <https://www.manager-tools.com/2012/02/delegating-floor>
@@ -194,14 +216,12 @@ Title: John Likes
 - <https://www.manager-tools.com/2020/10/decisions-not-choices-part-2-hall-fame-guidance>
 - <https://www.manager-tools.com/all-podcasts> (no nonsense advice on the art of people management)
 
-- <https://www.se-radio.net/2017/10/se-radio-episode-306-ron-lichty-on-managing-programmers>
-- <https://www.se-radio.net/2019/07/episode-374-marcus-blankenship-on-motivating-programmers/>
-- <https://www.se-radio.net/2019/02/se-radio-episode-355-randy-shoup-scaling-technology-and-organization/>
-- <https://blog.ycombinator.com/camille-fournier-on-managing-technical-teams/>
-- <https://www.se-radio.net/2019/03/se-radio-episode-359-engineering-maturity-with-jean-denis-greze/>
 - <https://www.se-radio.net/2018/10/se-radio-episode-340-lara-hogan-and-deepa-subramaniam-on-revitalizing-a-cross-functional-product-organization> A meandering summary of eng management
 - <https://www.se-radio.net/2020/03/episode-403-karl-hughes-on-speaking-at-tech-conferences/>
 - <https://podcasts.apple.com/us/podcast/mastering-difficult-conversations-sarah-clatterbuck/id1481996448?i=1000451921123>
+- <https://podhero.com/life-kit/how-to-give-good-feedback-42704b8jq>
+- <https://podhero.com/the-engineering-leadership-podcast/the-energy-audit-reclaiming-your-time-increasing-ownership-with-brad-henrickson-4360184jq>
+- <https://podhero.com/the-engineering-leadership-podcast/spend-time-on-what-matters-with-will-larson-cto-calm-30-3986407jq>
 
 
 ### People Management Articles
@@ -288,6 +308,7 @@ Title: John Likes
 - <https://alexdanco.com/2020/02/07/debt-is-coming/>
 - <https://www.interfluidity.com/v2/7333.html> Four functions of Markets (with a political bent)
 - <https://www.visualcapitalist.com/how-big-tech-makes-their-billions-2020/>
+- <https://reactionwheel.net/2021/11/your-boards-of-directors-is-probably-going-to-fire-you.html>
 
 #### Startups and VCs Podcasts
 - <https://podhero.com/naval/play-long-term-games-with-long-term-people-738094jq>
@@ -303,7 +324,7 @@ Title: John Likes
 - <https://investlikethebest.libsyn.com/ben-thompson-platforms-ecosystems-and-aggregators-invest-like-the-best-ep176>
 - <https://investlikethebest.libsyn.com/john-collison-growing-the-internet-economy-invest-like-the-best-ep178>
 - <https://podcasts.apple.com/us/podcast/david-sacks-how-to-operate-a-saas-startup/id1154105909?i=1000528710000> Invest like the best on operating a SaaS
-- <https://podhero.com/the-twenty-minute-vc-venture-capital-startup-funding-the-pitch/20vc-why-and-how-the-best-companies-build-economies-around-themselves-when-3eff7b9jq>
+- <https://podhero.com/the-knowledge-project-with-shane-parrish/129-marc-andreessen-interview-with-an-icon-494d16djq>
 
 - <https://thisweekinstartups.com/twist-51-with-joel-spolsky-2/>
 - <https://thisweekinstartups.com/joel-spolsky-ceo-of-stack-exchange-co-founder-at-fog-creek/> (episode 365)
@@ -312,17 +333,25 @@ Title: John Likes
 - <https://mastersofscale.com/brian-chesky-handcrafted> (Airbnb)
 - <https://mastersofscale.com/stewart-butterfield-the-big-pivot/> (Slack)
 - <https://investlikethebest.libsyn.com/stewart-butterfield-we-dont-sell-saddles-here-founders-field-guide-ep-43>
-- <https://podhero.com/this-week-in-startups-audio/e967-twilio-ceo-co-founder-jeff-lawson-on-growing-twilio-to-160-000-10f753fjq>
 - <https://podhero.com/acquired/episode-2-instagram-5cb4c3jq> Instagram acquisition analysis
 - <https://producthabits.com/my-billion-dollar-mistake/> (Getting "Foundered", become a good PM)
+- <https://podhero.com/the-knowledge-project-with-shane-parrish/53-howard-marks-luck-risk-and-avoiding-losers-66964ajq>
+- <https://podhero.com/this-week-in-startups-audio/e967-twilio-ceo-co-founder-jeff-lawson-on-growing-twilio-to-160-000-10f753fjq>
+- <https://podhero.com/invest-like-the-best-with-patrick-oshaughnessy/jeff-lawson-how-to-build-a-platform-invest-like-the-198279ajq>
+- <https://podhero.com/the-twenty-minute-vc-venture-capital-startup-funding-the-pitch/20vc-why-and-how-the-best-companies-build-economies-around-themselves-when-3eff7b9jq>
+- <https://podhero.com/how-i-built-this-with-guy-raz/atlassian-mike-cannon-brookes-and-scott-farquhar-381300fjq>
 
 ## Misc
 
 - <https://news.ycombinator.com/item?id=21366324> Viktor Frankl: Why believe in others
 - <https://podhero.com/unlocking-us-with-brene-brown/brene-with-judd-apatow-on-vulnerability-and-laughter-1eccbe1jq>
+- <https://podhero.com/unlocking-us-with-brene-brown/brene-on-words-actions-dehumanization-and-accountability-361c1a0jq>
 - <https://lexfridman.com/manolis-kellis/> (Human Genome and Evolutionary Dynamics)
 - <https://podhero.com/the-knowledge-project-with-shane-parrish/57-sheila-heen-decoding-difficult-conversations-b11fb7jq>
+- <https://podhero.com/hidden-brain/why-conversations-go-wrong-3c9acc0jq>
 - <https://www.jordanharbinger.com/robert-cialdini-a-new-look-at-the-science-of-influence/>
+- <https://podhero.com/depresh-mode-with-john-moe/six-things-you-need-to-know-for-your-mental-health-445dfedjq>
+- <https://podhero.com/the-knowledge-project-with-shane-parrish/119-todd-simkin-making-better-decisions-430fda9jq>
 
 ## Atom feed
 
