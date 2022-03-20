@@ -67,7 +67,6 @@ Title: John Likes
 - <https://podhero.com/fragmented-the-software-podcast/183-the-testing-paradox-157b7f7jq>
 - <https://podhero.com/fragmented-the-software-podcast/219-the-legacy-code-change-algorithm-40f0f9cjq>
 
-- <https://podhero.com/in-our-time-science/game-theory-86427jq>
 - <https://podhero.com/artificial-intellence-ai/gustav-soderstrom-spotify-fd18d8jq>
 - <https://podhero.com/darknet-diaries/ep-52-magecart-15881b7jq> (credit card skimming and websites)
 - <https://podcasts.apple.com/us/podcast/techmeme-ride-home/id1355212895> (daily tech news)
@@ -75,13 +74,6 @@ Title: John Likes
 - <https://www.youtube.com/watch?v=MksJTtt7jS4&t=93s> Presentation on Code Smells by Sandi Metz at Laracon 2016
 - <https://blog.golang.org/waza-talk> Concurrency is not parallelism by Rob Pike at Waza 2013
 
-### Architecture Podcasts
-- <https://www.se-radio.net/2014/11/episode-215-gang-of-four-20-years-later>
-- <https://www.se-radio.net/2015/05/se-radio-episode-226-eric-evans-on-domain-driven-design-at-10-years>
-- <https://www.se-radio.net/2017/04/se-radio-episode-287-success-skills-for-architects-with-neil-ford>
-- <https://www.se-radio.net/2020/05/episode-409-joe-kutner-on-the-twelve-factor-app/>
-- <https://www.se-radio.net/2021/02/episode-447-michael-perry-on-immutable-architecture/>
-- <https://www.codingblocks.net/podcast/clean-code-programming-around-boundaries>
 
 ### Infrastructure Podcasts
 - <https://changelog.com/gotime/142> (All about that infrastructure and DevOps)
@@ -145,15 +137,20 @@ Title: John Likes
 ## Software Architecture
 - <https://web.archive.org/web/20210414115314/http://www.laputan.org/mud/> Foundational Essay on architectures and the infamous "Ball of Mud"
 - <https://docs.microsoft.com/en-us/archive/msdn-magazine/2009/february/best-practice-an-introduction-to-domain-driven-design>
-- <https://www.se-radio.net/2015/05/se-radio-episode-226-eric-evans-on-domain-driven-design-at-10-years>
-- <https://www.se-radio.net/2014/11/episode-215-gang-of-four-20-years-later> Gang of Four Architecture Patterns
 - <http://www.elidedbranches.com/2016/08/microservices-real-architectural.html> (Camille Fournier) 
 - <https://alibaba-cloud.medium.com/conways-law-a-theoretical-basis-for-the-microservice-architecture-c666f7fcc66a>
 - <https://news.ycombinator.com/item?id=13960107> (modules vs microservices)
-- <https://podhero.com/go-time/the-monolith-vs-microservices-debate-1b4fe3cjq>
-- <https://www.se-radio.net/2021/02/episode-447-michael-perry-on-immutable-architecture/>
-- <https://www.se-radio.net/2018/03/se-radio-episode-320-nate-taggart-on-serverless-paradigm>
 - <https://martinfowler.com/articles/serverless.html#drawbacks>
+
+### Architecture Podcasts
+- <https://www.se-radio.net/2014/11/episode-215-gang-of-four-20-years-later> Gang of Four Architecture Patterns
+- <https://www.se-radio.net/2015/05/se-radio-episode-226-eric-evans-on-domain-driven-design-at-10-years>
+- <https://www.se-radio.net/2017/04/se-radio-episode-287-success-skills-for-architects-with-neil-ford>
+- <https://www.se-radio.net/2020/05/episode-409-joe-kutner-on-the-twelve-factor-app/>
+- <https://www.se-radio.net/2021/02/episode-447-michael-perry-on-immutable-architecture/>
+- <https://www.codingblocks.net/podcast/clean-code-programming-around-boundaries>
+- <https://podhero.com/go-time/the-monolith-vs-microservices-debate-1b4fe3cjq>
+- <https://www.se-radio.net/2018/03/se-radio-episode-320-nate-taggart-on-serverless-paradigm>
 
 ### Architectural Scalability
 - <https://highscalability.com/blog/2014/2/26/the-whatsapp-architecture-facebook-bought-for-19-billion.html>
@@ -162,6 +159,7 @@ Title: John Likes
 - <https://news.ycombinator.com/item?id=18760350> A simple guide to scaling to 10M users *(with commentary from HackerNews)*
 
 ## Game Theory
+- <https://podhero.com/in-our-time-science/game-theory-86427jq>
 - <https://ncase.me/trust/> (interactive game theory for prisoner's dilemma)
 - <https://www.wnycstudios.org/podcasts/radiolab/segments/golden-rule> (game theory in practice)
 
