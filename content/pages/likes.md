@@ -61,6 +61,7 @@ Title: John Likes
 - <https://www.se-radio.net/2017/03/se-radio-episode-285-james-cowling-on-dropboxs-distributed-storage-system>
 - <https://www.se-radio.net/2019/02/se-radio-episode-358-probabilistic-data-structure-for-big-data-problems/>
 - <https://www.se-radio.net/2021/07/episode-470-l-peter-deutsch-on-the-fallacies-of-distributed-computing/>
+- <https://www.se-radio.net/2022/06/episode-515-swizec-teller-on-becoming-a-senior-engineer/>
 
 - <https://podhero.com/fragmented-the-software-podcast/214-3-things-every-developer-needs-to-know-how-to-do-3ee389ejq>
 - <https://podhero.com/fragmented-the-software-podcast/041-yagni-7e48bjq>
@@ -104,14 +105,16 @@ Title: John Likes
 - <https://increment.com/documentation/>
 - <https://danluu.com>
 - <https://danluu.com/sounds-easy/> ("I could build that in a weekend")
-- <https://charity.wtf>
+ <https://charity.wtf>
 - <https://urchin.biz> (pre-history of google analytics)
 - <https://kalzumeus.com/2010/01/24/startup-seo/>
 - <https://www.facebook.com/notes/kent-beck/one-bite-at-a-time-partitioning-complexity/1716882961677894>
 - <https://dave.cheney.net/paste/the-past-present-and-future-of-go2.pdf> QCon Shanghai
 - <https://robertheaton.com/2015/10/26/why-and-how-to-make-smaller-pull-requests/>
+- <https://www.alexandra-hill.com/2018/06/25/the-art-of-giving-and-receiving-code-reviews/>
 - <https://github.com/joelparkerhenderson/queueing_theory> (summary and links to resources)
 - <https://http2-explained.haxx.se/en/part2>
+- <https://rutar.org/writing/how-to-build-a-personal-webpage-from-scratch/>
 
 ## Quality and Testing
 - <https://medium.com/dataseries/the-rise-and-fall-of-knight-capital-buy-high-sell-low-rinse-and-repeat-ae17fae780f6>
@@ -149,8 +152,10 @@ Title: John Likes
 - <https://www.se-radio.net/2020/05/episode-409-joe-kutner-on-the-twelve-factor-app/>
 - <https://www.se-radio.net/2021/02/episode-447-michael-perry-on-immutable-architecture/>
 - <https://www.codingblocks.net/podcast/clean-code-programming-around-boundaries>
+- <https://www.codingblocks.net/podcast/transactions-in-distributed-systems/>
 - <https://podhero.com/go-time/the-monolith-vs-microservices-debate-1b4fe3cjq>
 - <https://www.se-radio.net/2018/03/se-radio-episode-320-nate-taggart-on-serverless-paradigm>
+- <https://www.se-radio.net/2022/08/episode-525-randy-shoup-on-evolving-architecture-and-organization-at-ebay/>
 
 ### Architectural Scalability
 - <https://highscalability.com/blog/2014/2/26/the-whatsapp-architecture-facebook-bought-for-19-billion.html>
@@ -185,6 +190,7 @@ Title: John Likes
 ## Resources on Leadership and Management and Business
 
 ### Books
+_Just read these all in order and you will get "it"_
 - Peopleware: Productive Projects and Teams by Tom DeMarco, Timothy Lister
 - The Mythical Man-Month: Essays on Software Engineering by Frederick P. Brooks Jr.
 - The Manager's Path: A Guide for Tech Leaders Navigating Growth and Change by Camille Fournier
@@ -206,6 +212,7 @@ Title: John Likes
 - <https://www.se-radio.net/2019/07/episode-374-marcus-blankenship-on-motivating-programmers/>
 - <https://www.se-radio.net/2019/02/se-radio-episode-355-randy-shoup-scaling-technology-and-organization/>
 - <https://blog.ycombinator.com/camille-fournier-on-managing-technical-teams/>
+- <https://www.effectiveem.com/building-managers-leading-from-the-back-leading-from-the-front/>
 - <https://podhero.com/the-engineering-leadership-podcast/debate-flat-vs-hierarchical-organizations-w-farhan-thawar-jerry-krikheli-60-43121c3jq>
 - <https://www.se-radio.net/2019/03/se-radio-episode-359-engineering-maturity-with-jean-denis-greze/>
 - <https://podhero.com/the-engineering-leadership-podcast/changing-priorities-making-massive-engineering-pivots-with-vivian-shen-62-43a7212jq>
@@ -216,6 +223,8 @@ Title: John Likes
 - <https://www.manager-tools.com/2018/06/employee-retention-hof>
 - <https://www.manager-tools.com/2018/11/preparing-performance-reviews-hof-2018>
 - <https://www.manager-tools.com/2018/11/delivering-performance-review-hof-2018>
+- <https://manager-tools.com/2021/11/preparing-performance-reviews-hof-2021>
+- <https://manager-tools.com/2021/11/delivering-performance-review-hof-2021>
 - <https://www.manager-tools.com/2019/02/role-power-revisited-you-speak-ceo-part-1>
 - <https://www.manager-tools.com/2020/02/rules-small-project-management-chapter-1-deliverables-basics-part-1-hall-fame-guidance>
 - <https://www.manager-tools.com/2019/10/negative-feedback-pushback-examples-part-1> (Build trust, then regularly deliver honest feedback)
@@ -228,7 +237,10 @@ Title: John Likes
 - <https://podhero.com/life-kit/how-to-give-good-feedback-42704b8jq>
 - <https://podhero.com/the-engineering-leadership-podcast/the-energy-audit-reclaiming-your-time-increasing-ownership-with-brad-henrickson-4360184jq>
 - <https://podhero.com/the-engineering-leadership-podcast/spend-time-on-what-matters-with-will-larson-cto-calm-30-3986407jq>
-
+- <https://sfelc.com/podcasts/building-autonomous-teams-and-engineering-career-ladders-sri-viswanath>
+- <https://sfelc.com/podcasts/engineering-execution-is-a-strategic-weapon-bill-coughran-sequoia-capital-melody-meckfessel-observable>
+- <https://www.radicalcandor.com/podcast/push-decisions-into-facts/>
+- <https://www.radicalcandor.com/podcast/podcast-season-3-episode-8/> Development vs Management
 
 ### People Management Articles
 - <https://alistair.cockburn.us/Characterizing+people+as+non-linear%2c+first-order+components+in+software+development> (1999)
@@ -265,6 +277,11 @@ Title: John Likes
 - <https://www.gwern.net/Complement> (Commoditize your Complement aka weaponizing open-source)
 - <https://kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/> (Opinions for a career as a Software Engineer)
 - <https://www.intercom.com/blog/run-less-software/>
+
+#### Product Management Resources
+- <https://stripe.com/guides/atlas/building-a-great-pm-org>
+- <https://sfelc.com/podcasts/optimizing-the-product-trio-saumya-bhatnagar-involve-ai>
+- <https://www.lennysnewsletter.com/p/the-nature-of-product-marty-cagan#details> 
 
 #### Meetings and Decisions
 - <https://mfbt.ca/what-i-hear-when-you-tell-me-your-company-doesnt-do-meetings-dfbb57a038d6?gi=9c2f0ad8ab87>
@@ -303,6 +320,7 @@ Title: John Likes
 
 ### Economics, Startups and VCs, and Business Articles
 - <https://www.npr.org/sections/money/2017/04/28/526051566/episode-553-the-dollar-at-the-center-of-the-world>
+- <https://www.npr.org/2022/07/21/1112752575/summer-school-2-gdp-what-counts>
 - <https://podhero.com/the-indicator-from-planet-money/stocks-are-up-but-the-economys-down-1ce6d2ejq>
 - <https://money.howstuffworks.com/question398.htm> (How does VC work)
 - <https://hbr.org/1998/11/how-venture-capital-works>
@@ -341,6 +359,7 @@ Title: John Likes
 - <https://investlikethebest.libsyn.com/stewart-butterfield-we-dont-sell-saddles-here-founders-field-guide-ep-43>
 - <https://podhero.com/acquired/episode-2-instagram-5cb4c3jq> Instagram acquisition analysis
 - <https://producthabits.com/my-billion-dollar-mistake/> (Getting "Foundered", become a good PM)
+- <https://livingsmarterjewish.org/investing-smart-ways-to-grow-your-money-with-eli-fried-kosher-money/>
 - <https://podhero.com/the-knowledge-project-with-shane-parrish/53-howard-marks-luck-risk-and-avoiding-losers-66964ajq>
 - <https://podhero.com/this-week-in-startups-audio/e967-twilio-ceo-co-founder-jeff-lawson-on-growing-twilio-to-160-000-10f753fjq>
 - <https://podhero.com/invest-like-the-best-with-patrick-oshaughnessy/jeff-lawson-how-to-build-a-platform-invest-like-the-198279ajq>
@@ -350,8 +369,11 @@ Title: John Likes
 ## Misc
 
 - <https://news.ycombinator.com/item?id=21366324> Viktor Frankl: Why believe in others
+- <https://hiddenbrain.org/podcast/what-makes-relationships-thrive/>
+- <https://hiddenbrain.org/podcast/why-conversations-go-wrong/>
 - <https://podhero.com/unlocking-us-with-brene-brown/brene-with-judd-apatow-on-vulnerability-and-laughter-1eccbe1jq>
 - <https://podhero.com/unlocking-us-with-brene-brown/brene-on-words-actions-dehumanization-and-accountability-361c1a0jq>
+- <https://simonsinek.com/podcast-episodes/the-one-with-brene-brown/>
 - <https://lexfridman.com/manolis-kellis/> (Human Genome and Evolutionary Dynamics)
 - <https://podhero.com/the-knowledge-project-with-shane-parrish/57-sheila-heen-decoding-difficult-conversations-b11fb7jq>
 - <https://podhero.com/hidden-brain/why-conversations-go-wrong-3c9acc0jq>
