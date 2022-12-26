@@ -506,3 +506,14 @@ I prefer seeing my bootup screens so I remove some but add the SSD enhancement
 
 Use the Digital Ocean Web UI to poweroff and take a snapshot of the fresh system
 
+# Revisting Apt Tips
+
+`apt list --installed | grep packagename`
+> list what is installed but filter for just one name
+
+`apt-get update`
+> refresh from the upstream sources what might be available for install or upgrade
+
+`apt install --only-upgrade packagename`
+> upgrade one specific package
+
