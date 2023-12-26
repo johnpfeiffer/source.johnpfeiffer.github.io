@@ -63,10 +63,10 @@ Title: John Likes
 - <https://www.se-radio.net/2021/07/episode-470-l-peter-deutsch-on-the-fallacies-of-distributed-computing/>
 - <https://www.se-radio.net/2022/06/episode-515-swizec-teller-on-becoming-a-senior-engineer/>
 
-- <https://podhero.com/fragmented-the-software-podcast/214-3-things-every-developer-needs-to-know-how-to-do-3ee389ejq>
-- <https://podhero.com/fragmented-the-software-podcast/041-yagni-7e48bjq>
-- <https://podhero.com/fragmented-the-software-podcast/183-the-testing-paradox-157b7f7jq>
-- <https://podhero.com/fragmented-the-software-podcast/219-the-legacy-code-change-algorithm-40f0f9cjq>
+- <https://fragmentedpodcast.com/episodes/214/> (3 Things Every Developer Needs To Know How To Do)
+- <https://fragmentedpodcast.com/episodes/41/> (YAGNI you aren't going to need it)
+- <https://fragmentedpodcast.com/episodes/183/> (The Testing Paradox)
+- <https://fragmentedpodcast.com/episodes/219/> (the legacy code change algorithm)
 
 - <https://podhero.com/artificial-intellence-ai/gustav-soderstrom-spotify-fd18d8jq>
 - <https://podhero.com/darknet-diaries/ep-52-magecart-15881b7jq> (credit card skimming and websites)
