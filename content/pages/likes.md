@@ -285,9 +285,11 @@ _Just read these all in order and you will get "it"_
 - <https://www.intercom.com/blog/run-less-software/>
 
 #### Product Management Resources
+- <https://www.lennysnewsletter.com/p/the-nature-of-product-marty-cagan#details>
+- <https://www.lennyspodcast.com/mastering-product-strategy-and-growing-as-a-pm-maggie-crowley-toast-drift-tripadvisor/> PM fundamentals
+- <https://www.lennyspodcast.com/the-essence-of-product-management-christian-idiodi-svpg/>
 - <https://stripe.com/guides/atlas/building-a-great-pm-org>
 - <https://sfelc.com/podcasts/optimizing-the-product-trio-saumya-bhatnagar-involve-ai>
-- <https://www.lennysnewsletter.com/p/the-nature-of-product-marty-cagan#details>
 - <https://sfelc.com/podcasts/reduce-friction-and-create-better-alignment-between-product-and-engineering-hubert-palan-productboard>
 
 #### Meetings and Decisions
@@ -394,4 +396,3 @@ _Just read these all in order and you will get "it"_
 ## Atom feed
 
 Follow with an atom feed link: <https://blog.john-pfeiffer.com/feeds/john-pfeiffer.atom.xml>
-
