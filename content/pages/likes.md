@@ -68,8 +68,7 @@ Title: John Likes
 - <https://fragmentedpodcast.com/episodes/183/> (The Testing Paradox)
 - <https://fragmentedpodcast.com/episodes/219/> (the legacy code change algorithm)
 
-- <https://podhero.com/artificial-intellence-ai/gustav-soderstrom-spotify-fd18d8jq>
-- <https://podhero.com/darknet-diaries/ep-52-magecart-15881b7jq> (credit card skimming and websites)
+- <https://darknetdiaries.com/episode/52/> (Magecart: credit card skimming and websites)
 - <https://podcasts.apple.com/us/podcast/techmeme-ride-home/id1355212895> (daily tech news)
 - <https://lexfridman.com/david-patterson/> RISC (reduced instruction set computer)
 - <https://www.youtube.com/watch?v=MksJTtt7jS4&t=93s> Presentation on Code Smells by Sandi Metz at Laracon 2016
@@ -84,16 +83,16 @@ Title: John Likes
 
 ## History
 - <https://www.bbc.co.uk/programmes/m000ncmw> Alan Turing
-- <https://podhero.com/guy-kawasakis-remarkable-people/steve-wozniak-pirate-co-founder-of-apple-and-hardware-wizard-1870ecdjq>
-- <https://podhero.com/techmeme-ride-home/the-man-who-could-have-been-bill-gates-pt-2-ed3c4bjq> (Gary Kildall)
+- <https://guykawasaki.com/steve-wozniak/> apple hardware wizard
+- <https://podcasts.apple.com/us/podcast/bonus-the-man-who-could-have-been-bill-gates-pt-2/id1355212895?i=1000443856131> (Gary Kildall)
 - <https://spectrum.ieee.org/tech-history/silicon-revolution/hans-peter-luhn-and-the-birth-of-the-hashing-algorithm>
 - <https://segment.com/blog/a-brief-history-of-the-uuid/>
 - <https://www.cake.co/conversations/g4CP6zJ/the-secret-call-to-andy-grove-that-may-have-helped-apple-buy-next>
-- <https://podhero.com/internet-history-podcast/2-ch-1-2-the-creation-of-netscape-25b2b6jq>
-- <https://podhero.com/internet-history-podcast/5-netscape-and-mosaic-founding-engineer-lou-montulli-25b246jq>
+- <https://www.internethistorypodcast.com/2014/01/chapter-1-part-2-netscape-the-big-bang/>
+- <https://www.internethistorypodcast.com/2014/03/chapter-1-supplemental-1-an-interview-with-lou-montulli/>
 - <https://www.cake.co/conversations/VXHSjBG/the-untold-origin-story-of-ebay-that-i-lived-and-the-times-that-could-have-killed-it>
 - <https://tedium.co/2020/12/15/altavista-history-digital-dot-com-domain-name/>
-- <https://podhero.com/techmeme-ride-home/bonus-joshua-schachter-and-the-del-icio-us-story-2c8ce62jq>
+- <https://www.internethistorypodcast.com/2022/12/the-del-icio-us-story-with-joshua-schachter/>
 - <https://news.ycombinator.com/item?id=21849977> (Etsy succeeded in spite of itself)
 - <https://queue.acm.org/detail.cfm?id=1142065> (Werner Vogels about AWS 2006)
 - <https://www.vox.com/recode/2019/5/3/18511544/amazon-prime-oral-history-jeff-bezos-one-day-shipping>
@@ -128,8 +127,8 @@ Title: John Likes
 - <https://queue.acm.org/detail.cfm?id=2945077> (Small batches principle, Thomas Limoncelli)
 - <https://martinfowler.com/articles/developer-effectiveness.html>
 
-- <https://podhero.com/13-minutes-to-the-moon/ep-05-the-fourth-astronaut-da55a2jq> (the first mission critical software)
-- <https://podhero.com/cautionary-tales/la-la-land-galileos-warning-155f434jq> (quality "theater")
+- <https://www.bbc.co.uk/programmes/w3csz4dn> (13 minutes to the moon episode 5: the 4th astronaut - the first mission critical software)
+- <https://timharford.com/2019/11/cautionary-tales-ep-3-lala-land-galileos-warning/> (quality "theater")
 - <https://www.se-radio.net/2009/05/episode-134-release-it-with-michael-nygard/>
 - <https://www.se-radio.net/2010/09/episode-167-the-history-of-junit-and-the-future-of-testing-with-kent-beck>
 - <https://www.se-radio.net/2015/02/episode-221-jez-humble-on-continuous-delivery>
@@ -153,7 +152,7 @@ Title: John Likes
 - <https://www.se-radio.net/2021/02/episode-447-michael-perry-on-immutable-architecture/>
 - <https://www.codingblocks.net/podcast/clean-code-programming-around-boundaries>
 - <https://www.codingblocks.net/podcast/transactions-in-distributed-systems/>
-- <https://podhero.com/go-time/the-monolith-vs-microservices-debate-1b4fe3cjq>
+- <https://changelog.com/gotime/126> Go time: monolith vs microservices
 - <https://www.se-radio.net/2018/03/se-radio-episode-320-nate-taggart-on-serverless-paradigm>
 - <https://www.se-radio.net/2022/08/episode-525-randy-shoup-on-evolving-architecture-and-organization-at-ebay/>
 
@@ -164,7 +163,7 @@ Title: John Likes
 - <https://news.ycombinator.com/item?id=18760350> A simple guide to scaling to 10M users *(with commentary from HackerNews)*
 
 ## Game Theory
-- <https://podhero.com/in-our-time-science/game-theory-86427jq>
+- <https://www.bbc.co.uk/programmes/b01h75xp> In our time: game theory
 - <https://ncase.me/trust/> (interactive game theory for prisoner's dilemma)
 - <https://www.wnycstudios.org/podcasts/radiolab/segments/golden-rule> (game theory in practice)
 
@@ -207,15 +206,15 @@ _Just read these all in order and you will get "it"_
 ### Manager Podcasts
 *tip: listen at 1.5x or 2x speed*
 
-- <https://podhero.com/go-time-golang-software-engineering/just-about-managing-454597cjq>
+- <https://changelog.com/gotime/203> Just about Managing (people)
 - <https://www.se-radio.net/2017/10/se-radio-episode-306-ron-lichty-on-managing-programmers>
 - <https://www.se-radio.net/2019/07/episode-374-marcus-blankenship-on-motivating-programmers/>
 - <https://www.se-radio.net/2019/02/se-radio-episode-355-randy-shoup-scaling-technology-and-organization/>
 - <https://blog.ycombinator.com/camille-fournier-on-managing-technical-teams/>
 - <https://www.effectiveem.com/building-managers-leading-from-the-back-leading-from-the-front/>
-- <https://podhero.com/the-engineering-leadership-podcast/debate-flat-vs-hierarchical-organizations-w-farhan-thawar-jerry-krikheli-60-43121c3jq>
+- <https://sfelc.com/podcasts/debate-flat-vs-hierarchical-organizations-farhan-thawar-jerry-krikheli>
 - <https://www.se-radio.net/2019/03/se-radio-episode-359-engineering-maturity-with-jean-denis-greze/>
-- <https://podhero.com/the-engineering-leadership-podcast/changing-priorities-making-massive-engineering-pivots-with-vivian-shen-62-43a7212jq>
+- <https://sfelc.com/podcasts/changing-priorities-and-making-massive-engineering-pivots-vivian-shen>
 
 - <https://www.manager-tools.com/2007/01/the-juggling-koan> Delegation
 - <https://www.manager-tools.com/2010/05/how-choose-what-delegate-hall-fame-guidance>
@@ -233,14 +232,21 @@ _Just read these all in order and you will get "it"_
 
 - <https://www.se-radio.net/2018/10/se-radio-episode-340-lara-hogan-and-deepa-subramaniam-on-revitalizing-a-cross-functional-product-organization> A meandering summary of eng management
 - <https://www.se-radio.net/2020/03/episode-403-karl-hughes-on-speaking-at-tech-conferences/>
-- <https://podcasts.apple.com/us/podcast/mastering-difficult-conversations-sarah-clatterbuck/id1481996448?i=1000451921123>
-- <https://podhero.com/life-kit/how-to-give-good-feedback-42704b8jq>
-- <https://podhero.com/the-engineering-leadership-podcast/the-energy-audit-reclaiming-your-time-increasing-ownership-with-brad-henrickson-4360184jq>
-- <https://podhero.com/the-engineering-leadership-podcast/spend-time-on-what-matters-with-will-larson-cto-calm-30-3986407jq>
+- <https://sfelc.com/podcasts/energy-audit-reclaiming-time-increasing-ownership-brad-henrickson>
+- <https://sfelc.com/podcasts/spend-time-on-what-matters-will-larson-cto-calm>
 - <https://sfelc.com/podcasts/building-autonomous-teams-and-engineering-career-ladders-sri-viswanath>
 - <https://sfelc.com/podcasts/engineering-execution-is-a-strategic-weapon-bill-coughran-sequoia-capital-melody-meckfessel-observable>
-- <https://www.radicalcandor.com/podcast/push-decisions-into-facts/>
 - <https://www.radicalcandor.com/podcast/podcast-season-3-episode-8/> Development vs Management
+- <https://www.internethistorypodcast.com/2019/05/microsoft-cto-kevin-scott/>
+
+#### Communication
+- <https://www.radicalcandor.com/podcast/push-decisions-into-facts/>
+- <https://podcasts.apple.com/us/podcast/mastering-difficult-conversations-sarah-clatterbuck/id1481996448?i=1000451921123>
+- <https://podcasts.apple.com/us/podcast/how-to-give-good-feedback/id1461493560?i=1000532766966>
+- <https://fs.blog/knowledge-project-podcast/sheila-heen/> Decoding Difficult Conversations
+- <https://hiddenbrain.org/podcast/why-conversations-go-wrong/>
+- <https://www.jordanharbinger.com/robert-cialdini-a-new-look-at-the-science-of-influence/>
+
 
 ### People Management Articles
 - <https://alistair.cockburn.us/Characterizing+people+as+non-linear%2c+first-order+components+in+software+development> (1999)
@@ -281,7 +287,8 @@ _Just read these all in order and you will get "it"_
 #### Product Management Resources
 - <https://stripe.com/guides/atlas/building-a-great-pm-org>
 - <https://sfelc.com/podcasts/optimizing-the-product-trio-saumya-bhatnagar-involve-ai>
-- <https://www.lennysnewsletter.com/p/the-nature-of-product-marty-cagan#details> 
+- <https://www.lennysnewsletter.com/p/the-nature-of-product-marty-cagan#details>
+- <https://sfelc.com/podcasts/reduce-friction-and-create-better-alignment-between-product-and-engineering-hubert-palan-productboard>
 
 #### Meetings and Decisions
 - <https://mfbt.ca/what-i-hear-when-you-tell-me-your-company-doesnt-do-meetings-dfbb57a038d6?gi=9c2f0ad8ab87>
@@ -321,7 +328,7 @@ _Just read these all in order and you will get "it"_
 ### Economics, Startups and VCs, and Business Articles
 - <https://www.npr.org/sections/money/2017/04/28/526051566/episode-553-the-dollar-at-the-center-of-the-world>
 - <https://www.npr.org/2022/07/21/1112752575/summer-school-2-gdp-what-counts>
-- <https://podhero.com/the-indicator-from-planet-money/stocks-are-up-but-the-economys-down-1ce6d2ejq>
+- <https://www.npr.org/2020/05/22/861331371/stocks-are-up-but-the-economys-down>
 - <https://money.howstuffworks.com/question398.htm> (How does VC work)
 - <https://hbr.org/1998/11/how-venture-capital-works>
 - <https://vcstarterkit.substack.com/p/how-vcs-make-money>
@@ -335,10 +342,10 @@ _Just read these all in order and you will get "it"_
 - <https://reactionwheel.net/2021/11/your-boards-of-directors-is-probably-going-to-fire-you.html>
 
 #### Startups and VCs Podcasts
-- <https://podhero.com/naval/play-long-term-games-with-long-term-people-738094jq>
-- <https://podhero.com/naval/embrace-accountability-to-get-leverage-7aea6djq>
+- <https://nav.al/long-term> Play Long-term Games With Long-term People
+- <https://nav.al/accountability-leverage> Embrace accountability to get leverage
 - <https://thisweekinstartups.com/thisweekin-startups/advice-biggest-mistakes-founders-startups-jerry-colonna>
-- <https://podhero.com/cautionary-tales/buried-by-the-wall-street-crash-15eb57fjq>
+- <https://timharford.com/2019/12/cautionary-tales-ep-5-buried-by-the-wall-street-crash/>
 - <https://thisweekinstartups.com/thisweekin-startups/steve-jurvetson-dfj-tesla-spacex>
 - <https://thisweekinstartups.com/glennkelman-redfin-pejmannozad-pear>
 - <https://thisweekinstartups.com/bill-gurley-benchmark>
@@ -348,7 +355,7 @@ _Just read these all in order and you will get "it"_
 - <https://investlikethebest.libsyn.com/ben-thompson-platforms-ecosystems-and-aggregators-invest-like-the-best-ep176>
 - <https://investlikethebest.libsyn.com/john-collison-growing-the-internet-economy-invest-like-the-best-ep178>
 - <https://podcasts.apple.com/us/podcast/david-sacks-how-to-operate-a-saas-startup/id1154105909?i=1000528710000> Invest like the best on operating a SaaS
-- <https://podhero.com/the-knowledge-project-with-shane-parrish/129-marc-andreessen-interview-with-an-icon-494d16djq>
+- <https://fs.blog/knowledge-project-podcast/marc-andreessen/>
 
 - <https://thisweekinstartups.com/twist-51-with-joel-spolsky-2/>
 - <https://thisweekinstartups.com/joel-spolsky-ceo-of-stack-exchange-co-founder-at-fog-creek/> (episode 365)
@@ -357,29 +364,32 @@ _Just read these all in order and you will get "it"_
 - <https://mastersofscale.com/brian-chesky-handcrafted> (Airbnb)
 - <https://mastersofscale.com/stewart-butterfield-the-big-pivot/> (Slack)
 - <https://investlikethebest.libsyn.com/stewart-butterfield-we-dont-sell-saddles-here-founders-field-guide-ep-43>
-- <https://podhero.com/acquired/episode-2-instagram-5cb4c3jq> Instagram acquisition analysis
+- <https://www.acquired.fm/episodes/episode-2-instagram> Instagram acquisition analysis
 - <https://producthabits.com/my-billion-dollar-mistake/> (Getting "Foundered", become a good PM)
 - <https://livingsmarterjewish.org/investing-smart-ways-to-grow-your-money-with-eli-fried-kosher-money/>
-- <https://podhero.com/the-knowledge-project-with-shane-parrish/53-howard-marks-luck-risk-and-avoiding-losers-66964ajq>
-- <https://podhero.com/this-week-in-startups-audio/e967-twilio-ceo-co-founder-jeff-lawson-on-growing-twilio-to-160-000-10f753fjq>
-- <https://podhero.com/invest-like-the-best-with-patrick-oshaughnessy/jeff-lawson-how-to-build-a-platform-invest-like-the-198279ajq>
-- <https://podhero.com/the-twenty-minute-vc-venture-capital-startup-funding-the-pitch/20vc-why-and-how-the-best-companies-build-economies-around-themselves-when-3eff7b9jq>
-- <https://podhero.com/how-i-built-this-with-guy-raz/atlassian-mike-cannon-brookes-and-scott-farquhar-381300fjq>
+- <https://fs.blog/knowledge-project-podcast/howard-marks/> Luck, Risk and Avoiding Losers
+- <https://thisweekinstartups.com/episodes/WLaoob3PtWD> Twilio CEO Jeff Lawson grew Twilio to $1Bn
+- <https://www.joincolossus.com/episodes/77657652/lawson-how-to-build-a-platform?tab=shownotes> Invest Like the Best with Patrick O'Shaughnessy: Jeff Lawson
+- <https://www.thetwentyminutevc.com/jay-simons/> The Best Companies Build Economies Around Themselves
+- <https://wondery.com/shows/how-i-built-this/episode/10386-atlassian-mike-cannon-brookes-and-scott-farquhar/>
+- <https://www.joincolossus.com/episodes/54685008/leone-clear-and-simple?tab=shownotes> Invest Like the Best with Patrick O'Shaughnessy: Doug Leone - Lessons from a Titan
 
+
+## Artificial Intelligence
+- <https://www.acquired.fm/episodes/nvidia-the-dawn-of-the-ai-era>
+- <https://www.joincolossus.com/episodes/54663623/traynor-the-reality-of-ai> Invest Like the Best with Patrick O'Shaughnessy: Intercom adopting AI
+- <https://lexfridman.com/gustav-soderstrom/> (AI in spotify music)
+  
 ## Misc
 
 - <https://news.ycombinator.com/item?id=21366324> Viktor Frankl: Why believe in others
 - <https://hiddenbrain.org/podcast/what-makes-relationships-thrive/>
-- <https://hiddenbrain.org/podcast/why-conversations-go-wrong/>
-- <https://podhero.com/unlocking-us-with-brene-brown/brene-with-judd-apatow-on-vulnerability-and-laughter-1eccbe1jq>
-- <https://podhero.com/unlocking-us-with-brene-brown/brene-on-words-actions-dehumanization-and-accountability-361c1a0jq>
+- <https://brenebrown.com/podcast/brene-with-judd-apatow-on-vulnerability-and-laughter/>
+- <https://brenebrown.com/podcast/brene-on-words-actions-dehumanization-and-accountability/>
 - <https://simonsinek.com/podcast-episodes/the-one-with-brene-brown/>
 - <https://lexfridman.com/manolis-kellis/> (Human Genome and Evolutionary Dynamics)
-- <https://podhero.com/the-knowledge-project-with-shane-parrish/57-sheila-heen-decoding-difficult-conversations-b11fb7jq>
-- <https://podhero.com/hidden-brain/why-conversations-go-wrong-3c9acc0jq>
-- <https://www.jordanharbinger.com/robert-cialdini-a-new-look-at-the-science-of-influence/>
-- <https://podhero.com/depresh-mode-with-john-moe/six-things-you-need-to-know-for-your-mental-health-445dfedjq>
-- <https://podhero.com/the-knowledge-project-with-shane-parrish/119-todd-simkin-making-better-decisions-430fda9jq>
+- <https://maximumfun.org/episodes/depresh-mode/six-things-you-need-to-know-for-your-mental-health/>
+- <https://fs.blog/knowledge-project-podcast/todd-simkin/> Making Better Decisions
 
 ## Atom feed
 
