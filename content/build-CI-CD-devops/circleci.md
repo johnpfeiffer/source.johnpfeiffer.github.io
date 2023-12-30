@@ -70,7 +70,7 @@ Instead of the auto-generated configuration you can select **Use Existing Config
       build:
         working_directory: ~/repo # the circleCI default for where code is checked out to in the docker build container
       docker:
-        - image: circleci/golang:1.16 # https://hub.docker.com/r/circleci/golang/ , https://hub.docker.com/_/golang?tab=description
+        - image: cimg/go:1.21.4
       steps:
         - checkout
         - run:
@@ -85,9 +85,9 @@ The wonderful thing about Docker is the extra transparency. In this case we migh
 You can download and execute the same environment locally:
 
     :::bash
-    docker run --rm -it circleci/golang:1.16
+    docker run --rm -it circleci/golang:1.21.4
     go version
-> go version go1.16.3 linux/amd64
+> go version go1.21.4 linux/amd64
 
 - <https://hub.docker.com/r/circleci/golang/>
 
@@ -131,18 +131,27 @@ _Flaky tests aka intermittent failures is not resolved by re-running your build/
 
 ### Specific Project Settings in CircleCI
 
+Deploy Keys (specific to a repo) are a better security practice - read below on how to configure your poject to use them =)
+
 In the CircleCI UI, for a given Project, the three little dots will allow you to choose how to configure the project
 
 <https://app.circleci.com/settings/project/github/johnpfeiffer/stringsmoar>
 
 The one annoying thing is that if you remove your 3rd party access creds in GitHub it's a pain to reconnect CircleCI
 
-In the CircleCI configuration for a Project you should see a listing of SSH keys, you have to remove the old "deployment key" there (which means CircleCI can no longer access github), unfollow the project, and then re-follow the project _(which will then have CircleCI use your initial OAuth authorization to generate a new SSH deployment key in GitHub)._
+In the CircleCI configuration for a Project you should see a listing of SSH keys
+you have to remove (delete) the old "deployment key" there (which means CircleCI can no longer access github)
+then choose to re-add a deployment key (if you are signed into CircleCI with GitHub this will automatically generate it)
+
+Or unfollow the project, and then re-follow the project _(which will then have CircleCI use your initial OAuth authorization to generate a new SSH deployment key in GitHub)._
 
 Afterward you should see a new SSH key that CircleCI created in Github for this Project _(the UI's both show the sha of the key but one is sha256 and the other is not)_
 
-- <https://github.com/johnpfeiffer/stringsmoar/settings/keys>
+- <https://circleci.com/docs/github-integration/#deploy-keys-and-user-keys>
 - <https://discuss.circleci.com/t/solved-permission-denied-publickey/19562> _(someone else had the same problem and documented their solution)_
+
+- <https://docs.github.com/en/authentication/connecting-to-github-with-ssh/managing-deploy-keys#deploy-keys>
+- <https://github.com/johnpfeiffer/stringsmoar/settings/keys>
 
 ### Picking the size of your build executor
 
