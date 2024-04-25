@@ -55,7 +55,7 @@ This code example highlighted that when main exits all goroutines also exit, eve
 # Golang WaitGroup
 In order to add control over the goroutines there are many tools, the simplest is WaitGroup. 
 
-   :::go
+    :::golang
     package main
     
     import (
@@ -101,15 +101,19 @@ The whole program executes in 3 seconds: even as sequentially things take 2 seco
 
 A WaitGroup must in advance be passed a count that matches every execution of "Done()" (usually by goroutines).
 
-Even though the anonymous function that wraps "example()" and "exampleAsync()" both have a 1 second sleep statement the output shows they run concurrently.
+Even though the anonymous function that wraps "example()" and "exampleAsync()" both have a 1 second sleep statement, the output shows they run concurrently.
 
 _The anonymous function in the middle shows how to pass a string parameter, and also that the waitgroup variable is available through "closure"._
+
+- <https://go.dev/tour/moretypes/25>
+- <https://gobyexample.com/closures>
+
 _For readability, maintainability, and re-use most people write a separate function rather than using anonymous functions._
 
 Passing the waitgroup by reference is safe as it is designed for coordinating goroutines, and the "defer" keyword just ensures that just as the function exits that statement will immediately execute.
 
 
-   :::go
+    :::go
     package main
 
     import (
