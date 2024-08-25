@@ -1,4 +1,4 @@
-Title: Resources for Engineering (People) Managers
+Title: Engineering (People) Managers
 
 [TOC]
 
