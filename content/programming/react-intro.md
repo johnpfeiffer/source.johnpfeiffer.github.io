@@ -4,34 +4,42 @@ Tags: react, javascript, js
 
 [TOC]
 
-install node.js and npm from https://nodejs.org/en
+install node.js and npm from <https://nodejs.org/en>
+
 check if they are installed:
-  node -v
-  npm -v
+`node -v`
+`npm -v`
 
 in a directory (probably a code repository)
 
-  npx create-react-app my-app
-  cd my-app
-  npm start
-(sometimes you have to run npm install after installing new modules)
+ 	:::bash
+	npx create-react-app my-app
+ 	cd my-app
+  	npm start
+  
+_(sometimes you have to run npm install after installing new modules)_
 
 - - -
 Essential folder structure (that is created by the framework with default files)
 
 **my-app/**
+
+```
 	public/
 		index.html	(this is the entrypoint, yes it's all just html and http ;)
+  
 	src/
 		index.css
 		index.js
 		App.css
 		App.js	(this is where you code)
+```
 		
 _(Remove the "vitals" phone home stats)_
 
 INDEXJS
-  :::javascript
+
+	:::javascript
 	// this wrapper is connecting the App to the root
 	
 	import React from 'react';
@@ -49,6 +57,8 @@ INDEXJS
 
 
 APPJS
+
+	:::javascript
 	// very simple app with content selected by a button
 	import './App.css';
 	import { useState } from 'react';
@@ -83,6 +93,6 @@ This framework compiles/reformats the code into a production bundle of files tha
 
 (JSX is not html nor javascript, minification, and package.json has the many many dependencies ;)
 
-npm run build
+`npm run build`
 
 
