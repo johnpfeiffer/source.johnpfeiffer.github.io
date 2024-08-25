@@ -51,6 +51,8 @@ Even if you do not code in these languages these books can provide invaluable un
 - <https://www.se-radio.net/2015/04/episode-224-sven-johann-and-eberhard-wolff-on-technical-debt> 
 - <https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying> Logging
 - <https://increment.com/documentation/>
+- <https://se-radio.net/2024/02/se-radio-604-karl-wiegers-and-candase-hokanson-on-software-requirements-essentials/>
+
 
 ## Doing it well
 
@@ -89,7 +91,7 @@ How to do it well...
 - <https://changelog.com/gotime/142> (All about that infrastructure and DevOps)
 - <https://www.se-radio.net/2016/01/se-radio-show-246-john-wilkes-on-borg-and-kubernetes>
 - <https://www.se-radio.net/2020/04/episode-405-yevgeniy-brikman-on-infrastructure-as-code-best-practices/>
-
+- <https://softwareengineeringdaily.com/2020/12/30/cloud-native-applications-with-cornelia-davis-repeat/>
 
 # Algorithms and Architecture
 
@@ -110,8 +112,12 @@ How to do it well...
 - <https://docs.microsoft.com/en-us/archive/msdn-magazine/2009/february/best-practice-an-introduction-to-domain-driven-design>
 - <https://www.se-radio.net/2015/05/se-radio-episode-226-eric-evans-on-domain-driven-design-at-10-years>
 - <https://www.codingblocks.net/podcast/clean-code-programming-around-boundaries>
+- <https://virtualddd.com/sessions/ddddd-20-bounded-contexts-microservices-and-everything-in-between/>
 
 - <https://www.se-radio.net/2017/04/se-radio-episode-287-success-skills-for-architects-with-neil-ford>
+- <https://se-radio.net/2024/05/se-radio-616-ori-saporta-on-the-role-of-the-software-architect/>
+- <https://www.theartifact.io/videos/ep-4-on-becoming-a-software-architect-with-lee-atchison/>
+
 - <https://www.se-radio.net/2020/05/episode-409-joe-kutner-on-the-twelve-factor-app/>
 - - <https://brandur.org/heroku-values>
 
@@ -119,6 +125,7 @@ How to do it well...
 - <https://martinfowler.com/articles/serverless.html#drawbacks> Drawbacks of Serverless
  
 - <https://www.se-radio.net/2021/02/episode-447-michael-perry-on-immutable-architecture/>
+- <https://virtualddd.com/sessions/orchestration-and-choreography-with-laila-bougria-udi-dahan/>
 
 #### Microservices
 
@@ -145,7 +152,7 @@ How to do it well...
 - <https://www.se-radio.net/2017/02/se-radio-episode-282-donny-nadolny-on-debugging-distributed-systems>
 - <https://www.se-radio.net/2017/03/se-radio-episode-285-james-cowling-on-dropboxs-distributed-storage-system>
 - <https://www.se-radio.net/2010/03/episode-157-hadoop-with-philip-zeyliger>
-
+- <https://softwareengineeringdaily.com/2020/02/18/go-networking-with-sneha-inguva/>
 - <https://blog.golang.org/waza-talk> Concurrency is not parallelism by Rob Pike at Waza 2013
 - <https://www.cs.cmu.edu/~crary/819-f09/Hoare78.pdf> (Tony Hoare on Communicating Sequential Processes)
 
