@@ -30,10 +30,11 @@ _Podcasts tip: listen at 1.5x or 2x speed_
 - <https://changelog.com/gotime/6> (Mechanical Sympathy with Bill Kennedy)
 - <https://fragmentedpodcast.com/episodes/214/> (3 Things Every Developer Needs To Know How To Do)
 - <https://fragmentedpodcast.com/episodes/41/> (YAGNI you aren't going to need it)
-
+- <https://mbuffett.com/posts/programming-advice-younger-self>
 - <https://www.youtube.com/watch?v=MksJTtt7jS4&t=93s> Presentation on Code Smells by Sandi Metz at Laracon 2016
 - <https://robertheaton.com/2015/10/26/why-and-how-to-make-smaller-pull-requests/>
 - <https://robertheaton.com/2014/06/20/code-review-without-your-eyes/> (Heuristics for quickly reviewing code)
+- <https://two-wrongs.com/code-reviews-do-find-bugs>
 - <https://www.alexandra-hill.com/2018/06/25/the-art-of-giving-and-receiving-code-reviews/>
 
 
@@ -184,8 +185,8 @@ How to do it well...
 - <https://http2-explained.haxx.se/en/part2>
 
 ## Artificial Intelligence
+- <https://www.wired.com/story/eight-google-employees-invented-modern-ai-transformers-paper/>
 - <https://www.acquired.fm/episodes/nvidia-the-dawn-of-the-ai-era>
-- <https://www.joincolossus.com/episodes/54663623/traynor-the-reality-of-ai> Invest Like the Best with Patrick O'Shaughnessy: Intercom adopting AI
 - <https://lexfridman.com/gustav-soderstrom/> (AI in spotify music)
 
 # Career
@@ -203,6 +204,7 @@ How to do it well...
 
 - <https://www.se-radio.net/2010/11/episode-169-memory-grid-architecture-with-nati-shalom>
 - <https://lexfridman.com/david-patterson/> RISC (reduced instruction set computer)
+- <https://blog.devtrovert.com/p/go-get-go-mod-tidy-commands>
 
 - <https://podcasts.apple.com/us/podcast/techmeme-ride-home/id1355212895> (daily tech news)
 

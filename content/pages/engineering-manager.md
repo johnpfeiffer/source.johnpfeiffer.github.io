@@ -29,6 +29,7 @@ _(if you are in a hurry, ask your favorite/best AI to summarize any of these ;)_
 - <https://blog.ycombinator.com/camille-fournier-on-managing-technical-teams/>
 - <https://www.se-radio.net/2019/02/se-radio-episode-355-randy-shoup-scaling-technology-and-organization/>
 - <https://www.effectiveem.com/building-managers-leading-from-the-back-leading-from-the-front/>
+- <https://charity.wtf/2023/12/15/why-should-you-or-anyone-become-an-engineering-manager/>
 
 - <https://www.se-radio.net/2018/10/se-radio-episode-340-lara-hogan-and-deepa-subramaniam-on-revitalizing-a-cross-functional-product-organization> A meandering summary of eng management
 - <https://www.manager-tools.com/2019/02/role-power-revisited-you-speak-ceo-part-1>
@@ -40,7 +41,8 @@ _(if you are in a hurry, ask your favorite/best AI to summarize any of these ;)_
 - <https://sfelc.com/podcasts/energy-audit-reclaiming-time-increasing-ownership-brad-henrickson>
 - <https://lexfridman.com/cal-newport/> (Deep Work)
 - <https://qz.com/work/1447711/how-to-tell-if-youre-a-good-manager/>
-- <https://medium.learningbyshipping.com/how-much-to-manage-management-energy-units-ca1637a05140?gi=6335720cc42e>
+- <https://medium.learningbyshipping.com/how-much-to-manage-management-energy-units-ca1637a05140>
+- <https://fs.blog/how-to-think/>
 
 ## Meetings and Decisions
 
@@ -166,6 +168,8 @@ _(if you are in a hurry, ask your favorite/best AI to summarize any of these ;)_
 - <https://kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/> (Opinions for a career as a Software Engineer)
 - <https://www.intercom.com/blog/run-less-software/>
 
+
+
 ### Burnout
 
 - <https://hbr.org/podcast/2021/12/how-to-handle-feeling-overworked>
@@ -220,7 +224,11 @@ _(if you are in a hurry, ask your favorite/best AI to summarize any of these ;)_
 - Inspired: How To Create Products Customers Love by Marty Cagan
 - Never Split the Difference by Chris Voss
 
-<https://web.archive.org/web/20200113140527/https://genius.com/Keith-rabois-lecture-14-how-to-operate-annotated?referent_id=4336630#note-4336630>
+- <https://web.archive.org/web/20200113140527/https://genius.com/Keith-rabois-lecture-14-how-to-operate-annotated?referent_id=4336630#note-4336630>
+
+- <https://www.industryweek.com/operations/quality/article/21963885/dr-deming-management-today-does-not-know-what-its-job-is-part-1>
+- <https://www.industryweek.com/operations/quality/article/21963886/dr-deming-management-today-does-not-know-what-its-job-is-part-2>
+
 
 # History
 
@@ -240,7 +248,7 @@ _(if you are in a hurry, ask your favorite/best AI to summarize any of these ;)_
 - <https://mastersofscale.com/brian-chesky-handcrafted> (Airbnb)
 - <https://mastersofscale.com/stewart-butterfield-the-big-pivot/> (Slack)
 
-
+- <https://www.joincolossus.com/episodes/54663623/traynor-the-reality-of-ai> Invest Like the Best with Patrick O'Shaughnessy: Intercom adopting AI
  
 ## Economics
 
