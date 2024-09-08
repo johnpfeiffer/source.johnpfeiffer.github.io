@@ -33,16 +33,23 @@ _(if you are in a hurry, ask your favorite/best AI to summarize any of these ;)_
 
 - <https://www.se-radio.net/2018/10/se-radio-episode-340-lara-hogan-and-deepa-subramaniam-on-revitalizing-a-cross-functional-product-organization> A meandering summary of eng management
 - <https://www.manager-tools.com/2019/02/role-power-revisited-you-speak-ceo-part-1>
+- <https://www.manager-tools.com/2015/06/results-and-retention-part-1-hall-fame-guidance>
+- <https://www.manager-tools.com/2015/06/results-and-retention-part-2-hall-fame-guidance>
 - <https://www.intercom.com/blog/maker-to-manager> Transitioning into Management
+- <https://qz.com/work/1447711/how-to-tell-if-youre-a-good-manager/>
 
 ## Becoming More Effective
 
 - The 7 Habits of Highly Effective People by Stephen Covey
+- <https://www.developingleadership.co/episode/episode-3-the-art-of-making-good-decisions>
 - <https://sfelc.com/podcasts/energy-audit-reclaiming-time-increasing-ownership-brad-henrickson>
 - <https://lexfridman.com/cal-newport/> (Deep Work)
-- <https://qz.com/work/1447711/how-to-tell-if-youre-a-good-manager/>
 - <https://medium.learningbyshipping.com/how-much-to-manage-management-energy-units-ca1637a05140>
 - <https://fs.blog/how-to-think/>
+- <https://www.happierapp.com/podcast/tph/shane-parrish>
+- <https://www.happierapp.com/podcast/tph/laura-vanderkam-606>
+- <https://www.lennysnewsletter.com/p/making-better-decisions-annie-duke>
+- <https://sfelc.com/annual2022/topics/lessons-on-being-deliberate>
 
 ## Meetings and Decisions
 
@@ -58,13 +65,16 @@ _(if you are in a hurry, ask your favorite/best AI to summarize any of these ;)_
 - <https://hackernoon.com/the-90-agreement-rule-36757dcc8eaa>
 
 
-## Goals and Objectives and Accountability
+## Goals and Objectives
 
 - <https://medium.com/startup-patterns/the-dangers-of-measuring-performance-d21cd61426df>
 - <https://www.betterworks.com/magazine/keys-okr-success-qa-john-doerr/>
 - <https://medium.com/agileinsider/how-to-write-great-okr-objectives-91a2d6b5c75e>
-- <https://en.wikipedia.org/wiki/Tuckman%27s_stages_of_group_development> Storming, Norming, and Performing
- 
+- <https://www.ycombinator.com/library/Iu-setting-kpis-and-goals>
+- <https://www.ycombinator.com/library/Id-dalton-michael-setting-smarter-goals>
+- <https://www.developingleadership.co/episode/lets-talk-about-okrs>
+
+### Accountability
 - <https://www.manager-tools.com/2018/11/preparing-performance-reviews-hof-2018>
 - <https://www.manager-tools.com/2018/11/delivering-performance-review-hof-2018>
 - <https://manager-tools.com/2021/11/preparing-performance-reviews-hof-2021>
@@ -72,6 +82,7 @@ _(if you are in a hurry, ask your favorite/best AI to summarize any of these ;)_
 
 - <https://www.radicalcandor.com/podcast/podcast-season-3-episode-8/> Development vs Management
 - <https://hbr.org/podcast/2022/05/how-do-i-hold-my-team-accountable>
+- <https://en.wikipedia.org/wiki/Tuckman%27s_stages_of_group_development> Storming, Norming, and Performing
 
 ### Project Management
 
@@ -83,8 +94,14 @@ _(if you are in a hurry, ask your favorite/best AI to summarize any of these ;)_
 - <https://www.manager-tools.com/2007/01/the-juggling-koan> Delegation
 - <https://www.manager-tools.com/2010/05/how-choose-what-delegate-hall-fame-guidance>
 - <https://www.manager-tools.com/2012/02/delegating-floor>
+- <https://www.manager-tools.com/2009/07/coaching-model-revised>
+- <https://www.manager-tools.com/2009/07/coaching-model-part-2-hall-fame-guidance>
 
 ## Communication
+
+- <https://www.manager-tools.com/2005/07/the-single-most-effective-management-tool-part-1>
+- <https://www.manager-tools.com/2005/07/the-single-most-effective-management-tool-part-2>
+- <https://www.manager-tools.com/2005/07/the-single-most-effective-management-tool-part-3>
 
 - <https://www.radicalcandor.com/podcast/push-decisions-into-facts/>
 - <https://jvns.ca/blog/good-questions/>
@@ -135,6 +152,10 @@ _(if you are in a hurry, ask your favorite/best AI to summarize any of these ;)_
 
 ### Collaboration and Product
 
+- <https://www.lennysnewsletter.com/p/the-essence-of-product-management>
+- <https://www.lennysnewsletter.com/p/product-management-theater-marty>
+- <https://www.lennysnewsletter.com/p/the-nature-of-product-marty-cagan>
+- <https://www.lennysnewsletter.com/p/mastering-product-strategy-and-growing>
 - <https://sfelc.com/podcasts/reduce-friction-and-create-better-alignment-between-product-and-engineering-hubert-palan-productboard>
 
 
@@ -168,7 +189,7 @@ _(if you are in a hurry, ask your favorite/best AI to summarize any of these ;)_
 - <https://kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/> (Opinions for a career as a Software Engineer)
 - <https://www.intercom.com/blog/run-less-software/>
 
-
+- <https://itrevolution.com/product/the-phoenix-project/>
 
 ### Burnout
 
@@ -176,6 +197,15 @@ _(if you are in a hurry, ask your favorite/best AI to summarize any of these ;)_
 - <https://hbr.org/podcast/2021/02/on-the-brink-of-burnout>
 - <https://hbr.org/podcast/2024/05/how-can-i-set-the-right-boundaries-in-a-new-job>
 - <https://hbr.org/podcast/2024/03/how-do-i-get-results-without-feeling-burned-out>
+
+### Re-Org Layoffs Managing Out
+- <https://insight.kellogg.northwestern.edu/article/how-to-rid-your-company-of-toxic-employees>
+- <https://art19.com/shows/well-adjusting/episodes/d3b14bac-def7-4054-a3e7-fdc21e42ee6b> "What to Do After a Layoff"
+- <https://se-radio.net/2024/02/se-radio-601-han-yuan-on-reorganizations/>
+- <https://sfelc.com/podcasts/how-to-do-an-effective-re-org-aaron-erickson-orgspace-mike-tria-atlassian>
+- <https://www.manager-tools.com/2005/10/compassionate-layoffs-hall-fame-guidance>
+- <https://www.manager-tools.com/2023/02/how-lay-direct-part-1-hall-fame-guidance>
+- <https://www.manager-tools.com/2023/03/how-lay-direct-part-2-hall-fame-guidance>
 
 <hr />
 
