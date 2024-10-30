@@ -52,6 +52,7 @@ Even if you do not code in these languages these books can provide invaluable un
 - <https://www.se-radio.net/2015/04/episode-224-sven-johann-and-eberhard-wolff-on-technical-debt> 
 - <https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying> Logging
 - <https://increment.com/documentation/>
+- <https://www.wired.com/2013/01/code-bugs-programming-why-we-need-specs/>
 - <https://se-radio.net/2024/02/se-radio-604-karl-wiegers-and-candase-hokanson-on-software-requirements-essentials/>
 
 
@@ -127,6 +128,8 @@ How to do it well...
  
 - <https://www.se-radio.net/2021/02/episode-447-michael-perry-on-immutable-architecture/>
 - <https://virtualddd.com/sessions/orchestration-and-choreography-with-laila-bougria-udi-dahan/>
+- <https://changelog.com/gotime/297> Event Driven Systems and Architecture
+- <https://event-driven.io/en/whats_the_difference_between_event_and_command/>
 
 #### Microservices
 
@@ -139,6 +142,7 @@ How to do it well...
 
 #### Architectural Scalability
 
+- <https://netflixtechblog.com/lessons-netflix-learned-from-the-aws-outage-deefe5fd0c04>
 - <https://highscalability.com/blog/2014/2/26/the-whatsapp-architecture-facebook-bought-for-19-billion.html>
 - <https://highscalability.com/blog/2014/3/31/how-whatsapp-grew-to-nearly-500-million-users-11000-cores-an.html>
 - <https://highscalability.com/blog/2010/3/16/justintvs-live-video-broadcasting-architecture.html>
@@ -195,7 +199,8 @@ How to do it well...
 - <https://rutar.org/writing/how-to-build-a-personal-webpage-from-scratch/> Create yourself a blog ("web log")
 - <https://danluu.com>
 - <https://danluu.com/sounds-easy/> ("I could build that in a weekend")
- <https://charity.wtf>
+- <https://charity.wtf>
+- <https://www.paulgraham.com/makersschedule.html>
 
 
 # Interesting Ideas
