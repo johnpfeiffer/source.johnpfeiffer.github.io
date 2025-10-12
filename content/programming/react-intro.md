@@ -3,21 +3,30 @@ Date: 2024-08-25 12:34
 Tags: react, javascript, js
 
 [TOC]
+The intent of this post is to help people build and understand simple reactive web applications
 
-install node.js and npm from <https://nodejs.org/en>
+**2025 update**: due to the never-ending nature of tech breaking things - this post needed an update (goodbye Create React App)
+
+<https://react.dev/blog/2025/02/14/sunsetting-create-react-app>
+
+
+# Pre-Requisites
+install node.js (which also includes `npm`) from <https://nodejs.org/en>
 
 check if they are installed:
 `node -v`
 `npm -v`
 
+## install the default react project
 in a directory (probably a code repository)
 
  	:::bash
-	npx create-react-app my-app
+	npm create vite@latest my-app -- --template react
  	cd my-app
-  	npm start
+	npm install
+	npm run dev
   
-_(sometimes you have to run npm install after installing new modules)_
+_(obsolete: npx create-react-app my-app)_
 
 - - -
 Essential folder structure (that is created by the framework with default files)
@@ -25,41 +34,54 @@ Essential folder structure (that is created by the framework with default files)
 **my-app/**
 
 ```
-	public/
-		index.html	(this is the entrypoint, yes it's all just html and http ;)
+	index.html	(this is the entrypoint, yes it's all just html and http ;)
   
 	src/
-		index.css
-		index.js
+		index.css      (this is for styles for the output - if you want things to look good)
+		main.jsx       (connects the App to the starting index.html entrypoint)
 		App.css
-		App.js	(this is where you code)
+		App.jsx		(this is where you add code)
 ```
 		
-_(Remove the "vitals" phone home stats)_
+_(Remove the "vitals" phone home stats because privacy should be a default)_
 
-INDEXJS
+The defacto web standard for the first document (for a web server) to return when no resource is specified is "index.html"
+
+<https://en.wikipedia.org/wiki/HTML>
+
+**INDEX.HTML**
+
+	:::html
+	<!DOCTYPE html>
+	<html lang="en"><body>
+	<noscript>You need to enable JavaScript to run this app.</noscript>
+		<div id="root"></div>
+		<script type="module" src="/src/main.jsx"></script>
+	</body></html>
+
+
+**MAIN.JSX**
 
 	:::javascript
 	// this wrapper is connecting the App to the root
-	
-	import React from 'react';
-	import ReactDOM from 'react-dom/client';
+	import React from 'react'
+	import ReactDOM from 'react-dom/client'
 	import './index.css';
-	import App from './App';
+	import App from './App.jsx'
 	
 	const rootElement = document.getElementById("root");
 	const root = ReactDOM.createRoot(rootElement);
 	root.render(
 	  <React.StrictMode>
 		<App />
-	</React.StrictMode>
+	  </React.StrictMode>
 	);
 
 
-APPJS
+**APP.JSX**
 
 	:::javascript
-	// very simple app with content selected by a button
+	// very simple app that switches the content displayed when the button is clicked
 	import './App.css';
 	import { useState } from 'react';
 	
@@ -88,11 +110,22 @@ APPJS
 	
 	export default App;
 
-- - -
-This framework compiles/reformats the code into a production bundle of files that can be uploaded to a server
+_A React component is a JavaScript function that returns JSX (looks like HTML but is not HTML)_
 
-(JSX is not html nor javascript, minification, and package.json has the many many dependencies ;)
+**/public** is a directory with image or binary files that are served directly
+- - -
+
+# Build and Deploy
+
+A critical file created by the default app generator is `package.json` , it lists all your project dependencies and scripts
+
+To build this for deployment to a place where browsers will retrieve it
 
 `npm run build`
 
+This framework compiles/reformats the code into a production bundle of files that can be uploaded to a server
+
+the new directory `dist` contains the index.html and static files along with "minified" javascript and css
+
+<https://vite.dev/guide/static-deploy.html>
 
