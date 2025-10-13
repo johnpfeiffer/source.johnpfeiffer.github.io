@@ -3,6 +3,7 @@ Date: 2024-08-25 12:34
 Tags: react, javascript, js
 
 [TOC]
+
 The intent of this post is to help people build and understand simple reactive web applications
 
 **2025 update**: due to the never-ending nature of tech breaking things - this post needed an update (goodbye Create React App)
@@ -14,10 +15,12 @@ The intent of this post is to help people build and understand simple reactive w
 install node.js (which also includes `npm`) from <https://nodejs.org/en>
 
 check if they are installed:
+
 `node -v`
+
 `npm -v`
 
-## install the default react project
+## Install the default react project
 in a directory (probably a code repository)
 
  	:::bash
@@ -43,13 +46,16 @@ Essential folder structure (that is created by the framework with default files)
 		App.jsx		(this is where you add code)
 ```
 		
+**/public** is a directory with image or binary files that are served directly
+
 _(Remove the "vitals" phone home stats because privacy should be a default)_
+
+
+**INDEX.HTML**
 
 The defacto web standard for the first document (for a web server) to return when no resource is specified is "index.html"
 
 <https://en.wikipedia.org/wiki/HTML>
-
-**INDEX.HTML**
 
 	:::html
 	<!DOCTYPE html>
@@ -112,20 +118,19 @@ The defacto web standard for the first document (for a web server) to return whe
 
 _A React component is a JavaScript function that returns JSX (looks like HTML but is not HTML)_
 
-**/public** is a directory with image or binary files that are served directly
 - - -
 
 # Build and Deploy
 
-A critical file created by the default app generator is `package.json` , it lists all your project dependencies and scripts
-
-To build this for deployment to a place where browsers will retrieve it
+To "build", or convert all of these files into a bundle, your application:
 
 `npm run build`
 
-This framework compiles/reformats the code into a production bundle of files that can be uploaded to a server
+A critical file created by the default app generation is `package.json`, it lists all your project dependencies and scripts (including "how to build")
 
-the new directory `dist` contains the index.html and static files along with "minified" javascript and css
+This framework reads your package.json to understand which tools to run, in this case `vite` compiles/reformats the code into a production bundle of files that can be uploaded to a server
+
+The new output directory `dist` contains the index.html and static files along with "minified" javascript and css
 
 <https://vite.dev/guide/static-deploy.html>
 
