@@ -108,6 +108,10 @@ Like any rewrite I also ended up adding things (like tags).
 
 One of the most beneficial "while I'm already redoing everything anyways" enhancements was adding CDN and SSL via Cloudflare which actually added another layer of availability and security.
 
+Cloudflare also has very useful feature for blocking noise with Security -> Security Rules -> Create rule , to block "Country is in RU, CN" or "AS Num is in 16276, 14061, 24940" (OVH, DigitalOcean, Hetzner"
+
+<https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/>
+
 ### Data Gravity is expensive and Microservices allows polyglot so Go Programming
 
 My personal notes are full of years of research and was the most time consuming, fulfilling the adages of "data gravity" and "unstructured data costs you" =(

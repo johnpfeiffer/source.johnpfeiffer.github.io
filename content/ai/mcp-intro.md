@@ -211,8 +211,9 @@ Modify to add the JSON to the file ~/Library/Application\ Support/Claude/claude_
 
 Restart your LLM application (claude for desktkop)
 
-You should be able to see in the UI: Settings -> Developer 
-your new MCP server
+You should be able to see it in the UI: Settings -> Developer 
+
+"your new MCP server"
 
 
 # A better response about the weather
