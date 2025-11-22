@@ -90,7 +90,7 @@ Having distinct levels with responsibilities in a career ladder is a data driven
 
 You should strive to be fair and objective. Not just because it's the right thing to do - but because that's a reproducible framework that creates predictable outcomes.
 
-Salary bands for a given level are a common practice and available through a variety of sources. (see Milkovich et al.'s Compensation)
+Salary bands for a given level are a common practice and available through a variety of sources. (see Radford's data or Milkovich et al.'s "Compensation")
 
 If you don't have salary bands you may have trouble recognizing that someone is underpaid (or overpaid) compared to market benchmarks.
 
@@ -138,7 +138,7 @@ Now that you have your draft...
 
 Ask HR for data
 
-- industry comparables
+- industry comparables (Radford data)
 - (anonymized?) other departments/groups in your company
 - Historical trends?
 - Anomalies or unconscious bias?
@@ -150,6 +150,15 @@ Ask for feedback from trusted places:
 - "what did you think about ratings/framework?"
 - Are you at risk of losing high performers?
 - examine individual cases
+
+### Managing Up
+
+You have done your research and created a draft: this output artifact is essential to get real feedback from the people who need to approve it.
+
+Share it in advance and schedule a meeting. Be open and curious as this is your opportunity to discover more.
+
+Getting alignment early makes it much easier to subsequently get approval.
+
 
 # Nuances
 
