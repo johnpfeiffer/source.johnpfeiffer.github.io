@@ -158,6 +158,35 @@ Run the following to force more context into the "KV cache" and observe the "Pyt
 		--max-tokens 4000
  
 
+## Simulation of memory in a conversation
+
+Each call to the LLM is stateless, so a wrapper application keeps track of every back and forth interaction during a "conversation".
+
+This allows the LLM to reference things "earlier" in the conversation - all of which is passed in as context for the new Prompt.
+
+Ergo longer conversations will take up more RAM.
+
+	:::python
+	import sys
+	from mlx_lm import load, generate
+	model, tokenizer = load("mlx-community/Meta-Llama-3.1-8B-Instruct-4bit")
+	system_message = ("You are a helpful, concise Assistant")
+	messages = [{"role": "system", "content": system_message},]
+	print("MLX Chat. Type 'exit' or Ctrl+C to quit.\n")
+	while True:
+		try:
+			user_input = input("You: ").strip()
+			if user_input.lower() in {"exit", "quit"}:
+				break
+			messages.append({"role": "user", "content": user_input})
+			prompt = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+			response = generate(model, tokenizer, prompt=prompt, max_tokens=1000)
+			print(f"\nAssistant: {response}\n")
+			messages.append({"role": "Assistant", "content": response})
+		except KeyboardInterrupt:
+			print("\nExiting.")
+			break
+
 # Troubleshooting
 
 
@@ -179,7 +208,7 @@ And in case you installed uv with both "install.sh" and homebrew...
 
 ## Cleanup
 
-To find previously download local models which are large files
+To find previously downloaded locl models, which are large files
 
 	:::bash
 	find ~ -type f -size +1G 2>/dev/null
