@@ -111,6 +111,7 @@ To create the pyproject.toml and ensure the mlx-lm dependency is added run the f
 Now leveraging the python environment to "just run python" rather than calling UV for everything...
 
 `source .venv/bin/activate`
+
 `python mychat.py "tell me a joke"`
 
 > You may notice it ran on telling multiple jokes and also abruptly terminated at the end...
@@ -186,6 +187,13 @@ Ergo longer conversations will take up more RAM.
 		except KeyboardInterrupt:
 			print("\nExiting.")
 			break
+
+
+## OpenAI compatible HTTP Server
+
+`uv run mlx_lm.server --model mlx-community/Meta-Llama-3.1-8B-Instruct-4bit --host 127.0.0.1 --port 8080`
+
+`curl 127.0.0.1:8080/v1/models`
 
 # Troubleshooting
 
