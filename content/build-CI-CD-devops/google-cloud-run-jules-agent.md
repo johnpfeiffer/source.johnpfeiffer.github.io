@@ -12,9 +12,12 @@ Google Cloud Run "free tier" is ridiculously confusing to calculate (charged by 
 
 So here's how to setup a golang web server automatically built and deployed from each GitHub commit.
 
+
+*Note: apparently Cloud Run also uses Artifact Registry to automatically leverage a Docker image that presumably if deployed enough times could go beyond the free tier :(*
+
 ## Different day same Code
 
-Write your code should be "Cloud Run Compatible"
+If the web server starts automatically on port 8080 then it is "Cloud Run Compatible"
 
 <https://github.com/johnpfeiffer/aws-go-lambda>
 
@@ -83,6 +86,20 @@ When builds are occurring (or failing)
 
 <https://console.cloud.google.com/cloud-build/>
 
+
+## Cleanup Artifact Registry
+
+You can search and find amid the 100s of services the one that sometimes invisibly goes over a free tier...
+
+<https://console.cloud.google.com/artifacts/>
+
+Click on "cloud-run-source-deploy" and click in until you get to something like "Digests for aws-go-lambda/go-cache"
+
+Choose an old deploy as a checkbox and then at the top click Delete
+
+> Are you sure you want to delete...
+
+*hopefully this keeps me under the free tier limit*
 
 # Agentic Coding with Google Jules
 
