@@ -1,8 +1,31 @@
-Title: Google Cloud Run and Google Jules coding agent
+Title: Maximum leverage and Minimum Ops with Google Cloud Run and the Jules Coding Agent
 Date: 2025-06-07 06:07
 Tags: github, google cloud run, ci, cd, deployment, ai, agent
 
 [TOC]
+
+# Why Software Agents are Eating the World
+
+Software scales to infinity and prints money the whole way.
+
+Once the cost of distribution went to zero the dominant constraint on growth stopped being infrastructure and became people: how fast could humans design, write, deploy (and maintain!) software.
+
+Over 30+ years, to get increasing leverage (less humans!) and take advantage of economic specialization...
+
+- Self-hosted physical servers became leasing space and energy/cooling with colocation
+- "Colos" physical servers became leasing virtual machines
+- Overprovisioned VMs became renting "cloud servers"
+- Cloud services became pay by the millisecond "serverless"
+
+A remaining bottleneck: humans to write and maintain the code.
+
+> LLM Coding Agents is "software that writes software"
+
+## Personal Goal of Efficiency
+
+Physical wires and failing components, maintaining operating systems (security!), copying files and manually checking if the software even works at all... and even yak shaving down the rabbit hole of code syntax, dependency updates, edge cases, and content typos
+
+Try it for yourself: tell an LLM what you want and asynchronously it comes back (like any remote virtual colleague) with the changes - approve and voila it's live in seconds.
 
 # Another day another cloud
 
@@ -160,6 +183,8 @@ Leaving a comment on the pull request will feedback to Jules (yay for all the pe
 *the usual GitHub pull request merge process*
 
 ## Gotchas with Agents
+
+All of this leverage shifts the bottleneck from "programmer" to "good ideas and ability to review changes". Yet this new technology brings new challenges...
 
 Lots of posts on the internet but in case you wanted to "hear it here first":
 
