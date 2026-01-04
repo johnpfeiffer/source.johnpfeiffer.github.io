@@ -1,6 +1,7 @@
-Title: Windows Programming in WinCE on-an HP IPAQ: 365 programming project day twenty three
+Title: Windows Programming in WinCE on an HP IPAQ - 365 project day twenty three
+Date: 2010-01-23 1:26
+Tags: windows, wince
 
-Date: 2010-01-23 13:26
 
 As the number of portable computers (we might call them mobile phones or smart phones or pda's etc.) explodes they need software. 
 
@@ -29,8 +30,8 @@ The following source code should look very familiar to my earlier Windows Progra
 I've added comments here that are not in my "production" IPAQ environment source code because the screen is too small with lots of scrolling already... 
 
 - - -
-:::c
-```
+
+```c
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <windowsx.h>

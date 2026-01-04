@@ -23,13 +23,13 @@ check if they are installed:
 ## Install the default react project
 in a directory (probably a code repository)
 
-```bash
+```javascript
 	npm create vite@latest my-app -- --template react
  	cd my-app
 	npm install
 	npm run dev
 ```
-  
+
 _(obsolete: npx create-react-app my-app)_
 
 note that `npm run dev` starts a web server at http://localhost:5173
@@ -60,18 +60,18 @@ The defacto web standard for the first document (for a web server) to return whe
 
 <https://en.wikipedia.org/wiki/HTML>
 
-	:::html
+```html
 	<!DOCTYPE html>
 	<html lang="en"><body>
 	<noscript>You need to enable JavaScript to run this app.</noscript>
 		<div id="root"></div>
 		<script type="module" src="/src/main.jsx"></script>
 	</body></html>
-
+```
 
 **MAIN.JSX**
 
-	:::javascript
+```javascript
 	// this wrapper is connecting the App to the root
 	import React from 'react'
 	import ReactDOM from 'react-dom/client'
@@ -85,11 +85,11 @@ The defacto web standard for the first document (for a web server) to return whe
 		<App />
 	  </React.StrictMode>
 	);
-
+```
 
 **APP.JSX**
 
-	:::javascript
+```javascript
 	// very simple app that switches the content displayed when the button is clicked
 	import './App.css';
 	import { useState } from 'react';
@@ -118,6 +118,7 @@ The defacto web standard for the first document (for a web server) to return whe
 	}
 	
 	export default App;
+```
 
 _A React component is a JavaScript function that returns JSX (looks like HTML but is not HTML)_
 
