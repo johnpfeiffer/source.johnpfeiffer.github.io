@@ -31,6 +31,8 @@ in a directory (probably a code repository)
   
 _(obsolete: npx create-react-app my-app)_
 
+note that `npm run dev` starts a web server at http://localhost:5173
+
 - - -
 Essential folder structure (that is created by the framework with default files)
 
@@ -122,13 +124,13 @@ _A React component is a JavaScript function that returns JSX (looks like HTML bu
 
 # Build and Deploy
 
-To "build", or convert all of these files into a bundle, your application:
-
-`npm run build`
-
 A critical file created by the default app generation is `package.json`, it lists all your project dependencies and scripts (including "how to build")
 
-This framework reads your package.json to understand which tools to run, in this case `vite` compiles/reformats the code into a production bundle of files that can be uploaded to a server
+The build framework reads your package.json to understand which tools to run, in this case `vite` compiles/reformats the code into a production bundle of files that can be uploaded to a server
+
+The command to "build", or convert all of these files into a single bundle that is easily deployed:
+
+`npm run build`
 
 The new output directory `dist` contains the index.html and static files along with "minified" javascript and css
 
