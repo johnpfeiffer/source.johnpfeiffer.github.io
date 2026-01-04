@@ -23,11 +23,12 @@ check if they are installed:
 ## Install the default react project
 in a directory (probably a code repository)
 
- 	:::bash
+```bash
 	npm create vite@latest my-app -- --template react
  	cd my-app
 	npm install
 	npm run dev
+```
   
 _(obsolete: npx create-react-app my-app)_
 
