@@ -2,7 +2,9 @@ Title: Software Engineer Favorites
 
 [TOC]
 
-This is roughly ordered as
+The number of favorite links became their own app <https://feneky.pages.dev/links>
+
+This human curated list is roughly ordered as
 
 1. learn to do
 2. do it well

@@ -2,6 +2,9 @@ Title: Engineering (People) Managers
 
 [TOC]
 
+
+The number of favorite links became their own app at <https://feneky.pages.dev/links>
+
 This is roughly ordered as
 
 1. working with people

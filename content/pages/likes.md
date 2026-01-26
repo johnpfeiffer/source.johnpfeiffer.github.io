@@ -2,6 +2,11 @@ Title: John Likes
 
 [TOC]
 
+The number of favorite links became their own app =]
+
+<https://feneky.pages.dev/links>
+
+
 + <https://play.golang.org>
 + <https://github.com/getpelican/pelican>
 + <http://oncrashreboot.com/elegant-best-pelican-theme-features>
@@ -10,9 +15,6 @@ Title: John Likes
 + <https://github.com/getpelican/pelican-plugins/tree/master/post_stats>
 + <https://listjs.com>
 
-To improve clarity I have moved many of the software engineering resources to <https://blog.john-pfeiffer.com/software-engineer-favorites/>
-
-People Manager resources moved to <https://blog.john-pfeiffer.com/engineering-people-managers/>
 
 
 ## History
