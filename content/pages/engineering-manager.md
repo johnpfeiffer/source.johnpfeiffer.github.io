@@ -80,8 +80,6 @@ _(if you are in a hurry, ask your favorite/best AI to summarize any of these ;)_
 ### Accountability
 - <https://www.manager-tools.com/2018/11/preparing-performance-reviews-hof-2018>
 - <https://www.manager-tools.com/2018/11/delivering-performance-review-hof-2018>
-- <https://manager-tools.com/2021/11/preparing-performance-reviews-hof-2021>
-- <https://manager-tools.com/2021/11/delivering-performance-review-hof-2021>
 
 - <https://www.radicalcandor.com/podcast/podcast-season-3-episode-8/> Development vs Management
 - <https://hbr.org/podcast/2022/05/how-do-i-hold-my-team-accountable>
@@ -94,6 +92,7 @@ _(if you are in a hurry, ask your favorite/best AI to summarize any of these ;)_
 
 ## Delegation
 
+- <https://www.jillwetzler.com/resources/delegation>
 - <https://www.manager-tools.com/2007/01/the-juggling-koan> Delegation
 - <https://www.manager-tools.com/2010/05/how-choose-what-delegate-hall-fame-guidance>
 - <https://www.manager-tools.com/2012/02/delegating-floor>
@@ -256,8 +255,6 @@ _(if you are in a hurry, ask your favorite/best AI to summarize any of these ;)_
 - The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses by Eric Ries
 - Inspired: How To Create Products Customers Love by Marty Cagan
 - Never Split the Difference by Chris Voss
-
-- <https://web.archive.org/web/20200113140527/https://genius.com/Keith-rabois-lecture-14-how-to-operate-annotated?referent_id=4336630#note-4336630>
 
 - <https://www.industryweek.com/operations/quality/article/21963885/dr-deming-management-today-does-not-know-what-its-job-is-part-1>
 - <https://www.industryweek.com/operations/quality/article/21963886/dr-deming-management-today-does-not-know-what-its-job-is-part-2>
