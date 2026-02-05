@@ -4,31 +4,11 @@ Title: John Likes
 
 The number of favorite links became their own app =]
 
-<https://feneky.pages.dev/links>
+<https://feneky.com/links/>
 
+> Learning from history enriches learning from experience
 
-+ <https://play.golang.org>
-+ <https://github.com/getpelican/pelican>
-+ <http://oncrashreboot.com/elegant-best-pelican-theme-features>
-+ <https://github.com/getpelican/pelican-plugins/tree/master/tipue_search>
-+ <https://github.com/getpelican/pelican-plugins/tree/master/sitemap>
-+ <https://github.com/getpelican/pelican-plugins/tree/master/post_stats>
-+ <https://listjs.com>
-
-
-
-## History
-
-- <https://podcasts.apple.com/us/podcast/bonus-the-man-who-could-have-been-bill-gates-pt-2/id1355212895?i=1000443856131> (Gary Kildall)
-- <https://www.cake.co/conversations/g4CP6zJ/the-secret-call-to-andy-grove-that-may-have-helped-apple-buy-next>
-- <https://www.internethistorypodcast.com/2014/01/chapter-1-part-2-netscape-the-big-bang/>
-- <https://www.internethistorypodcast.com/2014/03/chapter-1-supplemental-1-an-interview-with-lou-montulli/>
-- <https://www.cake.co/conversations/VXHSjBG/the-untold-origin-story-of-ebay-that-i-lived-and-the-times-that-could-have-killed-it>
-- <https://tedium.co/2020/12/15/altavista-history-digital-dot-com-domain-name/>
-- <https://www.internethistorypodcast.com/2022/12/the-del-icio-us-story-with-joshua-schachter/>
-- <https://news.ycombinator.com/item?id=21849977> (Etsy succeeded in spite of itself)
-- <https://queue.acm.org/detail.cfm?id=1142065> (Werner Vogels about AWS 2006)
-- <https://www.vox.com/recode/2019/5/3/18511544/amazon-prime-oral-history-jeff-bezos-one-day-shipping>
+- <https://feneky.com/links/history>
 
 
 ## Miscellaneous Great Web Sites and Articles
@@ -37,9 +17,8 @@ The number of favorite links became their own app =]
  <https://charity.wtf>
 - <https://urchin.biz> (pre-history of google analytics)
 - <https://kalzumeus.com/2010/01/24/startup-seo/>
-- <https://www.facebook.com/notes/kent-beck/one-bite-at-a-time-partitioning-complexity/1716882961677894>
+- <https://web.archive.org/web/20171128170141/https://www.facebook.com/notes/kent-beck/one-bite-at-a-time-partitioning-complexity/1716882961677894/>
 - <https://dave.cheney.net/paste/the-past-present-and-future-of-go2.pdf> QCon Shanghai
-
 
 
 ## Tools
@@ -130,6 +109,16 @@ The number of favorite links became their own app =]
 - <https://maximumfun.org/episodes/depresh-mode/six-things-you-need-to-know-for-your-mental-health/>
 
 
+# Kudos to these projects which enabled this website
+
++ <https://github.com/getpelican/pelican>
++ <http://oncrashreboot.com/elegant-best-pelican-theme-features>
++ <https://github.com/getpelican/pelican-plugins/tree/master/tipue_search>
++ <https://github.com/getpelican/pelican-plugins/tree/master/sitemap>
++ <https://github.com/getpelican/pelican-plugins/tree/master/post_stats>
++ <https://listjs.com>
+
 ## Atom feed
 
 Follow with an atom feed link: <https://blog.john-pfeiffer.com/feeds/john-pfeiffer.atom.xml>
+
