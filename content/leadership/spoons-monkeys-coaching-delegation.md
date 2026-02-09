@@ -8,7 +8,7 @@ Managers run out of time and emotional energy. Imagine a monkey on your back, st
 
 The solution = leading with empathy + coaching + ownership clarity
 
-Building a sustainable organization creates lasting high performance.
+Enduring, high-performing teams aren't built by heroes carrying loads of monkeys, they're built by consistent, sustainable management practices anyone can learn.
 
 # Why do you have a monkey on your back?
 
@@ -23,17 +23,13 @@ Each time you accept the monkey, you've agreed to carry it. You now own the next
 - <https://hbr.org/1999/11/management-time-whos-got-the-monkey>
 - <https://archive.is/BItWt>
 
-Not only can you end up with a lot of monkeys...
-
 # Management is Results and Retention
 
-*thank you "Manager Tools!"*
+"Manager Tools" frames the manager's job as "results and retention".
 
-The organization wants a certain number of deliverables within a timeframe, but people are not robots.
+The organization wants deliverables within a timeframe, but people are not robots. Managing people means managing emotions too.
 
-As a people manager there are going to be a lot of emotions from your direct reports.
-
-Requests range from "I wanted a seat near the window" to "I'm going to leave this place if I have to work with X again."
+Requests range from "I wanted a seat near the window" to "I'm going to leave this place if I have to work with X again".
 
 Problems may not be inherently stressful. Yet how we feel about something can be entirely different from what it may take to complete it.
 
@@ -65,7 +61,7 @@ Lead with empathy: do they have any spoons left today?
 
 Have you built enough trust that your 1:1s are places where people can be vulnerable?
 
-Where they can tell you "I'm not really up for this today" — and you actually listen?
+Where they can tell you "I'm not really up for this today" - and you actually listen?
 
 One of the worst 1:1s I ever had was where I asked how someone was doing and they told me they weren't up for a meeting, and for some reason we kept talking. 
 
@@ -98,7 +94,7 @@ Your job isn't only to support individuals. It's also to protect and support the
 
 Sometimes everyone benefits from addressing the dysfunction directly instead of absorbing it privately.
 
-I had a manager in my team who knew a direct report wasn't carrying their weight. It was even more difficult as they'd been colleagues.
+I had a manager in my team who knew a direct report wasn't carrying their weight. It was even more difficult as they'd previously been peer-level colleagues.
 
 Once we'd gotten through reviewing the data objectively, and a coaching discussion, it was the realization his other direct reports had been indirectly bringing the issue up that became the catalyst for change.
 
@@ -110,17 +106,17 @@ A classic first-time manager mistake: taking on your direct reports' work as "he
 
 But you're not helping, you're enabling dependency and stealing their growth opportunity. 
 
-Worse: you create an incentive structure where being "good at fixing things" means everyone brings you their things to fix.
+Worse: you create an incentive structure where being "good at fixing things" means everyone brings you their things to fix. More problems, more monkeys.
+
+- https://blog.calm.com/blog/hero-complex
 
 I can distinctly remember the one-on-one where my manager once told me "You're working harder than anyone in your team. As a manager, that may not actually be a good thing."
 
-I also remember doing quite a bit of work to help prepare someone's packet for promotion - far more than they put in. When the promotion didn't happen I realized I'd taken ownership of their agency and career growth.
+I also remember doing quite a bit of work to help prepare someone's promotion packet. When the promotion didn't happen, it hit me that I'd starting carrying their agency and career growth for them.
 
 People need to build their own problem-solving capacity and self-advocacy - with support.
 
-And every monkey you carry also costs you spoons.
-
-- https://blog.calm.com/blog/hero-complex
+And every monkey you carry costs you spoons.
 
 ## Coaching
 
@@ -128,7 +124,7 @@ Coaching is even more abstract than delegating. You're not doing the work. You'r
 
 *This order helps clarify motivation/importance before "What/How"*
 
-- "Why is this important to work on?"
+- "What makes this important to work on?"
 - "What does a successful outcome look like?"
 - "What have you already tried?"
 - "What do you think is blocking you? What options are you considering?"
@@ -146,10 +142,10 @@ Specifically for Delegation, rather than seeing it as "all or nothing", Jill Wet
 - Level 1 - Tell: I make the decision. I also tell you what to do and how
 - Level 2 - Prep: You do the research, I make the decision (I should explain my reasoning)
 - Level 3 - Consult: I ask for your input and recommendation first, then we decide together
-- Level 4 - Approval: Propose your plan and action, wait for my approval to continue.
+- Level 4 - Needs Approval: Propose your plan and action, wait for my approval to continue.
 - Level 5 - Expect Feedback: You make the decision and execute but keep me updated, I may have feedback or objections
 - Level 6 - Informed: You own this - let me know how it goes
-- Level 7 - Escalate: I don't need to know the details but if something goes wrong seek help
+- Level 7 - Escalate (if needed): I don't need to know the details but if something goes wrong seek help
 - Level 8 - Autonomous: You got this!
 
 **<https://www.jillwetzler.com/resources/delegation>**
@@ -158,16 +154,16 @@ Specifically for Delegation, rather than seeing it as "all or nothing", Jill Wet
 
 ### Concretely for software engineers
 
-Higher levels of delegation means more autonomy; more experienced folks should take on complex things with high autonomy...
+Higher levels of delegation means more autonomy; more experienced folks should be able to take on complex things with high autonomy...
 
-1. Giving an intern a fully laid out (small) task with prescriptive How
-2. Asking a junior developer to take on a bug fix
-3. Having an engineer work on their first architecture/design proposal
-4. A remediation for a production incident (note this fits the level of Pull Requests)
-5. An engineer leading a small project
-6. A senior engineer leading a project
-7. A senior engineer working on a feature
-8. A senior engineer fixing a small bug (routine, low risk)
+1. Tell: Giving an intern a fully laid out (small) task with prescriptive How
+2. Prep: Asking a junior developer to take on a bug fix
+3. Consult: Having an engineer work on their first architecture/design proposal
+4. Needs Approval: A remediation for a production incident (note this is "pairing as an ops best practice", and it's similar to "yes we do Pull Requests")
+5. Expect Feedback: An engineer leading a small project
+6. Informed: A senior engineer leading a project
+7. Escalate (if needed): A senior engineer working on a feature (in a domain they know)
+8. Autonomous: An engineer fixing a small bug (routine, low risk)
 
 ### Because AI and Agents
 
@@ -175,14 +171,14 @@ Higher levels of delegation means more autonomy; more experienced folks should t
 
 Delegating work to AI Agents is becoming common so here are some examples of how I apply this framework to successfully work with agents...
 
-1. Telling it how to update an unusual core data schema - high risk, large blast radius, difficult-to-recover
-2. Picking the architecture and tech stack - high risk, large blast radius, not-verifiable
-3. Working on a large feature - medium risk, large blast radius, hard-to-verify result
-4. Working on a small feature - some risk, small blast radius, verifiable result
-5. Working on a small bug fix - some risk, small blast radius, easily verifiable result
-6. Writing unit tests - low risk
-7. Updating dependencies - low risk, trivial verification
-8. Updating documentation (have this as a daily cron job) - very low risk/impact
+1. Tell: how to update an unusual core data schema - high risk, large blast radius, difficult-to-recover
+2. Prep: Picking the architecture and tech stack - high risk, large blast radius, not-verifiable
+3. Consult: Working on a large feature - medium risk, large blast radius, hard-to-verify result
+4. Needs Approval: Working on a small feature - some risk, small blast radius, verifiable result
+5. Expect Feedback: Working on a small bug fix - some risk, small blast radius, easily verifiable result
+6. Informed: Writing unit tests - low risk
+7. Escalate (if needed): Updating dependencies - low risk, trivial verification
+8. Autonomous: Updating documentation (have this as a daily cron job) - very low risk/impact
 
 
 # Summary
