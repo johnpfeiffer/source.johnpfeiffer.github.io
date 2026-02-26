@@ -58,8 +58,8 @@ MARKDOWN = {
 
 DIRECT_TEMPLATES = (('index', 'tags', 'categories','archives', 'search', '404'))
 STATIC_PATHS = ['theme/images', 'themes/images', 'images']
-LANDING_PAGE_ABOUT={'title': '', 
-'details': "John Pfeiffer began with DOS on a 486, tweaking DOS to make games work and BBS's... <br />Then there was Internet -> University -> Linux -> Football (aka soccer) <br /> Interesting places and cultures I've enjoyed: <br /> California -> Tennessee -> France -> Los Angeles -> Bulgaria -> England -> SF Bay Area <br /> Interesting things I've learned: <br /> Football (soccer) -> Piano -> Karate -> Guitar -> French -> Bulgarian <br /> Still working on: <br /> Be Good, Change the World"}
+LANDING_PAGE_ABOUT={'title': '',
+'details': "John Pfeiffer began with DOS on a 486, tweaking DOS to make games work and BBS's... <br />Then there was Internet -> University -> Linux -> Software Engineering -> People Management <br /> Interesting places and cultures I've enjoyed: <br /> California -> Tennessee -> France -> Los Angeles -> Bulgaria -> England -> SF Bay Area <br /> Interesting things I've learned: Football (soccer) -> Piano -> Karate -> Guitar -> French -> Bulgarian <br /> Still working on: Be Good, Change the World"}
 
 PROJECTS_TITLE=''
 PROJECTS = [{
