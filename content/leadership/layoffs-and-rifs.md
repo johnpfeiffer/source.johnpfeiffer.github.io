@@ -1,4 +1,4 @@
-Title: One of the hardest parts of the job - Layoffs
+Title: One of the Hardest Parts of the Job - Leading Through Layoffs
 Date: 2024-02-29 12:01
 Tags: career, engineering, management, leadership, director, navigating change
 
@@ -20,7 +20,7 @@ During layoffs, start by acknowledging it is understandable that you're going to
 
 A useful parallel is the Kubler-Ross model of stages of grief. The point is your emotional state affects your judgment, your patience, and your capacity for the hard decisions and difficult conversations ahead.
 
-![Adapted Kubler-Ross](../images/adapted-kubler-ross-stages.png)
+![Adapted Kubler-Ross stages of grief](../images/adapted-kubler-ross-stages.png)
 
 Shock and denial: "Maybe we don't really need to do this. Maybe Q4 will turn around." 
 
@@ -108,7 +108,7 @@ I remember talking with my counterparts in other disciplines and departments. Ha
 # **Gathering Data**
 Gather data, both objective and subjective, into one confidential place.
 
-You will need data to show yourself, your leadership, and most importantly, your direct reports that you were as thorough as possible.
+You will need enough data to show yourself that you were thorough. To show your leadership that you were rigorous. And to help you be confident and thoughtful in the difficult conversations ahead.
 
 - What is the driver of the RIF: financial, strategic, or something else?
 - Every person's current tenure and salary
@@ -384,6 +384,8 @@ Lean into directing thoughts and conversations towards experimenting: trying the
 ## Learnings
 
 Every scar should bring you some wisdom.
+
+Layoffs taught me many lessons: not only about how to try to avoid layoffs, but also about how to proactively build a healthier organization.
 
 As a people leader, strive for transparency around company goals and the company's financial situation. Be accountable, and hold others accountable, for delivering outputs and successful outcomes.
 
