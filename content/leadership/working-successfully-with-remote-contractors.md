@@ -1,6 +1,6 @@
 Title: Working successfully with remote contractors
 Date: 2018-01-20 21:14
-Tags: organization, scaling, people, leading, contractors
+Tags: organization, scaling, people, leading, management, contractors
 
 [TOC]
 

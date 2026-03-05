@@ -1,6 +1,6 @@
 Title: Technology Careers (part 1)
 Date: 2012-02-27 02:38
-Tags: career
+Tags: career, management
 
 [TOC]
 

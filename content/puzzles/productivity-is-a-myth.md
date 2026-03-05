@@ -1,6 +1,6 @@
 Title: Productivity is a Myth
 Date: 2017-06-29 21:00
-Tags: productivity, definition of done, testing
+Tags: productivity, definition of done, testing, management
 
 [TOC]
 

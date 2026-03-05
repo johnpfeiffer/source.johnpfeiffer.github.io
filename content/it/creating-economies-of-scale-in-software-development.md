@@ -1,6 +1,6 @@
 Title: Creating Economies of Scale in Software Development
 Date: 2012-07-29 04:39
-Tags: Software, Thoughts
+Tags: Software, Thoughts, leadership, management
 
 [TOC]
 

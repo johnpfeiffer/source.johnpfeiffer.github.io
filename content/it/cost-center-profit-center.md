@@ -1,6 +1,6 @@
 Title: Bitcoin is a bad business model and when to invest in your Cost Center
 Date: 2021-01-23 08:44
-Tags: business, cost center, profit center, cashflow
+Tags: business, cost center, profit center, cashflow, management
 
 [TOC]
 
