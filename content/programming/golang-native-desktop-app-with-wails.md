@@ -12,32 +12,32 @@ Desktop apps provide privacy for the persistence layer, and bypass the "where is
 
 This is a simple and practical way to leverage some great backend + frontend technologies.
 
-*If you need a more basic react intro see my previous post https://blog.john-pfeiffer.com/react-javascript-intro/*
+*If you need a more basic react intro see my previous post <https://blog.john-pfeiffer.com/react-javascript-intro/>*
 
-The key insight: Go methods with exported (capitalized) names get auto generated as JavaScript/TypeScript bindings. You call Go functions from React as if they were local async functions.
+The key: Go methods with exported (capitalized) names get auto generated as JavaScript/TypeScript bindings. You call Go functions from React as if they were local async functions.
 
 ## Why Wails
 
-Wails uses the operating system's native webview (WebKit on macOS, WebView2 on Windows, WebKitGTK on Linux) so the resulting binary is ~10MB and uses a fraction of the memory.
+Wails uses the operating system's native webview (WebKit on macOS, WebView2 on Windows, WebKitGTK on Linux) so the resulting binary is ~10MB.
 
 As a comparison to a very popular technology, electron bundles an entire Chromium browser into your app - which is why a "hello world" Electron app is ~150MB and idles at 100MB+ of RAM.
 
 ```text
-┌─────────────────────────────────────────────────────────────┐
-│  WAILS APPLICATION                                          │
-│                                                             │
-│   Go Backend              React Frontend                    │
-│   ┌───────────┐           ┌──────────────────┐              │
-│   │ app.go    │◄─────────►│ App.tsx          │              │
-│   │ (structs  │  bindings │ (components,     │              │
-│   │  & methods│  ───────► │  hooks, UI)      │              │
-│   │  & stdlib)│           │                  │              │
-│   └───────────┘           └──────────────────┘              │
-│         │                         │                         │
+┌───────────────────────────────────────────────────────────┐
+│  WAILS APPLICATION                                        │
+│                                                           │
+│   Go Backend              React Frontend                  │
+│   ┌───────────┐           ┌──────────────────┐            │
+│   │ app.go    │◄─────────►│ App.tsx          │            │
+│   │ (structs  │  bindings │ (components,     │            │
+│   │  & methods│  ───────► │  hooks, UI)      │            │
+│   │  & stdlib)│           │                  │            │
+│   └───────────┘           └──────────────────┘            │
+│         │                        │                        │
 │         └──────────┬──────────────┘                         │
 │                    ▼                                        │
-│         ┌────────────────────┐                              │
-│         │  Native WebView    │                              │
+│         ┌────────────────────┐                             │
+│         │  Native WebView    │                             │
 │         │  (WebKit on macOS) │                              │
 │         └────────────────────┘                              │
 │                    │                                        │
@@ -57,16 +57,17 @@ Golang builds to a single binary
 
 *the assumption here is MacOS...*
 
-- Golang: https://go.dev/doc/install
-- - `brew install golang`
-- - `which go; go version`
-- - `echo 'export PATH="$PATH:$(go env GOPATH)/bin"' >> ~/.zshrc`
+Golang: https://go.dev/doc/install
+
+- `brew install golang`
+- `which go; go version`
+- `echo 'export PATH="$PATH:$(go env GOPATH)/bin"' >> ~/.zshrc`
 
 *because "GOPATH/bin" is the default destination for `go install` - now making tools runnable*
 
-- NPM: https://nodejs.org/en/download/
-- - `brew install node`
-- - `which npm; npm --version; node --version` 
+NPM: https://nodejs.org/en/download/
+- `brew install node`
+- `which npm; npm --version; node --version` 
 
 ## Installing Wails
 - Wails framework: https://wails.io/docs/gettingstarted/installation/
@@ -109,7 +110,7 @@ Executing: go mod tidy
   • Installing frontend dependencies: Done.
   • Compiling frontend: Done.
   ...
-````
+```
 
 In about 10 seconds you have your example native desktop app running locally.
 
