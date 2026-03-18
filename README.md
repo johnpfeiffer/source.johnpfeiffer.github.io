@@ -61,3 +61,7 @@ auto builds with CircleCI and deploys the static website to GitHub Pages (with a
 
 Tutorial on how it was done: <https://blog.john-pfeiffer.com/circleci-for-a-pelican-static-github-site/>
 
+A gotcha: in .circleci/config.yaml there is a specific line to clear the ssh key that was used for checking out the repo.
+
+`ssh-add -D` clears all keys from the build agent before add_ssh_keys loads the write-enabled key to publish to GitHub static pages
+
