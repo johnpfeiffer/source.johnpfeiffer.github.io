@@ -14,6 +14,7 @@ jobs:
             uv run pelican --version
             mkdir -p /home/circleci/OUT
             uv run pelican content -o /home/circleci/OUT -s publishconf.py
+            ssh-add -D
 
       - add_ssh_keys:
           fingerprints:
