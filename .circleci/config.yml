@@ -3,28 +3,21 @@ jobs:
   build:
     resource_class: small
     docker:
-      - image: cimg/python:3.8
+      - image: cimg/python:3.13
     steps:
       - checkout
       - run:
-          name: Install Pelican and Build Content
+          name: Build Content
           command: |
-            python -m pip install "pelican[markdown]" beautifulsoup4
-            pip freeze | grep pelican
-            cd ..
-            pwd
-            ls -ahl /home/circleci/project
-            find . -type f -iname pelican
-            PYVER=$(ls /home/circleci/.pyenv/versions | grep 3.8)
-            cd ".pyenv/versions/$PYVER/bin/"
-            ./pelican --version
+            uv --version
+            uv sync
+            uv run pelican --version
             mkdir -p /home/circleci/OUT
-            ./pelican /home/circleci/project/content -o /home/circleci/OUT -s /home/circleci/project/publishconf.py
-            ssh-add -D
-            
+            uv run pelican content -o /home/circleci/OUT -s publishconf.py
+
       - add_ssh_keys:
-                  fingerprints:
-                              - "4e:c1:a6:83:cc:89:e6:89:ed:53:a3:f4:46:9b:d8:d7"
+          fingerprints:
+            - "4e:c1:a6:83:cc:89:e6:89:ed:53:a3:f4:46:9b:d8:d7"
       - run:
           name: Publish to GitHub Static Site
           command: |
