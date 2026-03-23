@@ -129,15 +129,15 @@ AI can generate code fast, but *human intent and system understanding* are what 
 
 Kent Beck pointed out: carpentry didn't end because of circular saws (or nail guns). People just got more powerful tools.
 
-In my opinion, measuring Lines of Code or Pull Requests is a poor proxy - that's not the full outcome.
+In my opinion, measuring Lines of Code or Pull Requests is a poor proxy that's not correlated with the full outcome.
 
 ### Burnout
 
-And we've always known about software and burnout; clearly coding needs breaks because overwork creates bad ideas and negative value.
+And we've always known about software and burnout; clearly people coding need breaks because overwork creates bad ideas and negative value.
 
-I know that when I'm in the zone and stay up well past midnight coding... then the morning comes. After sleeping, reviewing so many clear bugs and logic mistakes.
+I know that when I'm in the zone and stay up well past midnight coding... then the morning comes. After sleeping, reviewing with fresh eyes (and brain) reveals so many obvious bugs and mistakes in logic.
 
-I know from more than a decade of managing engineers that product release "death marches" and working nights and weekends degrades a team beyond repair, people are cranky and can no longer function together.
+I also know from more than a decade of managing engineers that product release "death marches" and working nights and weekends degrades a team beyond repair, people are cranky and can no longer function together.
 
 A fun fact I once had to explain to the C-Suite: fine, we'll work weekends, but what days are left when that's no longer enough?
 
