@@ -74,6 +74,35 @@ Kent Beck's version: "What's the least I can do to validate, to my own satisfact
 
 That experimental mindset has become, in his words, "a thousand times more valuable" in the last year. The answers change week to week. A tool that fails on Monday might work on Thursday. You can't have *the* answer. You can only have a practice of finding out.
 
+## SDLC + AI
+
+Previously a generation (or two) of developers used to:
+
+- read requirements (PRD)
+- systems design (hopefully?)
+- write code (usually in an IDE)
+- run tests (right?)
+- submit pull request
+- continuous integration
+- continuous deployment
+- smoketests
+- observability and monitoring
+
+*given the rate of change I hope this doesn't become obsolete in a month ;)*
+
+**Emerging SDLC With AI**
+
+- deep research agent creates a report on the domain
+- LLMs "architect persona" brainstorms and rubber duck options
+- Using agents with Skills to plan and decompose the work
+- A carefully crafted prompt kicks off a series of agents in parallel
+- Human reviews and refines Test Cases and Guardrails, defines verifiability
+- Human creates Evals for the critical or non-deterministic portions of the workflow/service/product
+- A series of specialized agents (security, design, etc) review the agent produced artifacts
+- CI/CD and automated tests run; agents autonomously attempt fixes for anything failing
+- Human reviews the proposed output, any test failure escalations, eval scores
+- Production deployment triggers extra LLM traces and privacy protecting prompt logging
+
 # Shift Focus to the System
 
 Kent Beck's personal reflection resonated: the deep satisfaction of refactoring code and taking a messy file, making tiny safe steps, watching clarity emerge. Then he said plainly: **"I can't do that anymore."**
