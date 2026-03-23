@@ -12,6 +12,8 @@ I got my copy of "Refactoring" signed by both Martin Fowler and Kent Beck. That 
 
 ## Martin Fowler and Kent Beck walk into a room full of AI startups
 
+A decade ago [I saw Bjarne Stroustrup in person, and he signed my C++ book.](<https://blog.john-pfeiffer.com/meeting-bjarne-stroustrup-creator-of-c-plus-plus-in-the-atlassian-dev-den/>)
+
 25 years after the **[Agile Manifesto](https://agilemanifesto.org/)**, two people who shaped the foundations of modern software engineering walked into a room full of AI-native startups and engineering leaders.
 
 ![Up close to the wisdom of Martin Fowler and Kent Beck](../images/2026-02-11-pragmatic-summit-kent-beck-martin-fowler.jpg)
@@ -156,7 +158,3 @@ The conference: **<https://www.pragmaticsummit.com/>**
 The specific session, and the amazing Pragmatic Summit 2026 playlist:
 
 - <https://www.youtube.com/watch?v=CZs8J1ZD0CE&list=PLzwJJv8h-icjtYA5oHmc7g6qU1t4OqDqb&index=8>
-
-My previous brush with a technology legend:
-
-- <https://blog.john-pfeiffer.com/meeting-bjarne-stroustrup-creator-of-c-plus-plus-in-the-atlassian-dev-den/>
