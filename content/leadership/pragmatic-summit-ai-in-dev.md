@@ -135,13 +135,19 @@ In my opinion, measuring Lines of Code or Pull Requests is a poor proxy that's n
 
 And we've always known about software and burnout; clearly people coding need breaks because overwork creates bad ideas and negative value.
 
-I know that when I'm in the zone and stay up well past midnight coding... then the morning comes. After sleeping, reviewing with fresh eyes (and brain) reveals so many obvious bugs and mistakes in logic.
+I know that when I'm in the zone and stay up well past midnight coding... then the morning comes. After sleeping, reviewing with fresh eyes (and brain) reveals so many obvious bugs and mistakes in the logic.
 
 I also know from more than a decade of managing engineers that product release "death marches" and working nights and weekends degrades a team beyond repair, people are cranky and can no longer function together.
 
-A fun fact I once had to explain to the C-Suite: fine, we'll work weekends, but what days are left when that's no longer enough?
+Once I even had to explain to the C-Suite: fine, we'll work weekends, but what days are left when that's no longer enough?
 
-We need to learn how to use these new tools well. We need to measure the impacts of the "new way" on outcomes we care about: users/customers, revenue... and the software engineers too!
+# Conclusion
+
+Seeing Kent Beck and Martin Fowler in person reinforced that really wise thought leaders in the industry also like corny jokes and find conference chairs uncomfortable.
+
+Clearly they are beacons for quality craftsmanship, and their message was "experiment and learn to use this new tool well".
+
+I also took away that we need to measure the impacts of the "new way" on outcomes we care about: users/customers, revenue... and the people building the software.
 
 # Resources
 
