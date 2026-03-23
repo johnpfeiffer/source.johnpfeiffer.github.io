@@ -158,3 +158,23 @@ The conference: **<https://www.pragmaticsummit.com/>**
 The specific session, and the amazing Pragmatic Summit 2026 playlist:
 
 - <https://www.youtube.com/watch?v=CZs8J1ZD0CE&list=PLzwJJv8h-icjtYA5oHmc7g6qU1t4OqDqb&index=8>
+
+## Addendum
+
+I missed seeing Simon Willison *(co-creator of Django)* in person but did get to watch the video of his session, some important takeways:
+
+His personal evolution from Human writes all the code -> LLM writes some code -> LLM writes all the code and Human reviews the code -> Human does not read the code at all, focus on creating a testable goal
+
+> Big organizations had a team create a service and API... and you just trust them until something goes wrong
+
+- write prompts on your phone and the LLM writes the code
+- prompt the LLM "use red/green TDD"; this focuses to minimal code writing, and improves quality and LLMs make writing tests almost free
+- full time code reviewer is exhausting - humans can't keep up with agents code output
+- think really hard how the agent proves what's been created really works
+- be creative to ask for tests how it really works in the real world (unit test of code < curl the webserver)
+- detailed specs and tests allow for very easy reverse-engineering and building by AI agents
+
+Avoid the "Lethal Trifecta" <https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/>
+
+Have lots of fun, experiment with everything =)
+
