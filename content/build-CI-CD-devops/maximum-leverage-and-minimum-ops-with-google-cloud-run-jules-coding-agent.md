@@ -1,6 +1,6 @@
 Title: Maximum leverage and Minimum Ops with Google Cloud Run and the Jules Coding Agent
 Date: 2025-06-07 06:07
-Tags: github, google cloud run, ci, cd, deployment, ai, agent
+Tags: github, google cloud run, ci/cd, deployment, ai, agent
 
 [TOC]
 

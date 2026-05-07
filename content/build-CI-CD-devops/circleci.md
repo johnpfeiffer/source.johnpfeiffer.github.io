@@ -1,6 +1,6 @@
 Title: Using CircleCI as continuous integration and continuous deployment
 Date: 2021-04-14 20:43
-Tags: ci, circleci, continuous integration, continuous deployment, github, golang, go, go mod
+Tags: ci/cd, circleci, continuous integration, continuous deployment, github, golang, go, go mod
 
 [TOC]
 

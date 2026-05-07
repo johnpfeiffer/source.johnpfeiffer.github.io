@@ -1,6 +1,6 @@
 Title: Continuous Delivery with Bitbucket Pipelines and Google App Engine Deployment and the storage.objects.list error
 Date: 2017-05-23 22:24
-Tags: bitbucket, google app engine, gae, bitbucket, pipelines, ci, cd, deployment, storage.objects.list
+Tags: bitbucket, google app engine, bitbucket, pipelines, ci/cd, deployment, storage.objects.list
 
 [TOC]
 

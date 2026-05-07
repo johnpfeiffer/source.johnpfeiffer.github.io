@@ -1,6 +1,6 @@
 Title: Static site with Bitbucket and Shippable and Pelican
 Date: 2015-12-21 12:24
-Tags: static site, pelican, bitbucket, shippable ci, ci, cd
+Tags: static site, pelican, bitbucket, shippable ci, ci/cd
 
 [TOC]
 

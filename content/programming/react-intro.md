@@ -1,6 +1,6 @@
 Title: React JavaScript Intro
 Date: 2024-08-25 12:34
-Tags: react, javascript, js
+Tags: react, javascript, js, jsx, typescript, ts, tsx
 
 [TOC]
 
