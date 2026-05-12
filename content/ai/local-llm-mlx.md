@@ -254,3 +254,131 @@ Upcoming post
 <https://machinelearning.apple.com/research/exploring-llms-mlx-m5>
 
 
+# Image Addendum
+
+*Added in 2026*
+
+Running an image model locally is possible - though it is more rare to find the conversions of models to MLX.
+
+## Pre-Requisites
+
+```bash
+uv venv
+uv pip install mlx-lm mlx-vlm mflux
+uv pip list
+uv init
+uv sync
+source .venv/bin/activate
+```
+
+*if you want to double check the dependencies*
+```yaml
+[project]
+name = "images"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "mflux>=0.17.5",
+    "mlx-lm>=0.31.1",
+    "mlx-vlm>=0.4.4",
+]
+```
+
+## Describe an Image
+
+Given an existing image the "multi-modal" LLM will generate a text description:
+
+```bash
+mlx_vlm.generate \
+  --model mlx-community/gemma-4-e4b-it-4bit \
+  --max-tokens 500 \
+  --temperature 0.0 \
+  --prompt "Describe this image." \
+  --image ./IMG_4370.jpg
+```
+
+**Generated description**
+```plaintext
+Files: ['./IMG_4370.jpg']
+
+Prompt: <bos><|turn>user
+<|image|>Describe this image.<turn|>
+<|turn>model
+
+This is a close-up, outdoor photograph of a fluffy white dog, likely a young puppy or a breed with a very thick double coat.
+
+Here's a detailed description:
+
+*   **Subject:** The main subject is the dog, which is facing left in profile. It has an abundance of thick, creamy white fur, giving it a very soft and fluffy appearance.
+*   **Head and Face:** The dog's head is prominent. Its eyes are visible, and the visible eye appears to be a bluish-gray color. The muzzle is relatively short, and the dog's expression seems gentle or curious.
+*   **Coat:** The fur is incredibly dense, particularly around the neck and body, creating a voluminous cloud-like effect. The fur on the neck forms a noticeable ruff or collar.
+*   **Foreground Detail:** In the bottom left corner, a human hand is partially visible, reaching up toward the dog, suggesting interaction or affection between the owner and the pet.
+*   **Background:** The background is slightly blurred but suggests an outdoor setting. There are patches of dirt or gravel on the ground, and in the upper right, there are some darker elements, possibly including a piece of debris or a structure.
+
+Overall, the image conveys a feeling of softness, innocence, and warmth due to the dog's beautiful coat and the gentle interaction suggested by the hand.
+==========
+Prompt: 281 tokens, 230.428 tokens-per-sec
+Generation: 288 tokens, 41.667 tokens-per-sec
+Peak memory: 6.117 GB
+```
+
+
+- <https://github.com/Blaizzy/mlx-vlm>
+- <https://deepmind.google/models/gemma/gemma-4/>
+- <https://huggingface.co/blog/gemma4>
+
+
+## Generate an Image
+
+Using the very powerful and fast "Flux2" family of models, and the MFLUX open source tool:
+
+```bash
+mflux-generate-flux2 \
+  --model RunPod/FLUX.2-klein-4B-mflux-4bit \
+  --prompt "A ghibli-style scene of a cat and a robot pair-programming on a laptop in a tiny attic office" \
+  --width 1024 \
+  --height 1024 \
+  --steps 4 \
+  --seed 42 \
+  --output output.png
+```bash
+
+![Flux2 Klein generated with MFLUX](../images/mlx-mflux-generate.png)
+
+- <https://github.com/filipstrand/mflux/tree/main/src/mflux/models/flux2/cli>
+- <https://github.com/filipstrand/mflux/blob/main/src/mflux/cli/parser/parsers.py>
+
+
+### Edit from an initial reference image
+
+You can provide an input image and prompt the model to modify it
+
+```bash
+MODEL='RunPod/FLUX.2-klein-4B-mflux-4bit'
+mflux-generate-flux2-edit \
+  --model "$MODEL" \
+  --image-path IMG_4370.jpg \
+  --prompt "Change it to a puppy in the night" \
+  --steps 4 \
+  --seed 42 \
+  --output edit-output.png
+```
+
+*Note this may take a few minutes and at least 12GB of RAM*
+
+![Flux2 Klein edited with MFLUX](../images/mlx-mflux-edit.png)
+
+## More Image Resources
+
+<https://huggingface.co/black-forest-labs/FLUX.2-klein-4B> - Klein 4 Billion parameters is the fast distilled model
+
+- <https://bfl.ai/blog/flux2-klein-towards-interactive-visual-intelligence>
+
+Quantized and MLX specific (aka runs fast on apple silicon): <https://huggingface.co/Runpod/FLUX.2-klein-4B-mflux-4bit>
+
+More details on the image model family from Black Forest Labs:
+
+- <https://bfl.ai/models/flux-2-klein>
+- <https://github.com/black-forest-labs/flux2>
+- <https://playground.bfl.ai/image/generate>
+
