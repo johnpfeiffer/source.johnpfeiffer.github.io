@@ -10,6 +10,27 @@ Connecting to a server (with TCP) underpins FTP and HTTP; a simple client can do
 
 Sometimes they are commonly called a "scraper" or "crawler", I can remember one of my first joys in coding was writing a "download a page" program.
 
+# High Level Diagram in ASCII
+
+This utility will query a DNS server to convert the domain name into an IP address: `dig example.com`
+
+```plaintext
+;; ANSWER SECTION:
+example.com.		159	IN	A	172.66.147.243
+```
+
+**Client Server Interactions**
+
+```plaintext
+CLIENT                                  [DNS SERVER]
+  |   What IP Address is example.com ->    |
+  |     <- example.com = "172.66.147.243"  |
+  |
+  |      TCP connect to 172.66.147.243 ->            | [WEB SERVER at 172.66.147.243]
+  |      HTTP GET / Host: example.com  ->            |
+  |     <- HTTP 200 OK, response: headers + HTML     |
+```
+
 # Good old C
 
 ```c
@@ -72,41 +93,19 @@ Each popular programming language has this foundational piece:
 - Python (thank you BeautifulSoup4 and Requests <https://requests.readthedocs.io/en/latest/>)
 - Golang <https://pkg.go.dev/net/http>
 
+*Slowly providing examples: <https://github.com/johnpfeiffer/web-scrapers>*
 
 And of course there are some excellent dedicated tools:
 
 - **curl** <https://curl.se/docs/tutorial.html> `curl -H "Host: example.com" 172.66.147.243:80`
 - **wget** <https://www.gnu.org/software/wget/manual/wget.html> 
 
-## ASCII Diagrams
-
-This utility will convert the domain name into an IP address: `dig example.com`
-
-```plaintext
-;; ANSWER SECTION:
-example.com.		159	IN	A	172.66.147.243
-```
-
-**Client Server Interactions**
-
-```plaintext
-CLIENT                                  [DNS SERVER]
-  |   What IP Address is example.com ->    |
-  |     <- example.com = "172.66.147.243"  |
-  |
-  |      TCP connect to 172.66.147.243 ->            | [WEB SERVER at 172.66.147.243]
-  |      HTTP GET / Host: example.com  ->            | 
-  |     <- HTTP 200 OK, response: headers + HTML     |
-
-```
 
 - - -
 
 # Firecrawl
 
-New kid on the block: firecrawl
-
-You can download the open source project and run it locally with docker <https://github.com/firecrawl/firecrawl>
+There is a new cool kid on the block, an open source project, you can even run it locally with docker <https://github.com/firecrawl/firecrawl>
 
 ```plaintext
 Firecrawl API
