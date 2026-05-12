@@ -341,7 +341,7 @@ mflux-generate-flux2 \
   --steps 4 \
   --seed 42 \
   --output output.png
-```bash
+```
 
 ![Flux2 Klein generated with MFLUX](../images/mlx-mflux-generate.png)
 
