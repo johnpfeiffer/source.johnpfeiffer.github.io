@@ -85,9 +85,9 @@ Then back in Colab <https://colab.research.google.com/>
 
 It is simpler to have the first cell install all the dependencies needed for the rest of the notebook.
 
-`!pip install -q --upgrade transformers diffusers accelerate bitsandbytes sentencepiece`
+`!pip install -q --upgrade transformers==4.56.2 diffusers==0.36.0 accelerate bitsandbytes sentencepiece`
 
-*not pinning the dependencies to a specific version means something could break at some point in the future*
+*I had to pin to specific dependencies to make both image generation examples work =|*
 
 - diffusers: provides the image-generation pipeline and FLUX classes
 - accelerate: handles device placement, device_map="auto", CPU/GPU dispatch
@@ -127,7 +127,6 @@ gpu: Tesla T4
 vram total GB: 14.56
 ```
 
-*re-ran this in 2026 - with newer dependencies it still works =)*
 
 ## Login
 
@@ -284,7 +283,7 @@ reserved GB: 13.68
 peak GB: 13.7
 ```
 
-> Like a limbo, fitting under the 15GB cap
+> Like Limbo, barely fitting under the limit of 15GB, wait actually 14.5GB!
 
 
 ## Pipeline
@@ -292,7 +291,8 @@ peak GB: 13.7
 Now creating the pipeline, and explicitly passing our previous step quantized text encoder...
 
 - CLIP text encoder (~250MB, visual-semantic alignment)
-- FLUX transformer (23.8GB, the actual image generator)
+- text_encoder_2 (quantized down to ~7GB)
+- FLUX transformer (23.8G reduced to ~6GB, the actual image generator)
 - VAE (~170MB, decodes the result into a visible image)
 - tokenizers and scheduler config
 
@@ -331,7 +331,7 @@ peak GB: 13.99
 All the previous cells led up to this generation of a higher quality image in seconds.
 
 ```python
-prompt = "A cartoon cat and a cartoon robot working side by side writing code"
+prompt = "A ghibli-style scene of a cat and a robot pair-programming on a laptop in a tiny attic office"
 
 with torch.inference_mode():
     image = pipe(
@@ -381,7 +381,6 @@ display(image)
 > Including non-PyTorch memory, this process has 14.45 GiB memory in use. 
 > Of the allocated memory 14.25 GiB is allocated by PyTorch, and 60.81 MiB is reserved by PyTorch but unallocated. 
 
-> If reserved but unallocated memory is large try setting PYTORCH_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
 
 
 # Manual Cleanup
@@ -394,6 +393,9 @@ If you really need something you can sometimes get rid of the pipeline and regen
 import gc
 
 del pipe          		# delete the pipeline object
+# del text_encoder_2
+# del transformer
+
 gc.collect()            # Python garbage collection
 torch.cuda.empty_cache()  # release GPU memory back to CUDA
 ```
