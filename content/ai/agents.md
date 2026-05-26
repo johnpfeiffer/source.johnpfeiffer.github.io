@@ -309,7 +309,16 @@ How frameworks handle this:
 - <https://modelcontextprotocol.io/specification/2025-06-18/server/tools>
 
 
-## 2026 Addendum
+# More Resources
+
+- <https://ampcode.com/notes/how-to-build-an-agent>
+
+- <https://ghuntley.com/agent/>
+- - <https://github.com/ghuntley/how-to-build-a-coding-agent/blob/trunk/README.md>
+
+
+
+# 2026 Addendum
 
 The well crafted open source agent harness "Pi" handles the problem elegantly (supporting multiple AI vendors via the Adapter Pattern):
 
@@ -321,12 +330,181 @@ The well crafted open source agent harness "Pi" handles the problem elegantly (s
 - <https://github.com/earendil-works/pi/blob/main/packages/ai/src/providers/openai-responses-shared.ts#L90>
 
 
+## Brittle - so use SDKs
 
-# More Resources
+It's a difficult challenge to work with each different vendor's raw model expectations, hence SDKs ;p
 
-- <https://ampcode.com/notes/how-to-build-an-agent>
+- <https://pypi.org/project/openai/>
+- <https://pypi.org/project/anthropic/>
+- <https://pypi.org/project/google-genai/>
 
-- <https://ghuntley.com/agent/>
-- - <https://github.com/ghuntley/how-to-build-a-coding-agent/blob/trunk/README.md>
+Below is the raw agent tool loop adapted for the local Google model Gemma4. Notably it has "thinking traces" that mlx-lm==0.31.2 does not (yet) remove.
 
+```
+Assistant: <|channel>thought
+The user is asking for a joke. This is a general knowledge request that does not require any tools (like `read_file`). I should respond with a joke in plain text.<channel|>
+Why don't scientists trust atoms?
+Because they make up everything!
+```
+
+**Success via contortions to parse <|tool_call>**...
+
+```
+You (provide input or type quit): summarize the file 02-chat-loop-with-read-file-tool.py
+
+Assistant: <|channel>thought
+The user wants a summary of the Python file `02-chat-loop-with-read-file-tool.py`.
+I have successfully read the file content.
+Now I need to summarize the code.
+
+The code implements a chat loop application that uses a large language model (LLM) and includes a `read_file` tool.
+...
+```
+
+### MLX Gemma4 with tool calling 
+
+```python
+import json
+from mlx_lm import load, generate
+
+def main():
+    model, tokenizer = load("mlx-community/gemma-4-e4b-it-4bit")
+    system_message = """You are a helpful, concise Assistant.
+	You have access to a read_file tool, but ONLY use them when the user's request REQUIRES one.
+	MOST messages need NO tool call. Just reply in plain text.
+	DO NOT call a tool for:
+	- Greetings, chitchat, or general questions
+	- Questions you already know the answer to
+	ONLY call a tool when you literally cannot answer without it.
+	When you do NOT need a tool, respond in plain text. Never output JSON unless you are calling a tool."""
+    messages = [{"role": "system", "content": system_message}]
+    run(model, tokenizer, messages, get_user_message)
+
+
+ # run loops getting the user message and displaying the LLM response
+def run(model, tokenizer, messages, get_msg_fn):
+    while True:
+        user_input, ok = get_msg_fn()
+        if not ok:
+            break
+
+        messages.append({"role": "user", "content": user_input})
+        user_prompt = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True, tools=TOOLS)
+        response = generate_response(model, tokenizer, messages, user_prompt)
+
+        print(f"\nAssistant: {response}\n")
+        messages.append({"role": "assistant", "content": response})
+
+
+def get_user_message():
+    try:
+        user_input = input("You (provide input or type quit): ").strip()
+        if user_input.lower() in {"exit", "quit"}:
+            return "", False
+        return user_input, True
+    except (EOFError, KeyboardInterrupt):
+        print()
+        return "", False
+
+
+def generate_response(model, tokenizer, messages, user_prompt):
+    """generate_response checks if the LLM believes the User query may need a tool call, if the first LLM response is not JSON just ignore"""
+
+    response = generate(model, tokenizer, prompt=user_prompt, max_tokens=10000)
+    try:
+        if "<|tool_call>" in response:
+            response_as_json = parse_gemma_tool_call(response)
+        else:
+            response_as_json = json.loads(response)
+
+        if response_as_json.get("name") == "read_file":
+            tool_input = response_as_json["parameters"]
+            tool_result = read_file(tool_input.get("file_path") or tool_input["filename"])
+
+            # prepare_gemma_tool_call_result follows the format https://ai.google.dev/gemini-api/docs/function-calling
+            messages.append({"role": "assistant", "content": "",
+            "tool_calls": [
+            {
+                "id": "read_file_1",
+                "function": {
+                    "name": "read_file",
+                    "arguments": response_as_json.get("parameters"),
+                },
+            }
+            ],
+            })
+
+            messages.append({
+                "role": "tool",
+                "name": "read_file",
+                "content": tool_result,
+                "tool_call_id": "read_file_1",
+            })
+
+            # create a user friendly response based on the tool call result
+            prompt = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+            response = generate(model, tokenizer, prompt=prompt, max_tokens=10000)
+
+    except (json.JSONDecodeError, KeyError, TypeError):
+        pass
+    return response
+
+
+def parse_gemma_tool_call(response):
+    """parse_gemma_tool_call skips past the THINKING and handles strings like <|tool_call>call:read_file{file_path:<|"|>FILENAME<|"|>}<tool_call|>"""
+    _, _, after_thought = response.partition("<channel|>")
+    # print("DEBUG", after_thought)
+    tool_call = between(response, "<|tool_call>", "<tool_call|>")
+    if not tool_call.startswith("call:"):
+        return {}
+
+    name = between(tool_call, "call:", "{")
+    # hack way assuming a single parameter but could be file_path or filepath or filename or...
+    filepath = between(tool_call, ':<|"|>', '<|"|>}')
+    return {"name": name, "parameters": {"file_path": filepath}}
+
+
+def between(text, left, right):
+    before, found_left, after_left = text.partition(left)
+    if not found_left:
+        raise ValueError(f"Missing left delimiter: {left!r}")
+
+    middle, found_right, after = after_left.partition(right)
+    if not found_right:
+        raise ValueError(f"Missing right delimiter: {right!r}")
+
+    return middle
+
+
+def read_file(file_path):
+    try:
+        with open(file_path, "r") as f:
+            return f.read()
+    except Exception as e:
+        return f"Error reading file: {e}"
+
+
+TOOLS = [
+    {
+        "type": "function",
+        "name": "read_file",
+	"function": "read_file",
+        "description": "Read the contents of a given file path. Use this to see everything in a file. Do not use this with directory names.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "file_path": {
+                    "type": "string",
+                    "description": "The path of the file to read",
+                },
+            },
+            "required": ["file_path"],
+        },
+    },
+]
+
+
+if __name__ == "__main__":
+    main()
+```
 
