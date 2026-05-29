@@ -97,7 +97,7 @@ Codex parsed the spec and even ran the model checker for me. Success!
 
 ## Learning to harness the invariant approach
 
-** AI Over-Engineering** happened: the eager LLM generated a spec with sixteen constants including Bayesian posterior probabilities, expected information gain calculations, and an adaptive question engine. Features I hadn't really specified yet.
+**AI Over-Engineering** happened: the eager LLM generated a spec with sixteen constants including Bayesian posterior probabilities, expected information gain calculations, and an adaptive question engine. Features I hadn't really specified yet.
 
 It's a QA best practice, especially with new tools/techniques, to deliberately break something and see the expected failure. This helps avoid vacuous or tautology tests - things that do nothing but "pass/succeed".
 
@@ -149,13 +149,13 @@ So I had to improve my spec
 ```
 INV-005: Every question can change the outcome
 For each question, there exist answer choices that produce different final personality types.
-````
+```
 
 # Summary
 
 TLA+ is a powerful tool that gives you more predictability and certainty, before you unleash the chaos of LLMs.
 
-LLMs "raise the floor" so you can use invariants, not just generate confident slop. The system should leverage information theory, not be a victim of the noise.
+LLMs "raise the floor" so anyone can use invariants to build reliable systems (instead of leaping headfirst into vibe coding an unmaintainable buggy mess). The system should leverage information theory, not be a victim of the noise.
 
 And LLMs are not only translators, they are tutors to help you improve on the unique human role of specifying the Intent.
 
