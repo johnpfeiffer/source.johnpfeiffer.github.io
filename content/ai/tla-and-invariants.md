@@ -34,6 +34,8 @@ This practical application has strong foundations in computer science theory:
 
 ![Shannon Weaver Model of Communication](../images/shannon-weaver-model-of-communication.png)
 
+The goal with LLMs is analogous to adding checksum and error correction bits.
+
 ## SDD Gaps
 
 Spec-Driven Design does not have a mechanism to distill english into unambiguous precision, nor does it have a method of enforcing behavior/implementation.
