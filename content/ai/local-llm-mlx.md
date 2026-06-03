@@ -297,6 +297,10 @@ mlx_vlm.generate \
   --image ./IMG_4370.jpg
 ```
 
+*Google released the open weights "Gemma" family models, effectively 4B parameters, Instruction Trained/Tuned, quantized to 4 bits*
+
+*more info on Insturction Tuning from <https://huggingface.co/learn/smol-course/en/unit1/1>*
+
 **Generated description**
 ```plaintext
 Files: ['./IMG_4370.jpg']
