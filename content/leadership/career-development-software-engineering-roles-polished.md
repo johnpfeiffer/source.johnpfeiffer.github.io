@@ -14,7 +14,7 @@ When you understand their ambitions you can more effectively align their interes
 
 Hopefully the following ideas provide some topics to cover during your next career development discussion.
 
-# When and why to discuss career development
+## When and why to discuss career development
 
 One of the best tools for building relationships between employees and their managers is the one-on-one.
 
@@ -28,9 +28,11 @@ One of the first questions I generally ask is, "Where do you want to be in two y
 
 "Where" should not be reductively just about salary—instead, it should encompass talent, experience, and direction. After a certain point, people need more than money to achieve happiness (as described by Daniel Pink in "Drive" and studied by Kahneman and Deaton). From this perspective, a career can be thought of as the arc of daily work aggregated into some meaningful vector.
 
+---
+## Skills
+
 > As a caveat, no company, not even the largest ones, can have every possible role. A good manager will provide guidance about what is immediately available, help them research future possibilities, and find ways to expand their current role.
 
- 
 Career development is not just about getting the next position, it should also be about discussing and developing the qualitative skills that lead to success. By proactively discussing the following "soft skills" with your direct report, you will ensure they have the right tools to succeed in their current and future roles.
 
 - **Listening**: Hearing what others (users, stakeholders, teammates, etc.) are saying is one of the most important parts of identifying the right problems and finding a way to solve them.
@@ -42,6 +44,7 @@ Career development is not just about getting the next position, it should also b
 
 
 For each skill it is worth considering:
+
 *1. What drives or motivates the individual?*
 *2. What is the individual’s current level?*
 *3. How important is it to them to improve?*
@@ -55,19 +58,19 @@ So, what other topics can you discuss with your direct report in a career develo
 
 One major focus area is their role in the organization, identifying what they are doing now and what they would like to do next. Sometimes growth isn’t about moving up the "vertical" org chart but instead specializing in a specific kind of work or moving laterally into a different domain.
 
-# Software engineering gradations
+## Software engineering gradations
 
 These levels/titles are generalizations (since every company is different) for the progression ("vertical") a person goes through as they mature and grow:
 
-- Junior: Focused on implementation under supervision
-- Senior: Able to independently gather requirements and run a project from start to finish 
-- Principal: Influence at the organizational level
+- **Junior:** Focused on implementation under supervision
+- **Senior:** Able to independently gather requirements and run a project from start to finish 
+- **Principal:** Influence at the organizational level
 
 Generally it gets exponentially harder to "level up" (it would be exceedingly rare to have an organization that is all principal engineers). Interestingly, given the investment in time, training, and supervision required for junior engineers, it is also rare to have a pyramid-shaped engineering organization.
 
 ![An example diagram of engineering career levels](../images/engineering-levels-layered-framework.png)
 
-# Software Engineers
+## Software Engineers
 
 There are too many roles related to technology to list them all, but here are some important specialization titles related to Software Engineering.
 
@@ -78,7 +81,7 @@ There are too many roles related to technology to list them all, but here are so
  
 > *One caveat: a Software Engineer will apply best practices in creating solutions and systems (including bigger picture complexity and scale), whereas a Programmer title hints at a more "limited to code" role.*
 
-# Operations
+## Operations
 
 These are common examples of technology roles supporting the running of software and services:
 
@@ -87,7 +90,7 @@ These are common examples of technology roles supporting the running of software
 - **Operations:** Maintaining services/systems (hopefully still using automation and ideally transitioning to DevOps due to increased scale).
 - **System Administrator:** A manual job of maintaining a small number of virtual or physical machines/systems.
 
-# Data
+## Data
 
 Information has to be stored somewhere, which is where data roles come into play. This specialization has become even more prevalent with the exponential growth of "big data."
 
@@ -123,13 +126,20 @@ If one of your direct reports is interested in learning more about cloud or serv
  
 > Visibility into the interviewing process is a valuable learning opportunity
 
-And, maybe someone on your team wants to learn more about interviewing, which is an important skill for leading and scaling a team. You can facilitate this by: Providing your direct report with materials on best interviewing practices (from both within your organization and from external sources); doing a role play interviewing session with them; having them silently observe ("shadow") existing interviews; and having them start pairing on resume screens, phone screens, and on-site interviews. Visibility into, or participation in the interviewing panel and the post-interview debriefs is also a valuable learning opportunity. Finally, use your 1:1s to review the new skills they have learned and how this contributes to the company’s success.
+And, maybe someone on your team wants to learn more about interviewing, which is an important skill for leading and scaling a team.
 
-In an extreme example where an individual is pushing for a lateral move into a product management role, there are more than a few ways to help them. Here are some common and simple steps you can take: Set them up with opportunities to shadow an existing PM, have them run a meeting, get them to write up a project proposal (focusing on the value propositions over the engineering implementation), or simply have them practice public speaking by presenting to a larger, cross functional audience from the company. Remember: Their contributions, even outside of writing code, are still valuable to the success of the company.
+You can facilitate this by: Providing your direct report with materials on best interviewing practices (from both within your organization and from external sources); doing a role play interviewing session with them; having them silently observe ("shadow") existing interviews; and having them start pairing on resume screens, phone screens, and on-site interviews. Visibility into, or participation in the interviewing panel and the post-interview debriefs is also a valuable learning opportunity. 
 
-Opportunities are not about guaranteeing success, but instead about providing value to the employee that they cannot buy or potentially find elsewhere.
+Finally, use your 1:1s to review the new skills they have learned and how this contributes to the company’s success.
+
+In an extreme example where an individual is pushing for a lateral move into a product management role, there are more than a few ways to help them. Here are some common and simple steps you can take: Set them up with opportunities to shadow an existing PM, have them run a meeting, get them to write up a project proposal (focusing on the value propositions over the engineering implementation), or simply have them practice public speaking by presenting to a larger, cross functional audience from the company.
+
+Remember: Their contributions, even outside of writing code, are still valuable to the success of the company.
+
+Opportunities are not about guaranteeing success, but instead about **providing value to the employee** that they cannot buy or potentially find elsewhere.
 
 # Summary
 Focusing on people is the most important aspect of management. Understanding how they fit into an organization and aligning how their individual careers (and skills) weave together to create a sustainable team requires investment. Spending dedicated time and having a shared vocabulary and a shared understanding is crucial to keeping good talent.
 
-Developing your people creates a "stickiness"—a unique bond that creates a "win-win" environment—where their career progresses and the company has more skillful and motivated employees.
+Developing your people creates a "stickiness" — a unique bond that creates a "win-win" environment — where their career progresses and the company has more skillful and motivated employees.
+
