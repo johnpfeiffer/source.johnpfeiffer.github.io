@@ -1,12 +1,14 @@
-Title: Career Development and Software Engineering Roles
+Title: Career Development and Software Engineering Roles - Helping your engineers grow
 Date: 2019-01-01 12:34
 Tags: career, engineering, roles, software, management
 
 [TOC]
 
+# A manager’s guide to keeping your team happy, productive, and aligned
+
 This same article is published at **<https://web.archive.org/web/20200415071712/https://blog.helix.com/helping-your-engineers-grow/>** *with images!*
 
-As a manager, it can be unclear where someone’s career was before they met you and how they view their long term ambitions. And when the work is getting done now, it is easy to understand why *continued* career development is one of the overlooked aspects of management.
+As a manager, it can be unclear where someone’s career was before they met you and how *they view* their long term ambitions. And when the work is getting done *now*, it is easy to understand why *continued* career development is one of the overlooked aspects of management.
 
 When you understand their ambitions you can more effectively align their interests with those of the company. This has the positive effect of engaging the employee and may be more important to them than a simple "salary focused" career discussion.
 
