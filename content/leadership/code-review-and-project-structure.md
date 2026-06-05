@@ -75,7 +75,7 @@ Given that our goal is to unblock a team mate from shipping something valuable f
 
 The core of it is: clarity is kindness, recognize you are communicating with another being, not just "fixing a code problem".
 
-I have found the following articles to do a great job and defer to them:
+I have found the following articles do a great job and defer to them:
 
 - [Alex Hill's Giving and Receiving Code Reviews](https://web.archive.org/web/20200111065923/https://www.alexandra-hill.com/2018/06/25/the-art-of-giving-and-receiving-code-reviews/)
 - <https://web.hypothes.is/blog/code-review-in-remote-teams/>
@@ -98,7 +98,7 @@ Here's Google's, but read onward for my take ;)
 2. Consider intent, confirm source of truth and canonical documents
 3. Is this a moment to escalate, or "end early and reframe"?
 4. Spend X minutes writing review comments
-5. Pause: double check prioritization, Communicating well 
+5. Pause: double check "Am I prioritizing correctly in my review and comments? Am I communicating well?"
 6. Spend X minutes writing review comments
 7. Decision: do you approve or just directly notify the author you have done a review
 
@@ -114,11 +114,11 @@ Here's Google's, but read onward for my take ;)
 
 ### Pragmatism
 
-- avoid comments/suggestions that lead to rewriting everything
-- avoid over-indexing on style
+- avoid comments/suggestions that lead to rewriting everything, if a big change is needed escalate and communicate directly with the author 
 - identify the smallest safe fix
+- avoid over-indexing on style or preference
 - ask whether context changes the decision
-
+- - i.e. critical security fix has to go out - ok maybe a lot of other concerns can be addressed after
 
 
 ### Correctness and safety
@@ -189,7 +189,7 @@ A complement or almost pre-cursor to code review is which files go in which plac
 
 A manager can and should facilitate the understanding and standardization of common structure(s) that clarify and speed things up.  
 
-**Principles**
+**Principles for code layout...**
 
 - Should follow a convention
 - Should be easy to read and understand
@@ -199,9 +199,9 @@ A manager can and should facilitate the understanding and standardization of com
 
 ## Hexagonal Architecture
 
-Where something goes should not be arbitrary, it should have a **Why**.
+Where something goes should not be an arbitrary decision, it should have an underlying **Why**.
 
-Having a well reasoned theory behind the file layout approach helps guide all the numerous decisions in a logical and consistent way.
+Having a well reasoned theory behind the file layout approach helps guide the many later decisions in a logical and consistent way.
 
 Consider the benefits of this framing <https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)>
 
@@ -244,7 +244,7 @@ Consider the benefits of this framing <https://en.wikipedia.org/wiki/Hexagonal_a
 ```
 
 
-If you’re just writing a one-off script with 3 files, maybe your project/repo can be "flat" - but the general consensus is that this is not good for anything of complexity.
+If you’re just writing a one-off script with 3 files, maybe your project/repo can be "flat" - but do add structure commensurate to the complexity of the project.
 
 ## Concrete Project Layout in Go
 
