@@ -6,7 +6,7 @@ Tags: grep, linux, bash, cut, awk, sort, dd, files, text, ls, sort by size, sort
 
 There are amazing linux command line utilities that make finding and manpiulating files very easy
 
-## create copy truncate
+# create copy truncate
 
 Assuming you understand the basics like:
 
@@ -29,7 +29,29 @@ Assuming you understand the basics like:
     rm example.txt
 > remove a file, -f forces removal without a prompt, -rf to recursively force remove a file or directory **be careful**
 
-## ls lists files in a directory
+## long prompts and EOF
+
+```
+printf '%s\n\n' "$(cat <<'EOF'
+dquote cmdsubst heredoc> first
+dquote cmdsubst heredoc> second
+dquote cmdsubst heredoc> third
+dquote cmdsubst heredoc> EOF
+dquote cmdsubst> )"
+
+first
+second
+third
+
+
+```
+
+## for loops
+
+    for k in $(ls -1); do echo "$k"; done
+> for each file in the shell expansion of listing filenames, echo the filename (until done)
+
+# ls lists files in a directory
 
     ls /etc
 > list the files and directories in the /etc directory
@@ -46,7 +68,7 @@ Assuming you understand the basics like:
     ls -f
 > unsorted list of files which is the only way to work with directories with a very large number of files
 
-### list directories
+## list directories
 
     ls -d */
 > list names of directories in the current directory
@@ -72,7 +94,7 @@ Assuming you understand the basics like:
     find /tmp -maxdepth 2 -type d
 > find all directories in /tmp up to 2 levels deep (/tmp/foo/bar)
 
-### counting the listings
+## counting the listings
 
     ls -1 | wc
 > lists just the names of non hidden files piped to word count, number one looks a lot like lowercase L (sadindeed)
@@ -87,7 +109,7 @@ Assuming you understand the basics like:
 > when there are too many files in a directory: "/bin/cp: Argument list too long"
 > a one liner for copying each file as a parameter
 
-### sorting by size or timestamp
+## sorting by size or timestamp
 
     ls -Sla
 > sort by size (largest to smallest with full details displayed, show . hidden files too)
@@ -109,29 +131,31 @@ Assuming you understand the basics like:
 > list the full modified timestamp
 <https://www.gnu.org/software/coreutils/manual/html_node/Formatting-file-timestamps.html>
 
-## find
+# find
 
 find is better than locate because locate depends on a cron job to index the file system and so may miss recent results
 
-### find to list files
+    find . -iname '*needle*'
+> find from this directory onwards case insentive matches of contains needle
 
-    find -type f
+## find to list files
+
+    find . -type f
 > find and display the relative path all objects of type file
 
     find /tmp -maxdepth 1 -type f -print | wc -l
 > wc = count lines = files in the /tmp directory
 
-    find -type f -print | wc -l
+    find . -type f -print | wc -l
 > to get all subdirs too
 
-### find a specific file or types of files
+## find a specific file or types of files
 
-    find -name "MyCProgram.c"
+    find . -name "MyCProgram.c"
 > case sensitive, starts in the current directory 
 
-    find startdirectory -name 'partoffileordirname'
-> e.g. find /home/joe -name '.tx'
-> which would return txt's as well as txv?'s
+    find startdirectory -name 'exactname'
+> e.g. from the startdirectory only the exact match
 
     find / -iname "MyCProgram.c"
 > case insensitive, starts from root 
@@ -160,7 +184,7 @@ find is better than locate because locate depends on a cron job to index the fil
     find . -type f -iname '*.yaml' -exec grep --line-number --with-file 'needle' {} \;
 > search the contents of a specific file extension and output the filename and line number of each match
 
-### find and exec to modify a set of files
+## find and exec to modify a set of files
 
     find . -type f -name "*api*" -exec cat {} \; | grep objectid
 > find all files that contain an api and output the contents but filter to only display lines that contain "objectid"
@@ -228,16 +252,16 @@ find is better than locate because locate depends on a cron job to index the fil
 > while the above just lists the files the below runs an ls -l to see everything about them...
 
 
-RUN "man find" IF YOU NEED TO FIND SOMETHING SPECIFIC ABOUT FILES AND PERMISSIONS
+*RUN "man find" IF YOU NEED TO FIND SOMETHING SPECIFIC ABOUT FILES AND PERMISSIONS
 
 
 > any files newer than the one given find -newer file-i-made-yesterday
 
 search the home directory size equal to 100 MB, use +100MB for greater than and -100MB for less than find ~ -size 100M
 
-<http://www.thegeekstuff.com/2009/03/15-practical-linux-find-command-examples/>
+<https://www.thegeekstuff.com/2009/03/15-practical-linux-find-command-examples/>
 
-### find files by modified time
+## find files by modified time
 
 There is an implied AND operator with find but for OR or NOT...
 
@@ -272,10 +296,10 @@ There is an implied AND operator with find but for OR or NOT...
 
 
 
-## grep
+# grep
 grep is an amazing tool for getting efficiently finding text, <http://www.gnu.org/software/grep/manual/grep.html>
 
-### grep parameters and examples explained
+## grep parameters and examples explained
 
     cat access.log | grep -v "bingbot"
 > exclude from output lines that match bingbot
@@ -302,7 +326,7 @@ grep is an amazing tool for getting efficiently finding text, <http://www.gnu.or
 | `grep "ab[c-e]f" file `| *find with a wildcard of a subset of range of characters* |
 
 
-#### Useful parameters for grep
+## Useful parameters for grep
 
 - `-v` = invert the match so do NOT show lines that match (typically | grep -v 'myexclude')
 - `-x` = whole line match only
@@ -317,7 +341,7 @@ grep is an amazing tool for getting efficiently finding text, <http://www.gnu.or
 > list by timestamp (sort by modification time, newest first), list directories themselves, not their contents, only 1 level deep
 > pipe to grep and ignore matches of DONOTLIKE, then append output to the newest.m3u file
 
-#### grep files without match
+## grep files without match
 
     grep -L 'foobar' *
 > --files-without-match , display filenames that do not contain the string foobar
@@ -327,7 +351,7 @@ grep is an amazing tool for getting efficiently finding text, <http://www.gnu.or
 - <http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html>
 
 
-## cut
+# cut
 
     ps auxwwww | grep someappname | tr -s [:space:] | cut -d\  -f11-
 > filter to only view someappname from all processes (wide) THEN shorten all whitespace to a single space THEN cut delimited by a single space (escaped by the slash) and then only prints all after the 11th field/column
@@ -339,7 +363,7 @@ grep is an amazing tool for getting efficiently finding text, <http://www.gnu.or
 - <http://linux.die.net/man/1/cut>
 
 
-### cut to only display a part of a path
+## cut to only display a part of a path
 
     :::bash
     #!/bin/bash
@@ -358,7 +382,7 @@ grep is an amazing tool for getting efficiently finding text, <http://www.gnu.or
       fi
     done
 
-## awk
+# awk
 
 awk to parse columns of data , some overlap with cut
 
@@ -405,7 +429,7 @@ If the 5th column of results.txt contains numbers then ...
 - <http://www.grymoire.com/Unix/Awk.html>
 - <https://www.gnu.org/software/gawk/manual/gawk.html>
 
-## sed
+# sed
 
 sed does string substitution
 
@@ -435,9 +459,9 @@ REMEMBER
 - <http://www.grymoire.com/Unix/Sed.html>
 - <https://www.gnu.org/software/sed/manual/sed.txt>
 
-## dd
+# dd
 
-dd can delete things very quickly (dangerous!)
+dd can delete things very quickly (**dangerous!**)
 
 But a useful tool for testing upload limits or compression or any other miscellaneous file tasks is to generate a file of a specified length:
 
@@ -466,6 +490,6 @@ Notes about randomness (on linux):
 > how good is your non blocking urandom?
 
 - <https://en.wikipedia.org/wiki//dev/random>
-- <http://linuxcommand.org/man_pages/rngtest1.html>
+- <https://linuxcommand.org/man_pages/rngtest1.html>
     
 
