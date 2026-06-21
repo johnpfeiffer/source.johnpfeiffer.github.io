@@ -48,6 +48,23 @@ I somewhat cheekily provide my zinger: **"To merge the code and ship something v
 
 When there is a bug affecting a User, or some incredibly valuable feature that needs to go out, we should consider the goal of our org/group.
 
+## Ownership and Author vs Editor
+
+The author of the changes is driving an idea, the owner of their Pull Request.
+
+We all own the outcome. If you approve a Pull Request that creates a lot of problems - you are partially culpable too.
+
+> So how do we safely and effectively enable that person?
+
+A common misconception is that the Reviewer knows the codebase the best or with more experience, the ideal coding practices, therefore they know what something "should do".
+
+With an "editor's mindset" you are steering, not taking over authorship.
+
+- Understand intent: is this even the right place to be making these changes?
+- What is the severity of this change, and is the author aware?
+- Ask questions that concentrate - not distract
+
+
 ## Separation of concerns
 
 Overloading the Review process may mean we lose sight of our true goal, or that the review burden becomes so high people instinctively do less or do it begrudgingly.
@@ -93,6 +110,10 @@ Here's Google's, but read onward for my take ;)
 
 
 ## A guide for doing a review  
+
+It may seem like a subjective thing, "I'll know good code when I see it", but actually there are characteristics that can be used to make objective analysis.
+
+Code is written once, read many times - therefore worth some investment.
 
 1. Scan for structure, areas of interest, obvious/large concerns (i.e. separation of Infra and Domain)
 2. Consider intent, confirm source of truth and canonical documents
