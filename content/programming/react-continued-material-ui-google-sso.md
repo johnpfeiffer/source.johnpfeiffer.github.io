@@ -180,6 +180,21 @@ i.e. really-long-random-numbers-and-characters.apps.googleusercontent.com
 
 *Note that this client ID is a public facing configuration value (ends up in JS code visible in the browser dev tools)*
 
+### Troubleshooting
+
+If you get the error "You can't sign in to this app because it doesn't comply with Google's OAuth 2.0 policy."
+
+In Google Cloud Console:
+
+1. Select the project containing the client ID your site uses.
+2. Go to APIs & Services -> Credentials.
+
+https://console.cloud.google.com/apis/credentials?project=my-project-name
+
+Select from the **OAuth 2.0 Client IDs**
+
+Double check the settings - for instance in "Authorized JavaScript origins", is there a missing domain name?
+
 
 ## Environment Variable
 
