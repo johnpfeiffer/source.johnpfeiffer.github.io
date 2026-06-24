@@ -6,15 +6,16 @@ Tags: github, google cloud run, ci/cd, deployment, ai, agent
 
 # Why Software Agents are Eating the World
 
-Software scales to infinity and prints money the whole way.
+> Software scales to infinity and prints money the whole way.
 
 Once the cost of distribution went to zero the dominant constraint on growth stopped being infrastructure and became people: how fast could humans design, write, deploy (and maintain!) software.
 
 Over 30+ years, to get increasing leverage (less humans!) and take advantage of economic specialization...
 
-- Self-hosted physical servers became leasing space and energy/cooling with colocation
-- "Colos" physical servers became leasing virtual machines
-- Overprovisioned VMs became renting "cloud servers"
+- Self-hosted physical servers became leasing space and energy/cooling with colocation *(think Equinix or NTT)*
+- - *fixing physical servers meant sacrifice like cuts on your hands while replacing parts*
+- "Colos" physical servers became leasing virtual machines *(think VMware)*
+- Overprovisioned VMs became renting "cloud servers" *(AWS, Google Cloud, Azure)*
 - Cloud services became pay by the millisecond "serverless"
 
 A remaining bottleneck: humans to write and maintain the code.
@@ -25,9 +26,16 @@ A remaining bottleneck: humans to write and maintain the code.
 
 Physical wires and failing components, maintaining operating systems (security!), copying files and manually checking if the software even works at all... and even yak shaving down the rabbit hole of code syntax, dependency updates, edge cases, and content typos
 
+
 Over the years I have leveraged increasing levels of abstractions for provisioning the Environment and Infrastructure (IaaC), and for publishing Content/Code (git to production), all to increase cognitive focus and impact.
 
 *see my previous articles on Vagrant, Packer, Terraform, Docker, Static websites, Heroku, AWS, Google App Engine, and AWS Lambdas*
+
+- <https://blog.john-pfeiffer.com/using-vagrant-to-deploy-instances-on-aws/>
+- <https://blog.john-pfeiffer.com/build-automation-using-packer-to-build-an-ami-use-immutable-not-chef/>
+- <https://blog.john-pfeiffer.com/drupal-with-docker-compose-and-nginx-and-php-fpm-and-mariadb/>
+- <https://blog.john-pfeiffer.com/intro-to-amazon-aws-elastic-beanstalk/>
+- <https://blog.john-pfeiffer.com/using-aws-cdk-to-configure-deploy-a-golang-lambda-with-apigateway/>
 
 Try it for yourself: tell an LLM what you want and asynchronously it comes back (like any remote virtual colleague) with the changes - approve and voila it's live in seconds.
 
@@ -45,9 +53,7 @@ So here's how to setup a golang web server automatically built and deployed from
 
 ## Different day same Code
 
-If the web server starts automatically on port 8080 then it is "Cloud Run Compatible"
-
-<https://github.com/johnpfeiffer/aws-go-lambda>
+If the web server starts automatically on port 8080 then it is "Cloud Run Compatible" <https://github.com/johnpfeiffer/aws-go-lambda>
 
 *Their official example https://github.com/GoogleCloudPlatform/cloud-run-microservice-template-go*
 
