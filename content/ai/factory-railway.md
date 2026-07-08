@@ -34,11 +34,13 @@ Give it a prompt:
 
 > Clone the repo https://github.com/johnpfeiffer/railway-factory-agent and tell me what it does
 
-The Factory droid coding agent will use the `gh` command line tool and take care of the rest.
+The Factory droid coding agent will use the `gh` command line tool and take care of the rest, including, if prompted to, sending a Pull Request.
 
 Use the browser on your phone to login to https://app.factory.ai/ - continue the conversation and have it work for a few minutes or an hour.
 
-Specifically ask it for Pull Requests - then use the GitHub mobile app to Review and Approve =)
+Then use the GitHub mobile app to Review and Approve =)
+
+*Get comfortable progressively: have the agent explain a repo, then write documentation and send a pull request, have it add unit test coverage, fix a tiny typo or content, etc*
 
 # High Level Overview
 
@@ -47,6 +49,8 @@ Specifically ask it for Pull Requests - then use the GitHub mobile app to Review
 A coding agent is just a software program that repeatedly calls an LLM, has a "harness" to use the command line and tools, and writes/edits (text) code files.
 
 <https://blog.john-pfeiffer.com/ai-with-agents-aka-llms-with-tools/>
+
+Consider this an ephemeral work environment. The only tools provided are those in the Docker container, or what the agent downloads and installs.
 
 ## Pre-requisite - a separate GitHub account
 
