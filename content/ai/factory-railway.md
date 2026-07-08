@@ -22,6 +22,24 @@ Here's a fast way to build a simple, always-on, coding agent in the cloud: 1 Doc
 
 > With this one step, human attention becomes the bottleneck
 
+![Prompting a Factory agent running on Railway](../images/2026-06-22-factory-cloud-agent.png)
+
+## Prompt to Code
+
+It is a simple chat web UI - in the center you can select a computer (i.e. `railway-agent`)
+
+Select your model. I have found using the open weight (only uses .55x quota) **(Droid Core) GLM 5.2 at reasoning level "max" and "Auto High" autonomy** to be very effective.
+
+Give it a prompt:
+
+> Clone the repo https://github.com/johnpfeiffer/railway-factory-agent and tell me what it does
+
+The Factory droid coding agent will use the `gh` command line tool and take care of the rest.
+
+Use the browser on your phone to login to https://app.factory.ai/ - continue the conversation and have it work for a few minutes or an hour.
+
+Specifically ask it for Pull Requests - then use the GitHub mobile app to Review and Approve =)
+
 # High Level Overview
 
 > Hosting environment + Coding Agent + API Keys
@@ -37,6 +55,8 @@ For the security best practice of "least privilege" and isolation I created a se
 The agent's github account is invited as a Collaborator to GitHub Repositories, and contributes via Pull Requests.
 
 This creates clarity and audit trails of code authorship - including commit messages.
+
+An example Pull Request: <https://github.com/johnpfeiffer/railway-factory-agent/pull/1>
 
 > The human reviews, approves, and merges Pull Requests
 
@@ -338,36 +358,21 @@ Daemon
 Version: 0.162.1
 ```
 
-*Note that instead of updating the agent and modifying state, I would recommend one-click and redeploying the Railway container*
+*Note for updates of the Factory Droid version - lean into the ephemeral container approach and just re-deploy the Railway container*
 
 You can use the Railway mobile app to redeploy the container - there can be a "is this a clean state" question hopefully resolved by the Railway volume, but it should "just work". 
 
-## Prompt to Code
-
-It is a simple chat web UI - in the center you can select a computer (i.e. `railway-agent`)
-
-Select your model. I have found using the open weight (only uses .55x quota) **(Droid Core) GLM 5.2 at reasoning level "max" and "Auto High" autonomy** to be very effective.
-
-Give it a prompt:
-
-> Clone the repo https://github.com/johnpfeiffer/railway-factory-agent and tell me what it does
-
-The droid coding agent will use the `gh` command line tool and take care of the rest.
-
-Use the browser on your phone to login to https://app.factory.ai/ - continue the conversation and have it work for a few minutes or an hour.
-
-Specifically ask it for Pull Requests - then use the GitHub mobile app to Review and Approve. =)
-
-### Creativity
-
-More than coding, you can ask the agent to summarize a websitedownload things, install packages, analyze data.
-
-### Usage
+## Factory Quota Usage
 
 You can see your Factory usage limits, the now-familiar rolling "5 hour" window, weekly limit, and Monthly.
 
 Factory -> Settings -> Usage
 
+# Use your Creativity
+
+More than coding, you can ask the agent to summarize a website, download things, install packages, analyze data.
+
+From this foundation, the next step is multiple hosted agents - each one working in parallel on an assignment. Different roles like Code Reviewer, Security Auditor, etc.
 
 # References
 
