@@ -52,6 +52,25 @@ A coding agent is just a software program that repeatedly calls an LLM, has a "h
 
 Consider this an ephemeral work environment. The only tools provided are those in the Docker container, or what the agent downloads and installs.
 
+## Under the hood
+
+The container running in Railway (aka Factory BYOM) connects out to Factory's relay (`relay.factory.ai`) when you run `droid daemon --remote-access`, so **no inbound ports are required**.
+
+```diagram
+╭──────────────────────────────────────────────╮     ╭──────────────────╮
+│ Railway container (Debian, headless, no TTY) │     │ Factory          │
+│                                              │     │                  │
+│  FACTORY_API_KEY ──▶ authenticate to Factory │     │                  │
+│  droid computer register factory-droid-agent │────▶│ relay.factory.ai │
+│  droid daemon --remote-access ───────────────│────▶│ (outbound only)  │
+│                                              │     │                  │
+│  /root/.factory  ◀── persisted on a Volume   │     ╰──────────────────╯
+╰──────────────────────────────────────────────╯
+```
+
+You can use Railway's SSH or Console to have a (root) shell into the container and interact/observe, like: `ls -ahl /root/.factory`
+
+
 ## Pre-requisite - a separate GitHub account
 
 For the security best practice of "least privilege" and isolation I created a separate GitHub account for my coding agent(s).
@@ -327,24 +346,6 @@ droid daemon --remote-access
 </details>
 
 
-# Under the hood
-
-The container running in Railway (aka Factory BYOM) connects out to Factory's relay (`relay.factory.ai`) when you run `droid daemon --remote-access`, so **no inbound ports are required**.
-
-```diagram
-╭───────────────────────────────────────────────╮       ╭──────────────────╮
-│ Railway container (Debian, headless, no TTY)  │       │ Factory          │
-│                                               │       │                  │
-│  FACTORY_API_KEY ──▶ authenticate to Factory  │       │                  │
-│  droid computer register factory-droid-agent  │──────▶│ relay.factory.ai │
-│  droid daemon --remote-access ────────────────│──────▶│ (outbound only)  │
-│                                               │       │                  │
-│  /root/.factory  ◀── persisted on a Volume    │       ╰──────────────────╯
-╰───────────────────────────────────────────────╯
-```
-
-You can use Railway's SSH or Console to have a (root) shell into the container: `ls -ahl /root/.factory`
-
 # Factory UI
 
 To double check that your deployment is working, log into Factory <https://app.factory.ai/sessions>
@@ -374,7 +375,13 @@ Factory -> Settings -> Usage
 
 # Use your Creativity
 
-More than coding, you can ask the agent to summarize a website, download things, install packages, analyze data.
+More than coding, you can ask/prompt the agent to:
+
+- list the files in the container
+- analyze the last 10 git commits of a repo that was cloned
+- install new tools and packages to experiment with 
+- summarize a website "Summarize the top 20 main themes from the comments, prioritizing them by uniqueness"
+- download and analyze data
 
 From this foundation, the next step is multiple hosted agents - each one working in parallel on an assignment. Different roles like Code Reviewer, Security Auditor, etc.
 
