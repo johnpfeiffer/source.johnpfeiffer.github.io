@@ -340,6 +340,8 @@ Version: 0.162.1
 
 *Note that instead of updating the agent and modifying state, I would recommend one-click and redeploying the Railway container*
 
+You can use the Railway mobile app to redeploy the container - there can be a "is this a clean state" question hopefully resolved by the Railway volume, but it should "just work". 
+
 ## Prompt to Code
 
 It is a simple chat web UI - in the center you can select a computer (i.e. `railway-agent`)
