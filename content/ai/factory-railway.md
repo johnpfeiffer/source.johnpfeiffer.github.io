@@ -356,6 +356,17 @@ Use the browser on your phone to login to https://app.factory.ai/ - continue the
 
 Specifically ask it for Pull Requests - then use the GitHub mobile app to Review and Approve. =)
 
+### Creativity
+
+More than coding, you can ask the agent to summarize a websitedownload things, install packages, analyze data.
+
+### Usage
+
+You can see your Factory usage limits, the now-familiar rolling "5 hour" window, weekly limit, and Monthly.
+
+Factory -> Settings -> Usage
+
+
 # References
 
 My previous posts on the topic of agents in the cloud:
@@ -367,11 +378,4 @@ My previous posts on the topic of agents in the cloud:
 Factory's older documentation on an even more granular do-it-yourself approach <https://docs.factory.ai/guides/building/droid-vps-setup>
 
 As a further aside, you can Bring Your Own Key (for your preferred LLM vendor/provider) <https://docs.factory.ai/cli/byok/>
-
-
-
-
-
-
-
 
