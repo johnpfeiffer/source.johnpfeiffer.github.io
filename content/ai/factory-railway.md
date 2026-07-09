@@ -66,12 +66,16 @@ The container running in Railway (aka Factory BYOM) connects out to Factory's re
 │                                              │     │                  │
 │  /root/.factory  ◀── persisted on a Volume   │     ╰──────────────────╯
 ╰──────────────────────────────────────────────╯
+
+
+                        [GitHub]
+
 ```
 
 You can use Railway's SSH or Console to have a (root) shell into the container and interact/observe, like: `ls -ahl /root/.factory`
 
 
-## Pre-requisite - a separate GitHub account
+## Security via a separate GitHub account
 
 For the security best practice of "least privilege" and isolation I created a separate GitHub account for my coding agent(s).
 
@@ -102,7 +106,7 @@ Save the key in a password manager - it may look like `ghp_...`
 
 <https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#fine-grained-personal-access-tokens-limitations>
 
-*Or create an Organization, add your agents to your organization, manage their access to repositories that way.*
+*Or, if you want to stick with fine grained tokens: create an Organization, add your agents to your organization, manage their access to repositories that way.*
 
 # Factory Droid as the Coding Agent
 
@@ -142,9 +146,7 @@ The perfect place to provide an isolated environment with CPU and RAM, local dis
 Use the simplest infrastructure-as-code: a tiny GitHub repo with a Dockerfile, <https://github.com/johnpfeiffer/railway-factory-agent>
 
 <details>
-Debian + GitHub CLI + Droid
-
-`Dockerfile`
+Dockerfile: Debian + GitHub CLI + Droid
 
 ```bash
 FROM debian:trixie-slim
@@ -157,11 +159,6 @@ RUN apt-get update && apt-get install -y \
     ripgrep fd-find tree unzip zip sqlite3 \
   && rm -rf /var/lib/apt/lists/*
   
-# Droid CLI https://docs.factory.ai/reference/cli-reference
-RUN curl -fsSL https://app.factory.ai/cli | sh \
-  && /root/.local/bin/droid --version
-ENV PATH="/root/.local/bin:${PATH}"
-
 # GitHub CLI https://github.com/cli/cli/blob/trunk/docs/install_linux.md#debian
 RUN mkdir -p -m 755 /etc/apt/keyrings \
   && wget -nv -O /etc/apt/keyrings/githubcli-archive-keyring.gpg https://cli.github.com/packages/githubcli-archive-keyring.gpg \
@@ -171,6 +168,11 @@ RUN mkdir -p -m 755 /etc/apt/keyrings \
   && apt-get install -y gh \
   && rm -rf /var/lib/apt/lists/* \
   && gh --version
+
+# Droid CLI https://docs.factory.ai/reference/cli-reference
+RUN curl -fsSL https://app.factory.ai/cli | sh \
+  && /root/.local/bin/droid --version
+ENV PATH="/root/.local/bin:${PATH}"
 
 WORKDIR /workspace
 
@@ -182,7 +184,7 @@ ENV DROID_COMPUTER_NAME=railway-agent
 CMD ["bash", "-c", "echo \"debian trixie started $(date -Is)\"; exec connect-droid.sh"]  
 ```
 
-Docker's a familiar foundation <https://blog.john-pfeiffer.com/docker-intro-install-run-and-port-forward/>
+Docker's a familiar foundation https://blog.john-pfeiffer.com/docker-intro-install-run-and-port-forward/
 
 </details>
 
