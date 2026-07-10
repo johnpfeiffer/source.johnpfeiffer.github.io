@@ -28,7 +28,7 @@ Here's a fast way to build a simple, always-on, coding agent in the cloud: 1 Doc
 
 It is a simple chat web UI - in the center you can select a computer (i.e. `railway-agent`)
 
-Select your model. I have found using the open weight (only uses .55x quota) **(Droid Core) GLM 5.2 at reasoning level "max" and "Auto High" autonomy** to be very effective.
+Select your model. I have found using the open weight (only uses .55x quota) **(Droid Core) GLM 5.2 at reasoning level "max" and "Auto High" autonomy** to be cheap and effective. <https://feneky.com/benchmarks>
 
 Give it a prompt:
 
