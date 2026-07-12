@@ -10,37 +10,42 @@ iptables is the tool to create a firewall in linux (manipulate the tables provid
     which iptables
     sudo /sbin/iptables --version
 
-## Most common commands
+# Most common commands
+
+The most frequent thing you will probably do is examine the current configuration:
 
     iptables -nvL
 > output the rules in the default "FILTER" table (INPUT, OUTPUT) in numeric , verbose, List all rules
 
-<http://ipset.netfilter.org/iptables.man.html>
+<https://ipset.netfilter.org/iptables.man.html>
 
     iptables -nvL --line-numbers
 > numeric so no hostname lookups, verbose, List the rules in the chain
 
-## Interactive commands
+# Interactive commands
 
     iptables -D INPUT 5
 > delete the 5th line
 
-*don't forget chmod +x firewall-script-filename.sh and /sbin/service iptables save*
+*don't forget `chmod +x firewall-script-filename.sh` and `/sbin/service iptables save`*
 
-### iptables allow ping with a ratelimit
+## iptables allow ping with a ratelimit
 
     iptables -A INPUT -p icmp -m limit --limit 10/second -j ACCEPT
     iptables -A OUPUT -p icmp -j ACCEPT
-    > allow 10 inbound icmp packets (not tcp nor udp) per second and allow all icmp traffic outbound
+> allow 10 inbound icmp packets (not tcp nor udp) per second and allow all icmp traffic outbound
+
 
     iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
-    > echo-request = 8 in numeric
+> echo-request = 8 in numeric
 
     iptables -A OUTPUT -p icmp --icmp-type echo-reply -j ACCEPT
-    > Allow outgoing ping replies, echo reply = 0 in numeric
+> Allow outgoing ping replies, echo reply = 0 in numeric
 
 
-### Clean out the old iptables - very insecure settings
+## Clean out the old iptables - very insecure settings
+
+The following resets the system to accept all traffic:
 
     iptables -F
     iptables --delete-chain
@@ -54,35 +59,37 @@ iptables is the tool to create a firewall in linux (manipulate the tables provid
 > Set the default policies to accept all packets
 
 
-### Allow SSH, ping, and Established but block all by default
+## Allow SSH, ping, and Established but block all by default
 
-    :::bash
+```bash
     #!/bin/sh
+
+    # Always allow the loopback device
     iptables -I INPUT 1 -i lo -j ACCEPT
     iptables -I OUTPUT 1 -o lo -j ACCEPT
-    > Always allow the loopback device
       
+    # allow SSH server to accept connections
     iptables -A INPUT -p tcp --dport 22 -j ACCEPT
     iptables -A OUTPUT -p tcp --sport 22 -j ACCEPT
-    > allow SSH server to accept connections
     
+    # ssh server on eth1 on port 22
     iptables -A INPUT -i eth1 -p tcp --dport 22 -j ACCEPT
     iptables -A OUTPUT -o eth1 -p tcp --sport 22 -j ACCEPT
-    > ssh server on eth1 on port 22
     
+    # default to block all (subsequent) traffic
     iptables -P INPUT DROP
     iptables -P FORWARD DROP
     iptables -P OUTPUT DROP
-    > default to block all traffic
     
+    # Accept packets belonging to established and related connections
     iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
-    > Accept packets belonging to established and related connections
     
+    # Allow incoming ping requests from eth1 , echo-request = 8 in numeric
     iptables -A INPUT -i eth1 -p icmp --icmp-type echo-request -j ACCEPT
-    > Allow incoming ping requests from eth1 , echo-request = 8 in numeric
     
+    # Allow outgoing ping replies to eth1 , echo reply = 0 in numeric
     iptables -A OUTPUT -o eth1 -p icmp --icmp-type echo-reply -j ACCEPT
-    > Allow outgoing ping replies to eth1 , echo reply = 0 in numeric
+```
     
 - - -
 
@@ -91,7 +98,7 @@ iptables is the tool to create a firewall in linux (manipulate the tables provid
 > enable packet forwarding by the kernel, required to enable routing (especially with dual nics)
 
 
-### bash script to set iptables during init.d
+## bash script to set iptables during init.d
 
     :::bash
     #!/bin/bash
@@ -111,7 +118,7 @@ iptables is the tool to create a firewall in linux (manipulate the tables provid
     iptables -P FORWARD DROP
     iptables -P OUTPUT DROP
     
-    # Protect against SYN flood attacks (see http://cr.yp.to/syncookies.html).
+    # Protect against SYN flood attacks (see https://cr.yp.to/syncookies.html).
     echo 1 > /proc/sys/net/ipv4/tcp_syncookies
     
     # Allow loopback
@@ -138,7 +145,7 @@ iptables is the tool to create a firewall in linux (manipulate the tables provid
     iptables -A OUTPUT -p tcp --dport 443 -m state --state NEW,ESTABLISHED -j ACCEPT
     iptables -A INPUT -p tcp -s 0/0 --sport 443 --dport 1024:65535 -m state --state ESTABLISHED -j ACCEPT
 
-### Web Server
+## Example Web Server Firewall Config
 
     :::bash
     #!/bin/sh
@@ -182,7 +189,7 @@ iptables is the tool to create a firewall in linux (manipulate the tables provid
     # iptables -A OUPUT -p icmp -j ACCEPT
 
 
-### Web and XMPP Server
+## Web and XMPP Server
 
 `vi /etc/iptables.rules.xmpp`
 
@@ -215,7 +222,10 @@ iptables is the tool to create a firewall in linux (manipulate the tables provid
 `iptables-restore < /etc/iptables.rules.xmpp`
 
 - - -
-### NTP
+
+# More protocols and configs
+
+## NTP
 *Getting the time and date synchronized through a restricted firewall*
 
     #!/bin/bash
@@ -243,7 +253,7 @@ iptables is the tool to create a firewall in linux (manipulate the tables provid
 
 
 - - -
-### NAT forwarding
+## NAT forwarding
 
     iptables -A FORWARD -i eth1 -o eth0 -j ACCEPT
     iptables -A FORWARD -i eth0 -o eth1 -j ACCEPT
@@ -256,7 +266,7 @@ iptables is the tool to create a firewall in linux (manipulate the tables provid
 > enable "nat" so that packets are addressed properly
 
 - - -
-### CIFS
+## CIFS
     iptables -A INPUT -p tcp -s 10.10.10.250 --sport 445 -d 0/0 -j ACCEPT
     iptables -A OUTPUT -p tcp -s 0/0 --sport 1024:65535 -d 10.10.10.250 --dport 445 -m state --state NEW,ESTABLISHED -j ACCEPT
     > CIFS has been simplified to just use 445 TCP first...
@@ -266,7 +276,7 @@ iptables is the tool to create a firewall in linux (manipulate the tables provid
     netbios-ssn - 139/tcp # NETBIOS session service
     microsoft-ds - 445/tcp # if you are using Active Directory
 
-### Allow AD Lookups LDAP/LDAPS
+## Allow AD Lookups LDAP/LDAPS
 
     iptables -A INPUT -p tcp -s 0/0 --sport 1024:65535 --dport 389 -m state --state NEW,ESTABLISHED -j ACCEPT
     iptables -A OUTPUT -p tcp -s 0/0 --sport 389 --dport 1024:65535 -m state --state ESTABLISHED -j ACCEPT
@@ -281,7 +291,7 @@ iptables is the tool to create a firewall in linux (manipulate the tables provid
     iptables -A INPUT -p tcp -s 0/0 --sport 636 --dport 1024:65535 -m state --state ESTABLISHED -j ACCEPT
 
 - - -
-### DMZ Setup with dual nic
+## DMZ Setup with dual nic
 
 - ATMOS = 10.10.254.195
 - LAN (router?) =  10.10.254.1
@@ -290,7 +300,7 @@ iptables is the tool to create a firewall in linux (manipulate the tables provid
 - eth2 = DMZ  192.168.50.1
 - Router 172.16.255.1
 
-#### forward traffic between DMZ and LAN
+### forward traffic between DMZ and LAN
 
     iptables -A FORWARD -i eth0 -o eth2 -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
     iptables -A FORWARD -i eth2 -o eth0 -m state --state ESTABLISHED,RELATED -j ACCEPT
@@ -311,7 +321,7 @@ iptables is the tool to create a firewall in linux (manipulate the tables provid
 
 > End DMZ .. Add other rules
 
-## Uncomplicated Firewall UFW
+# Uncomplicated Firewall UFW
 
 The uncomplicated firewall is a much simpler way to configure some basic rules and enable the firewall
 
@@ -334,6 +344,7 @@ The uncomplicated firewall is a much simpler way to configure some basic rules a
 > disabling the firewall allows all traffic
 
 Most unfortunately there are some basic gaps that make it not very production ready (i.e. if you know what you are doing just keep using iptables)
+
 1. ping, also known as icmp, packets (even just outbound) have to be handled in a very complex way, really not much better than iptables
 1. established connection traffic is not just easily allowed
 1. attempting to do something more complex very quickly requires very complex commands including just using iptables (lolwut)
