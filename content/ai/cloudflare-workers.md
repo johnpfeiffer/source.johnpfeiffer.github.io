@@ -302,9 +302,9 @@ This means your Application needs a "Workers AI" binding configured. At the Clou
 
 Give your binding a name under Variable name, e.g. AI
 
-| Type   | Name | Value      |
-|--------|-----|-----------|
-| Workers AI | AI | Workers AI Catalog  |
+| Type       | Name |   Value      |
+|------------|---------|-------------|
+| Workers AI | AI     | Workers AI Catalog |
 
 *Redeploy your project for the binding to take effect.*
 

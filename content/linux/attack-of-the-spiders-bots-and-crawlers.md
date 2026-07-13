@@ -19,30 +19,32 @@ Drupal (CMS) is remarkably good at making content for bots to read so it's not s
 > 105 hits from <https://en.wikipedia.org/wiki/Googlebot>
     
 `cat john-pfeiffer.access | grep "bingbot" | wc -l` 
-> 96 hits from <http://en.wikipedia.org/wiki/Bingbot>
+> 96 hits from <https://en.wikipedia.org/wiki/Bingbot>
 
 `cat john-pfeiffer.access | grep "Baiduspider" | wc -l`
-> 93 hits from <http://baidu.com/search/spider_english.html>
+> 93 hits from <https://www.baidu.com/search/robots_english.html>
 
 `cat john-pfeiffer.access | grep "SISTRIX Crawler" | wc -l`
-> 76 hits from <http://crawler.sistrix.net>
+> 76 hits from <https://www.sistrix.com/support/handbook/optimizer/crawling-log/>
 
 `cat john-pfeiffer.access | grep "YandexBot" | wc -l`
-> 64 hits from <http://www.botopedia.org/user-agent-list/search-bots/yandex-bot>
+> 64 hits from <https://web.archive.org/web/20141006192654/www.botopedia.org/user-agent-list/search-bots/yandex-bot>
 
 `cat john-pfeiffer.access | grep "Mail.RU\_Bot" | wc -l`
-> 23 hits from <http://www.webmasterworld.com/search_engine_spiders/4520951.htm> , <http://www.botopedia.org/user-agent-list/search-bots/mailru-bot>
+> 23 hits from <https://www.webmasterworld.com/search_engine_spiders/4520951.htm> , <http://www.botopedia.org/user-agent-list/search-bots/mailru-bot>
 
 `cat john-pfeiffer.access | grep "MJ12bot" | wc -l`
-> 12 hits from <http://www.majestic12.co.uk/projects/dsearch/mj12bot.php>
+> 12 hits from <https://www.majestic12.co.uk/projects/dsearch/>
 
 `cat john-pfeiffer.access | grep "Sogou" | wc -l`
-> 7 hits from <http://www.botopedia.org/user-agent-list/search-bots/sogou-spider>
+> 7 hits from <https://web.archive.org/web/20141010233507/http://www.botopedia.org/user-agent-list/search-bots/sogou-spider>
 
 
 ### More Info on Bots and Crawlers    
-<http://www.incapsula.com/the-incapsula-blog/item/393-know-your-top-10-bots>
 
-<http://searchenginewatch.com/article/2067357/Bye-bye-Crawler-Blocking-the-Parasites>
+<https://web.archive.org/web/20131028113445/http://www.incapsula.com/the-incapsula-blog/item/393-know-your-top-10-bots>
+
+<https://searchenginewatch.com/article/2067357/Bye-bye-Crawler-Blocking-the-Parasites>
 
 (Besides robots.txt you are pretty much left with ban by User-Agent or IP Address Range.)
+
