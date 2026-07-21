@@ -86,6 +86,14 @@ Applying this declarative mindset to an improved Specification workflow:
 - Agentic coding (with harness and skills) implement
 - [Verify via automated tests and auditing log statements]
 
+**Edit 2026-07**
+Formal methods flowing in opposite directions:
+
+While TLA+ applies formal math logic to verify software, 
+Lean applies software (a type-checked programming language) to verify mathematical proofs.
+
+- <https://xenaproject.wordpress.com/2026/07/20/human-mathematicians-are-being-outcounterexampled/>
+- <https://en.wikipedia.org/wiki/Lean_(proof_assistant)#Usage>
 
 # An evening with TLA+
 
