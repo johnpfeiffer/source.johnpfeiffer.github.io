@@ -22,16 +22,17 @@ My step by step approach, leveraging mostly free resources (*~$10 to unlock high
 
 > tldr: agent harness affects outcomes almost as much as model size, including dramatically reducing time and tokens used
 
-| | North Mini Code + mini-swe-agent | Nemotron 3 Ultra + mini-swe-agent | Nemotron 3 Ultra + terminus-2 |
-|------------|------------|------------|------------|
-| Result | timeout, reward 0.0 | pass, reward 1.0 | pass, reward 1.0 |
-| Steps | 15 (timed out) | 16 (completed) | 5 (completed) |
-| Reasoning tokens | 57,735 (96% of output) | 9,894 (40% of output) | ~3,500 (41% of output, estimated) |
-| Completion tokens | 59,951 | 24,820 | 8,493 |
-| Input tokens | 15,323 | 286,276 | 18,962 |
-| Cache hits | 0 | 208,896 (73%) | 4,352 (23%) |
-| Time | >15 min (killed) | 12m 30s | 4m 10s |
-| Behavior | `grep -R "regex" /` | wrote solution, ran 33 edge cases | analyzed, wrote regex, verified in one shot |
+| | North Mini Code   | Nemotron 3 Ultra   | Nemotron 3 Ultra   |
+|---|---|---|---|
+| Agent: | **mini-swe-agent** | **mini-swe-agent** | **terminus-2** |
+| Result: | timeout, reward 0.0 | pass, reward 1.0 | pass, reward 1.0 |
+| Steps: | 15 (timed out) | 16 (completed) | 5 (completed) |
+| Reasoning tokens: | 57,735&nbsp;(96%&nbsp;of&nbsp;output)&nbsp; | 9,894 (40% of output) | ~3,500 (41% of output, est.) |
+| Completion tokens: | 59,951 | 24,820 | 8,493 |
+| Input tokens: | 15,323 | 286,276 | 18,962 |
+| Cache hits: | 0 | 208,896 (73%) | 4,352 (23%) |
+| Time: | >15 min (killed) | 12m 30s | 4m 10s |
+| Behavior: | `grep -R "regex" /` | wrote solution, ran 33 edge cases | analyzed, wrote regex, verified in one shot |
 
 
 ## High Level Diagram
@@ -179,7 +180,7 @@ I picked a specific task that I can relate to: finding that one log message in a
 - <https://github.com/harbor-framework/terminal-bench-2-1/tree/main/tasks/regex-log>
 
 
-## Cohere North Mini-Code
+## Cohere North Mini Code
 
 Using an open source model focused on coding, a "Mixture of Experts" 30B parameters with just 3B active.
 
