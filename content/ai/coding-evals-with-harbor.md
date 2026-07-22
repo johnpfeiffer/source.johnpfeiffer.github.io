@@ -14,7 +14,7 @@ New LLM capabilities like "reasoning" or "tool use" become table stakes for the 
 
 Since coding is a concrete way to measure one axis of progress, here's how you can actually test a model with a coding benchmark and an agent (harness).
 
-My step by step approach, leveraging mostly free resources (*~$10 to unlock higher rate limits), allows you to reproduce the findings from the paper: <https://arxiv.org/html/2601.11868v1>
+My step by step approach, leveraging mostly free resources (*~$10 to unlock higher rate limits), allows you to reproduce the findings from the 2024 SWE Agent NeurIpps paper and be on the path to reproducing the 2026 Terminal Bench paper: <https://arxiv.org/html/2601.11868v1>
 
 > Then, we benchmark frontier LLMs and agents on the 89 tasks in Terminal-Bench 2.0, and find that frontier models and agents resolve less than 65% of tasks, with smaller models scoring around 15%.
 
@@ -142,7 +142,7 @@ result.json
 CONTAINER ID   IMAGE                          COMMAND                  CREATED          STATUS                        PORTS     NAMES
 72ef64cd5ccb   python:3.13-slim               "sh -c 'sleep infini…"   35 minutes ago   Up 35 minutes                           analyze-python-30__cejrwg3__a2ojddk__env-main-1
 ...
-````
+```
 
 Stopping the suite rather than running serially through 164 tasks:
 
