@@ -188,6 +188,31 @@ Docker's a familiar foundation https://blog.john-pfeiffer.com/docker-intro-insta
 
 </details>
 
+### Factory Droid locally in Docker
+
+Note that a docker container (sandbox) is not full isolation, but it is a useful way to experiment interactively.
+
+<details>
+
+There is a docker supported image to "sandbox" the droid agent
+
+`docker run -it --rm --volume /Users/USERNAME/mydata:/opt/mydata docker/sandbox-templates:droid-docker /bin/bash`
+
+> Docker ephemeral container that can exchange files through the shared volume
+
+```
+cd /opt/mydata
+droid login
+/model
+```
+
+- Use the url provided and a browser with a logged in Factory session to authenticate.
+- select a model; "Droid Core" models are open weight and use less credits
+
+<https://docs.docker.com/ai/sandboxes/agents/droid/>
+
+</details>
+
 ## New Project and Service
 
 *Assuming you have created a Railway account etc.*
