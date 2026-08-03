@@ -90,6 +90,8 @@ The difference is what you get for the money: any model you want, any configurat
 
 *The tradeoff is real: you own the ops. A misconfiguration can cause the server to OOM and lose the work in flight.*
 
+*If you need a single agent to run faster than 20 tokens per second, then you need more hardware speed (GB/s) or Quantization or even speculative decoding*
+
 When the workload needs a specific model or config that isn't offered, or is heavy enough to trigger limits, having the know-how to rent a GPU and manage it yourself gives you a solution.
 
 Walk through the full setup step by step in the Appendix =)
@@ -404,8 +406,16 @@ watch -n 1 \
 
 # References
 
+**vLLM** <https://en.wikipedia.org/wiki/VLLM> , <https://github.com/vllm-project/vllm>
+
+
+**Thundercompute**
+
 > Instead of reserving a GPU, cloud instances on Thunder Compute share a pool of network-attached GPUs.
 
 More details: <https://www.thundercompute.com/blog/how-thunder-compute-works-gpu-over-tcp>
 
 Thunder A100-SXM4-80GB , $1.09/hr
+
+*(Note that a Linode box was $.07 per hour, 1/10th the cost of these very in-demand GPUs)*
+
