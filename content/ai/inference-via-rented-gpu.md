@@ -12,7 +12,7 @@ The bottleneck to more parallelism is the amount of VRAM available for KV cache;
 
 So why/when would I prefer renting a GPU that costs more even when fully utilized, where I pay even when it's idle?
 
-**Running specific configurations like quantized or customized versions of the model, no mystery ratelimit, with predictable spend.**
+**Running specific configs like quantized or custom models, no mystery ratelimit, data remains in infra you control... with predictable spend.**
 
 ## Diagram
 
@@ -77,17 +77,20 @@ And when agents get stuck going in a circle or Loops that don't converge, failur
 This is not new: cost over-runs were a regular challenge of early (~2010s) cloud adoption, and I've personally seen shocking cloud bills in 2026. Amazon even have a special support request for "huge accidental charges".
 
 
-# Predictable Spend
+# Privacy and Predictable Spend
+If the data the agents are working on has strict privacy and confidentiality requirements, you may not be able to use most LLM API vendors.
 
-GPU rental was $1.09 per hour (for an A100 with 80GB of VRAM). At full utilization (500k tokens per hour) that's roughly 2 hours, or $2.18 for a million output tokens.
+GPU rental solves it for a known price.
+
+At $1.09 per hour for an A100 with 80GB of VRAM, full utilization (500k tokens per hour) for 2 hours costs $2.18 for a million output tokens.
 
 The API cost is less, maybe $1 (from a blended rate of input, reasoning, and output tokens).
 
 The difference is what you get for the money: any model you want, any configuration, no ratelimit, and a bill you can predict before you start.
 
-*The tradeoff is real: you own the ops. A misconfiguration can cause OOM the server and lose the work in flight.*
+*The tradeoff is real: you own the ops. A misconfiguration can cause the server to OOM and lose the work in flight.*
 
-When the workload is specific enough that API models can't meet, or heavy enough to trigger limits, having the know-how to rent a GPU and manage it yourself gives you a solution.
+When the workload needs a specific model or config that isn't offered, or is heavy enough to trigger limits, having the know-how to rent a GPU and manage it yourself gives you a solution.
 
 Walk through the full setup step by step in the Appendix =)
 
