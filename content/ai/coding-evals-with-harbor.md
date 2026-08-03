@@ -140,8 +140,8 @@ result.json
 `docker ps -a`
 
 ```bash
-CONTAINER ID   IMAGE                          COMMAND                  CREATED          STATUS                        PORTS     NAMES
-72ef64cd5ccb   python:3.13-slim               "sh -c 'sleep infini…"   35 minutes ago   Up 35 minutes                           analyze-python-30__cejrwg3__a2ojddk__env-main-1
+CONTAINER ID   IMAGE             COMMAND                CREATED          STATUS      PORTS     NAMES
+72ef64cd5ccb   python:3.13-slim  "sh -c 'sleep infini…"  35 minutes ago  Up 35 minutes   analyze-python-30__cejrwg3__a2ojddk__env-main-1
 ...
 ```
 
@@ -386,6 +386,20 @@ Not retrying trial because the exception is not in include_exceptions or the max
 ```
 
 **SOLUTION:** The agent failed due to the model's (Cohere: North Mini Code) limitations, try a different model. *This kind of timeout is effectively a "test failed" outcome*.
+
+
+## Parallelization of Trials and Submitting to the Leaderboard
+
+> (you must run at least 5 trials per task and upload them to Harbor Hub publicly
+
+<https://github.com/harbor-framework/terminal-bench-2-1#submitting-to-the-leaderboard>
+
+`harbor run -d terminal-bench/terminal-bench-2-1 --agent terminus-2 --model openrouter/nvidia/nemotron-3-ultra-550b-a55b:free --include-task-name "terminal-bench/cobol-modernization" -k 5 -n 5`
+
+*running the same task with 5 trials but also concurrency set to 5, Total runtime: 10m 57s*
+
+A fast way to check all the current results: `grep -A5 -r '"reward":' jobs/`
+
 
 ## Hosting
 

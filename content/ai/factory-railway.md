@@ -26,7 +26,7 @@ Here's a fast way to build a simple, always-on, coding agent in the cloud: 1 Doc
 
 ## Prompt to Code
 
-It is a simple chat web UI - in the center you can select a computer (i.e. `railway-agent`)
+It's a simple chat UI in a web browser - in the center you can select a computer (i.e. `railway-agent`)
 
 Select your model. I have found using the open weight (only uses .55x quota) **(Droid Core) GLM 5.2 at reasoning level "max" and "Auto High" autonomy** to be cheap and effective. <https://feneky.com/benchmarks>
 
@@ -46,11 +46,16 @@ Then use the GitHub mobile app to Review and Approve =)
 
 > Hosting environment + Coding Agent + API Keys
 
+- Railway's the resources and execution environment
+- Factory's the UI and control plane, and the LLM
+- GitHub's the persistence (for coding tasks)
+
+
 A coding agent is just a software program that repeatedly calls an LLM, has a "harness" to use the command line and tools, and writes/edits (text) code files.
 
 <https://blog.john-pfeiffer.com/ai-with-agents-aka-llms-with-tools/>
 
-Consider this an ephemeral work environment. The only tools provided are those in the Docker container, or what the agent downloads and installs.
+Consider this an ephemeral work environment. The only tools provided are those in the Docker container, or what the agent downloads and installs (lasting only until the next container redeploy).
 
 ## Under the hood
 
@@ -315,7 +320,7 @@ Without it, every fresh container has an empty `~/.factory` and tries to re-clai
 
 >  Computer with name "MYAGENT" already exists
 
-Click on the Purple button "Deploy" - it will
+Click on the Purple button "Deploy" - it will redeploy the container with the new volume attached
 
 ## Ephemeral by default
 
@@ -400,6 +405,8 @@ You can see your Factory usage limits, the now-familiar rolling "5 hour" window,
 
 Factory -> Settings -> Usage
 
+These limits force a deliberate pacing to your work - and protect you if an agent goes off the rails and burns a lot of tokens.
+
 # Use your Creativity
 
 More than coding, you can ask/prompt the agent to:
@@ -407,10 +414,18 @@ More than coding, you can ask/prompt the agent to:
 - list the files in the container
 - analyze the last 10 git commits of a repo that was cloned
 - install new tools and packages to experiment with 
-- summarize a website "Summarize the top 20 main themes from the comments, prioritizing them by uniqueness"
+- summarize a website: "Summarize the top 20 main themes from the comments, prioritizing them by uniqueness"
 - download and analyze data
 
 From this foundation, the next step is multiple hosted agents - each one working in parallel on an assignment. Different roles like Code Reviewer, Security Auditor, etc.
+
+# Sharp Edges
+
+- It's double edged that the agent is empowered with CPU/RAM, shell, git credentials, and network - it could also do unexpected/unasked for actions and network calls
+- A GitHub PAT is the classic long lived token problem; using a dedicated separated GitHub account and require pull requests as the minimum mitigations
+- The Railway container is deliberately ephemeral without replicas and a single mounted volume without any backups; redeploy loses any in progress state
+- Factory only support their centralized UI and relay, security and maintenance for the environment (railway) is your responsibility
+- - The Droid agent can seem to lose connectivity with Factory; a redeploy of the Railway container "fixes" it (and also upgrades the droid agent)
 
 # References
 
