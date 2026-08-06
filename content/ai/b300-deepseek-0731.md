@@ -84,7 +84,7 @@ vllm serve deepseek-ai/DeepSeek-V4-Flash-0731 \
   --speculative-config '{"method":"dspark","num_speculative_tokens":7,"draft_sample_method":"greedy"}'
 ```
 
-The `--data-parallel-size 4` only makes sense if you have four B300s.
+"--data-parallel-size 4" only makes sense if you have four B300s.
 </details>
 
 
@@ -98,35 +98,55 @@ What works:
 - FP4 indexer cache
 - DSpark enabled
 
+<details>
 
+- `--served-model-name deepseek-v4-flash-0731`
+  - Model name exposed through the API.
 
-| Flag | Description |
-|------|----------------------|
-| `--served-model-name deepseek-v4-flash-0731` | Model name exposed through the API |
-| `--host 127.0.0.1` | **Security**: listen only on localhost |
-| `--port 8000` | HTTP server port |
-| `--max-model-len 65536` | Maximum context window (input + output tokens) per request |
-| `--tokenizer-mode deepseek_v4` | Use DeepSeek-V4 tokenizer/chat formatting |
-| `--reasoning-parser deepseek_v4` | Parse DeepSeek reasoning output into structured API fields |
-| `--tool-call-parser deepseek_v4` | Parse DeepSeek-native tool calls into OpenAI tool calls |
-| `--enable-auto-tool-choice` | Allow the model to automatically decide whether to call tools |
-| `--trust-remote-code` | *Insecure:* Execute custom model code from the Hugging Face repository |
-| `--kv-cache-dtype fp8` | Store the KV cache in FP8 to reduce memory usage |
-| `--block-size 256` | Allocate KV cache in 256-token pages |
-| `--enable-expert-parallel` | Distribute MoE experts across GPUs instead of tensor-splitting them |
-| `--attention-config '{"use_fp4_indexer_cache": true}'` | Enable FP4 compressed attention index cache to reduce memory/bandwidth |
-| `--speculative-config '{"method":"dspark","num_speculative_tokens":7,"draft_sample_method":"greedy"}'` | Enable DSpark speculative decoding with a 7-token draft window |
+- `--host 127.0.0.1` and `--port 8000`
+  - **Security:** Listen only on localhost, with the HTTP Server port 8000
+
+- `--max-model-len 65536`
+  - Maximum context window (input + output tokens) per request.
+
+- `--tokenizer-mode deepseek_v4`
+  - Use the DeepSeek-V4 tokenizer and chat formatting.
+
+- `--reasoning-parser deepseek_v4`
+  - Parse DeepSeek reasoning output into structured API fields.
+
+- `--tool-call-parser deepseek_v4`
+  - Convert DeepSeek-native tool calls into OpenAI-compatible tool calls.
+
+- `--enable-auto-tool-choice`
+  - Allow the model to decide automatically when to call tools.
+
+- `--trust-remote-code`
+  - *Insecure Security:* Execute custom model code from the Hugging Face repository.
+
+- `--kv-cache-dtype fp8`
+  - Store the KV cache in FP8 to reduce memory usage.
+
+- `--block-size 256`
+  - Allocate the KV cache in 256-token pages.
+
+- `--enable-expert-parallel`
+  - Required for DeepSeek-V4. Distribute MoE experts instead of tensor-splitting them.
+
+- `--attention-config '{"use_fp4_indexer_cache": true}'`
+  - Enable FP4 compressed attention index caching to reduce memory bandwidth.
+
+- `--speculative-config '{"method":"dspark","num_speculative_tokens":7,"draft_sample_method":"greedy"}'`
+  - Enable DSpark speculative decoding with a 7-token draft window.
 
 
 *considered but not used    --moe-backend deep_gemm_mega_moe , --enforce-eager (for safe compatibility)*
 
+</details>
 
 
 ## GOTCHAS
 
-> If you "migrate your pod" it auto-starts
-
-So if you're not there when it's completed, then you can burn through your credit balance.
 
 
 > If you change a flag or config you may re-trigger auto-tuning which eats ~5 to 10 mins
@@ -145,6 +165,7 @@ If for instance "Breakable CUDA graphs" auto-tunes but then crashes, so then you
 
 The log looks very slow but... this is fine:
 
+<details>
 ```
 (EngineCore pid=69594) 2026-08-04 19:20:05,325 - INFO - cubin_loader.py:84 - flashinfer.jit: Acquired lock for /root/.cache/flashinfer/cubins/481dce07c89a216cbfd18cf39de49a82d40739a8/batched_gemm-dd6d23e-721ae60/include/trtllmGen_bmm_export/trtllm/gen/SparsityDecl.h
 (EngineCore pid=69594) 2026-08-04 19:20:05,510 - INFO - cubin_loader.py:114 - flashinfer.jit: File downloaded successfully: https://edge.urm.nvidia.com/artifactory/sw-kernelinferencelibrary-public-generic-local/481dce07c89a216cbfd18cf39de49a82d40739a8/batched_gemm-dd6d23e-721ae60/include/trtllmGen_bmm_export/trtllm/gen/SparsityDecl.h -> /root/.cache/flashinfer/cubins/481dce07c89a216cbfd18cf39de49a82d40739a8/batched_gemm-dd6d23e-721ae60/include/trtllmGen_bmm_export/trtllm/gen/SparsityDecl.h
@@ -163,25 +184,20 @@ root@2d6c42f12b28:/# ps -eo pid,pcpu,pmem,etime,cmd --sort=-pcpu | head
     669  0.0  0.0       55:15 nginx: worker process
 
 ```
+</details>
 
 *Preserve /root/.cache/flashinfer if you recreate or restart the environment; otherwise you may pay this compilation cost again.*
 
 
-### Skip warmup
-
-> This is a real DeepGEMM kernel failure on SM103
-
-```
-export VLLM_USE_DEEP_GEMM=1
-```
-
-
-### Sparse-Prefill invalid pointer 
-
-
->  known upstream vLLM/FlashMLA class of failure
+>  known upstream vLLM/FlashMLA class of failure of Sparse-Prefill invalid pointer 
 
 There is an open vLLM issue describing essentially the same DeepSeek V4 + DSpark failure: the FlashMLA sparse-prefill kernel receives an invalid pointer during TMA descriptor initialization. 
+
+
+> In Runpod, if you "migrate your pod" it auto-starts
+
+So if you're not there when it's completed, then you can burn through your credit balance.
+
 
 # Performance Benchmarks
 
@@ -194,8 +210,8 @@ One specific task (`regex-log`) from Terminal Bench 2.1.
 **DeepSeek V4 Flash 0731**
 
 - 15 of 16 agents succeeded
-- - **55 tokens per second, per agent**
-- Prefix cache ~92% = can double output to 880 t/s
+- - 55 tokens per second, per agent
+- Prefix cache ~92% = can double output to **880 t/s**
 
 
 **Gemma4 31B**
@@ -204,6 +220,7 @@ One specific task (`regex-log`) from Terminal Bench 2.1.
 - 64 tokens per second for a 1 agent  *(scales to about 60 t/s at 4x agents)*
 - 55 tokens per second for 8 agents *(Avg generation throughput: 440.0 tokens/s, Running: 8 reqs)*
 
+---
 
 # Appendix and Methodology
 
@@ -378,7 +395,7 @@ The usual verification checks:
   
 `curl -s http://localhost:8000/v1/models | jq`
 
-
+*{"object": "list","data": [{"id": "deepseek-v4-flash-0731",...*
 
 ---
 # Linode and Harbor
@@ -415,7 +432,7 @@ ss -ltnp | grep ':18000'
 
 `curl -s http://localhost:18000/v1/models | jq`
 
-```{"object": "list","data": [{"id": "deepseek-v4-flash-0731",...```
+*{"object": "list","data": [{"id": "deepseek-v4-flash-0731",...*
 
 
 
@@ -453,8 +470,7 @@ The per-position acceptance drops off a cliff: 67% -> 43% -> 31% -> 24% -> 17% -
 
 **The learning**: worth try num_speculative tokens as 4.
 
-| `--speculative-config '{"method":"dspark","num_speculative_tokens":7,"draft_sample_method":"greedy"}'` | Enable DSpark speculative decoding with a 7-token draft window |
-
+`--speculative-config '{"method":"dspark","num_speculative_tokens":4,"draft_sample_method":"greedy"}'`
 
 
 ---
@@ -465,6 +481,7 @@ Waiting 20 minutes for a lot of JIT compilation takes patience.
 
 Concurrently (byobu/tmux) check on things with `ps aux | grep ptax`
 
+<details>
 ```
 (APIServer pid=347228) INFO:     Started server process [347228]
 (APIServer pid=347228) INFO:     Waiting for application startup.
@@ -486,6 +503,8 @@ Concurrently (byobu/tmux) check on things with `ps aux | grep ptax`
 (APIServer pid=347228) INFO 08-04 21:02:08 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 4.4 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 83.7%
 (APIServer pid=347228) INFO 08-04 21:02:08 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 7.50, Accepted throughput: 3.90 tokens/s, Drafted throughput: 4.20 tokens/s, Accepted: 39 tokens, Drafted: 42 tokens, Per-position acceptance rate: 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 0.500, Avg Draft acceptance rate: 92.9%
 ```
+
+</details>
 
 ## vLLM start with Breakable CUDA Graph enabled
 
@@ -1119,14 +1138,16 @@ Job Info Total runtime: 7m 49s
 
 ---
 
-# SUCCESS vLLM logs CUDAGraphMode FULL_AND_PIECEWISE
+# Even more vLLM logs
 
+Success with **CUDAGraphMode FULL_AND_PIECEWISE**
+
+`export VLLM_USE_DEEP_GEMM=1`
+
+`export VLLM_USE_BREAKABLE_CUDAGRAPH=0`
 
 <details>
 ```
-
-export VLLM_USE_DEEP_GEMM=1
-export VLLM_USE_BREAKABLE_CUDAGRAPH=0
 
 (MODELS) root@f31f388770e0:/MODELS# vllm serve /MODELS/DeepSeek-V4-Flash-0731   --served-model-name deepseek-v4-flash-0731   --host 127.0.0.1 --port 8000   --max-model-len 65536   --tokenizer-mode deepseek_v4   --reasoning-parser deepseek_v4   --tool-call-parser deepseek_v4   --enable-auto-tool-choice   --trust-remote-code --kv-cache-dtype fp8 --block-size 256   --enable-expert-parallel   --attention-config '{"use_fp4_indexer_cache": true}'   --speculative-config '{"method":"dspark","num_speculative_tokens":7,"draft_sample_method":"greedy"}'   2>&1 | tee /workspace/vllm-warmup.log
 (APIServer pid=87905) INFO 08-06 21:23:15 [api_utils.py:345] 
