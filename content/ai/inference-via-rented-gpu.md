@@ -228,6 +228,8 @@ VLLM_USE_V2_MODEL_RUNNER=0 uv tool run vllm serve google/gemma-4-31B-it \
 *When you are finally done just delete the box to stop the per minute charges.*
 
 ## Linode
+`ssh -i ~/.ssh/mykey root@192.168.2.222`
+
 Linode 8GB with Harbor setup: <https://blog.john-pfeiffer.com/reproducing-a-coding-benchmark-with-harbor-and-terminal-bench-21/#install-docker>
 
 `apt install -y autossh`
