@@ -130,7 +130,7 @@ Critical thinking is needed for careful vendor analysis: what specifically do yo
 2. Stable and Predictable - both in their product and in their pricing
 3. Transparency - how it is setup, and metrics on how it's operating
 
-*During the transition from magentic disks to solid-state-drives (SSD) I learned to depend on their interface/drivers, but to run the benchmarks myself.*
+*During the transition from magnetic disks to solid-state-drives (SSD) I learned to depend on their interface/drivers, but to run the benchmarks myself.*
 
 And similarly we've seen this when everyone was learning to adopt the cloud (examples from Netflix):
 
@@ -192,6 +192,7 @@ du -sh /root/.cache/huggingface/hub/models--google--gemma-4-31B-it/
 
 > as simple as one long command
 
+```
 VLLM_USE_V2_MODEL_RUNNER=0 uv tool run vllm serve google/gemma-4-31B-it \
   --dtype bfloat16 \
   --max-model-len 16384 \
@@ -203,19 +204,20 @@ VLLM_USE_V2_MODEL_RUNNER=0 uv tool run vllm serve google/gemma-4-31B-it \
   --limit-mm-per-prompt '{"image":0,"audio":0}' \
   --host 127.0.0.1 \
   --port 8000
+```
 
-**security** *note: local binding to 127.0.0.1*
-
-*preferred the VLLM V1 model runner as a stable baseline*
-
-*vLLM resolves google/gemma-4-31B-it against the local HF cache before hitting the network, the capital letter B matters*
+- *preferred the VLLM V1 model runner as a stable baseline*
+- *vLLM resolves google/gemma-4-31B-it , the capital B matters, against the local HF cache before hitting the network*
+- constrain a single request to at most 16k tokens (prompt + generated)
+- **security** *note: local binding to 127.0.0.1*
+- enable "Reasoning"
+- disabled the multimodal (image and audio) capabilities
 
 *maybe the agent, with thinking disabled, would have performed better (used less tokens to fail faster)*
 
 > Verify that it is successful locally 
 
-`curl -s localhost:8000/health -o /dev/null -w '%{http_code}\n'`
-*200*
+`curl -s localhost:8000/health -o /dev/null -w '%{http_code}\n'` = *200*
 
 `curl -s localhost:8000/v1/models`
 
@@ -236,7 +238,7 @@ Linode 8GB with Harbor setup: <https://blog.john-pfeiffer.com/reproducing-a-codi
 
 - the same starting point for comparisons to running Harbor with API
 - not as operationally sound or supported to run "docker in docker" for Thundercompute (or any GPU provider)
-- network latency (milliseconds) was neglible is a factor compared to LLM response times (seconds to minutes)
+- network latency (milliseconds) was negligible as a factor compared to LLM response times (seconds to minutes)
 - real world usage will be from "a server somewhere over a network"
 
 ###  SSH tunnel
@@ -289,10 +291,9 @@ seq 1 32 | xargs -P32 -I{} curl -s -o /dev/null -w '%{time_total}\n' \
 
 ### Run The Harbor Benchmark
 
-
 `export OPENAI_API_KEY=dummy`
-`export OPENAI_BASE_URL=http://127.0.0.1:18000/v1`
 
+`export OPENAI_BASE_URL=http://127.0.0.1:18000/v1`
 
 ```
 harbor run -d terminal-bench/terminal-bench-2-1 --agent terminus-2 \
