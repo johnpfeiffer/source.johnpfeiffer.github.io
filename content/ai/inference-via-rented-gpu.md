@@ -232,7 +232,7 @@ Linode 8GB with Harbor setup: <https://blog.john-pfeiffer.com/reproducing-a-codi
 
 `apt install -y autossh`
 
-*ensure the MYKEY ssh key for ThunderCompute is put onto the Linode box*
+*ensure the MYKEY ssh key for ThunderCompute is put onto the Linode box, and `chmod 400 /root/.ssh/MYKEY`*
 
 **Why an external benchmark box?**
 
