@@ -96,9 +96,9 @@ What works:
 - DeepGEMM
 - expert parallel enabled
 - FP4 indexer cache
-- DSpark enabled
+- DSpark speculative decoder enabled
 
-<details>
+<details markdown="1">
 
 - `--served-model-name deepseek-v4-flash-0731`
   - Model name exposed through the API.
@@ -518,7 +518,6 @@ harbor run -d terminal-bench/terminal-bench-2-1 --agent terminus-2 --model opena
 
 <details>
 ```
-(APIServer pid=57071) INFO 08-06 20:48:31 [api_utils.py:345] 
 (APIServer pid=57071) INFO 08-06 20:48:31 [api_utils.py:345]        █     █     █▄   ▄█
 (APIServer pid=57071) INFO 08-06 20:48:31 [api_utils.py:345]  ▄▄ ▄█ █     █     █ ▀▄▀ █  version 0.26.0
 (APIServer pid=57071) INFO 08-06 20:48:31 [api_utils.py:345]   █▄█▀ █     █     █     █  model   /MODELS/DeepSeek-V4-Flash-0731
@@ -559,7 +558,6 @@ harbor run -d terminal-bench/terminal-bench-2-1 --agent terminus-2 --model opena
 Loading safetensors checkpoint shards:   0% Completed | 0/48 [00:00<?, ?it/s]
 Loading safetensors checkpoint shards:   2% Completed | 1/48 [00:00<00:09,  5.13it/s]
 ...
-
 Loading safetensors checkpoint shards: 100% Completed | 48/48 [03:25<00:00,  4.27s/it]
 (EngineCore pid=57666) 
 (EngineCore pid=57666) INFO 08-06 20:52:10 [default_loader.py:430] Loading weights took 206.61 seconds
@@ -577,7 +575,6 @@ Loading safetensors checkpoint shards: 100% Completed | 48/48 [03:25<00:00,  4.2
 Loading safetensors checkpoint shards:   0% Completed | 0/48 [00:00<?, ?it/s]
 Loading safetensors checkpoint shards:  10% Completed | 5/48 [00:00<00:00, 45.17it/s]
 ...
-
 Loading safetensors checkpoint shards:  98% Completed | 47/48 [00:10<00:00,  1.36it/s]
 Loading safetensors checkpoint shards: 100% Completed | 48/48 [00:15<00:00,  3.15it/s]
 (EngineCore pid=57666) 
@@ -586,12 +583,7 @@ Loading safetensors checkpoint shards: 100% Completed | 48/48 [00:15<00:00,  3.1
 (EngineCore pid=57666) INFO 08-06 20:52:35 [model_runner.py:305] Model loading took 156.32 GiB and 233.014771 seconds
 (EngineCore pid=57666) INFO 08-06 20:52:35 [topk_topp_sampler.py:55] Using FlashInfer for top-p & top-k sampling.
 (EngineCore pid=57666) 2026-08-06 20:52:40  [TileLang:tilelang.jit.kernel:INFO] (kernel.py:133): TileLang begins to compile kernel `mhc_pre_big_fuse_broadcast_with_norm_tilelang` with `out_idx=None`
-(EngineCore pid=57666) 2026-08-06 20:52:48  [TileLang:tilelang.jit.kernel:INFO] (kernel.py:141): TileLang completes to compile kernel `mhc_pre_big_fuse_broadcast_with_norm_tilelang`
-(EngineCore pid=57666) 2026-08-06 20:52:59  [TileLang:tilelang.jit.kernel:INFO] (kernel.py:133): TileLang begins to compile kernel `mhc_post_tilelang` with `out_idx=None`
-(EngineCore pid=57666) 2026-08-06 20:53:02  [TileLang:tilelang.jit.kernel:INFO] (kernel.py:141): TileLang completes to compile kernel `mhc_post_tilelang`
-(EngineCore pid=57666) 2026-08-06 20:53:04  [TileLang:tilelang.jit.kernel:INFO] (kernel.py:133): TileLang begins to compile kernel `mhc_pre_big_fuse_with_norm_tilelang` with `out_idx=None`
-(EngineCore pid=57666) 2026-08-06 20:53:12  [TileLang:tilelang.jit.kernel:INFO] (kernel.py:141): TileLang completes to compile kernel `mhc_pre_big_fuse_with_norm_tilelang`
-(EngineCore pid=57666) 2026-08-06 20:53:29  [TileLang:tilelang.jit.kernel:INFO] (kernel.py:133): TileLang begins to compile kernel `hc_head_fuse_tilelang` with `out_idx=None`
+...
 (EngineCore pid=57666) 2026-08-06 20:53:33  [TileLang:tilelang.jit.kernel:INFO] (kernel.py:141): TileLang completes to compile kernel `hc_head_fuse_tilelang`
 (EngineCore pid=57666) INFO 08-06 20:53:42 [gpu_worker.py:560] Available KV cache memory: 86.74 GiB
 (EngineCore pid=57666) INFO 08-06 20:53:42 [kv_cache_utils.py:2177] GPU KV cache size: 913,657 tokens
@@ -603,15 +595,12 @@ Loading safetensors checkpoint shards: 100% Completed | 48/48 [00:15<00:00,  3.1
 (EngineCore pid=57666) 2026-08-06 20:53:57  [TileLang:tilelang.jit.kernel:INFO] (kernel.py:133): TileLang begins to compile kernel `mhc_pre_big_fuse_broadcast_with_norm_tilelang` with `out_idx=None`
 (EngineCore pid=57666) 2026-08-06 20:54:05  [TileLang:tilelang.jit.kernel:INFO] (kernel.py:141): TileLang completes to compile kernel `mhc_pre_big_fuse_broadcast_with_norm_tilelang`
 ...
-
 (EngineCore pid=57666) 2026-08-06 20:54:58  [TileLang:tilelang.jit.kernel:INFO] (kernel.py:133): TileLang begins to compile kernel `mhc_pre_big_fuse_with_norm_tilelang` with `out_idx=None`
 (EngineCore pid=57666) 2026-08-06 20:55:05  [TileLang:tilelang.jit.kernel:INFO] (kernel.py:141): TileLang completes to compile kernel `mhc_pre_big_fuse_with_norm_tilelang`
 DeepGEMM warmup: 100%|██████████| 1670/1670 [03:15<00:00,  8.55it/s]
 (EngineCore pid=57666) INFO 08-06 20:58:26 [kernel_warmup.py:227] Using FlashInfer autotune cache file: /root/.cache/vllm/flashinfer_autotune_cache/0.6.14/103a/82dc49d0549fea2496625650ed2ab56b389c8855250771c6f1de898521a9302f/autotune_configs.json
 (EngineCore pid=57666) 2026-08-06 20:58:26,931 - INFO - autotuner.py:651 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
-
-
-
+...
 [AutoTuner]: Tuning flashinfer::trtllm_fp4_block_scale_moe: 100%|██████████| 10/10 [09:22<00:00, 56.28s/profile]
 (EngineCore pid=57666) 2026-08-06 21:07:57,803 - INFO - autotuner.py:674 - flashinfer.jit: [Autotuner]: Autotuning process ends
 (EngineCore pid=57666) 2026-08-06 21:07:57,810 - INFO - autotuner.py:1808 - flashinfer.jit: [Autotuner]: Saved 10 configs to /root/.cache/vllm/flashinfer_autotune_cache/0.6.14/103a/82dc49d0549fea2496625650ed2ab56b389c8855250771c6f1de898521a9302f/autotune_configs.json (10 new, 0 from previous config)
@@ -621,16 +610,7 @@ DeepGEMM warmup: 100%|██████████| 1670/1670 [03:15<00:00,  8
 (EngineCore pid=57666) INFO 08-06 21:08:05 [cutedsl_warmup.py:101] Skipping CuTeDSL warmup because no compile units were requested.
 (EngineCore pid=57666) INFO 08-06 21:08:05 [breakable_cudagraph.py:288] Breakable CUDA graph enabled
 (EngineCore pid=57666) 2026-08-06 21:08:11  [TileLang:tilelang.jit.kernel:INFO] (kernel.py:133): TileLang begins to compile kernel `mhc_pre_big_fuse_with_norm_tilelang` with `out_idx=None`
-(EngineCore pid=57666) 2026-08-06 21:08:19  [TileLang:tilelang.jit.kernel:INFO] (kernel.py:141): TileLang completes to compile kernel `mhc_pre_big_fuse_with_norm_tilelang`
-(EngineCore pid=57666) 2026-08-06 21:08:28  [TileLang:tilelang.jit.kernel:INFO] (kernel.py:133): TileLang begins to compile kernel `mhc_pre_big_fuse_with_norm_tilelang` with `out_idx=None`
-(EngineCore pid=57666) 2026-08-06 21:08:36  [TileLang:tilelang.jit.kernel:INFO] (kernel.py:141): TileLang completes to compile kernel `mhc_pre_big_fuse_with_norm_tilelang`
-(EngineCore pid=57666) 2026-08-06 21:08:48  [TileLang:tilelang.jit.kernel:INFO] (kernel.py:133): TileLang begins to compile kernel `mhc_pre_big_fuse_with_norm_tilelang` with `out_idx=None`
-(EngineCore pid=57666) 2026-08-06 21:08:56  [TileLang:tilelang.jit.kernel:INFO] (kernel.py:141): TileLang completes to compile kernel `mhc_pre_big_fuse_with_norm_tilelang`
-(EngineCore pid=57666) 2026-08-06 21:09:09  [TileLang:tilelang.jit.kernel:INFO] (kernel.py:133): TileLang begins to compile kernel `mhc_pre_big_fuse_with_norm_tilelang` with `out_idx=None`
-(EngineCore pid=57666) 2026-08-06 21:09:17  [TileLang:tilelang.jit.kernel:INFO] (kernel.py:141): TileLang completes to compile kernel `mhc_pre_big_fuse_with_norm_tilelang`
-(EngineCore pid=57666) 2026-08-06 21:09:28  [TileLang:tilelang.jit.kernel:INFO] (kernel.py:133): TileLang begins to compile kernel `mhc_pre_big_fuse_with_norm_tilelang` with `out_idx=None`
-(EngineCore pid=57666) 2026-08-06 21:09:35  [TileLang:tilelang.jit.kernel:INFO] (kernel.py:141): TileLang completes to compile kernel `mhc_pre_big_fuse_with_norm_tilelang`
-(EngineCore pid=57666) 2026-08-06 21:09:52  [TileLang:tilelang.jit.kernel:INFO] (kernel.py:133): TileLang begins to compile kernel `mhc_pre_big_fuse_with_norm_tilelang` with `out_idx=None`
+...
 (EngineCore pid=57666) 2026-08-06 21:10:00  [TileLang:tilelang.jit.kernel:INFO] (kernel.py:141): TileLang completes to compile kernel `mhc_pre_big_fuse_with_norm_tilelang`
 Capturing CUDA graphs (PIECEWISE): 100%|██████████| 51/51 [02:28<00:00,  2.92s/it]
 Capturing CUDA graphs (FULL): 100%|██████████| 48/48 [00:20<00:00,  2.36it/s]
@@ -638,8 +618,7 @@ Capturing CUDA graphs (FULL): 100%|██████████| 48/48 [00:20<
 Capturing dspark CUDA graphs (FULL): 100%|██████████| 48/48 [00:01<00:00, 30.49it/s]
 (EngineCore pid=57666) INFO 08-06 21:10:56 [model_runner.py:747] Graph capturing finished in 171 secs, took 3.06 GiB
 (EngineCore pid=57666) INFO 08-06 21:10:56 [gpu_worker.py:857] Free memory on device (267.08/267.69 GiB) on startup. Desired GPU memory utilization is (0.92, 246.27 GiB). Actual usage is 156.32 GiB for weight, 2.99 GiB for peak activation, 0.23 GiB for non-torch memory, and 3.06 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=89686801859` (83.53 GiB) to fit into requested memory, or `--kv-cache-memory=112025012224` (104.33 GiB) to fully utilize gpu memory. Current kv cache memory in use is 86.74 GiB.
-
-
+...
 (EngineCore pid=57666) INFO 08-06 21:11:10 [jit_monitor.py:79] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
 (EngineCore pid=57666) INFO 08-06 21:11:11 [core.py:347] init engine (profile, create kv cache, warmup model) took 1115.80 s
 (EngineCore pid=57666) WARNING 08-06 21:11:12 [vllm.py:1213] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
@@ -651,11 +630,10 @@ Capturing dspark CUDA graphs (FULL): 100%|██████████| 48/48 
 (APIServer pid=57071) INFO 08-06 21:11:12 [launcher.py:37] Available routes are:
 (APIServer pid=57071) INFO 08-06 21:11:12 [launcher.py:46] Route: /openapi.json, Methods: GET, HEAD
 (APIServer pid=57071) INFO 08-06 21:11:12 [launcher.py:46] Route: /inference/v1/generate, Methods: POST
-
+...
 (APIServer pid=57071) INFO:     Started server process [57071]
 (APIServer pid=57071) INFO:     Waiting for application startup.
 (APIServer pid=57071) INFO:     Application startup complete.
-
 ```
 </details>
 
@@ -673,7 +651,6 @@ Expand for the full stack trace:
 <details>
 
 ```
-(APIServer pid=57071) INFO 08-06 21:11:12 [launcher.py:46] Route: /v1/completions/derender, Methods: POST
 (APIServer pid=57071) INFO 08-06 21:11:12 [launcher.py:46] Route: /inference/v1/generate, Methods: POST
 (APIServer pid=57071) INFO:     Started server process [57071]
 (APIServer pid=57071) INFO:     Waiting for application startup.
@@ -828,7 +805,6 @@ Assertion `res == CUresult::CUDA_SUCCESS` failed (/workspace/.deps/flashmla-src/
 </details>
 
 
-
 ---
 
 # Bonus Round - Resuming a Runpod
@@ -937,7 +913,6 @@ VLLM_USE_V2_MODEL_RUNNER=0 vllm serve google/gemma-4-31B-it \
 Expand for vLLM logs:
 <details>
 ```
-(APIServer pid=21333) INFO 08-06 20:09:49 [api_utils.py:345] 
 (APIServer pid=21333) INFO 08-06 20:09:49 [api_utils.py:345]        █     █     █▄   ▄█
 (APIServer pid=21333) INFO 08-06 20:09:49 [api_utils.py:345]  ▄▄ ▄█ █     █     █ ▀▄▀ █  version 0.26.0
 (APIServer pid=21333) INFO 08-06 20:09:49 [api_utils.py:345]   █▄█▀ █     █     █     █  model   google/gemma-4-31B-it
