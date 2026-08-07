@@ -472,6 +472,7 @@ The per-position acceptance drops off a cliff: 67% -> 43% -> 31% -> 24% -> 17% -
 
 `--speculative-config '{"method":"dspark","num_speculative_tokens":4,"draft_sample_method":"greedy"}'`
 
+If you want to learn more, listen to a really great podcast about cutting edge production inference and optimization: <https://www.latent.space/p/inference-eng>
 
 ---
 
