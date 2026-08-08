@@ -331,13 +331,16 @@ grep is an amazing tool for getting efficiently finding text, <http://www.gnu.or
 - `-v` = invert the match so do NOT show lines that match (typically | grep -v 'myexclude')
 - `-x` = whole line match only
 - `-C 2` = print two lines before and two lines after a match
+- `-A5` = print the 5 lines after a match
 
     grep ubuntu /etc/passwd | cut -d: -f3
 >  only print the user id by piping the match to cut which delimits by colon and outputs the 3rd column
 
     ls -t -d -1 -r path/directory/ >> oldest.m3u
 > list reverse order by timestamp
+
     ls -t -d -1 path/directory/ | grep -v DONOTLIKE >> newest.m3u
+
 > list by timestamp (sort by modification time, newest first), list directories themselves, not their contents, only 1 level deep
 > pipe to grep and ignore matches of DONOTLIKE, then append output to the newest.m3u file
 
@@ -347,9 +350,14 @@ grep is an amazing tool for getting efficiently finding text, <http://www.gnu.or
 > --files-without-match , display filenames that do not contain the string foobar
 
 - <https://en.wikipedia.org/wiki/Grep>
-- <http://www.gnu.org/software/grep/manual/grep.html>
-- <http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html>
+- <https://www.gnu.org/software/grep/manual/grep.html>
+- <https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html>
 
+## grep to remove whitespace
+
+`grep -v '^[[:blank:]]*$' foo.txt > bar.txt`
+
+> exclude the whitespace that starts at the beginning of a line (^) and runs to the end of a line ($) 
 
 # cut
 
