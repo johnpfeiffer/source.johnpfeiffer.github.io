@@ -143,3 +143,20 @@ It is good that the competition of open weight models increases access to artifi
 ```
 
 *You can see why vertical integration and a monopoly on AI is so appealing...*
+
+
+# Appendix
+
+I have no affiliation with, but easily used Baseten as the inference provider.
+
+1. Setup an account
+2. Get an API key
+3. Add a credit card (payment method)
+4. Scroll down on <https://app.baseten.co/settings/billing> to get to "Monthly budget" and "Enforce budget" - this prevents any runaway spend issues.
+
+> If enforced, Model API requests will automatically be rejected as soon as the budget is reached.
+
+*Note Baseten operates on "pay after" whereas many other providers require you to pay up front for credits*
+
+It appears most of their business model is actually focused on serving organizations training and customizing/fine-tuning an open weight model. Their value proposition is handling all the orchestration/management/storage/ops for inference. <https://docs.baseten.co/inference/overview>
+
