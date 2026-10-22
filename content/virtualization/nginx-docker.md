@@ -297,7 +297,7 @@ The blue lightning symbol on the far far right (next to the "hamburger") indicat
 
 - <https://www.nginx.com/blog/nginx-1-9-5/>
 - <https://blog.cloudflare.com/tools-for-debugging-testing-and-using-http-2/>
-- <http://tech.finn.no/2015/09/25/setup-nginx-with-http2-for-local-development/>
+- <https://tech.finn.no/2015/09/25/setup-nginx-with-http2-for-local-development/>
 
 
 ## nginx with php-fpm
@@ -306,7 +306,7 @@ The blue lightning symbol on the far far right (next to the "hamburger") indicat
 
 This hack is fun but proves unnecessary when using Docker Compose later...
 
-  :::bash
+    :::bash
     docker pull php:5.5-fpm-alpine
     ifconfig | grep Bc
     docker run -it --rm --publish 0.0.0.0:9000:9000 php:5.5-fpm-alpine /bin/sh
@@ -412,7 +412,7 @@ Create the following files to test the various cases...
 ### docker-compose up to start nginx and php-fpm
 
     :::bash
-    docker-compose up
+    docker-compose up -d
     docker-compose rm -f
     curl localhost:80/foo.html
     curl localhost:80/bar.php
